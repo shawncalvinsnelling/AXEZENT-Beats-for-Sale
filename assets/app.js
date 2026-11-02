@@ -38,12 +38,22 @@
     if(!play.disabled) play.addEventListener("click",() => startPreview(beat,play));
     const detail = el("button","detail-button","View Details");
     detail.type = "button"; detail.addEventListener("click",()=>showDetails(beat));
+    const repeat = el("button","repeat-button","🔁 Repeat Off");
+    repeat.type = "button";
+    repeat.disabled = !previewReady(beat);
+    repeat.addEventListener("click", () => {
+      player.loop = !player.loop;
+      document.querySelectorAll(".repeat-button").forEach(b => {if(!b.disabled)b.textContent = player.loop ? "🔁 Repeat On" : "🔁 Repeat Off";});
+    });
     const download = el("button","download-button","🔒 Download");
     download.type = "button"; download.disabled = true;
     download.title = "Purchases and full-quality downloads are not enabled yet.";
-    elAppend(buttons,play,detail,download);
+    elAppend(buttons,play,repeat,detail,download);
+    const inquiry = el("a","inquiry-action","✉ Email About $100 Ownership");
+    inquiry.href = "mailto:shawncsnelling@gmail.com?subject=" + encodeURIComponent("AXEZENT $100 beat inquiry — " + beat.id + " — " + beat.title);
+    inquiry.title = "Request exclusive rights to " + beat.title + " before sending payment";
     const available = el("p","availability",beat.status==="mix_review"?"Full mix candidate prepared · $100 exclusive offer by inquiry only":"$100 exclusive offer pending rights review · Not on sale yet");
-    elAppend(body,h3,meta,status,buttons,available);
+    elAppend(body,h3,meta,status,buttons,inquiry,available);
     return elAppend(article,art,body);
   };
   const stopPreview = () => {
