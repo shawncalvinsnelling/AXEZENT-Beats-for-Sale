@@ -24,10 +24,14 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install audio dependencies
+      - name: Install MP3 encoder and verifier
         run: |
-          python -m pip install --disable-pip-version-check 'numpy>=1.26,<3'
-          ffmpeg -version | head -n 1
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg
+          command -v ffmpeg
+          command -v ffprobe
+      - name: Install Python numeric audio dependencies
+        run: python -m pip install --disable-pip-version-check 'numpy>=1.26,<3'
       - name: Check renderer before execution
         run: python -m py_compile scripts/render_previews.py
       - name: Render 50 original tagged stereo MP3 review sketches
