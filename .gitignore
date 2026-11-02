@@ -15,3 +15,6 @@ stems/
 *.pem
 *.key
 .DS_Store
+
+# Never expose private audio to GitHub or public source trees
+private_previews/
