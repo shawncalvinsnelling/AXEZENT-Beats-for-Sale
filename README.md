@@ -8,7 +8,7 @@
 
 **Find Your Sound. Make Your Next Hit.**
 
-[✉ **EMAIL THE PRODUCER**](mailto:shawncsnelling@gmail.com?subject=AXEZENT%20Beat%20Inquiry) · [🎛️ WEBSITE DESIGN](index.html)
+[✉ **EMAIL THE PRODUCER**](mailto:shawncsnelling@gmail.com?subject=AXEZENT%20Beat%20Inquiry) · [▶ **PLAY ON THE PRIVATE AXEZENT SITE**](docs/PRIVATE_STREAMING_SETUP.md)
 
 </div>
 
@@ -18,7 +18,7 @@
 
 Browse our first fifty full-length instrumental mixes, inspired by sounds from Houston and Detroit to New York, Los Angeles and beyond. The music is under review before commercial release; no public preview is active until the private streaming player is deployed.
 
-> **Audio protection update:** Public MP3 file links have been withdrawn. The next version will use an on-page Play button backed by our private streaming server. No active player can be embedded directly into a GitHub README, and audio played publicly can still be recorded. Do not send payment until exclusive rights have been confirmed.
+> **Audio protection update:** Public MP3 file links have been withdrawn. The HTML storefront now includes Play buttons backed by our own private streaming server (after it is started and supplied with tagged MP3s). No active player can be embedded directly into a GitHub README, and audio played publicly can still be recorded. Do not send payment until exclusive rights have been confirmed.
 
 <!-- BEATS_START -->
 | # | Beat | City / state | Preview | Exclusive ownership inquiry |
@@ -89,9 +89,16 @@ The first 50 **review sketches** are no longer publicly linked as MP3 files. The
 
 **Public preview files are audio that visitors may copy or capture.** Full-quality WAVs and MIDI/stems are kept private. GitHub's README cannot run a full interactive store; GitHub Pages is not allowed as free hosting for a site whose primary purpose is e-commerce.
 
-<details><summary>For the owner: uploading the 50 audio previews</summary>
+<details><summary>Owner setup: turn on the private Play buttons</summary>
 
-Download the five packs provided separately, then upload all five ZIP files into the repository's `incoming` folder via **Add file → Upload files**. Our workflow verifies and unpacks them into `previews`, updates the catalog, and swaps the pending text above for real listening links. No payment or full-master download is activated. See [audio import instructions](docs/IMPORT_50_PREVIEWS.md).
+1. **Keep the 50 tagged MP3s off this public GitHub repository.** Extract them into a folder named `AXEZENT_PRIVATE_TAGGED_PREVIEWS` **beside** (not inside) your downloaded project folder.
+2. Download this repository as a ZIP, extract it, and double-click `LAUNCH_LOCAL_WINDOWS.bat` (Python 3 required).
+3. Open `http://127.0.0.1:8080/`. The **50 Play buttons** will activate only for valid MP3s found in that private folder. There is no Download button.
+4. For a public site, run the same server on a computer you control behind HTTPS with your domain and a reverse proxy. Your machine must remain online.
+
+[Private streaming instructions](docs/PRIVATE_STREAMING_SETUP.md) · [Self-hosting instructions](docs/SELF_HOSTING.md)
+
+**Protection limit:** A visitor can still capture any audio they can listen to. Tagged, compressed previews reduce the value of copied music; the sale masters must remain private. Older versions of this GitHub repository included MP3s, so those historical URLs/objects may remain available until GitHub history and cached views are addressed.
 
 </details>
 
