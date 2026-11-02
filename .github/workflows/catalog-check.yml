@@ -20,6 +20,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Check website player JavaScript
         run: node --check assets/app.js
+      - name: Validate our own one-command Linux server launcher
+        run: bash -n deploy/launch-on-own-server.sh
       - name: Validate owner-controlled HTTPS website deployment configuration
         env:
           AXEZENT_DOMAIN: beats.example.org
