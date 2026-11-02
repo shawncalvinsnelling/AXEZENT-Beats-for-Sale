@@ -1,3 +1,5 @@
+> **UPDATED:** The public downloadable MP3 links have been withdrawn. The private-preview streaming setup is documented in [PRIVATE_STREAMING_SETUP.md](PRIVATE_STREAMING_SETUP.md). Do not upload preview MP3s into GitHub.
+
 # AXEZENT — Self-hosted website (no Netlify, no website builder)
 
 The store's pages are entirely owned as source code in this GitHub repository.
@@ -10,12 +12,12 @@ The store's pages are entirely owned as source code in this GitHub repository.
 2. Install Python 3 (check **Add Python to PATH**).
 3. Open a terminal inside the extracted folder and run:
    ```powershell
-   py -m http.server 8080 --bind 127.0.0.1
+   py server/axezent_site.py --host 127.0.0.1 --port 8080
    ```
 4. Open **http://127.0.0.1:8080/** in your browser. Your HTML, catalog, styling and search all work.
 5. Note: Play works only for tracks whose **tagged MP3 previews have actually been uploaded** into `previews/` and whose catalog status/URL were verified. Without those files, the Play buttons correctly remain unavailable.
 
-This local development preview is **not a public website**. It doesn't accept orders or offer secure paid downloads.
+This local listening website is **not a public website**. It streams tagged MP3s only when placed in the private sibling folder `AXEZENT_PRIVATE_TAGGED_PREVIEWS`. It does not accept payments or offer paid downloads. See [private player setup](PRIVATE_STREAMING_SETUP.md).
 
 ## Host it on your own server — production sketch
 
@@ -24,7 +26,7 @@ Use an always-on Linux server you control. Give it a public IPv4/IPv6 address, a
 1. Buy or use a domain under your control and set DNS A/AAAA records pointing to your own server's public address.
 2. Install a maintained web server with automatic HTTPS (for example **Caddy**, which you run locally on your machine). This is self-hosting, not a managed website builder.
 3. Clone this repository on the server and copy only the static public files to `/srv/axezent/`.
-4. Example web server configuration lives in `Caddyfile.example`. Replace the example hostname with your actual domain, then test/reload your server config.
+4. Example reverse-proxy server configuration lives in `Caddyfile.example`. Run `server/axezent_site.py` on 127.0.0.1:8080; configure Caddy as the HTTPS reverse proxy and replace the example hostname with your actual domain.
 5. Set up protected automatic deployment (pull reviewed changes from `main`) and automatic security updates. Use a non-root service account. Maintain backups.
 6. Test with a phone on mobile data, confirm HTTPS, browse/search, and verify preview audio plays. **Do not enable full-master downloads from the static site.**
 
