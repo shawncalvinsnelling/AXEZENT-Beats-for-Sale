@@ -4,6 +4,9 @@ services:
   player:
     build: .
     restart: unless-stopped
+    # Match the Linux owner's UID/GID so a 0700 private folder remains readable
+    # without making the private MP3s world-readable.
+    user: "${AXEZENT_UID:-65532}:${AXEZENT_GID:-65532}"
     environment:
       AXEZENT_PREVIEW_DIR: /private
     volumes:
