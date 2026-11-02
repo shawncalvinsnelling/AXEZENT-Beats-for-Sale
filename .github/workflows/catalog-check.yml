@@ -14,5 +14,11 @@ jobs:
           python-version: '3.11'
       - name: Compile importer and README update scripts
         run: python -m py_compile scripts/import_preview_packs.py scripts/update_readme_previews.py scripts/sync_previews.py
+      - name: Check private listening server syntax
+        run: python -m py_compile server/axezent_site.py tests/test_private_streaming.py
+      - name: Test actual streaming, pause-capable HTTP ranges and private path blocking
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Check website player JavaScript
+        run: node --check assets/app.js
       - name: Validate all 200 track records and absence of studio masters
         run: python scripts/check_catalog.py
