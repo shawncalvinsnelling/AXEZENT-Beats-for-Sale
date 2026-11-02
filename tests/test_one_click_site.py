@@ -30,6 +30,9 @@ class LaunchTests(unittest.TestCase):
         tracks+=[{"id":f"OTHER-{i}", "status":"planned"} for i in range(150)]
         page=b'<html><dialog id="playerDialog"><input id="musicSeek"><button id="musicPlay"></button><button id="musicStop"></button><button id="closePlayer"></button></dialog></html>'
         def get(_url,_headers=None,max_read=140000):
+            if _url.endswith("/api/ready"):
+                present=sum(b.get("status")=="preview_ready" for b in tracks)
+                return 200 if present==50 else 503,{"Content-Type":"application/json"},json.dumps({"websiteReady":present==50,"playableBeats":present}).encode()
             if _url.endswith("/api/catalog"):
                 return 200,{"Content-Type":"application/json"},json.dumps(tracks).encode()
             if _url.endswith("/"):
