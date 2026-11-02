@@ -1,0 +1,20 @@
+# Copy this file to your own server as a Caddyfile after replacing the hostname.
+# The domain must point via DNS to your own server, with inbound 80/443 reachable.
+# HTTPS is provided by Caddy on the machine you control.
+
+beats.example.com {
+    root * /srv/axezent
+    encode zstd gzip
+    header {
+        X-Content-Type-Options nosniff
+        Referrer-Policy strict-origin-when-cross-origin
+        X-Frame-Options DENY
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+        Content-Security-Policy "default-src 'self'; connect-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'"
+    }
+    file_server
+    log {
+        output file /var/log/caddy/axezent-access.log
+        format console
+    }
+}
