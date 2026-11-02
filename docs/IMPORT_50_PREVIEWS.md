@@ -1,3 +1,5 @@
+> **DEPRECATED — DO NOT USE:** The public MP3 upload process below was retired. Do not upload audio preview ZIPs into a public GitHub repository. Use the new [AXEZENT private-streaming player setup](PRIVATE_STREAMING_SETUP.md) instead. Previously public previews may persist in Git history.
+
 # One upload to enable 50 GitHub listening links
 
 Your GitHub repo: https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale
