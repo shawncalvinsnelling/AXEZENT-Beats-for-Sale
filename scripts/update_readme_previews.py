@@ -38,7 +38,7 @@ for b in selection:
     else:
         listen = "⏳ Preview upload pending"
     rows.append("| " + str(b["releaseRank"]).zfill(2) + " | **" + clean(b["title"]) +
-                "** · \\x60" + b["id"] + "\\x60 | " + clean(b["city"]) + ", " + clean(b["state"]) +
+                "** · `" + b["id"] + "` | " + clean(b["city"]) + ", " + clean(b["state"]) +
                 " | " + listen + " | [✉ Ask about $100 ownership](" + mail + ") |")
 # Replace only the generated table; keep all branding, disclosures, and other editorial content.
 before, rest = text.split(begin, 1)
