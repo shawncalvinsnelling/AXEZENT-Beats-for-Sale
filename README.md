@@ -7,6 +7,12 @@
 
 Original Hip-Hop · Rap · Club · Melodic Beats
 
+<!-- PLAYER_LINK_START -->
+**🎧 AXEZENT MUSIC PLAYER — LAUNCH PENDING**
+
+The one-click website link appears here automatically after the live music player and all 50 tracks pass public playback checks.
+<!-- PLAYER_LINK_END -->
+
 **[✉ EMAIL AXEZENT AI — $100 BEAT INQUIRIES](mailto:axezentai@gmail.com?subject=AXEZENT%20%24100%20Beat%20Ownership%20Inquiry)**
 
 </div>
