@@ -1,12 +1,14 @@
 <div align="center">
 
-![AXEZENT Beats for Sale](assets/axezent-brand-banner.svg)
+![AXEZENT Beats and Instrumentals](assets/axezent-brand-banner.svg)
 
-# AXEZENT BEATS FOR SALE
+# BEATS & INSTRUMENTALS FOR SALE
 
 **Find Your Sound. Make Your Next Hit.**
 
-*50 original instrumental previews · Hip-Hop · Rap · Club · Melodic*
+**Original Hip-Hop · Rap · Club · Melodic Instrumentals**
+
+*Produced by AXEZENT*
 
 <!-- PLAYER_LINK_START -->
 **🎧 MUSIC WEBSITE — PUBLIC LINK NOT YET AVAILABLE**
