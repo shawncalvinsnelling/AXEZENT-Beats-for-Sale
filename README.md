@@ -5,7 +5,7 @@
 # AXEZENT BEATS FOR SALE
 **Find Your Sound. Make Your Next Hit.**
 
-[**🌐 LAUNCH THE WEBSITE**](https://app.netlify.com/start) &nbsp;·&nbsp; [**EXPLORE 200 BEAT TITLES**](data/catalog.json)
+[**🎧 ADD 50 PLAYABLE MP3 PREVIEWS**](docs/ACTIVATE_50_PLAY_BUTTONS.md) &nbsp;·&nbsp; [**🌐 PUBLISH WEBSITE**](https://app.netlify.com/start) &nbsp;·&nbsp; [**TRACK CATALOG**](data/catalog.json)
 
 </div>
 
@@ -15,7 +15,7 @@
 
 Rap beats. Hip-hop instrumentals. Southern bass, Detroit bounce, New York energy, West Coast grooves, and original sounds from cities across America.
 
-**The music store is designed.** The 200 original track concepts are being produced and mastered one by one. Listen and buy features will appear as real recordings become ready and payment processing is connected.
+**The music-store website is designed.** The 200 original track concepts are being produced and mastered one by one. Listen and buy features will appear as real recordings become ready and payment processing is connected.
 
 ### OPEN THE ACTUAL WEBSITE
 
