@@ -22,3 +22,10 @@
 .purchase-panel .payment-note{font-size:12px;color:#acacb6;line-height:1.7;margin:16px 0 0}
 .purchase-legal{color:#a2a5af;font-size:12px;line-height:1.7;max-width:1000px;border-left:2px solid #aa8753;padding-left:16px;margin-top:20px}
 @media(max-width:760px){.purchase-grid{grid-template-columns:1fr}.purchase-section{padding:60px 0}}
+
+/* Accessible preview and repeat controls, independent for each beat card */
+.track-actions {display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.track-actions button {min-width:0;white-space:normal;line-height:1.25;min-height:43px}
+.inquiry-action {display:block;text-align:center;border:1px solid #b58b58;border-radius:8px;color:#f7d8a5;background:#282015;font-weight:800;font-size:12px;padding:12px 8px;margin-top:10px;line-height:1.35}
+.inquiry-action:hover {background:#3a2c1a}
+.inquiry-action:focus-visible {outline:2px solid #eac482;outline-offset:3px}
