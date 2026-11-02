@@ -1,0 +1,502 @@
+[
+  {
+    "id": "AXZ-169",
+    "title": "Diamond in the Dirt",
+    "releaseRank": 1,
+    "bpm": 84,
+    "lengthSeconds": 137.14,
+    "styleSketch": "Southern half-time",
+    "highbandDelayMs": 2.91,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-085",
+    "title": "Motor City Money",
+    "releaseRank": 2,
+    "bpm": 101,
+    "lengthSeconds": 114.06,
+    "styleSketch": "Detroit bounce",
+    "highbandDelayMs": 3.31,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-125",
+    "title": "Borough Crown",
+    "releaseRank": 3,
+    "bpm": 142,
+    "lengthSeconds": 81.13,
+    "styleSketch": "New York drill",
+    "highbandDelayMs": 3.69,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-017",
+    "title": "Out the Frame",
+    "releaseRank": 4,
+    "bpm": 96,
+    "lengthSeconds": 120.0,
+    "styleSketch": "West Coast synth-funk",
+    "highbandDelayMs": 4.09,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-037",
+    "title": "Right Now",
+    "releaseRank": 5,
+    "bpm": 138,
+    "lengthSeconds": 83.48,
+    "styleSketch": "Atlanta trap",
+    "highbandDelayMs": 4.5,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-166",
+    "title": "Heartbreak in the Trunk",
+    "releaseRank": 6,
+    "bpm": 101,
+    "lengthSeconds": 114.06,
+    "styleSketch": "Memphis dark",
+    "highbandDelayMs": 4.91,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-021",
+    "title": "Mile High Motion",
+    "releaseRank": 7,
+    "bpm": 90,
+    "lengthSeconds": 128.0,
+    "styleSketch": "cinematic hip-hop",
+    "highbandDelayMs": 5.31,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-033",
+    "title": "Gold on the Water",
+    "releaseRank": 8,
+    "bpm": 108,
+    "lengthSeconds": 106.67,
+    "styleSketch": "club bounce",
+    "highbandDelayMs": 2.5,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-049",
+    "title": "City Made Me",
+    "releaseRank": 9,
+    "bpm": 144,
+    "lengthSeconds": 80.0,
+    "styleSketch": "soulful boom bap",
+    "highbandDelayMs": 2.91,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-069",
+    "title": "Second Line Money",
+    "releaseRank": 10,
+    "bpm": 103,
+    "lengthSeconds": 111.84,
+    "styleSketch": "gospel synth",
+    "highbandDelayMs": 3.31,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-129",
+    "title": "Queen City Pressure",
+    "releaseRank": 11,
+    "bpm": 100,
+    "lengthSeconds": 115.2,
+    "styleSketch": "desert atmosphere",
+    "highbandDelayMs": 3.69,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-117",
+    "title": "Brick City Armor",
+    "releaseRank": 12,
+    "bpm": 132,
+    "lengthSeconds": 87.27,
+    "styleSketch": "cold melodic",
+    "highbandDelayMs": 4.09,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-137",
+    "title": "Heart of Steel",
+    "releaseRank": 13,
+    "bpm": 97,
+    "lengthSeconds": 118.76,
+    "styleSketch": "Southern half-time",
+    "highbandDelayMs": 4.5,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-149",
+    "title": "Broad Street Hunger",
+    "releaseRank": 14,
+    "bpm": 96,
+    "lengthSeconds": 120.0,
+    "styleSketch": "Detroit bounce",
+    "highbandDelayMs": 4.91,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-097",
+    "title": "Gateway to Gold",
+    "releaseRank": 15,
+    "bpm": 92,
+    "lengthSeconds": 125.22,
+    "styleSketch": "New York drill",
+    "highbandDelayMs": 5.31,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-185",
+    "title": "Rain on the Dashboard",
+    "releaseRank": 16,
+    "bpm": 89,
+    "lengthSeconds": 129.44,
+    "styleSketch": "West Coast synth-funk",
+    "highbandDelayMs": 2.5,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-077",
+    "title": "Ain't No Easy Way",
+    "releaseRank": 17,
+    "bpm": 128,
+    "lengthSeconds": 90.0,
+    "styleSketch": "Atlanta trap",
+    "highbandDelayMs": 2.91,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-181",
+    "title": "Crown of the South",
+    "releaseRank": 18,
+    "bpm": 100,
+    "lengthSeconds": 115.2,
+    "styleSketch": "Memphis dark",
+    "highbandDelayMs": 3.31,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-142",
+    "title": "Church Bells and 808s",
+    "releaseRank": 19,
+    "bpm": 98,
+    "lengthSeconds": 117.55,
+    "styleSketch": "cinematic hip-hop",
+    "highbandDelayMs": 3.69,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-009",
+    "title": "Desert Diamond",
+    "releaseRank": 20,
+    "bpm": 92,
+    "lengthSeconds": 125.22,
+    "styleSketch": "club bounce",
+    "highbandDelayMs": 4.09,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-001",
+    "title": "Heavy Is the Crown",
+    "releaseRank": 21,
+    "bpm": 78,
+    "lengthSeconds": 147.69,
+    "styleSketch": "soulful boom bap",
+    "highbandDelayMs": 4.5,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-093",
+    "title": "Porchlight Prophecy",
+    "releaseRank": 22,
+    "bpm": 74,
+    "lengthSeconds": 155.68,
+    "styleSketch": "gospel synth",
+    "highbandDelayMs": 4.91,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-157",
+    "title": "Sweetgrass and Gold",
+    "releaseRank": 23,
+    "bpm": 99,
+    "lengthSeconds": 116.36,
+    "styleSketch": "desert atmosphere",
+    "highbandDelayMs": 5.31,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-193",
+    "title": "Cold City Pressure",
+    "releaseRank": 24,
+    "bpm": 105,
+    "lengthSeconds": 109.71,
+    "styleSketch": "cold melodic",
+    "highbandDelayMs": 2.5,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-089",
+    "title": "Ice in My Veins",
+    "releaseRank": 25,
+    "bpm": 89,
+    "lengthSeconds": 129.44,
+    "styleSketch": "Southern half-time",
+    "highbandDelayMs": 2.91,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-054",
+    "title": "Steel in My Chest",
+    "releaseRank": 26,
+    "bpm": 108,
+    "lengthSeconds": 106.67,
+    "styleSketch": "Detroit bounce",
+    "highbandDelayMs": 3.31,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-081",
+    "title": "Overtime",
+    "releaseRank": 27,
+    "bpm": 90,
+    "lengthSeconds": 128.0,
+    "styleSketch": "New York drill",
+    "highbandDelayMs": 3.69,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-109",
+    "title": "Luck Ain't the Plan",
+    "releaseRank": 28,
+    "bpm": 107,
+    "lengthSeconds": 107.66,
+    "styleSketch": "West Coast synth-funk",
+    "highbandDelayMs": 4.09,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-145",
+    "title": "Rain Can't Wash It",
+    "releaseRank": 29,
+    "bpm": 83,
+    "lengthSeconds": 138.8,
+    "styleSketch": "Atlanta trap",
+    "highbandDelayMs": 4.5,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-013",
+    "title": "Still Solid",
+    "releaseRank": 30,
+    "bpm": 76,
+    "lengthSeconds": 151.58,
+    "styleSketch": "Memphis dark",
+    "highbandDelayMs": 4.91,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-065",
+    "title": "Derby Dream",
+    "releaseRank": 31,
+    "bpm": 79,
+    "lengthSeconds": 145.82,
+    "styleSketch": "cinematic hip-hop",
+    "highbandDelayMs": 5.31,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-061",
+    "title": "Flight Mode",
+    "releaseRank": 32,
+    "bpm": 102,
+    "lengthSeconds": 112.94,
+    "styleSketch": "club bounce",
+    "highbandDelayMs": 2.5,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-105",
+    "title": "Nothing Left to Prove",
+    "releaseRank": 33,
+    "bpm": 94,
+    "lengthSeconds": 122.55,
+    "styleSketch": "soulful boom bap",
+    "highbandDelayMs": 2.91,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-057",
+    "title": "Numbers Never Lie",
+    "releaseRank": 34,
+    "bpm": 85,
+    "lengthSeconds": 135.53,
+    "styleSketch": "gospel synth",
+    "highbandDelayMs": 3.31,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-025",
+    "title": "Clockwork Hustle",
+    "releaseRank": 35,
+    "bpm": 91,
+    "lengthSeconds": 126.59,
+    "styleSketch": "desert atmosphere",
+    "highbandDelayMs": 3.69,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-029",
+    "title": "Small State, Big Motion",
+    "releaseRank": 36,
+    "bpm": 99,
+    "lengthSeconds": 116.36,
+    "styleSketch": "cold melodic",
+    "highbandDelayMs": 4.09,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-189",
+    "title": "Coal Dust Diamonds",
+    "releaseRank": 37,
+    "bpm": 81,
+    "lengthSeconds": 142.22,
+    "styleSketch": "Southern half-time",
+    "highbandDelayMs": 4.5,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-173",
+    "title": "Salt in the Wound",
+    "releaseRank": 38,
+    "bpm": 88,
+    "lengthSeconds": 130.91,
+    "styleSketch": "Detroit bounce",
+    "highbandDelayMs": 4.91,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-045",
+    "title": "Can't Count Me Out",
+    "releaseRank": 39,
+    "bpm": 87,
+    "lengthSeconds": 132.41,
+    "styleSketch": "New York drill",
+    "highbandDelayMs": 5.31,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-121",
+    "title": "Dust and Diamonds",
+    "releaseRank": 40,
+    "bpm": 90,
+    "lengthSeconds": 128.0,
+    "styleSketch": "West Coast synth-funk",
+    "highbandDelayMs": 2.5,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-041",
+    "title": "Island Time Money",
+    "releaseRank": 41,
+    "bpm": 96,
+    "lengthSeconds": 120.0,
+    "styleSketch": "Atlanta trap",
+    "highbandDelayMs": 2.91,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-005",
+    "title": "Cold World Code",
+    "releaseRank": 42,
+    "bpm": 70,
+    "lengthSeconds": 164.57,
+    "styleSketch": "Memphis dark",
+    "highbandDelayMs": 3.31,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-073",
+    "title": "Ocean in the Rearview",
+    "releaseRank": 43,
+    "bpm": 78,
+    "lengthSeconds": 147.69,
+    "styleSketch": "cinematic hip-hop",
+    "highbandDelayMs": 3.69,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-101",
+    "title": "Wide Open Vault",
+    "releaseRank": 44,
+    "bpm": 86,
+    "lengthSeconds": 133.95,
+    "styleSketch": "club bounce",
+    "highbandDelayMs": 4.09,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-133",
+    "title": "Cold Cash Season",
+    "releaseRank": 45,
+    "bpm": 82,
+    "lengthSeconds": 140.49,
+    "styleSketch": "soulful boom bap",
+    "highbandDelayMs": 4.5,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-161",
+    "title": "Flatland Famous",
+    "releaseRank": 46,
+    "bpm": 83,
+    "lengthSeconds": 138.8,
+    "styleSketch": "gospel synth",
+    "highbandDelayMs": 4.91,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-197",
+    "title": "Wide Open",
+    "releaseRank": 47,
+    "bpm": 84,
+    "lengthSeconds": 137.14,
+    "styleSketch": "desert atmosphere",
+    "highbandDelayMs": 5.31,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-177",
+    "title": "Green Mountain Gold",
+    "releaseRank": 48,
+    "bpm": 82,
+    "lengthSeconds": 140.49,
+    "styleSketch": "cold melodic",
+    "highbandDelayMs": 2.5,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-113",
+    "title": "Granite Heart",
+    "releaseRank": 49,
+    "bpm": 86,
+    "lengthSeconds": 133.95,
+    "styleSketch": "Southern half-time",
+    "highbandDelayMs": 2.91,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  },
+  {
+    "id": "AXZ-153",
+    "title": "Small City Giants",
+    "releaseRank": 50,
+    "bpm": 91,
+    "lengthSeconds": 126.59,
+    "styleSketch": "Detroit bounce",
+    "highbandDelayMs": 3.31,
+    "status": "reproducible synthetic PREVIEW DRAFT; not approved for $100 sale"
+  }
+]
