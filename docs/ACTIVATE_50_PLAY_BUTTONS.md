@@ -1,3 +1,5 @@
+> **DEPRECATED — DO NOT USE:** The public MP3 upload process below was retired. Do not upload audio preview ZIPs into a public GitHub repository. Use the new [AXEZENT private-streaming player setup](PRIVATE_STREAMING_SETUP.md) instead. Previously public previews may persist in Git history.
+
 # Activate all 50 audio Play buttons
 
 The storefront currently has **200 titles** and **50 review-mix entries**, but the actual tagged MP3 audio is not committed yet. GitHub's `index.html` viewer displays source code; it does **not** run the website.
