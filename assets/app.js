@@ -42,7 +42,7 @@
     download.type = "button"; download.disabled = true;
     download.title = "Purchases and full-quality downloads are not enabled yet.";
     elAppend(buttons,play,detail,download);
-    const available = el("p","availability",beat.status==="mix_review"?"Full mix candidate prepared · $100 license pending approval":"$100 commercial license planned · Not on sale yet");
+    const available = el("p","availability",beat.status==="mix_review"?"Full mix candidate prepared · $100 exclusive offer by inquiry only":"$100 exclusive offer pending rights review · Not on sale yet");
     elAppend(body,h3,meta,status,buttons,available);
     return elAppend(article,art,body);
   };
@@ -66,7 +66,7 @@
       el("h2","",beat.title),
       el("p","",beat.collection+" collection"+(beat.bpm?" · "+beat.bpm+" BPM":"")+" · "+(beat.key||"Original key pending composition")),
       el("p","",previewReady(beat)?"A tagged full-length audio preview is available to hear.":beat.status==="mix_review"?"A full-length review mix exists privately; its watermarked public preview has not yet been uploaded.":"This track is still a production concept."),
-      el("div","details-note","Proposed price: $100 for a nonexclusive commercial license. The final rights agreement, verified checkout and secure customer delivery are not enabled yet.")
+      el("div","details-note","Proposed price: $100 for an exclusive transfer of an eligible beat, only after ownership review and a signed written agreement. Please use the contact section to ask about availability before sending payment.")
     );
     if(typeof dialog.showModal === "function") dialog.showModal(); else dialog.setAttribute("open","");
   }
