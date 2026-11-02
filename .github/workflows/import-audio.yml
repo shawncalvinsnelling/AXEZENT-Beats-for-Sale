@@ -1,0 +1,41 @@
+name: Import tagged AXEZENT preview audio
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'incoming/*.zip'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: axezent-preview-import
+  cancel-in-progress: false
+jobs:
+  import-audio:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read public repository files
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Verify MP3 analyzer available
+        run: ffprobe -version | head -n 1
+      - name: Verify and unpack only approved tagged previews
+        run: python scripts/import_preview_packs.py
+      - name: Validate audio, update catalog and README
+        run: |
+          python scripts/sync_previews.py
+          python scripts/update_readme_previews.py
+          python scripts/check_catalog.py
+      - name: Commit published previews and remove temporary archives
+        run: |
+          if ls incoming/axezent-previews-??.zip >/dev/null 2>&1; then
+            git rm --ignore-unmatch incoming/axezent-previews-??.zip
+          fi
+          git add previews/ data/catalog.json README.md
+          if ! git diff --cached --quiet; then
+            git config user.name "AXEZENT Preview Bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Publish verified AXEZENT preview audio and enable listening links"
+            git push
+          fi
