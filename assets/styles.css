@@ -52,3 +52,12 @@
 .music-inquiry{display:block;border-radius:10px;padding:14px 9px;color:#f4d5a6;background:#2e261c;border:1px solid #ac8854;font-size:12px;font-weight:800}
 .music-dialog audio{display:none}
 @media(max-width:500px){.music-dialog{padding:9px}.music-dialog-inner{padding:22px 16px}.music-controls{gap:5px}.music-controls button{font-size:12px}}
+
+/* True drag-to-seek control inside the embedded AXEZENT music player */
+.music-seek{flex:1;min-width:0;width:100%;height:8px;appearance:none;-webkit-appearance:none;border-radius:999px;background:linear-gradient(90deg,#dbb474,#80613d);cursor:pointer;outline:none;accent-color:#e5b978;touch-action:pan-y}
+.music-seek::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:20px;height:20px;border:3px solid #17191f;background:#f5d5a0;border-radius:50%;box-shadow:0 0 0 1px #b49a70}
+.music-seek::-moz-range-thumb{width:15px;height:15px;border:3px solid #17191f;background:#f5d5a0;border-radius:50%}
+.music-seek:focus-visible{outline:3px solid #e9c17d;outline-offset:7px}
+.music-seek:disabled{cursor:not-allowed;opacity:.45}
+.music-progress{gap:12px;align-items:center}
+.music-progress span{flex:0 0 35px}
