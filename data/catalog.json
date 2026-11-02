@@ -10,7 +10,7 @@
     "bpm": 78,
     "key": "F minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 21,
     "previewFilename": "AXZ-001-tagged.mp3",
     "buyEnabled": false,
@@ -27,7 +27,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-003",
@@ -40,7 +42,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-004",
@@ -53,7 +57,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-005",
@@ -66,7 +72,7 @@
     "bpm": 70,
     "key": "A major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 42,
     "previewFilename": "AXZ-005-tagged.mp3",
     "buyEnabled": false,
@@ -83,7 +89,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-007",
@@ -96,7 +104,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-008",
@@ -109,7 +119,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-009",
@@ -122,7 +134,7 @@
     "bpm": 92,
     "key": "C# minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 20,
     "previewFilename": "AXZ-009-tagged.mp3",
     "buyEnabled": false,
@@ -139,7 +151,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-011",
@@ -152,7 +166,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-012",
@@ -165,7 +181,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-013",
@@ -178,7 +196,7 @@
     "bpm": 76,
     "key": "F# minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 30,
     "previewFilename": "AXZ-013-tagged.mp3",
     "buyEnabled": false,
@@ -195,7 +213,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-015",
@@ -208,7 +228,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-016",
@@ -221,7 +243,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-017",
@@ -234,7 +258,7 @@
     "bpm": 96,
     "key": "C minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 4,
     "previewFilename": "AXZ-017-tagged.mp3",
     "buyEnabled": false,
@@ -251,7 +275,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-019",
@@ -264,7 +290,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-020",
@@ -277,7 +305,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-021",
@@ -290,7 +320,7 @@
     "bpm": 90,
     "key": "G minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 7,
     "previewFilename": "AXZ-021-tagged.mp3",
     "buyEnabled": false,
@@ -307,7 +337,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-023",
@@ -320,7 +352,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-024",
@@ -333,7 +367,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-025",
@@ -346,7 +382,7 @@
     "bpm": 91,
     "key": "C major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 35,
     "previewFilename": "AXZ-025-tagged.mp3",
     "buyEnabled": false,
@@ -363,7 +399,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-027",
@@ -376,7 +414,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-028",
@@ -389,7 +429,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-029",
@@ -402,7 +444,7 @@
     "bpm": 99,
     "key": "D major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 36,
     "previewFilename": "AXZ-029-tagged.mp3",
     "buyEnabled": false,
@@ -419,7 +461,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-031",
@@ -432,7 +476,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-032",
@@ -445,7 +491,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-033",
@@ -458,7 +506,7 @@
     "bpm": 108,
     "key": "Bb minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 8,
     "previewFilename": "AXZ-033-tagged.mp3",
     "buyEnabled": false,
@@ -475,7 +523,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-035",
@@ -488,7 +538,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-036",
@@ -501,7 +553,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-037",
@@ -514,7 +568,7 @@
     "bpm": 138,
     "key": "E minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 5,
     "previewFilename": "AXZ-037-tagged.mp3",
     "buyEnabled": false,
@@ -531,7 +585,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-039",
@@ -544,7 +600,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-040",
@@ -557,7 +615,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-041",
@@ -570,7 +630,7 @@
     "bpm": 96,
     "key": "D minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 41,
     "previewFilename": "AXZ-041-tagged.mp3",
     "buyEnabled": false,
@@ -587,7 +647,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-043",
@@ -600,7 +662,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-044",
@@ -613,7 +677,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-045",
@@ -626,7 +692,7 @@
     "bpm": 87,
     "key": "F major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 39,
     "previewFilename": "AXZ-045-tagged.mp3",
     "buyEnabled": false,
@@ -643,7 +709,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-047",
@@ -656,7 +724,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-048",
@@ -669,7 +739,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-049",
@@ -682,7 +754,7 @@
     "bpm": 144,
     "key": "E major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 9,
     "previewFilename": "AXZ-049-tagged.mp3",
     "buyEnabled": false,
@@ -699,7 +771,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-051",
@@ -712,7 +786,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-052",
@@ -725,7 +801,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-053",
@@ -738,7 +816,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-054",
@@ -751,7 +831,7 @@
     "bpm": 108,
     "key": "F minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 26,
     "previewFilename": "AXZ-054-tagged.mp3",
     "buyEnabled": false,
@@ -768,7 +848,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-056",
@@ -781,7 +863,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-057",
@@ -794,7 +878,7 @@
     "bpm": 85,
     "key": "B minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 34,
     "previewFilename": "AXZ-057-tagged.mp3",
     "buyEnabled": false,
@@ -811,7 +895,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-059",
@@ -824,7 +910,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-060",
@@ -837,7 +925,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-061",
@@ -850,7 +940,7 @@
     "bpm": 102,
     "key": "A minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 32,
     "previewFilename": "AXZ-061-tagged.mp3",
     "buyEnabled": false,
@@ -867,7 +957,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-063",
@@ -880,7 +972,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-064",
@@ -893,7 +987,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-065",
@@ -906,7 +1002,7 @@
     "bpm": 79,
     "key": "F minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 31,
     "previewFilename": "AXZ-065-tagged.mp3",
     "buyEnabled": false,
@@ -923,7 +1019,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-067",
@@ -936,7 +1034,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-068",
@@ -949,7 +1049,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-069",
@@ -962,7 +1064,7 @@
     "bpm": 103,
     "key": "A major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 10,
     "previewFilename": "AXZ-069-tagged.mp3",
     "buyEnabled": false,
@@ -979,7 +1081,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-071",
@@ -992,7 +1096,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-072",
@@ -1005,7 +1111,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-073",
@@ -1018,7 +1126,7 @@
     "bpm": 78,
     "key": "C# minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 43,
     "previewFilename": "AXZ-073-tagged.mp3",
     "buyEnabled": false,
@@ -1035,7 +1143,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-075",
@@ -1048,7 +1158,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-076",
@@ -1061,7 +1173,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-077",
@@ -1074,7 +1188,7 @@
     "bpm": 128,
     "key": "F# minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 17,
     "previewFilename": "AXZ-077-tagged.mp3",
     "buyEnabled": false,
@@ -1091,7 +1205,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-079",
@@ -1104,7 +1220,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-080",
@@ -1117,7 +1235,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-081",
@@ -1130,7 +1250,7 @@
     "bpm": 90,
     "key": "C minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 27,
     "previewFilename": "AXZ-081-tagged.mp3",
     "buyEnabled": false,
@@ -1147,7 +1267,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-083",
@@ -1160,7 +1282,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-084",
@@ -1173,7 +1297,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-085",
@@ -1186,7 +1312,7 @@
     "bpm": 101,
     "key": "G minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 2,
     "previewFilename": "AXZ-085-tagged.mp3",
     "buyEnabled": false,
@@ -1203,7 +1329,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-087",
@@ -1216,7 +1344,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-088",
@@ -1229,7 +1359,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-089",
@@ -1242,7 +1374,7 @@
     "bpm": 89,
     "key": "C major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 25,
     "previewFilename": "AXZ-089-tagged.mp3",
     "buyEnabled": false,
@@ -1259,7 +1391,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-091",
@@ -1272,7 +1406,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-092",
@@ -1285,7 +1421,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-093",
@@ -1298,7 +1436,7 @@
     "bpm": 74,
     "key": "D major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 22,
     "previewFilename": "AXZ-093-tagged.mp3",
     "buyEnabled": false,
@@ -1315,7 +1453,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-095",
@@ -1328,7 +1468,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-096",
@@ -1341,7 +1483,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-097",
@@ -1354,7 +1498,7 @@
     "bpm": 92,
     "key": "Bb minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 15,
     "previewFilename": "AXZ-097-tagged.mp3",
     "buyEnabled": false,
@@ -1371,7 +1515,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-099",
@@ -1384,7 +1530,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-100",
@@ -1397,7 +1545,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-101",
@@ -1410,7 +1560,7 @@
     "bpm": 86,
     "key": "E minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 44,
     "previewFilename": "AXZ-101-tagged.mp3",
     "buyEnabled": false,
@@ -1427,7 +1577,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-103",
@@ -1440,7 +1592,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-104",
@@ -1453,7 +1607,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-105",
@@ -1466,7 +1622,7 @@
     "bpm": 94,
     "key": "D minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 33,
     "previewFilename": "AXZ-105-tagged.mp3",
     "buyEnabled": false,
@@ -1483,7 +1639,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-107",
@@ -1496,7 +1654,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-108",
@@ -1509,7 +1669,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-109",
@@ -1522,7 +1684,7 @@
     "bpm": 107,
     "key": "F major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 28,
     "previewFilename": "AXZ-109-tagged.mp3",
     "buyEnabled": false,
@@ -1539,7 +1701,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-111",
@@ -1552,7 +1716,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-112",
@@ -1565,7 +1731,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-113",
@@ -1578,7 +1746,7 @@
     "bpm": 86,
     "key": "E major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 49,
     "previewFilename": "AXZ-113-tagged.mp3",
     "buyEnabled": false,
@@ -1595,7 +1763,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-115",
@@ -1608,7 +1778,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-116",
@@ -1621,7 +1793,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-117",
@@ -1634,7 +1808,7 @@
     "bpm": 132,
     "key": "G# minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 12,
     "previewFilename": "AXZ-117-tagged.mp3",
     "buyEnabled": false,
@@ -1651,7 +1825,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-119",
@@ -1664,7 +1840,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-120",
@@ -1677,7 +1855,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-121",
@@ -1690,7 +1870,7 @@
     "bpm": 90,
     "key": "B minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 40,
     "previewFilename": "AXZ-121-tagged.mp3",
     "buyEnabled": false,
@@ -1707,7 +1887,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-123",
@@ -1720,7 +1902,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-124",
@@ -1733,7 +1917,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-125",
@@ -1746,7 +1932,7 @@
     "bpm": 142,
     "key": "A minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 3,
     "previewFilename": "AXZ-125-tagged.mp3",
     "buyEnabled": false,
@@ -1763,7 +1949,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-127",
@@ -1776,7 +1964,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-128",
@@ -1789,7 +1979,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-129",
@@ -1802,7 +1994,7 @@
     "bpm": 100,
     "key": "F minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 11,
     "previewFilename": "AXZ-129-tagged.mp3",
     "buyEnabled": false,
@@ -1819,7 +2011,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-131",
@@ -1832,7 +2026,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-132",
@@ -1845,7 +2041,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-133",
@@ -1858,7 +2056,7 @@
     "bpm": 82,
     "key": "A major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 45,
     "previewFilename": "AXZ-133-tagged.mp3",
     "buyEnabled": false,
@@ -1875,7 +2073,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-135",
@@ -1888,7 +2088,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-136",
@@ -1901,7 +2103,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-137",
@@ -1914,7 +2118,7 @@
     "bpm": 97,
     "key": "C# minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 13,
     "previewFilename": "AXZ-137-tagged.mp3",
     "buyEnabled": false,
@@ -1931,7 +2135,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-139",
@@ -1944,7 +2150,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-140",
@@ -1957,7 +2165,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-141",
@@ -1970,7 +2180,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-142",
@@ -1983,7 +2195,7 @@
     "bpm": 98,
     "key": "C major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 19,
     "previewFilename": "AXZ-142-tagged.mp3",
     "buyEnabled": false,
@@ -2000,7 +2212,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-144",
@@ -2013,7 +2227,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-145",
@@ -2026,7 +2242,7 @@
     "bpm": 83,
     "key": "C minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 29,
     "previewFilename": "AXZ-145-tagged.mp3",
     "buyEnabled": false,
@@ -2043,7 +2259,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-147",
@@ -2056,7 +2274,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-148",
@@ -2069,7 +2289,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-149",
@@ -2082,7 +2304,7 @@
     "bpm": 96,
     "key": "G minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 14,
     "previewFilename": "AXZ-149-tagged.mp3",
     "buyEnabled": false,
@@ -2099,7 +2321,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-151",
@@ -2112,7 +2336,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-152",
@@ -2125,7 +2351,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-153",
@@ -2138,7 +2366,7 @@
     "bpm": 91,
     "key": "C major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 50,
     "previewFilename": "AXZ-153-tagged.mp3",
     "buyEnabled": false,
@@ -2155,7 +2383,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-155",
@@ -2168,7 +2398,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-156",
@@ -2181,7 +2413,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-157",
@@ -2194,7 +2428,7 @@
     "bpm": 99,
     "key": "D major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 23,
     "previewFilename": "AXZ-157-tagged.mp3",
     "buyEnabled": false,
@@ -2211,7 +2445,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-159",
@@ -2224,7 +2460,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-160",
@@ -2237,7 +2475,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-161",
@@ -2250,7 +2490,7 @@
     "bpm": 83,
     "key": "Bb minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 46,
     "previewFilename": "AXZ-161-tagged.mp3",
     "buyEnabled": false,
@@ -2267,7 +2507,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-163",
@@ -2280,7 +2522,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-164",
@@ -2293,7 +2537,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-165",
@@ -2306,7 +2552,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-166",
@@ -2319,7 +2567,7 @@
     "bpm": 101,
     "key": "E major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 6,
     "previewFilename": "AXZ-166-tagged.mp3",
     "buyEnabled": false,
@@ -2336,7 +2584,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-168",
@@ -2349,7 +2599,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-169",
@@ -2362,7 +2614,7 @@
     "bpm": 84,
     "key": "D minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 1,
     "previewFilename": "AXZ-169-tagged.mp3",
     "buyEnabled": false,
@@ -2379,7 +2631,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-171",
@@ -2392,7 +2646,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-172",
@@ -2405,7 +2661,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-173",
@@ -2418,7 +2676,7 @@
     "bpm": 88,
     "key": "F major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 38,
     "previewFilename": "AXZ-173-tagged.mp3",
     "buyEnabled": false,
@@ -2435,7 +2693,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-175",
@@ -2448,7 +2708,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-176",
@@ -2461,7 +2723,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-177",
@@ -2474,7 +2738,7 @@
     "bpm": 82,
     "key": "E major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 48,
     "previewFilename": "AXZ-177-tagged.mp3",
     "buyEnabled": false,
@@ -2491,7 +2755,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-179",
@@ -2504,7 +2770,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-180",
@@ -2517,7 +2785,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-181",
@@ -2530,7 +2800,7 @@
     "bpm": 100,
     "key": "G# minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 18,
     "previewFilename": "AXZ-181-tagged.mp3",
     "buyEnabled": false,
@@ -2547,7 +2817,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-183",
@@ -2560,7 +2832,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-184",
@@ -2573,7 +2847,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-185",
@@ -2586,7 +2862,7 @@
     "bpm": 89,
     "key": "B minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 16,
     "previewFilename": "AXZ-185-tagged.mp3",
     "buyEnabled": false,
@@ -2603,7 +2879,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-187",
@@ -2616,7 +2894,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-188",
@@ -2629,7 +2909,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-189",
@@ -2642,7 +2924,7 @@
     "bpm": 81,
     "key": "A minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 37,
     "previewFilename": "AXZ-189-tagged.mp3",
     "buyEnabled": false,
@@ -2659,7 +2941,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-191",
@@ -2672,7 +2956,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-192",
@@ -2685,7 +2971,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-193",
@@ -2698,7 +2986,7 @@
     "bpm": 105,
     "key": "F minor",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 24,
     "previewFilename": "AXZ-193-tagged.mp3",
     "buyEnabled": false,
@@ -2715,7 +3003,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-195",
@@ -2728,7 +3018,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-196",
@@ -2741,7 +3033,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-197",
@@ -2754,7 +3048,7 @@
     "bpm": 84,
     "key": "A major",
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending",
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
     "releaseRank": 47,
     "previewFilename": "AXZ-197-tagged.mp3",
     "buyEnabled": false,
@@ -2771,7 +3065,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-199",
@@ -2784,7 +3080,9 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   },
   {
     "id": "AXZ-200",
@@ -2797,6 +3095,8 @@
     "bpm": null,
     "key": null,
     "priceUsd": 100,
-    "license": "nonexclusive commercial — terms pending"
+    "license": "exclusive rights enquiry only — no transfer without signed agreement",
+    "buyEnabled": false,
+    "downloadEnabled": false
   }
 ]
