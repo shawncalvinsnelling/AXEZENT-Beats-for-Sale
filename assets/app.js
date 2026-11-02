@@ -50,7 +50,7 @@
   const musicTitle = $("musicTitle"), musicMeta = $("musicMeta");
   const musicStatus = $("musicStatus");
   const musicPlay = $("musicPlay"), musicPause = $("musicPause"), musicStop = $("musicStop");
-  const musicTime = $("musicTime"), musicDuration = $("musicDuration"), musicProgress = $("musicProgress");
+  const musicTime = $("musicTime"), musicDuration = $("musicDuration"), musicSeek = $("musicSeek");
   const musicInquiry = $("musicInquiry");
   const showTime = (seconds) => {
     if(!Number.isFinite(seconds) || seconds < 0) return "0:00";
@@ -59,11 +59,26 @@
   };
   const setPlayerStatus = (message) => {musicStatus.textContent=message;};
   const syncProgress = () => {
+    const dur = player.duration;
+    const playable = Number.isFinite(dur) && dur > 0;
+    musicSeek.disabled = !playable;
+    musicDuration.textContent=showTime(dur);
     musicTime.textContent=showTime(player.currentTime);
-    musicDuration.textContent=showTime(player.duration);
-    const pct=Number.isFinite(player.duration) && player.duration>0
-      ? Math.max(0,Math.min(100,player.currentTime/player.duration*100)):0;
-    musicProgress.style.width=pct+"%";
+    musicSeek.value = playable
+      ? String(Math.max(0,Math.min(100,player.currentTime/dur*100)))
+      : "0";
+  };
+  const seekTo = (percentage) => {
+    if(!state.selected) return;
+    const dur=player.duration;
+    if(!Number.isFinite(dur) || dur <= 0) return;
+    const target=Math.max(0,Math.min(100,Number(percentage)||0))*dur/100;
+    try {player.currentTime=target;} catch(error) {
+      setPlayerStatus("Seeking is not available yet.");
+      return;
+    }
+    musicTime.textContent=showTime(target);
+    syncProgress();
   };
   const stopPlayback = () => {
     player.pause();
@@ -105,6 +120,7 @@
   musicPlay.addEventListener("click",playSelected);
   musicPause.addEventListener("click",() => {player.pause();setPlayerStatus("Paused");});
   musicStop.addEventListener("click",stopPlayback);
+  musicSeek.addEventListener("input",() => seekTo(musicSeek.value));
   $("closePlayer").addEventListener("click",closePlayer);
   musicDialog.addEventListener("cancel",(event) => {event.preventDefault();closePlayer();});
   musicDialog.addEventListener("click",(event) => {
