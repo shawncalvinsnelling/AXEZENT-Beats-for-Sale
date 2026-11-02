@@ -31,15 +31,18 @@
     const body = el("div","track-content");
     const h3 = el("h3","",beat.title); h3.title = beat.title;
     const meta = el("div","track-meta",beat.city + ", " + beat.state + (beat.bpm ? " · "+beat.bpm+" BPM" : ""));
-    const status = el("span","status"+(previewReady(beat)?" ready":""),previewReady(beat)?"Preview ready":"In production queue");
+    const status = el("span","status"+(previewReady(beat)?" ready":""),previewReady(beat)?"Listen to tagged preview":beat.status==="mix_review"?"Mix under review":"In production queue");
     const buttons = el("div","track-actions");
-    const play = el("button","play-button",previewReady(beat)?"▶ Preview":"Preview soon");
+    const play = el("button","play-button",previewReady(beat)?"▶ Play Full Preview":"Audio uploading soon");
     play.type = "button"; play.disabled = !previewReady(beat);
     if(!play.disabled) play.addEventListener("click",() => startPreview(beat,play));
     const detail = el("button","detail-button","View Details");
     detail.type = "button"; detail.addEventListener("click",()=>showDetails(beat));
-    elAppend(buttons,play,detail);
-    const available = el("p","availability","$100 commercial license planned · Not on sale yet");
+    const download = el("button","download-button","🔒 Download");
+    download.type = "button"; download.disabled = true;
+    download.title = "Purchases and full-quality downloads are not enabled yet.";
+    elAppend(buttons,play,detail,download);
+    const available = el("p","availability",beat.status==="mix_review"?"Full mix candidate prepared · $100 license pending approval":"$100 commercial license planned · Not on sale yet");
     elAppend(body,h3,meta,status,buttons,available);
     return elAppend(article,art,body);
   };
@@ -62,7 +65,7 @@
       el("span","micro",beat.id+" · "+beat.city.toUpperCase()+", "+beat.state.toUpperCase()),
       el("h2","",beat.title),
       el("p","",beat.collection+" collection"+(beat.bpm?" · "+beat.bpm+" BPM":"")+" · "+(beat.key||"Original key pending composition")),
-      el("p","",previewReady(beat)?"An original tagged audio preview is ready to play.":"This track is planned; the original instrumental has not been uploaded."),
+      el("p","",previewReady(beat)?"A tagged full-length audio preview is available to hear.":beat.status==="mix_review"?"A full-length review mix exists privately; its watermarked public preview has not yet been uploaded.":"This track is still a production concept."),
       el("div","details-note","Proposed price: $100 for a nonexclusive commercial license. The final rights agreement, verified checkout and secure customer delivery are not enabled yet.")
     );
     if(typeof dialog.showModal === "function") dialog.showModal(); else dialog.setAttribute("open","");
@@ -76,7 +79,8 @@
       (!selectedRegion || selectedRegion===b.collection) &&
       (!term || [b.id,b.title,b.city,b.state,b.collection,String(b.bpm||"")].join(" ").toLocaleLowerCase().includes(term))
     );
-    if(sort.value==="title") filtered.sort((a,b)=>a.title.localeCompare(b.title));
+    if(sort.value==="featured") filtered.sort((a,b)=>(a.releaseRank??1000)-(b.releaseRank??1000));
+    else if(sort.value==="title") filtered.sort((a,b)=>a.title.localeCompare(b.title));
     else if(sort.value==="state")filtered.sort((a,b)=>a.state.localeCompare(b.state)||a.city.localeCompare(b.city));
     else if(sort.value==="released")filtered.sort((a,b)=>Number(previewReady(b))-Number(previewReady(a)));
     state.filtered = filtered; state.displayed = 0; cards.replaceChildren(); renderPage();
@@ -99,6 +103,9 @@
   fetch("data/catalog.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("Catalog request failed");return r.json();}).then(data=>{
     if(!Array.isArray(data) || data.length!==200)throw Error("Catalog validation failed");
     state.all=data;
+    const reviewCount=data.filter(b=>b.status==="mix_review").length;
+    const reviewNode=document.getElementById("reviewCount");
+    if(reviewNode) reviewNode.textContent=String(reviewCount);
     const collections=[...new Set(data.map(x=>x.collection))].sort();
     collections.forEach(c=>{const option=el("option","",c);option.value=c;region.appendChild(option);});
     $("heroTotal").textContent=String(data.length);
