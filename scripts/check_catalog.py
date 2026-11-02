@@ -14,9 +14,9 @@ assert set(Counter(b["state"] for b in records).values()) == {4}, "Four tracks p
 for i, b in enumerate(records, 1):
     assert b["id"] == f"AXZ-{i:03d}", f"Unstable catalog ID at {i}"
     assert b["title"].strip() and b["city"].strip(), "Missing music or city"
-    assert b["status"] in ("planned", "preview_ready"), "Unsupported track state"
+    assert b["status"] in ("planned", "mix_review", "preview_ready"), "Unsupported track state"
     assert b["priceUsd"] == 100, "Proposed base license mismatch"
-    if b["status"] == "planned":
+    if b["status"] in ("planned", "mix_review"):
         assert b["previewUrl"] is None, "Planned audio cannot advertise playback"
     else:
         preview = b["previewUrl"]
@@ -28,4 +28,9 @@ for i, b in enumerate(records, 1):
 
 bad = list(ROOT.rglob("*.wav")) + list(ROOT.rglob("*.flac")) + list(ROOT.rglob("*.sqlite3"))
 assert not bad, "Private studio masters or database accidentally included"
-print("PASS: 200 track concepts, 50 states, four per state, valid statuses and no private audio masters")
+review = [b for b in records if b["status"] == "mix_review"]
+assert len(review) == 50, "The first 50 mixes must remain tracked"
+assert len(set(b["releaseRank"] for b in review)) == 50, "Release order must be unique"
+assert set(b["releaseRank"] for b in review) == set(range(1, 51)), "Release order must cover 1 through 50"
+assert all(b.get("buyEnabled") is False and b.get("downloadEnabled") is False for b in review), "Unverified checkout must stay disabled"
+print("PASS: 200 titles / 50 states / 50 review mixes; public masters not present; unverified sales disabled")
