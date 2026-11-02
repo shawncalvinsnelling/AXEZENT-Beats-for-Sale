@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="410" viewBox="0 0 1200 410" role="img" aria-labelledby="title desc">
+<title id="title">AXEZENT Beats for Sale</title><desc id="desc">Premium cinematic black-and-gold banner with music-inspired sound waves and a vinyl record</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0e1521"/><stop offset=".58" stop-color="#080b13"/><stop offset="1" stop-color="#1c1b1a"/></linearGradient>
+<radialGradient id="glow" cx=".69" cy=".48" r=".48"><stop stop-color="#7e5c32" stop-opacity=".6"/><stop offset="1" stop-color="#0b1019" stop-opacity="0"/></radialGradient>
+<linearGradient id="gold"><stop stop-color="#ecd5a2"/><stop offset=".48" stop-color="#b9884d"/><stop offset="1" stop-color="#f0dcb7"/></linearGradient></defs>
+<rect width="1200" height="410" rx="20" fill="url(#bg)"/><rect width="1200" height="410" rx="20" fill="url(#glow)"/>
+<g opacity=".27" stroke="#bb9560" fill="none"><path d="M0 330C230 200 340 385 560 230S870 135 1200 275"/><path d="M0 343C230 213 340 398 560 243S870 148 1200 288"/><path d="M0 317C230 187 340 372 560 217S870 122 1200 262"/></g>
+<g transform="translate(934 196) rotate(-20)"><circle r="156" fill="#101520" stroke="#b58b50" stroke-width="3"/><circle r="144" fill="none" stroke="#72808b" stroke-width="1" opacity=".65"/><circle r="130" fill="none" stroke="#5b626a" stroke-width="3" opacity=".4"/><circle r="110" fill="none" stroke="#72808b" stroke-width="5" opacity=".3"/><circle r="95" fill="none" stroke="#5b626a" stroke-width="2" opacity=".5"/><circle r="75" fill="#bd9866" stroke="#e9d09b" stroke-width="3"/><circle r="67" fill="#9d7242"/><circle r="8" fill="#0b0c10"/><text y="-15" fill="#1e1812" font-family="Arial" font-size="13" font-weight="bold" letter-spacing="5" text-anchor="middle">AXEZENT</text><text y="38" fill="#1e1812" font-family="Arial" font-size="12" font-weight="bold" letter-spacing="2" text-anchor="middle">BEAT VAULT</text></g>
+<text x="68" y="75" fill="#d9b178" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="6">ORIGINAL PRODUCTIONS</text>
+<text x="63" y="180" fill="#f7f2e9" font-family="Arial, sans-serif" font-size="91" font-weight="900" letter-spacing="-4">AXEZENT</text>
+<text x="68" y="254" fill="url(#gold)" font-family="Arial, sans-serif" font-size="49" font-weight="900" letter-spacing="5">BEATS FOR SALE</text>
+<line x1="68" y1="278" x2="570" y2="278" stroke="#a48357" opacity=".6"/>
+<text x="68" y="316" fill="#c5c3c2" font-family="Arial,sans-serif" font-size="19" letter-spacing="1">FIND YOUR SOUND. MAKE YOUR NEXT HIT.</text>
+<text x="68" y="357" fill="#9c9c9e" font-family="Arial,sans-serif" font-size="13" letter-spacing="2">HIP-HOP  •  RAP  •  CLUB  •  MELODIC  •  REGIONAL SOUND</text>
+</svg>
