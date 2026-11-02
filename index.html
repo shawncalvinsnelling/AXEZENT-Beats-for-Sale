@@ -95,8 +95,8 @@
         <button type="button" id="musicPause" aria-label="Pause selected beat">Ⅱ Pause</button>
         <button type="button" id="musicStop" aria-label="Stop selected beat">■ Stop</button>
       </div>
-      <div class="music-progress"><span id="musicTime">0:00</span><div class="music-progress-track" aria-hidden="true"><div id="musicProgress"></div></div><span id="musicDuration">0:00</span></div>
-      <p class="music-caption">Listen to the instrumental. There is no download button here.</p>
+      <div class="music-progress"><span id="musicTime">0:00</span><label for="musicSeek" class="sr-only">Move playback position within the selected beat</label><input id="musicSeek" class="music-seek" type="range" min="0" max="100" value="0" step="0.1" disabled aria-label="Seek to a different point in the beat"><span id="musicDuration">0:00</span></div>
+      <p class="music-caption">Move the slider to skip to any part of the song. Listen only; no downloads are offered.</p>
       <a id="musicInquiry" class="music-inquiry" href="mailto:axezentai@gmail.com">Email AXEZENT AI about $100 ownership</a>
       <audio id="player" preload="none" controlslist="nodownload noplaybackrate" disablepictureinpicture></audio>
     </div>
