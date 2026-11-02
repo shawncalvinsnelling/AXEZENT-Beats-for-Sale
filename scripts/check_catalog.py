@@ -28,8 +28,8 @@ for i, b in enumerate(records, 1):
 
 bad = list(ROOT.rglob("*.wav")) + list(ROOT.rglob("*.flac")) + list(ROOT.rglob("*.sqlite3"))
 assert not bad, "Private studio masters or database accidentally included"
-review = [b for b in records if b["status"] == "mix_review"]
-assert len(review) == 50, "The first 50 mixes must remain tracked"
+review = [b for b in records if b["status"] in ("mix_review", "preview_ready")]
+assert len(review) == 50, "The first 50 mixes and previews must remain tracked"
 assert len(set(b["releaseRank"] for b in review)) == 50, "Release order must be unique"
 assert set(b["releaseRank"] for b in review) == set(range(1, 51)), "Release order must cover 1 through 50"
 assert all(b.get("buyEnabled") is False and b.get("downloadEnabled") is False for b in review), "Unverified checkout must stay disabled"
