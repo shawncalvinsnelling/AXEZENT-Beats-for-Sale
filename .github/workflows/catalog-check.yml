@@ -12,5 +12,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Compile importer and README update scripts
+        run: python -m py_compile scripts/import_preview_packs.py scripts/update_readme_previews.py scripts/sync_previews.py
       - name: Validate all 200 track records and absence of studio masters
         run: python scripts/check_catalog.py
