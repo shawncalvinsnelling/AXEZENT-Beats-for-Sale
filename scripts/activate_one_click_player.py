@@ -56,6 +56,10 @@ def get(url,headers=None,max_read=140_000):
         return response.status,response.headers,data
 
 def verify_live_player(base):
+    status, headers, raw = get(base+"/api/ready", max_read=4096)
+    readiness = json.loads(raw)
+    if status != 200 or not readiness.get("websiteReady") or readiness.get("playableBeats") != 50:
+        raise RuntimeError("Public API not yet ready: all 50 beat previews must stream.")
     status,headers,html=get(base+"/",max_read=250_000)
     if status!=200 or b'id="playerDialog"' not in html or b'id="musicSeek"' not in html:
         raise RuntimeError("Live website must show the actual popup player with seek controls.")
@@ -76,7 +80,8 @@ def verify_live_player(base):
     if failures:
         raise RuntimeError(f"{len(failures)}/50 tracks not ready for playback (first: {failures[:3]}).")
 
-    for beat in (min(first50,key=lambda b:b["releaseRank"]),max(first50,key=lambda b:b["releaseRank"])):
+    # Validate a real playable MP3 byte stream for every track, not just first and last.
+    for beat in sorted(first50,key=lambda b:b["releaseRank"]):
         response=get(base+beat["previewUrl"],{"Range":"bytes=0-15"},max_read=32)
         status,headers,data=response
         if status!=206 or headers.get("Content-Type","").split(";")[0]!="audio/mpeg" or len(data)!=16:
