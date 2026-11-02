@@ -20,5 +20,19 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Check website player JavaScript
         run: node --check assets/app.js
+      - name: Validate owner-controlled HTTPS website deployment configuration
+        env:
+          AXEZENT_DOMAIN: beats.example.org
+        run: |
+          docker compose -f compose.yaml config --quiet
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('Dockerfile').read_text()
+          c=Path('compose.yaml').read_text()
+          assert 'COPY server ./server' in s
+          assert './private_previews:/private:ro' in c
+          assert '443:443' in c and '80:80' in c
+          print('PASS: self-hosted public preview player configuration parses')
+          PY
       - name: Validate all 200 track records and absence of studio masters
         run: python scripts/check_catalog.py
