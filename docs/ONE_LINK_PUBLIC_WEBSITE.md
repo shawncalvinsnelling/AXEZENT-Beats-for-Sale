@@ -11,7 +11,7 @@ Prerequisites: a computer or server you control, Docker Compose, a domain name y
 1. Copy this repository onto the server you control.
 2. Beside `compose.yaml`, create a folder `private_previews`. Extract **only 50 tagged MP3 preview files** there; the filenames have the pattern `AXZ-169-tagged.mp3` and so on. **This folder is excluded from Git.**
 3. Copy `.env.example` to `.env` and edit `AXEZENT_DOMAIN=beats.example.com` to your actual domain.
-4. Run `docker compose up --detach --build` on that server. HTTPS certificates are configured automatically once your DNS and network reachability work.
+4. On that server, run **`bash deploy/launch-on-own-server.sh`**. This verifies the real domain is configured, checks all 50 private preview MP3s exist and are formatted plausibly, then starts our Docker-based API and website. HTTPS certificates can be issued once DNS, ports 80/443, and network reachability are configured.
 5. Open `https://YOUR-DOMAIN/` **from a phone on mobile data**. Click `Listen to Diamond in the Dirt`; its popup should open, Play should start audio, Pause should pause, Stop should reset to 0:00, the timeline should seek, and X should exit. Repeat for the remaining 49.
 6. Add your verified HTTPS URL to the repository's **About → Website** field. Put the same actual URL in `README.md` so GitHub visitors have **one click** to the live player.
 
@@ -20,7 +20,7 @@ Prerequisites: a computer or server you control, Docker Compose, a domain name y
 - `docker compose ps` — both `player` and `https` services should be healthy/running.
 - `docker compose logs --tail 100 player` — inspect the server's startup and audio errors.
 - `docker compose logs --tail 100 https` — inspect domain/DNS/certificate errors.
-- `curl https://YOUR-DOMAIN/api/catalog` — must return 200 JSON with 200 catalog entries, 50 of which can be preview-ready if the 50 audio files are correctly named and present.
+- `curl https://YOUR-DOMAIN/api/ready` — must return 200 JSON with `websiteReady:true` and `playableBeats:50` before any GitHub launch link is enabled. `/api/catalog` returns all 200 catalog records, including the first 50 playable previews.
 - No private audio/master files belong in the GitHub repository, the web public root, or a public download directory.
 
 ### What "no downloads" means
