@@ -1,0 +1,49 @@
+name: Private review audio render smoke test
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/arrangement_spec.py'
+      - 'scripts/render_previews.py'
+      - 'tests/test_audio_arrangement_contract.py'
+      - '.github/workflows/audio-render-smoke.yml'
+permissions:
+  contents: read
+jobs:
+  check-sound-renderer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout source only, not private sound masters
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install audio test dependencies
+        run: |
+          python -m pip install --disable-pip-version-check 'numpy>=1.26,<3'
+          command -v ffmpeg
+          command -v ffprobe
+      - name: Check five-part 48-bar structure and timbre families
+        run: python -m unittest discover -s tests -p 'test_audio_arrangement_contract.py' -v
+      - name: Render first original preview privately in CI workspace
+        run: |
+          mkdir -p "${RUNNER_TEMP}/axezent_review"
+          python scripts/render_previews.py --catalog data/catalog.json --out "${RUNNER_TEMP}/axezent_review" --start 1 --end 1
+      - name: Check generated review sample codec and music length
+        run: |
+          python - <<'PY'
+          import json, subprocess, os
+          from pathlib import Path
+          target=Path(os.environ['RUNNER_TEMP'])/'axezent_review'/'AXZ-169-tagged.mp3'
+          assert target.is_file() and target.stat().st_size>100_000
+          j=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_entries','stream=codec_name,channels,sample_rate:format=duration,bit_rate','-of','json',str(target)]))
+          assert j['streams'][0]['codec_name']=='mp3'
+          assert j['streams'][0]['channels']==2
+          assert 130 < float(j['format']['duration']) < 160
+          print('PASS: real new review MP3 built, stereo, full 48 bars, no public upload.')
+          PY
+      - name: Keep reviewer MP3 private
+        run: echo "No upload-artifact or git push step exists in this workflow."
