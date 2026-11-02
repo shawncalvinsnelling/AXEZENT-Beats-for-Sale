@@ -15,11 +15,11 @@ Original Hip-Hop · Rap · Club · Melodic Beats
 
 ## 50 ORIGINAL BEATS
 
-Pick a song below. To hear it, use the **AXEZENT music player**. Click a beat and a popup gives you Play, Pause and Stop.
+Browse the first 50 original instrumental review mixes below. Each track has its own title and direct inquiry email.
 
-**[▶ OPEN PLAYER SETUP / LISTENING INSTRUCTIONS](docs/PRIVATE_STREAMING_SETUP.md)**
+**Online listening status: Player built · Public website not launched yet.** Our actual music website includes a popup with Play, Pause, Stop, a draggable timeline and Exit. A working customer-facing link will appear here **only after the owner-controlled server is online and verified**. GitHub's README is a catalog page, not a music-playing website.
 
-The interactive player is built into our website software, but **GitHub’s repository page itself cannot run popup JavaScript players**, and our public listening server is not online yet. We are not linking raw MP3 files because those let visitors download the previews. The 50 recordings are private review mixes rather than approved commercial masters.
+Private listening MP3s and full-resolution masters are **not publicly downloadable from this repository**. No purchase is accepted automatically.
 
 | # | Instrumental | City | Ask about $100 ownership |
 |---:|---|---|---|
@@ -81,9 +81,9 @@ The interactive player is built into our website software, but **GitHub’s repo
 Mention the **title and AXZ number** of the beat you want. The proposed price is **$100 for an eligible exclusive-rights transfer**. Confirm availability and sign an appropriate written agreement before sending payment. A payment alone does not transfer copyright; we can transfer only rights we actually own. Audio files and signed documents are delivered privately after verification.
 
 <details>
-<summary>Run the 50-beat player on your computer</summary>
+<summary>Owner: launch the AXEZENT music website</summary>
 
-[Download this repository](https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale/archive/refs/heads/main.zip), extract it, put the 50 tagged MP3s in a **separate private folder**, and double-click `LAUNCH_LOCAL_WINDOWS.bat` with Python 3 installed. The program opens `http://127.0.0.1:8080/` and shows 50 song cards. Press Play to open a popup with **Play, Pause and Stop**. A public customer website requires a server and HTTPS. See [complete owner setup](docs/PRIVATE_STREAMING_SETUP.md).
+[Download this repository](https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale/archive/refs/heads/main.zip), extract it, put the 50 tagged MP3s in a **separate private folder**, and double-click `LAUNCH_LOCAL_WINDOWS.bat` with Python 3 installed. The program opens `http://127.0.0.1:8080/` and shows 50 song cards. Press Play to open a popup with **Play, Pause and Stop**. A public customer website requires a server and HTTPS. See [one-link self-hosted public website setup](docs/ONE_LINK_PUBLIC_WEBSITE.md).
 
 </details>
 
