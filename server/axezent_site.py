@@ -98,6 +98,28 @@ def make_handler(preview_folder):
 
         def route(self, send_body):
             path = urlsplit(self.path).path
+            if path == "/api/health":
+                blob = b'{"service":"AXEZENT","api":"online"}'
+                self.send_simple(200, blob, "application/json; charset=utf-8", send_body)
+                return
+            if path == "/api/ready":
+                present = sum(
+                    safe_preview_file(track_id, preview_folder) is not None
+                    for track_id in published
+                )
+                ready = present == 50
+                blob = json.dumps({
+                    "service": "AXEZENT Music API",
+                    "websiteReady": ready,
+                    "playableBeats": present,
+                    "expectedBeats": 50,
+                    "downloadEnabled": False,
+                    "checkoutEnabled": False
+                }).encode("utf-8")
+                self.send_simple(
+                    200 if ready else 503, blob, "application/json; charset=utf-8", send_body
+                )
+                return
             if path == "/api/catalog":
                 result = []
                 for item in catalog:
