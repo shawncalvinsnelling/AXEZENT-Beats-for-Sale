@@ -7,6 +7,7 @@ Not a substitute for producer listening/approval. Requires numpy + ffmpeg.
 import json, math, hashlib, argparse, os, subprocess, tempfile
 from pathlib import Path
 import numpy as np
+from arrangement_spec import section_for_bar, hook_ranges
 SR=32000
 TAU=2*math.pi
 PITCH={'C':0,'C#':1,'DB':1,'D':2,'D#':3,'EB':3,'E':4,'F':5,'F#':6,'GB':6,
@@ -82,8 +83,7 @@ def render(track,rank,outpath):
     kit=drums(rng,rank)
     pan=.12+(seed%13)/100
     for bi in range(bars):
-        section=('intro' if bi<4 else 'verse' if bi<20 else 'hook' if bi<28 else
-                 'verse' if bi<40 else 'hook' if bi<46 else 'outro')
+        section=section_for_bar(bi)
         t0=bi*bar;rootstep=progression[(bi//4)%4]
         hook=section=='hook'
         if bi>=2:
@@ -118,7 +118,7 @@ def render(track,rank,outpath):
                 pos=(j+(.5 if j%2 else 0))*bar/(7 if hook else 4)
                 insert(out,note(nm,min(beat*1.5,bar*.46),kind,seed+j),
                        t0+pos+(.004 if j%2 else 0),pan=(-1)**j*pan,gain=.034 if hook else .025)
-        if bi in (19,39):
+        if bi in (11,35):
             a=int((t0+3.7*beat)*SR);b=int((t0+4*beat)*SR)
             out[a:b]*=np.linspace(1,.3,b-a,dtype=np.float32)[:,None]
     # Audio-routing QA: centered bass by low-frequency summing, high-band crossfeed
@@ -129,7 +129,7 @@ def render(track,rank,outpath):
     bass=(smooth(out[:,0])+smooth(out[:,1]))*.5
     for k in range(2):out[:,k]+=.8*(bass-smooth(out[:,k]))
     delta=round(SR*(.0025+.0004*(rank%8)))
-    for first,last in ((20,28),(40,46)):
+    for first,last in hook_ranges():
         a=int(first*bar*SR);b=min(len(out),int(last*bar*SR))
         if b>a+delta:
             l=out[a:b-delta,0].copy();r=out[a:b-delta,1].copy()
