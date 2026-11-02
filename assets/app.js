@@ -21,7 +21,7 @@
     return n;
   };
   const previewReady = b => b.status === "preview_ready" && typeof b.previewUrl === "string" &&
-    /^previews\/[A-Za-z0-9_-]+(?:-tagged)?\.mp3$/.test(b.previewUrl);
+    /^\/api\/preview\/AXZ-\d{3}$/.test(b.previewUrl);
   const elAppend = (parent, ...nodes) => { nodes.forEach(n => parent.appendChild(n)); return parent; };
   const trackCard = (beat) => {
     const article = el("article","track-card");
@@ -33,26 +33,16 @@
     const meta = el("div","track-meta",beat.city + ", " + beat.state + (beat.bpm ? " · "+beat.bpm+" BPM" : ""));
     const status = el("span","status"+(previewReady(beat)?" ready":""),previewReady(beat)?"Listen to tagged preview":beat.status==="mix_review"?"Mix under review":"In production queue");
     const buttons = el("div","track-actions");
-    const play = el("button","play-button",previewReady(beat)?"▶ Play Full Preview":"Audio uploading soon");
+    const play = el("button","play-button",previewReady(beat)?"▶ Play":"Player not online yet");
     play.type = "button"; play.disabled = !previewReady(beat);
     if(!play.disabled) play.addEventListener("click",() => startPreview(beat,play));
     const detail = el("button","detail-button","View Details");
     detail.type = "button"; detail.addEventListener("click",()=>showDetails(beat));
-    const repeat = el("button","repeat-button","🔁 Repeat Off");
-    repeat.type = "button";
-    repeat.disabled = !previewReady(beat);
-    repeat.addEventListener("click", () => {
-      player.loop = !player.loop;
-      document.querySelectorAll(".repeat-button").forEach(b => {if(!b.disabled)b.textContent = player.loop ? "🔁 Repeat On" : "🔁 Repeat Off";});
-    });
-    const download = el("button","download-button","🔒 Download");
-    download.type = "button"; download.disabled = true;
-    download.title = "Purchases and full-quality downloads are not enabled yet.";
-    elAppend(buttons,play,repeat,detail,download);
+    elAppend(buttons,play,detail);
     const inquiry = el("a","inquiry-action","✉ Email About $100 Ownership");
     inquiry.href = "mailto:shawncsnelling@gmail.com?subject=" + encodeURIComponent("AXEZENT $100 beat inquiry — " + beat.id + " — " + beat.title);
     inquiry.title = "Request exclusive rights to " + beat.title + " before sending payment";
-    const available = el("p","availability",beat.status==="mix_review"?"Full mix candidate prepared · $100 exclusive offer by inquiry only":"$100 exclusive offer pending rights review · Not on sale yet");
+    const available = el("p","availability",beat.status==="preview_ready"?"Tagged listening preview · $100 exclusive rights inquiry only":"Under review · $100 exclusive rights inquiry only");
     elAppend(body,h3,meta,status,buttons,inquiry,available);
     return elAppend(article,art,body);
   };
@@ -65,7 +55,7 @@
     if(state.playing === b.id && !player.paused) {stopPreview();return;}
     stopPreview(); player.src = b.previewUrl; state.playing = b.id;
     player.play().then(()=>{button.textContent="Ⅱ Pause";}).catch(()=>{
-      stopPreview(); alert("The preview could not be played. Please try again.");
+      stopPreview(); alert("The private preview stream could not be played. Please check the server and MP3 folder.");
     });
   }
   player.addEventListener("ended",stopPreview);
@@ -110,7 +100,7 @@
   region.addEventListener("change",applyFilters);
   sort.addEventListener("change",applyFilters);
   $("year").textContent=new Date().getFullYear();
-  fetch("data/catalog.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("Catalog request failed");return r.json();}).then(data=>{
+  fetch("/api/catalog",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Catalog request failed");return r.json();}).then(data=>{
     if(!Array.isArray(data) || data.length!==200)throw Error("Catalog validation failed");
     state.all=data;
     const reviewCount=data.filter(b=>b.status==="mix_review").length;
