@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+.pytest_cache/
+private/
+paid/
+masters/
+stems/
+*.sqlite*
+*.wav
+*.flac
+*.aiff
+*.aif
+*.pem
+*.key
+.DS_Store
