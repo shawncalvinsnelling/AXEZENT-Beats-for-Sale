@@ -44,6 +44,32 @@ class PrivateStreamingTests(unittest.TestCase):
         self.assertEqual(len(arr),200)
         self.assertEqual(sum(bool(x.get("previewUrl")) for x in arr),0)
 
+    def test_api_health_and_fail_closed_public_readiness(self):
+        with self.url("/api/health") as r:
+            self.assertEqual(r.status, 200)
+            self.assertEqual(json.load(r)["api"], "online")
+        with self.assertRaises(urllib.error.HTTPError) as err:
+            self.url("/api/ready")
+        self.assertEqual(err.exception.code, 503)
+        self.assertEqual(json.load(err.exception)["playableBeats"], 0)
+
+    def test_fifty_real_private_files_required_for_ready_status(self):
+        source=json.loads((ROOT/"data"/"catalog.json").read_text("utf-8"))
+        paths=[self.directory/(b["id"]+"-tagged.mp3")
+               for b in source if isinstance(b.get("releaseRank"),int)]
+        self.assertEqual(len(paths),50)
+        try:
+            for path in paths:
+                path.write_bytes(b"ID3"+bytes(110_000))
+            with self.url("/api/ready") as response:
+                body=json.load(response)
+            self.assertEqual(body["playableBeats"],50)
+            self.assertTrue(body["websiteReady"])
+            self.assertEqual(body["downloadEnabled"],False)
+        finally:
+            for path in paths:
+                path.unlink(missing_ok=True)
+
     def test_secret_paths_inaccessible(self):
         for path in ("/.git/config","/server/axezent_site.py","/data/catalog.json",
                      "/private/file.wav","/previews/AXZ-169-tagged.mp3",
