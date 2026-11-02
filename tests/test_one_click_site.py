@@ -44,7 +44,7 @@ class LaunchTests(unittest.TestCase):
             self.assertEqual(gateway.verify_live_player("https://music.example.org"),50)
         tracks[0]["status"]="mix_review"
         with patch.object(gateway,"get",side_effect=get):
-            with self.assertRaisesRegex(RuntimeError,"not ready"):
+            with self.assertRaisesRegex(RuntimeError,"not yet ready"):
                 gateway.verify_live_player("https://music.example.org")
 
     def test_only_verified_launch_link_rewrites_readme_area(self):
