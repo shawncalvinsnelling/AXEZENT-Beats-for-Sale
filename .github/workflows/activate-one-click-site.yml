@@ -1,0 +1,33 @@
+name: Activate one-click AXEZENT player link
+on:
+  workflow_dispatch:
+    inputs:
+      player_url:
+        description: "Public HTTPS URL of the live AXEZENT music website, e.g. https://music.yourdomain.com"
+        required: true
+        type: string
+permissions:
+  contents: write
+jobs:
+  verify-and-link:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Triple-check website, all 50 preview states and playable MP3 responses
+        env:
+          PLAYER_URL: ${{ inputs.player_url }}
+        run: python scripts/activate_one_click_player.py --url "$PLAYER_URL"
+      - name: Commit one-click link to the GitHub repository homepage
+        run: |
+          if ! git diff --quiet -- README.md; then
+            git config user.name "AXEZENT Site Launch Bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add README.md
+            git commit -m "Enable verified one-click public AXEZENT music player"
+            git push
+          fi
