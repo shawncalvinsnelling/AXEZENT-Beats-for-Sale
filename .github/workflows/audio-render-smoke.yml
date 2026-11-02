@@ -24,6 +24,8 @@ jobs:
       - name: Install audio test dependencies
         run: |
           python -m pip install --disable-pip-version-check 'numpy>=1.26,<3'
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg
           command -v ffmpeg
           command -v ffprobe
       - name: Check five-part 48-bar structure and timbre families
