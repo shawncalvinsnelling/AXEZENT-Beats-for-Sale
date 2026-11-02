@@ -5,39 +5,45 @@
 # AXEZENT BEATS FOR SALE
 **Find Your Sound. Make Your Next Hit.**
 
-[**🎧 ADD 50 PLAYABLE MP3 PREVIEWS**](docs/ACTIVATE_50_PLAY_BUTTONS.md) &nbsp;·&nbsp; [**🌐 PUBLISH WEBSITE**](https://app.netlify.com/start) &nbsp;·&nbsp; [**TRACK CATALOG**](data/catalog.json)
+### [🎧 BROWSE OUR BEAT CATALOG](data/catalog.json) · [🖥️ RUN YOUR OWN WEBSITE](docs/SELF_HOSTING.md)
 
 </div>
 
 ---
 
-### THE SOUND. THE CULTURE. THE ARTIST.
+Original rap beats, hip-hop instrumentals, and club-ready sounds inspired by cities across the country.
 
-Rap beats. Hip-hop instrumentals. Southern bass, Detroit bounce, New York energy, West Coast grooves, and original sounds from cities across America.
+### THE STORE
 
-**The music-store website is designed.** The 200 original track concepts are being produced and mastered one by one. Listen and buy features will appear as real recordings become ready and payment processing is connected.
+The full customer-facing website is built in **[index.html](index.html)** with a black-and-gold design, regional catalog search, and a direct-to-producer enquiry section.
 
-### OPEN THE ACTUAL WEBSITE
+**The 200 titles are in the catalog.** The first 50 complete review mixes exist in private production packs. The public GitHub repository contains no finished tagged preview MP3s yet, so remote Play buttons are still inactive. Paid downloads are locked.
 
-The customer-facing website is **not inside GitHub's file viewer**. GitHub hosts the source code; the finished site needs its own public web address.
+### DIRECT-TO-PRODUCER SALES — BY ARRANGEMENT
 
-[**Publish AXEZENT Beats for Sale from this GitHub repository →**](https://app.netlify.com/start)
+- **Proposed price:** $100 for an eligible **exclusive** beat transfer (not an automatic purchase).
+- **Request a track by email first.** Seller confirms availability, composition/master rights, prior licenses and a signed written transfer agreement before payment.
+- **PayPal and Cash App** business payments are manually verified by the seller. A screenshot or matching payment amount alone is insufficient.
+- **Delivery:** the purchaser receives the finished permitted audio files and agreement privately after confirmation. Masters are not published in this repository.
 
-On Netlify: **Import an existing project → GitHub → `shawncalvinsnelling/AXEZENT-Beats-for-Sale` → Deploy**. Keep the **publish directory** as `.` and leave the build command empty. Make the site public in Netlify's settings if it starts private.
+**No instant checkout and no automatically confirmed $100 copyright transfer is implemented.**
 
-After publishing, copy the actual `https://...netlify.app` website address into the repository's **About → Website** field. Then GitHub will display a direct one-click link to the real storefront. You can use a custom domain later.
+### HOSTING: OUR OWN SERVER, NOT NETLIFY
 
-<details>
-<summary><strong>Store details and release safeguards</strong></summary>
+We are using **our own website code and our own server configuration**. GitHub remains the public source repository. A live website still needs actual Internet-connected hosting (our own computer/server), DNS and HTTPS. GitHub Pages prohibits using its free service as a commercial e-commerce store.
 
-- **200** unique original titles across **50** states, searchable by city, title and broad region.
-- Proposed **$100 nonexclusive commercial beat license**, subject to approved terms. A license is not a full copyright buyout.
-- Only real, tagged MP3 previews may be publicly playable. As of this commit **no finished beat audio is uploaded**.
-- Private masters, stems, payment credentials, and buyer records must never go into this public repository.
-- Sales and paid downloads remain disabled until signed payment verification, license agreements and protected delivery are ready.
-- See [one-by-one release procedure](docs/RELEASE_WORKFLOW.md).
-- [Track catalog](data/catalog.json) · [First beat production task](https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale/issues/1).
+- **[Run it locally now on Windows / self-host it publicly](docs/SELF_HOSTING.md)**
+- [Caddy HTTPS server example](Caddyfile.example)
+- [Full 50-beat preview activation procedure](docs/ACTIVATE_50_PLAY_BUTTONS.md)
+- [Exclusive assignment contract draft](docs/EXCLUSIVE_BEAT_TRANSFER_DRAFT.md)
+- [First track production issue](https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale/issues/1)
 
-**Copyright:** AXEZENT. The public repository does not grant a license to exploit, resell, or redistribute the music. Software use permissions are not granted until a separate code license is chosen.
+After the user's actual public HTTPS domain is live, set that exact verified address under **GitHub repository → About → Website**. A one-click **VISIT WEBSITE** link will then appear next to the repository.
 
-</details>
+### OWNERSHIP, PRIVACY, AND SAFETY
+
+The repository is **public**, so contact email addresses and payment handles displayed on the storefront are visible to anyone. No API secrets, customer details, paid masters, private signed contracts or payment receipts belong here. Public source visibility alone does not grant rights in the music.
+
+The content is under ongoing listening, provenance and copyright review. AI-assisted or synthesized audio cannot automatically be assumed to carry fully transferable composition copyrights; U.S. copyright protection depends on qualifying human-authored expression.
+
+© AXEZENT. All rights reserved until explicitly licensed.
