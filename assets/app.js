@@ -8,7 +8,7 @@
   const more = $("more"), results = $("resultsText"), empty = $("empty");
   const dialog = $("trackDialog"), modal = $("dialogContent"), player = $("player");
   const state = { all: [], filtered: [], displayed: 0, playing: null, selected: null };
-  const PAGE = 24;
+  const PAGE = 50;
   const accents = {
     "Southern":"#8c643b", "East Coast":"#487e9d", "West Coast":"#7c589c",
     "Midwest":"#607b87", "Mountain & Southwest":"#9b7546",
