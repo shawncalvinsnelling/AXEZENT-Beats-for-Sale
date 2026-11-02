@@ -16,6 +16,9 @@ SCALE=(0,2,3,5,7,8,10)
 STYLES=('Southern half-time','Detroit bounce','New York drill','West Coast synth-funk',
         'Atlanta trap','Memphis dark','cinematic hip-hop','club bounce','soulful boom bap',
         'gospel synth','desert atmosphere','cold melodic')
+VERSE_TIMBRES=('rhodes','marimba','reed','guitar','wood','metal','strings','brass','rhodes','organ','guitar','flute')
+HOOK_TIMBRES=('guitar','metal','wood','brass','reed','strings','brass','organ','vibe','organ','flute','marimba')
+PAD_TIMBRES=('pad','organ','strings','pad','organ','strings','pad','organ','strings','organ','pad','strings')
 def midi(root,degree,octave=4):
     return 12*(octave+1)+root+SCALE[degree%7]+12*(degree//7)
 def freq(note):return 440*2**((note-69)/12)
@@ -46,6 +49,40 @@ def note(n,dur,kind,seed):
         vib=.04*np.sin(TAU*5*t)
         y=np.sin(TAU*f*t+vib)+.22*np.sin(TAU*2*f*t+vib)
         e=np.minimum(1,t*35)*np.minimum(1,(dur-t)*8)
+    elif kind=='rhodes':
+        phase=TAU*f*t+2.1*np.exp(-t*18)*np.sin(TAU*3.6*f*t)
+        y=np.sin(phase)+.24*np.sin(TAU*2*f*t)
+        e=np.minimum(1,t*180)*np.exp(-t/.58)
+    elif kind=='organ':
+        y=sum(a*np.sin(TAU*f*h*t) for h,a in ((1,.7),(2,.32),(3,.18),(4,.11)))
+        e=np.minimum(1,t*50)*np.minimum(1,(dur-t)*35)
+    elif kind=='guitar':
+        y=np.sin(TAU*f*t)+.24*np.sin(TAU*2.015*f*t)+.12*np.sin(TAU*3.04*f*t)
+        e=np.minimum(1,t*800)*np.exp(-t/.26)*(1-.13*np.sin(TAU*5.6*t))
+    elif kind=='marimba':
+        y=np.sin(TAU*f*t)+.2*np.sin(TAU*3.9*f*t)+.06*np.sin(TAU*9.2*f*t)
+        e=np.minimum(1,t*500)*np.exp(-t/.19)
+    elif kind=='wood':
+        y=np.sin(TAU*f*t)+.38*np.sin(TAU*2.63*f*t)+.14*np.sin(TAU*5.17*f*t)
+        e=np.minimum(1,t*350)*np.exp(-t/.22)
+    elif kind=='metal':
+        y=np.sin(TAU*f*t)+.23*np.sin(TAU*2.4*f*t)+.12*np.sin(TAU*6.3*f*t)
+        e=np.minimum(1,t*900)*np.exp(-t/.36)
+    elif kind=='reed':
+        y=sum(np.sin(TAU*f*h*t)/h for h in (1,3,5,7))
+        e=np.minimum(1,t*40)*np.minimum(1,(dur-t)*15)
+    elif kind=='flute':
+        y=np.sin(TAU*f*t+.003*np.sin(TAU*6*t))+.035*np.sin(TAU*2*f*t)
+        e=np.minimum(1,t*12)*np.minimum(1,(dur-t)*20)
+    elif kind=='strings':
+        y=np.sin(TAU*f*t)+.34*np.sin(TAU*f*1.003*t)+.17*np.sin(TAU*2*f*t)
+        e=np.minimum(1,t*5)*np.minimum(1,(dur-t)*12)
+    elif kind=='brass':
+        y=sum(np.sin(TAU*f*h*t)/(h**.85) for h in range(1,7))
+        e=np.minimum(1,t*32)*np.minimum(1,(dur-t)*24)
+    elif kind=='vibe':
+        y=np.sin(TAU*f*t)+.18*np.sin(TAU*4.04*f*t)+.08*np.sin(TAU*7.21*f*t)
+        e=np.minimum(1,t*600)*np.exp(-t/.43)
     else:
         y=np.sin(TAU*f*t)+.27*np.sin(TAU*2*f*t)+.1*np.sin(TAU*3*f*t)
         e=np.minimum(1,t*100)*np.exp(-t/(.12+.05*(seed%3)))
@@ -108,13 +145,13 @@ def render(track,rank,outpath):
             insert(out,kit[2],t0+h*(4/n)*beat+sw+jit,pan=(-.25 if h%2 else .18),gain=.7*vel)
         if section not in ('intro','outro') or bi%2==0:
             for j,step in enumerate((0,2,4)):
-                insert(out,note(midi(root,rootstep+step,4),bar*.92,'pad',seed),
+                insert(out,note(midi(root,rootstep+step,4),bar*.92,PAD_TIMBRES[profile],seed),
                        t0+.013*j,pan=(-pan,0,pan)[j],gain=.037 if hook else .026)
         if section in ('hook','verse'):
             for j in range(6 if hook else 3):
                 step=melody[(j+(bi%4)*2)%6]
                 nm=midi(root,rootstep+step,4+(int(hook and j==5)))
-                kind=('bell','pluck','keys','lead')[profile%4] if not hook else ('bell','lead','pluck')[profile%3]
+                kind=HOOK_TIMBRES[profile] if hook else VERSE_TIMBRES[profile]
                 pos=(j+(.5 if j%2 else 0))*bar/(7 if hook else 4)
                 insert(out,note(nm,min(beat*1.5,bar*.46),kind,seed+j),
                        t0+pos+(.004 if j%2 else 0),pan=(-1)**j*pan,gain=.034 if hook else .025)
