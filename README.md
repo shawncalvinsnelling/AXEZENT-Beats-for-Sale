@@ -85,7 +85,7 @@ The proposed starting price is **$100 for an exclusive rights transfer of an eli
 
 ## AXEZENT · MUSIC IN DEVELOPMENT
 
-The first 50 are **review mixes** and not yet approved for sale. Some sounds may be revised after listening tests. The other 150 titles remain production concepts. Our [technical website](index.html), [music catalog](data/catalog.json), and [local playback instructions](docs/SELF_HOSTING.md) are available here; a separately hosted commercial site is not live.
+The first 50 publicly linked MP3s are **new reproducible review sketches** from the GitHub renderer. They are NOT final paid masters and should not be assumed to match the earlier private NODESS v2 master-candidate files. A matched, lossless master and human listening/rights approval must exist before any paid delivery. The first 50 remain **under review**, not approved for sale. Some sounds may be revised after listening tests. The other 150 titles remain production concepts. Our [technical website](index.html), [music catalog](data/catalog.json), and [local playback instructions](docs/SELF_HOSTING.md) are available here; a separately hosted commercial site is not live.
 
 **Public preview files are audio that visitors may copy or capture.** Full-quality WAVs and MIDI/stems are kept private. GitHub's README cannot run a full interactive store; GitHub Pages is not allowed as free hosting for a site whose primary purpose is e-commerce.
 
