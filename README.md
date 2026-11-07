@@ -11,7 +11,17 @@
 *Produced by AXEZENT*
 
 <!-- PLAYER_LINK_START -->
-**🎧 MUSIC WEBSITE — PUBLIC LINK NOT YET AVAILABLE**
+
+## [▶ OPEN AXEZENT BEATS FOR SALE](https://axezent-beats-private-vault.axezent.chatgpt.site)
+
+**The first 50 beats · $100 full-ownership offer**
+
+Click the link above to open the standalone music website.
+
+Play · Pause · Stop · Seek · Repeat · Exit
+
+**Private prototype — owner-only access. ChatGPT sign-in is required.**
+
 <!-- PLAYER_LINK_END -->
 
 </div>
