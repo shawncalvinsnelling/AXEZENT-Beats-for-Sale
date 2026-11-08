@@ -46,6 +46,12 @@ class ArrangementContractTests(unittest.TestCase):
     def test_varied_openings_and_palettes(self):
         self.assertGreaterEqual(len({ARRANGEMENTS[b["id"]]["form"] for b in FEATURED}),3)
         self.assertEqual(50,len({ARRANGEMENTS[b["id"]]["soundPalette"] for b in FEATURED}))
-        self.assertGreaterEqual(len({tuple((s["kind"],s["bars"]) for s in ARRANGEMENTS[b["id"]]["sections"]) for b in FEATURED}),20)
+        signatures={tuple((s["kind"],s["bars"]) for s in ARRANGEMENTS[b["id"]]["sections"]) for b in FEATURED}
+        self.assertEqual(50,len(signatures),"Each of the 50 regional song structures must be different")
+        for beat in FEATURED:
+            parts=ARRANGEMENTS[beat["id"]]["sections"]
+            self.assertTrue(all(parts[i]["kind"]!=parts[i-1]["kind"] for i in range(1,len(parts))),
+                "Unintentional back-to-back repeated sections in "+beat["id"])
+        self.assertGreaterEqual(len({ARRANGEMENTS[b["id"]]["form"] for b in FEATURED}),3)
 
 if __name__=="__main__":unittest.main()
