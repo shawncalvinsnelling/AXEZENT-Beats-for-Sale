@@ -10,18 +10,16 @@
 
 *Produced by AXEZENT*
 
-## Independent website — GitHub Pages setup
+## [▶ OPEN THE AXEZENT WEBSITE](https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/)
 
-**Public artist showcase address (after Pages is enabled):**
+**Public HTTPS site · No ChatGPT login required**
 
-`https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/`
+Browse the 50 featured beat selections by title, city and region. The original AXEZENT visual design and popup-player interface are preserved in the public artist showcase.
 
-**[Enable GitHub Pages for this repository](https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale/settings/pages)** · [Read the step-by-step instructions](docs/GITHUB_PAGES_SHOWCASE.md)
+Public listening will become available per beat once an approved HTTPS preview source is added. The 50 preview recordings are **not** stored in this public GitHub repository.
 
-GitHub Pages currently needs a one-time activation by the repository owner. It hosts a noncommercial artist showcase; no ChatGPT sign-in is needed. The link is **not live until Pages has been enabled and its deployment has succeeded**.
+For setup, public-preview publishing, and the distinction between the public artist showcase and the full independent storefront, see [GitHub Pages website instructions](docs/GITHUB_PAGES_SHOWCASE.md).
 
-The full $100 exclusive beat-selling website remains in this repository. Its private audio-preview server and purchase process must be hosted separately from GitHub Pages, under a public HTTPS address, before accepting customers.
-
-**No preview file or master recording is published here until approved.**
+**The $100 exclusive rights purchase process is managed separately from GitHub Pages.**
 
 </div>
