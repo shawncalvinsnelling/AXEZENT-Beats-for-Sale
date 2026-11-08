@@ -21,7 +21,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p _owner_archive/recordings
-          gh run download 42440220672 --repo "${{ github.repository }}" --pattern 'axezent-review-batch-*' --dir _downloaded_audio
+          gh run download 42442178502 --repo "${{ github.repository }}" --pattern 'axezent-review-batch-*' --dir _downloaded_audio
           found=$(find _downloaded_audio -type f -name 'AXZ-*-review.mp3' | wc -l)
           test "$found" -eq 50
           find _downloaded_audio -type f -name 'AXZ-*-review.mp3' -exec cp --no-clobber -t _owner_archive/recordings {} +
@@ -58,14 +58,14 @@ jobs:
           shutil.copyfile("data/arrangements.json",root/"FULL_ARRANGEMENTS.json")
           shutil.copyfile("data/catalog.json",root/"ORIGINAL_CATALOG_200_ENTRIES.json")
           (root/"READ_ME_FIRST.txt").write_text(
-            "AXEZENT — V2 50 UNIQUE ARRANGEMENTS MP3 BACKUP\n"
+            "AXEZENT — V3 50 AUDIO-LEVEL-CORRECTED REVIEW MP3S BACKUP\n"
             "These are 50 NEW synthetic sampled-instrument review mixes published by "
-            "GitHub Pages deployment run 42440220672.\n"
+            "GitHub Pages deployment run 42442178502.\n"
             "They are NOT the exact historic private NODESS/ChatGPT mixes, NOT the "
             "unreleased sale masters, and NOT verified exclusive commercial inventory.\n"
             "For owner audit/long-term backup. The ZIP includes 50 stereo full-length "
             "MP3s, song arrangements, catalog metadata, hashes and verified track identity.\n"
-            "All MP3s are already publicly audible on the GitHub artist showcase.\n"
+            "These 44.1 kHz 160kbps review MP3s have corrected gain, EQ and peak limiting; they remain sampled-instrument reviews, not the private masters.\n"
             "SHA256SUMS.txt can be checked with sha256sum -c SHA256SUMS.txt inside this folder.\n",
             "utf-8")
           print("PASS: catalog IDs, 50 distinct stereo MP3s, exact durations and checksum inventory.")
@@ -75,7 +75,7 @@ jobs:
           python - <<'PY'
           import os,pathlib,zipfile,hashlib
           root=pathlib.Path("_owner_archive")
-          dest=pathlib.Path("AXEZENT_50_REVIEW_BEATS_V2_2026-11-07.zip")
+          dest=pathlib.Path("AXEZENT_50_REVIEW_BEATS_V3_AUDIBLE_2026-11-07.zip")
           with zipfile.ZipFile(dest,"w",compression=zipfile.ZIP_STORED,allowZip64=True) as out:
               for item in sorted(root.rglob("*")):
                   if item.is_file():
@@ -95,7 +95,7 @@ jobs:
           assert len(inventory)==50
           names=[]
           for number,subset in [(1,inventory[:25]),(2,inventory[25:])]:
-              output=pathlib.Path(f"AXEZENT_V2_BACKUP_VOLUME_{number:02d}_OF_02.zip")
+              output=pathlib.Path(f"AXEZENT_V3_BACKUP_VOLUME_{number:02d}_OF_02.zip")
               with zipfile.ZipFile(output,"w",compression=zipfile.ZIP_STORED,allowZip64=True) as z:
                   for row in subset:
                       recording=root/row["path"]
@@ -114,24 +114,24 @@ jobs:
       - name: Store backup volume 1
         uses: actions/upload-artifact@v4
         with:
-          name: AXEZENT-50-V2-VOLUME-01-OF-02
-          path: AXEZENT_V2_BACKUP_VOLUME_01_OF_02.zip
+          name: AXEZENT-50-V3-VOLUME-01-OF-02
+          path: AXEZENT_V3_BACKUP_VOLUME_01_OF_02.zip
           if-no-files-found: error
           compression-level: 0
           retention-days: 90
       - name: Store backup volume 2
         uses: actions/upload-artifact@v4
         with:
-          name: AXEZENT-50-V2-VOLUME-02-OF-02
-          path: AXEZENT_V2_BACKUP_VOLUME_02_OF_02.zip
+          name: AXEZENT-50-V3-VOLUME-02-OF-02
+          path: AXEZENT_V3_BACKUP_VOLUME_02_OF_02.zip
           if-no-files-found: error
           compression-level: 0
           retention-days: 90
       - name: Store complete downloadable ZIP in GitHub Actions
         uses: actions/upload-artifact@v4
         with:
-          name: AXEZENT-50-REVIEW-BEATS-V2-BACKUP
-          path: AXEZENT_50_REVIEW_BEATS_V2_2026-11-07.zip
+          name: AXEZENT-50-REVIEW-BEATS-V3-BACKUP
+          path: AXEZENT_50_REVIEW_BEATS_V3_AUDIBLE_2026-11-07.zip
           if-no-files-found: error
           compression-level: 0
           retention-days: 90
