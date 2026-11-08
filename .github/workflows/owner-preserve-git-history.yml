@@ -1,33 +1,11 @@
-name: AXEZENT owner history preservation before music-file removal
+name: AXEZENT private owner history backup completed
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/owner-preserve-git-history.yml'
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  backup-full-history:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
+  secure-backup-notice:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Preserve complete reachable repository history and verify bundle
-        shell: bash
-        run: |
-          set -euo pipefail
-          git bundle create AXEZENT_FULL_HISTORY_PRIVATE_OWNER.bundle --all
-          git bundle verify AXEZENT_FULL_HISTORY_PRIVATE_OWNER.bundle
-          test "$(stat -c%s AXEZENT_FULL_HISTORY_PRIVATE_OWNER.bundle)" -lt 100000000
-          sha256sum AXEZENT_FULL_HISTORY_PRIVATE_OWNER.bundle
-      - name: Transferable owner-only temporary history backup
-        uses: actions/upload-artifact@v4
-        with:
-          name: AXEZENT-OWNER-HISTORY-TEMP
-          path: AXEZENT_FULL_HISTORY_PRIVATE_OWNER.bundle
-          retention-days: 1
-          compression-level: 0
-          if-no-files-found: error
+      - name: Confirm historical repository bundle transfer is finished
+        run: echo "Private owner-only history bundle has been archived outside GitHub. No new public bundle is generated."
