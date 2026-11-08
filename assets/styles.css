@@ -94,3 +94,69 @@
  #tracks .track-actions{grid-template-columns:1fr 1fr}
  #tracks .inquiry-action{margin-top:3px}
 }
+
+
+/* AXEZENT premium launch polish: understated color, legibility and distinct beat identity. */
+body {
+  background:
+    radial-gradient(ellipse at 77% 18%, rgba(44,71,85,.13), transparent 40%),
+    radial-gradient(ellipse at 15% 30%, rgba(159,111,57,.08), transparent 35%),var(--bg);
+}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible {
+  outline:3px solid #f6cd8a;
+  outline-offset:4px;
+}
+.hero-art {
+  background:
+    radial-gradient(circle at 54% 46%,#304050 0,#142336 35%,#0d1320 75%),
+    linear-gradient(145deg,#16191f,#060911);
+  box-shadow:0 27px 104px rgba(0,0,0,.48),inset 0 0 90px rgba(8,12,20,.8);
+}
+.record {filter:drop-shadow(0 16px 32px rgba(0,0,0,.6))}
+.hero-art-label {text-shadow:0 2px 11px rgba(0,0,0,.95)}
+.hero-art-label span {display:inline-block;font-size:10px;color:#c7dbe1;letter-spacing:.1em;margin-top:5px}
+.primary-button,.nav-cta,.track-actions button {
+  transition:filter .17s ease,transform .17s ease,box-shadow .17s ease;
+}
+.primary-button:hover {transform:translateY(-2px);box-shadow:0 9px 33px rgba(220,172,96,.16)}
+#tracks .track-art {
+  background:
+    radial-gradient(circle at 92% 10%,var(--accent-2,#a4a5b4) 0,transparent 44%),
+    linear-gradient(125deg,#273642,#101823);
+  isolation:isolate;
+}
+#tracks .track-art::before {z-index:0;opacity:.5}
+#tracks .track-art b,#tracks .track-art small {z-index:2;position:relative;text-shadow:0 1px 9px #050912}
+#tracks .cover-soundwave {
+  pointer-events:none;position:absolute;z-index:1;inset:0;
+  display:flex;align-items:center;justify-content:center;gap:4px;opacity:.63;
+}
+#tracks .cover-soundwave i {
+  display:block;width:3px;min-height:5px;
+  background:linear-gradient(180deg,#e4d5a6,#8bb4ba);
+  border-radius:10px;box-shadow:0 0 10px rgba(202,164,100,.16);
+}
+#tracks .track-card {transition:border-color .18s ease,box-shadow .18s ease}
+#tracks .track-card:hover,#tracks .track-card:focus-within {
+  border-color:#c3a16d;box-shadow:0 9px 31px rgba(0,0,0,.22);
+}
+#tracks .play-button:not(:disabled):hover {box-shadow:0 0 0 2px rgba(244,203,144,.18)}
+.release-pill {font-weight:800;letter-spacing:.035em}
+@media(max-width:760px){
+  .hero{gap:14px}
+  .hero-proof{gap:16px;flex-wrap:wrap}
+  .hero-proof div{padding-right:16px}
+  .hero-art-label span{font-size:9px}
+}
+@media(max-width:520px){
+  .hero-proof{margin-top:27px;gap:10px}
+  .hero-proof div{min-width:0;flex:1;padding-right:8px}
+  .hero-proof b{font-size:22px}
+  .hero-proof small{font-size:10px}
+  .topline{letter-spacing:.1em}
+  .hero-art{border-radius:15px}
+  #tracks .cover-soundwave{opacity:.48}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
