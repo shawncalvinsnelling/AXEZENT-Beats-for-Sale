@@ -110,9 +110,9 @@ def enhance_midi(midi:Path,beat:dict,plan:dict)->dict:
                     # Increase audible melodic distinction without eating the
                     # initial two beats in the rap verses.
                     insert(bar,1.5,3,n1,46+(j%3)*6,.26)
-                    insert(bar,3.25,3,n2,49+(phrase%4)*4,.34)
+                    insert(bar,3.52,3,n2,49+(phrase%4)*4,.29)
                 elif phrase in (1,3,5,7):
-                    insert(bar,3.25,3,n2,44+(phrase%3)*5,.30)
+                    insert(bar,3.52,3,n2,44+(phrase%3)*5,.29)
                 if phrase==7:
                     # Only final turnaround of each eight-bar group; hooks
                     # retain an A/B phrase rather than one fixed looping cell.
