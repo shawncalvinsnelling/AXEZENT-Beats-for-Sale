@@ -1,0 +1,52 @@
+name: Deploy AXEZENT artist showcase to GitHub Pages
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'pages-showcase/**'
+      - 'data/catalog.json'
+      - 'assets/styles.css'
+      - 'assets/favicon.svg'
+      - '.github/workflows/deploy-artist-showcase.yml'
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: axezent-artist-showcase-pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Create isolated public showcase artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _pages_build/assets _pages_build/data
+          cp pages-showcase/index.html _pages_build/index.html
+          cp pages-showcase/showcase.js _pages_build/assets/showcase.js
+          cp assets/styles.css assets/favicon.svg _pages_build/assets/
+          node -e '
+            const fs=require("fs");
+            const beats=JSON.parse(fs.readFileSync("data/catalog.json","utf8"));
+            const safe=beats.map(({id,title,city,state,collection,bpm,releaseRank})=>({id,title,city,state,collection,bpm,releaseRank}));
+            if(safe.length!==200||safe.filter(b=>Number.isInteger(b.releaseRank)&&b.releaseRank>=1&&b.releaseRank<=50).length!==50)throw Error("Catalog check failed");
+            fs.writeFileSync("_pages_build/data/catalog.json",JSON.stringify(safe));
+          '
+          touch _pages_build/.nojekyll
+      - name: Set up GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload public showcase
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _pages_build
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
