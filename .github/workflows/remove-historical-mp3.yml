@@ -1,52 +1,11 @@
-name: AXEZENT remove previously committed music from public Git history
+name: AXEZENT historical audio cleanup completed - read-only
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/remove-historical-mp3.yml'
+  workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 jobs:
-  redact-previous-audio:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 15
-    env:
-      GH_TOKEN: ${{ github.token }}
+  history-cleanup-complete:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact current public branch and all history
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: true
-      - name: Rewrite historical music blobs only with source tree and force-with-lease protections
-        shell: bash
-        run: |
-          set -euo pipefail
-          test "$(git branch --show-current)" = "main"
-          test -z "$(git tag -l)"
-          test -z "$(git status --porcelain)"
-          old_sha="$(git rev-parse HEAD)"
-          old_tree="$(git rev-parse HEAD^{tree})"
-          old_count="$(git rev-list --count HEAD)"
-          if test "$old_count" -lt 100; then echo "::error::Unexpected incomplete Git history"; exit 1; fi
-          python -m pip install --disable-pip-version-check 'git-filter-repo>=2.47,<3'
-          git filter-repo --force --path-glob '*.mp3' --path-glob '*.wav' --path-glob '*.zip' --invert-paths
-          new_tree="$(git rev-parse HEAD^{tree})"
-          new_count="$(git rev-list --count HEAD)"
-          if test "$new_tree" != "$old_tree"; then
-            echo "::error::Safety stop! Current files unexpectedly changed; no push performed"
-            exit 1
-          fi
-          if test "$new_count" -lt 100; then
-            echo "::error::Safety stop! Too many commits removed; no push performed"
-            exit 1
-          fi
-          if git rev-list --objects HEAD | grep -Ei '\.(mp3|wav|zip)$'; then
-            echo "::error::Safety stop! MP3/WAV/ZIP reachable after rewrite; no push performed"
-            exit 1
-          fi
-          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git" || true
-          git -c http.extraheader="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)" push \
-            --force-with-lease="refs/heads/main:$old_sha" origin HEAD:refs/heads/main
-          echo "PASS: sanitized public branch history, current website source byte-for-byte unchanged"
-          echo "Previous commit SHA references may remain cached on GitHub until GitHub Support purges them."
+      - name: Keep owner-verified public branch history intact
+        run: echo "Completed history cleanup. No repository writes or force pushes are authorized by this workflow."
