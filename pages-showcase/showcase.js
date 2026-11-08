@@ -7,7 +7,7 @@
   const more = $("more"), results = $("resultsText"), empty = $("empty");
   const dialog = $("trackDialog"), modal = $("dialogContent"), player = $("player");
   const state = { all: [], filtered: [], displayed: 0, playing: null, selected: null };
-  const PAGE = 50;
+  const PAGE = 100;
   // All timing here is sourced from each producer-selected 4/4 arrangement
   // blueprint, never inferred from an existing/unverified recording.
   const showClock = secs => {
@@ -346,10 +346,10 @@
   Promise.all([catalogRequest,publicPreviewsRequest,arrangementRequest]).then(([data,previewManifest,arrangements])=>{
     if(!Array.isArray(data) || data.length!==200)throw Error("Catalog validation failed");
     const urls=previewManifest && typeof previewManifest==="object" && !Array.isArray(previewManifest) ? previewManifest : {};
-    if(!arrangements||typeof arrangements!=="object"||Array.isArray(arrangements)||Object.keys(arrangements).length!==50)throw Error("Expected 50 proposed arrangements");
-    state.all=data.filter(b=>Number.isInteger(b.releaseRank) && b.releaseRank>=1 && b.releaseRank<=50)
+    if(!arrangements||typeof arrangements!=="object"||Array.isArray(arrangements)||Object.keys(arrangements).length!==100)throw Error("Expected 100 individual arrangements");
+    state.all=data.filter(b=>Number.isInteger(b.releaseRank) && b.releaseRank>=1 && b.releaseRank<=100)
       .map(b=>({...b,previewUrl:typeof urls[b.id]==="string" ? urls[b.id] : null,arrangement:arrangements[b.id]}));
-    if(state.all.length!==50 || state.all.some(b=>!b.arrangement || b.arrangement.bpm!==b.bpm))throw Error("Featured arrangement validation failed");
+    if(state.all.length!==100 || state.all.some(b=>!b.arrangement || b.arrangement.bpm!==b.bpm))throw Error("Featured arrangement validation failed");
     const collections=[...new Set(state.all.map(x=>x.collection))].sort();
     collections.forEach(c=>{const option=el("option","",c);option.value=c;region.appendChild(option);});
     const totalNode=$("heroTotal"); if(totalNode)totalNode.textContent=String(data.length);

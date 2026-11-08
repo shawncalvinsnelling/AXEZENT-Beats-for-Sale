@@ -11,9 +11,9 @@ try {
   const page = await browser.newPage({ viewport: {width: 1300, height: 900} });
   page.on('pageerror', e => console.error('BROWSER ERROR:',e.message));
   await page.goto(BASE, { waitUntil: 'domcontentloaded', timeout: 45000 });
-  await page.waitForFunction(() => document.querySelectorAll('article.track-card').length===50, null, { timeout: 30000 });
+  await page.waitForFunction(() => document.querySelectorAll('article.track-card').length===100, null, { timeout: 30000 });
   const disabled=await page.locator('button.play-button:disabled').count();
-  assert.equal(disabled,0, 'All 50 new review tracks must be playable');
+  assert.equal(disabled,0, 'All 100 new review tracks must be playable');
   const title=await page.locator('article.track-card h3').first().textContent();
   assert.equal(title.trim(),'Diamond in the Dirt','Expected first featured beat');
   await page.locator('article.track-card button.detail-button').first().click();
@@ -81,7 +81,7 @@ try {
   assert.equal(await page.locator('#playerDialog').evaluate(el=>el.open),false,'Exit must close');
 
   // Check more than the first track: late-catalog sources must decode in-browser.
-  for(const index of [8,24,49]) {
+  for(const index of [8,24,49,50,74,99]) {
     const card=page.locator('article.track-card').nth(index);
     const other=await card.locator('h3').textContent();
     await card.locator('button.play-button').click();
@@ -97,7 +97,7 @@ try {
   await page.locator('#region').selectOption({label:'Midwest'});
   await page.waitForFunction(() => {
     const cards=[...document.querySelectorAll('article.track-card')];
-    return cards.length>0 && cards.length<50 && cards.every(c=>c.textContent.includes('Midwest'));
+    return cards.length>0 && cards.length<100 && cards.every(c=>c.textContent.includes('Midwest'));
   },null,{timeout:10000});
   console.log('PASS: desktop browser verifies four actual MP3s, play, pause, +/-15s, volume, drag seek, repeat, stop, catalog and Details.');
 
@@ -107,7 +107,7 @@ try {
   });
   try {
     await mobile.goto(BASE,{waitUntil:'domcontentloaded',timeout:45000});
-    await mobile.waitForFunction(()=>document.querySelectorAll('article.track-card').length===50,null,{timeout:30000});
+    await mobile.waitForFunction(()=>document.querySelectorAll('article.track-card').length===100,null,{timeout:30000});
     await mobile.locator('article.track-card button.play-button').first().click();
     await mobile.waitForFunction(()=>{
       const a=document.querySelector('#player');

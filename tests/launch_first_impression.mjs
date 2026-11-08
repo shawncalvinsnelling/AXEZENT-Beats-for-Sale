@@ -13,14 +13,14 @@ try {
   const desktop=await browser.newPage({viewport:{width:1440,height:900}});
   desktop.on('pageerror',e=>out.errors.push(e.message));
   await desktop.goto(BASE,{waitUntil:'domcontentloaded',timeout:50000});
-  await desktop.waitForFunction(()=>document.querySelectorAll('article.track-card').length===50,null,{timeout:40000});
+  await desktop.waitForFunction(()=>document.querySelectorAll('article.track-card').length===100,null,{timeout:40000});
   const ready=await desktop.locator('button.play-button:not([disabled])').count();
-  record('50 individually playable buttons',ready===50,{ready});
+  record('100 individually playable buttons',ready===100,{ready});
   const heading=await desktop.locator('h1').innerText();
   const pageText=await desktop.locator('body').innerText();
   record('Uncluttered $100 exclusive offer',pageText.includes('$100')&&pageText.toLowerCase().includes('exclusive')&&heading.includes('BEATS'),{heading});
   const status=await desktop.locator('#resultsText').innerText();
-  record('Catalog fully loaded, no blank/loading trap',status.includes('50 beats')&&!/loading|could not/i.test(status),{status});
+  record('Catalog fully loaded, no blank/loading trap',status.includes('100 beats')&&!/loading|could not/i.test(status),{status});
   record('No unwanted repository link',await desktop.locator('a[href*="github.com"],a[href*="chatgpt.com"]').count()===0);
   const contactLinks=await desktop.locator('a[href^="mailto:axezentai@gmail.com"]').count();
   record('Contact section includes two correct public email links',contactLinks===2,{contactLinks});
@@ -33,7 +33,7 @@ try {
     {count:durations.length,first:durations[0]});
   await desktop.locator('#closeDialog').click();
   const bars=await desktop.locator('.cover-soundwave').count();
-  record('50 individual beat-art visuals',bars===50,{bars});
+  record('100 individual beat-art visuals',bars===100,{bars});
   const og=await desktop.locator('meta[property="og:image"]').getAttribute('content');
   record('Absolute correct Facebook preview URL',Boolean(og&&og.startsWith(BASE)&&og.endsWith('.png')),{og});
   const img=await desktop.request.get(og,{timeout:30000});
@@ -49,7 +49,7 @@ try {
   const mobile=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true,hasTouch:true});
   mobile.on('pageerror',e=>out.errors.push('Mobile: '+e.message));
   await mobile.goto(BASE,{waitUntil:'domcontentloaded',timeout:50000});
-  await mobile.waitForFunction(()=>document.querySelectorAll('article.track-card').length===50,null,{timeout:40000});
+  await mobile.waitForFunction(()=>document.querySelectorAll('article.track-card').length===100,null,{timeout:40000});
   const mWidth=await mobile.evaluate(()=>({innerWidth:innerWidth,documentWidth:document.documentElement.scrollWidth}));
   record('390px mobile no sideways scrolling',mWidth.documentWidth<=mWidth.innerWidth+2,mWidth);
   await mobile.screenshot({path:path.join(OUTPUT,'mobile-first-impression.png')});
@@ -72,7 +72,7 @@ try {
   const narrow=await browser.newPage({viewport:{width:320,height:720},deviceScaleFactor:1,isMobile:true,hasTouch:true});
   try {
     await narrow.goto(BASE,{waitUntil:'domcontentloaded',timeout:50000});
-    await narrow.waitForFunction(()=>document.querySelectorAll('article.track-card').length===50,null,{timeout:40000});
+    await narrow.waitForFunction(()=>document.querySelectorAll('article.track-card').length===100,null,{timeout:40000});
     const width=await narrow.evaluate(()=>({innerWidth:innerWidth,documentWidth:document.documentElement.scrollWidth}));
     record('320px compact-phone no horizontal overflow',width.documentWidth<=width.innerWidth+2,width);
     await narrow.screenshot({path:path.join(OUTPUT,'compact-phone-first-impression.png')});
