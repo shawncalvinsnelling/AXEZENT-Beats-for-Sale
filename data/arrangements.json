@@ -859,7 +859,7 @@
   },
   "AXZ-117": {
     "releaseRank": 12,
-    "form": "short intro",
+    "form": "verse-first",
     "signature": "Newark cold drill; stop-start 808s",
     "soundPalette": "hollow keys, pitched string notes, detuned synth bass",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -868,62 +868,53 @@
     "key": "G# minor",
     "sections": [
       {
-        "kind": "intro",
-        "label": "Intro",
-        "bars": 4,
-        "startBar": 0,
-        "endBar": 4,
-        "startSeconds": 0,
-        "endSeconds": 7.273
-      },
-      {
         "kind": "verse",
         "label": "Verse 1",
         "bars": 16,
-        "startBar": 4,
-        "endBar": 20,
-        "startSeconds": 7.273,
-        "endSeconds": 36.364
+        "startBar": 0,
+        "endBar": 16,
+        "startSeconds": 0,
+        "endSeconds": 29.091
       },
       {
         "kind": "hook",
         "label": "Hook 1",
         "bars": 8,
-        "startBar": 20,
-        "endBar": 28,
-        "startSeconds": 36.364,
-        "endSeconds": 50.909
+        "startBar": 16,
+        "endBar": 24,
+        "startSeconds": 29.091,
+        "endSeconds": 43.636
       },
       {
         "kind": "verse",
         "label": "Verse 2",
         "bars": 16,
-        "startBar": 28,
-        "endBar": 44,
-        "startSeconds": 50.909,
-        "endSeconds": 80
+        "startBar": 24,
+        "endBar": 40,
+        "startSeconds": 43.636,
+        "endSeconds": 72.727
       },
       {
         "kind": "hook",
         "label": "Hook 2",
         "bars": 8,
-        "startBar": 44,
-        "endBar": 52,
-        "startSeconds": 80,
-        "endSeconds": 94.545
+        "startBar": 40,
+        "endBar": 48,
+        "startSeconds": 72.727,
+        "endSeconds": 87.273
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 52,
-        "endBar": 56,
-        "startSeconds": 94.545,
-        "endSeconds": 101.818
+        "startBar": 48,
+        "endBar": 52,
+        "startSeconds": 87.273,
+        "endSeconds": 94.545
       }
     ],
-    "totalBars": 56,
-    "durationSeconds": 101.818,
+    "totalBars": 52,
+    "durationSeconds": 94.545,
     "recordingVerified": false
   },
   "AXZ-137": {
@@ -1006,7 +997,7 @@
   },
   "AXZ-149": {
     "releaseRank": 14,
-    "form": "verse-first",
+    "form": "hook-first",
     "signature": "Philadelphia boom-bap; dusty snare pocket",
     "soundPalette": "dusty electric piano, chopped-note motif, short upright bass",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -1015,53 +1006,62 @@
     "key": "G minor",
     "sections": [
       {
-        "kind": "verse",
-        "label": "Verse 1",
-        "bars": 16,
-        "startBar": 0,
-        "endBar": 16,
-        "startSeconds": 0,
-        "endSeconds": 40
-      },
-      {
         "kind": "hook",
         "label": "Hook 1",
         "bars": 8,
-        "startBar": 16,
+        "startBar": 0,
+        "endBar": 8,
+        "startSeconds": 0,
+        "endSeconds": 20
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 8,
         "endBar": 24,
-        "startSeconds": 40,
+        "startSeconds": 20,
         "endSeconds": 60
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 4,
+        "startBar": 24,
+        "endBar": 28,
+        "startSeconds": 60,
+        "endSeconds": 70
       },
       {
         "kind": "verse",
         "label": "Verse 2",
         "bars": 16,
-        "startBar": 24,
-        "endBar": 40,
-        "startSeconds": 60,
-        "endSeconds": 100
+        "startBar": 28,
+        "endBar": 44,
+        "startSeconds": 70,
+        "endSeconds": 110
       },
       {
         "kind": "hook",
-        "label": "Hook 2",
+        "label": "Hook 3",
         "bars": 8,
-        "startBar": 40,
-        "endBar": 48,
-        "startSeconds": 100,
-        "endSeconds": 120
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 110,
+        "endSeconds": 130
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 48,
-        "endBar": 52,
-        "startSeconds": 120,
-        "endSeconds": 130
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 130,
+        "endSeconds": 140
       }
     ],
-    "totalBars": 52,
-    "durationSeconds": 130,
+    "totalBars": 56,
+    "durationSeconds": 140,
     "recordingVerified": false
   },
   "AXZ-097": {
@@ -1525,7 +1525,7 @@
   },
   "AXZ-001": {
     "releaseRank": 21,
-    "form": "short intro",
+    "form": "verse-first",
     "signature": "Birmingham heavy halftime; wide low-frequency pockets",
     "soundPalette": "distorted low synth, distant strings, gritty guitar",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -1534,67 +1534,58 @@
     "key": "F minor",
     "sections": [
       {
-        "kind": "intro",
-        "label": "Intro",
-        "bars": 4,
-        "startBar": 0,
-        "endBar": 4,
-        "startSeconds": 0,
-        "endSeconds": 12.308
-      },
-      {
         "kind": "verse",
         "label": "Verse 1",
         "bars": 16,
-        "startBar": 4,
-        "endBar": 20,
-        "startSeconds": 12.308,
-        "endSeconds": 61.538
+        "startBar": 0,
+        "endBar": 16,
+        "startSeconds": 0,
+        "endSeconds": 49.231
       },
       {
         "kind": "hook",
         "label": "Hook 1",
         "bars": 8,
-        "startBar": 20,
-        "endBar": 28,
-        "startSeconds": 61.538,
-        "endSeconds": 86.154
+        "startBar": 16,
+        "endBar": 24,
+        "startSeconds": 49.231,
+        "endSeconds": 73.846
       },
       {
         "kind": "verse",
         "label": "Verse 2",
         "bars": 16,
-        "startBar": 28,
-        "endBar": 44,
-        "startSeconds": 86.154,
-        "endSeconds": 135.385
+        "startBar": 24,
+        "endBar": 40,
+        "startSeconds": 73.846,
+        "endSeconds": 123.077
       },
       {
         "kind": "hook",
         "label": "Hook 2",
-        "bars": 8,
-        "startBar": 44,
-        "endBar": 52,
-        "startSeconds": 135.385,
-        "endSeconds": 160
+        "bars": 4,
+        "startBar": 40,
+        "endBar": 44,
+        "startSeconds": 123.077,
+        "endSeconds": 135.385
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 52,
-        "endBar": 56,
-        "startSeconds": 160,
-        "endSeconds": 172.308
+        "startBar": 44,
+        "endBar": 48,
+        "startSeconds": 135.385,
+        "endSeconds": 147.692
       }
     ],
-    "totalBars": 56,
-    "durationSeconds": 172.308,
+    "totalBars": 48,
+    "durationSeconds": 147.692,
     "recordingVerified": false
   },
   "AXZ-093": {
     "releaseRank": 22,
-    "form": "short intro",
+    "form": "hook-first",
     "signature": "Jackson soulful southern swing; rim backbeat",
     "soundPalette": "gospel piano, organ, blues guitar phrases",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -1603,76 +1594,67 @@
     "key": "D major",
     "sections": [
       {
-        "kind": "intro",
-        "label": "Intro",
-        "bars": 4,
-        "startBar": 0,
-        "endBar": 4,
-        "startSeconds": 0,
-        "endSeconds": 12.973
-      },
-      {
         "kind": "hook",
         "label": "Hook 1",
         "bars": 8,
-        "startBar": 4,
-        "endBar": 12,
-        "startSeconds": 12.973,
-        "endSeconds": 38.919
+        "startBar": 0,
+        "endBar": 8,
+        "startSeconds": 0,
+        "endSeconds": 25.946
       },
       {
         "kind": "verse",
         "label": "Verse 1",
         "bars": 12,
-        "startBar": 12,
-        "endBar": 24,
-        "startSeconds": 38.919,
-        "endSeconds": 77.838
+        "startBar": 8,
+        "endBar": 20,
+        "startSeconds": 25.946,
+        "endSeconds": 64.865
       },
       {
         "kind": "hook",
         "label": "Hook 2",
-        "bars": 8,
-        "startBar": 24,
-        "endBar": 32,
-        "startSeconds": 77.838,
-        "endSeconds": 103.784
+        "bars": 4,
+        "startBar": 20,
+        "endBar": 24,
+        "startSeconds": 64.865,
+        "endSeconds": 77.838
       },
       {
         "kind": "verse",
         "label": "Verse 2",
         "bars": 12,
-        "startBar": 32,
-        "endBar": 44,
-        "startSeconds": 103.784,
-        "endSeconds": 142.703
+        "startBar": 24,
+        "endBar": 36,
+        "startSeconds": 77.838,
+        "endSeconds": 116.757
       },
       {
         "kind": "hook",
         "label": "Hook 3",
         "bars": 8,
-        "startBar": 44,
-        "endBar": 52,
-        "startSeconds": 142.703,
-        "endSeconds": 168.649
+        "startBar": 36,
+        "endBar": 44,
+        "startSeconds": 116.757,
+        "endSeconds": 142.703
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 52,
-        "endBar": 56,
-        "startSeconds": 168.649,
-        "endSeconds": 181.622
+        "startBar": 44,
+        "endBar": 48,
+        "startSeconds": 142.703,
+        "endSeconds": 155.676
       }
     ],
-    "totalBars": 56,
-    "durationSeconds": 181.622,
+    "totalBars": 48,
+    "durationSeconds": 155.676,
     "recordingVerified": false
   },
   "AXZ-157": {
     "releaseRank": 23,
-    "form": "short intro",
+    "form": "hook-first",
     "signature": "Charleston bright melodic bounce; shaker subdivisions",
     "soundPalette": "bright electric piano, warm guitar, short plucked synth",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -1681,62 +1663,62 @@
     "key": "D major",
     "sections": [
       {
-        "kind": "intro",
-        "label": "Intro",
-        "bars": 2,
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
         "startBar": 0,
-        "endBar": 2,
+        "endBar": 8,
         "startSeconds": 0,
-        "endSeconds": 4.848
+        "endSeconds": 19.394
       },
       {
         "kind": "verse",
         "label": "Verse 1",
-        "bars": 12,
-        "startBar": 2,
-        "endBar": 14,
-        "startSeconds": 4.848,
-        "endSeconds": 33.939
+        "bars": 16,
+        "startBar": 8,
+        "endBar": 24,
+        "startSeconds": 19.394,
+        "endSeconds": 58.182
       },
       {
         "kind": "hook",
-        "label": "Hook 1",
-        "bars": 8,
-        "startBar": 14,
-        "endBar": 22,
-        "startSeconds": 33.939,
-        "endSeconds": 53.333
+        "label": "Hook 2",
+        "bars": 4,
+        "startBar": 24,
+        "endBar": 28,
+        "startSeconds": 58.182,
+        "endSeconds": 67.879
       },
       {
         "kind": "verse",
         "label": "Verse 2",
         "bars": 12,
-        "startBar": 22,
-        "endBar": 34,
-        "startSeconds": 53.333,
-        "endSeconds": 82.424
+        "startBar": 28,
+        "endBar": 40,
+        "startSeconds": 67.879,
+        "endSeconds": 96.97
       },
       {
         "kind": "hook",
-        "label": "Hook 2",
+        "label": "Hook 3",
         "bars": 8,
-        "startBar": 34,
-        "endBar": 42,
-        "startSeconds": 82.424,
-        "endSeconds": 101.818
+        "startBar": 40,
+        "endBar": 48,
+        "startSeconds": 96.97,
+        "endSeconds": 116.364
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 42,
-        "endBar": 46,
-        "startSeconds": 101.818,
-        "endSeconds": 111.515
+        "startBar": 48,
+        "endBar": 52,
+        "startSeconds": 116.364,
+        "endSeconds": 126.061
       }
     ],
-    "totalBars": 46,
-    "durationSeconds": 111.515,
+    "totalBars": 52,
+    "durationSeconds": 126.061,
     "recordingVerified": false
   },
   "AXZ-193": {
@@ -1975,7 +1957,7 @@
   },
   "AXZ-081": {
     "releaseRank": 27,
-    "form": "short intro",
+    "form": "verse-first",
     "signature": "Boston assertive boom-bap; closed-hat breaks",
     "soundPalette": "upright-bass-like synth, dusty organ, plucked keys",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -1984,67 +1966,58 @@
     "key": "C minor",
     "sections": [
       {
-        "kind": "intro",
-        "label": "Intro",
-        "bars": 4,
-        "startBar": 0,
-        "endBar": 4,
-        "startSeconds": 0,
-        "endSeconds": 10.667
-      },
-      {
         "kind": "verse",
         "label": "Verse 1",
         "bars": 16,
-        "startBar": 4,
-        "endBar": 20,
-        "startSeconds": 10.667,
-        "endSeconds": 53.333
+        "startBar": 0,
+        "endBar": 16,
+        "startSeconds": 0,
+        "endSeconds": 42.667
       },
       {
         "kind": "hook",
         "label": "Hook 1",
         "bars": 8,
-        "startBar": 20,
-        "endBar": 28,
-        "startSeconds": 53.333,
-        "endSeconds": 74.667
+        "startBar": 16,
+        "endBar": 24,
+        "startSeconds": 42.667,
+        "endSeconds": 64
       },
       {
         "kind": "verse",
         "label": "Verse 2",
-        "bars": 16,
-        "startBar": 28,
-        "endBar": 44,
-        "startSeconds": 74.667,
-        "endSeconds": 117.333
+        "bars": 12,
+        "startBar": 24,
+        "endBar": 36,
+        "startSeconds": 64,
+        "endSeconds": 96
       },
       {
         "kind": "hook",
         "label": "Hook 2",
-        "bars": 8,
-        "startBar": 44,
-        "endBar": 52,
-        "startSeconds": 117.333,
-        "endSeconds": 138.667
+        "bars": 4,
+        "startBar": 36,
+        "endBar": 40,
+        "startSeconds": 96,
+        "endSeconds": 106.667
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 52,
-        "endBar": 56,
-        "startSeconds": 138.667,
-        "endSeconds": 149.333
+        "startBar": 40,
+        "endBar": 44,
+        "startSeconds": 106.667,
+        "endSeconds": 117.333
       }
     ],
-    "totalBars": 56,
-    "durationSeconds": 149.333,
+    "totalBars": 44,
+    "durationSeconds": 117.333,
     "recordingVerified": false
   },
   "AXZ-109": {
     "releaseRank": 28,
-    "form": "hook-first",
+    "form": "verse-first",
     "signature": "Las Vegas glossy high-energy bounce; side-stick motif",
     "soundPalette": "bright synthetic brass, slap-style bass, sync plucks",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -2053,8 +2026,8 @@
     "key": "F major",
     "sections": [
       {
-        "kind": "hook",
-        "label": "Hook 1",
+        "kind": "verse",
+        "label": "Verse 1",
         "bars": 8,
         "startBar": 0,
         "endBar": 8,
@@ -2062,8 +2035,8 @@
         "endSeconds": 17.944
       },
       {
-        "kind": "verse",
-        "label": "Verse 1",
+        "kind": "hook",
+        "label": "Hook 1",
         "bars": 8,
         "startBar": 8,
         "endBar": 16,
@@ -2071,26 +2044,26 @@
         "endSeconds": 35.888
       },
       {
-        "kind": "hook",
-        "label": "Hook 2",
-        "bars": 8,
-        "startBar": 16,
-        "endBar": 24,
-        "startSeconds": 35.888,
-        "endSeconds": 53.832
-      },
-      {
         "kind": "verse",
         "label": "Verse 2",
         "bars": 12,
-        "startBar": 24,
-        "endBar": 36,
-        "startSeconds": 53.832,
-        "endSeconds": 80.748
+        "startBar": 16,
+        "endBar": 28,
+        "startSeconds": 35.888,
+        "endSeconds": 62.804
       },
       {
         "kind": "hook",
-        "label": "Hook 3",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 28,
+        "endBar": 36,
+        "startSeconds": 62.804,
+        "endSeconds": 80.748
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 3",
         "bars": 8,
         "startBar": 36,
         "endBar": 44,
@@ -2098,8 +2071,8 @@
         "endSeconds": 98.692
       },
       {
-        "kind": "verse",
-        "label": "Verse 3",
+        "kind": "hook",
+        "label": "Hook 3",
         "bars": 8,
         "startBar": 44,
         "endBar": 52,
@@ -2107,8 +2080,8 @@
         "endSeconds": 116.636
       },
       {
-        "kind": "hook",
-        "label": "Hook 4",
+        "kind": "verse",
+        "label": "Verse 4",
         "bars": 8,
         "startBar": 52,
         "endBar": 60,
@@ -2116,8 +2089,8 @@
         "endSeconds": 134.579
       },
       {
-        "kind": "verse",
-        "label": "Verse 4",
+        "kind": "hook",
+        "label": "Hook 4",
         "bars": 8,
         "startBar": 60,
         "endBar": 68,
@@ -2218,7 +2191,7 @@
   },
   "AXZ-013": {
     "releaseRank": 30,
-    "form": "verse-first",
+    "form": "hook-first",
     "signature": "Little Rock bass-heavy half-time; negative-space kicks",
     "soundPalette": "dark bowed pad, sparse bell, warm brass punctuations",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -2227,35 +2200,44 @@
     "key": "F# minor",
     "sections": [
       {
-        "kind": "verse",
-        "label": "Verse 1",
-        "bars": 16,
-        "startBar": 0,
-        "endBar": 16,
-        "startSeconds": 0,
-        "endSeconds": 50.526
-      },
-      {
         "kind": "hook",
         "label": "Hook 1",
         "bars": 8,
-        "startBar": 16,
-        "endBar": 24,
-        "startSeconds": 50.526,
-        "endSeconds": 75.789
+        "startBar": 0,
+        "endBar": 8,
+        "startSeconds": 0,
+        "endSeconds": 25.263
       },
       {
         "kind": "verse",
-        "label": "Verse 2",
+        "label": "Verse 1",
         "bars": 16,
-        "startBar": 24,
-        "endBar": 40,
-        "startSeconds": 75.789,
-        "endSeconds": 126.316
+        "startBar": 8,
+        "endBar": 24,
+        "startSeconds": 25.263,
+        "endSeconds": 75.789
       },
       {
         "kind": "hook",
         "label": "Hook 2",
+        "bars": 4,
+        "startBar": 24,
+        "endBar": 28,
+        "startSeconds": 75.789,
+        "endSeconds": 88.421
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 28,
+        "endBar": 40,
+        "startSeconds": 88.421,
+        "endSeconds": 126.316
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
         "bars": 8,
         "startBar": 40,
         "endBar": 48,
@@ -2263,22 +2245,31 @@
         "endSeconds": 151.579
       },
       {
-        "kind": "outro",
-        "label": "Outro",
+        "kind": "bridge",
+        "label": "Bridge",
         "bars": 4,
         "startBar": 48,
         "endBar": 52,
         "startSeconds": 151.579,
         "endSeconds": 164.211
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 164.211,
+        "endSeconds": 176.842
       }
     ],
-    "totalBars": 52,
-    "durationSeconds": 164.211,
+    "totalBars": 56,
+    "durationSeconds": 176.842,
     "recordingVerified": false
   },
   "AXZ-065": {
     "releaseRank": 31,
-    "form": "short intro",
+    "form": "hook-first",
     "signature": "Louisville bell-led bounce; laid-back syncopation",
     "soundPalette": "anthemic brass synth, bright keyboard, plucked strings",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -2287,71 +2278,80 @@
     "key": "F minor",
     "sections": [
       {
-        "kind": "intro",
-        "label": "Intro",
-        "bars": 4,
-        "startBar": 0,
-        "endBar": 4,
-        "startSeconds": 0,
-        "endSeconds": 12.152
-      },
-      {
         "kind": "hook",
         "label": "Hook 1",
         "bars": 8,
-        "startBar": 4,
-        "endBar": 12,
-        "startSeconds": 12.152,
-        "endSeconds": 36.456
+        "startBar": 0,
+        "endBar": 8,
+        "startSeconds": 0,
+        "endSeconds": 24.304
       },
       {
         "kind": "verse",
         "label": "Verse 1",
-        "bars": 12,
-        "startBar": 12,
+        "bars": 16,
+        "startBar": 8,
         "endBar": 24,
-        "startSeconds": 36.456,
+        "startSeconds": 24.304,
         "endSeconds": 72.911
       },
       {
         "kind": "hook",
         "label": "Hook 2",
-        "bars": 8,
+        "bars": 4,
         "startBar": 24,
-        "endBar": 32,
+        "endBar": 28,
         "startSeconds": 72.911,
-        "endSeconds": 97.215
+        "endSeconds": 85.063
       },
       {
         "kind": "verse",
         "label": "Verse 2",
         "bars": 12,
-        "startBar": 32,
-        "endBar": 44,
-        "startSeconds": 97.215,
-        "endSeconds": 133.671
+        "startBar": 28,
+        "endBar": 40,
+        "startSeconds": 85.063,
+        "endSeconds": 121.519
       },
       {
         "kind": "hook",
         "label": "Hook 3",
         "bars": 8,
-        "startBar": 44,
+        "startBar": 40,
+        "endBar": 48,
+        "startSeconds": 121.519,
+        "endSeconds": 145.823
+      },
+      {
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
+        "startBar": 48,
         "endBar": 52,
-        "startSeconds": 133.671,
+        "startSeconds": 145.823,
         "endSeconds": 157.975
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 4",
+        "bars": 8,
+        "startBar": 52,
+        "endBar": 60,
+        "startSeconds": 157.975,
+        "endSeconds": 182.278
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 52,
-        "endBar": 56,
-        "startSeconds": 157.975,
-        "endSeconds": 170.127
+        "startBar": 60,
+        "endBar": 64,
+        "startSeconds": 182.278,
+        "endSeconds": 194.43
       }
     ],
-    "totalBars": 56,
-    "durationSeconds": 170.127,
+    "totalBars": 64,
+    "durationSeconds": 194.43,
     "recordingVerified": false
   },
   "AXZ-061": {
@@ -2376,19 +2376,19 @@
       {
         "kind": "verse",
         "label": "Verse 1",
-        "bars": 12,
+        "bars": 16,
         "startBar": 8,
-        "endBar": 20,
+        "endBar": 24,
         "startSeconds": 18.824,
-        "endSeconds": 47.059
+        "endSeconds": 56.471
       },
       {
         "kind": "hook",
         "label": "Hook 2",
-        "bars": 8,
-        "startBar": 20,
+        "bars": 4,
+        "startBar": 24,
         "endBar": 28,
-        "startSeconds": 47.059,
+        "startSeconds": 56.471,
         "endSeconds": 65.882
       },
       {
@@ -2410,22 +2410,58 @@
         "endSeconds": 112.941
       },
       {
-        "kind": "outro",
-        "label": "Outro",
+        "kind": "bridge",
+        "label": "Bridge",
         "bars": 4,
         "startBar": 48,
         "endBar": 52,
         "startSeconds": 112.941,
         "endSeconds": 122.353
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 4",
+        "bars": 8,
+        "startBar": 52,
+        "endBar": 60,
+        "startSeconds": 122.353,
+        "endSeconds": 141.176
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 3",
+        "bars": 8,
+        "startBar": 60,
+        "endBar": 68,
+        "startSeconds": 141.176,
+        "endSeconds": 160
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 5",
+        "bars": 8,
+        "startBar": 68,
+        "endBar": 76,
+        "startSeconds": 160,
+        "endSeconds": 178.824
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 76,
+        "endBar": 80,
+        "startSeconds": 178.824,
+        "endSeconds": 188.235
       }
     ],
-    "totalBars": 52,
-    "durationSeconds": 122.353,
+    "totalBars": 80,
+    "durationSeconds": 188.235,
     "recordingVerified": false
   },
   "AXZ-105": {
     "releaseRank": 33,
-    "form": "short intro",
+    "form": "verse-first",
     "signature": "Omaha melodic Midwest hip-hop; open vocal pockets",
     "soundPalette": "hollow piano, low cello pad, percussive string pluck",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -2434,67 +2470,67 @@
     "key": "D minor",
     "sections": [
       {
-        "kind": "intro",
-        "label": "Intro",
-        "bars": 4,
-        "startBar": 0,
-        "endBar": 4,
-        "startSeconds": 0,
-        "endSeconds": 10.213
-      },
-      {
         "kind": "verse",
         "label": "Verse 1",
         "bars": 16,
-        "startBar": 4,
-        "endBar": 20,
-        "startSeconds": 10.213,
-        "endSeconds": 51.064
+        "startBar": 0,
+        "endBar": 16,
+        "startSeconds": 0,
+        "endSeconds": 40.851
       },
       {
         "kind": "hook",
         "label": "Hook 1",
         "bars": 8,
-        "startBar": 20,
-        "endBar": 28,
-        "startSeconds": 51.064,
-        "endSeconds": 71.489
+        "startBar": 16,
+        "endBar": 24,
+        "startSeconds": 40.851,
+        "endSeconds": 61.277
       },
       {
         "kind": "verse",
         "label": "Verse 2",
-        "bars": 16,
-        "startBar": 28,
-        "endBar": 44,
-        "startSeconds": 71.489,
-        "endSeconds": 112.34
+        "bars": 12,
+        "startBar": 24,
+        "endBar": 36,
+        "startSeconds": 61.277,
+        "endSeconds": 91.915
       },
       {
         "kind": "hook",
         "label": "Hook 2",
-        "bars": 8,
-        "startBar": 44,
-        "endBar": 52,
-        "startSeconds": 112.34,
-        "endSeconds": 132.766
+        "bars": 4,
+        "startBar": 36,
+        "endBar": 40,
+        "startSeconds": 91.915,
+        "endSeconds": 102.128
+      },
+      {
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
+        "startBar": 40,
+        "endBar": 44,
+        "startSeconds": 102.128,
+        "endSeconds": 112.34
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 52,
-        "endBar": 56,
-        "startSeconds": 132.766,
-        "endSeconds": 142.979
+        "startBar": 44,
+        "endBar": 48,
+        "startSeconds": 112.34,
+        "endSeconds": 122.553
       }
     ],
-    "totalBars": 56,
-    "durationSeconds": 142.979,
+    "totalBars": 48,
+    "durationSeconds": 122.553,
     "recordingVerified": false
   },
   "AXZ-057": {
     "releaseRank": 34,
-    "form": "short intro",
+    "form": "hook-first",
     "signature": "Des Moines understated head-nod; snare ghost notes",
     "soundPalette": "subtle electric piano, glass marimba, organ swells",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -2503,71 +2539,98 @@
     "key": "B minor",
     "sections": [
       {
-        "kind": "intro",
-        "label": "Intro",
-        "bars": 2,
-        "startBar": 0,
-        "endBar": 2,
-        "startSeconds": 0,
-        "endSeconds": 5.647
-      },
-      {
         "kind": "hook",
         "label": "Hook 1",
         "bars": 8,
-        "startBar": 2,
-        "endBar": 10,
-        "startSeconds": 5.647,
-        "endSeconds": 28.235
+        "startBar": 0,
+        "endBar": 8,
+        "startSeconds": 0,
+        "endSeconds": 22.588
       },
       {
         "kind": "verse",
         "label": "Verse 1",
-        "bars": 16,
-        "startBar": 10,
-        "endBar": 26,
-        "startSeconds": 28.235,
-        "endSeconds": 73.412
+        "bars": 12,
+        "startBar": 8,
+        "endBar": 20,
+        "startSeconds": 22.588,
+        "endSeconds": 56.471
       },
       {
         "kind": "hook",
         "label": "Hook 2",
-        "bars": 8,
-        "startBar": 26,
-        "endBar": 34,
-        "startSeconds": 73.412,
-        "endSeconds": 96
+        "bars": 4,
+        "startBar": 20,
+        "endBar": 24,
+        "startSeconds": 56.471,
+        "endSeconds": 67.765
       },
       {
         "kind": "verse",
         "label": "Verse 2",
-        "bars": 16,
-        "startBar": 34,
-        "endBar": 50,
-        "startSeconds": 96,
-        "endSeconds": 141.176
+        "bars": 12,
+        "startBar": 24,
+        "endBar": 36,
+        "startSeconds": 67.765,
+        "endSeconds": 101.647
       },
       {
         "kind": "hook",
         "label": "Hook 3",
         "bars": 8,
-        "startBar": 50,
-        "endBar": 58,
-        "startSeconds": 141.176,
-        "endSeconds": 163.765
+        "startBar": 36,
+        "endBar": 44,
+        "startSeconds": 101.647,
+        "endSeconds": 124.235
+      },
+      {
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
+        "startBar": 44,
+        "endBar": 48,
+        "startSeconds": 124.235,
+        "endSeconds": 135.529
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 4",
+        "bars": 8,
+        "startBar": 48,
+        "endBar": 56,
+        "startSeconds": 135.529,
+        "endSeconds": 158.118
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 3",
+        "bars": 8,
+        "startBar": 56,
+        "endBar": 64,
+        "startSeconds": 158.118,
+        "endSeconds": 180.706
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 5",
+        "bars": 8,
+        "startBar": 64,
+        "endBar": 72,
+        "startSeconds": 180.706,
+        "endSeconds": 203.294
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 58,
-        "endBar": 62,
-        "startSeconds": 163.765,
-        "endSeconds": 175.059
+        "startBar": 72,
+        "endBar": 76,
+        "startSeconds": 203.294,
+        "endSeconds": 214.588
       }
     ],
-    "totalBars": 62,
-    "durationSeconds": 175.059,
+    "totalBars": 76,
+    "durationSeconds": 214.588,
     "recordingVerified": false
   },
   "AXZ-025": {
@@ -2632,7 +2695,7 @@
   },
   "AXZ-029": {
     "releaseRank": 36,
-    "form": "short intro",
+    "form": "verse-first",
     "signature": "Wilmington punchy East Coast pocket; snare pivots",
     "soundPalette": "bright brass synth, rhythmic piano, string pad",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -2641,76 +2704,67 @@
     "key": "D major",
     "sections": [
       {
-        "kind": "intro",
-        "label": "Intro",
-        "bars": 4,
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
         "startBar": 0,
-        "endBar": 4,
+        "endBar": 12,
         "startSeconds": 0,
-        "endSeconds": 9.697
+        "endSeconds": 29.091
       },
       {
         "kind": "hook",
         "label": "Hook 1",
         "bars": 8,
-        "startBar": 4,
-        "endBar": 12,
-        "startSeconds": 9.697,
-        "endSeconds": 29.091
-      },
-      {
-        "kind": "verse",
-        "label": "Verse 1",
-        "bars": 12,
         "startBar": 12,
-        "endBar": 24,
+        "endBar": 20,
         "startSeconds": 29.091,
-        "endSeconds": 58.182
+        "endSeconds": 48.485
       },
       {
         "kind": "hook",
         "label": "Hook 2",
         "bars": 8,
-        "startBar": 24,
-        "endBar": 32,
-        "startSeconds": 58.182,
-        "endSeconds": 77.576
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 48.485,
+        "endSeconds": 67.879
       },
       {
         "kind": "verse",
         "label": "Verse 2",
         "bars": 12,
-        "startBar": 32,
-        "endBar": 44,
-        "startSeconds": 77.576,
-        "endSeconds": 106.667
+        "startBar": 28,
+        "endBar": 40,
+        "startSeconds": 67.879,
+        "endSeconds": 96.97
       },
       {
         "kind": "hook",
         "label": "Hook 3",
         "bars": 8,
-        "startBar": 44,
-        "endBar": 52,
-        "startSeconds": 106.667,
-        "endSeconds": 126.061
+        "startBar": 40,
+        "endBar": 48,
+        "startSeconds": 96.97,
+        "endSeconds": 116.364
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 52,
-        "endBar": 56,
-        "startSeconds": 126.061,
-        "endSeconds": 135.758
+        "startBar": 48,
+        "endBar": 52,
+        "startSeconds": 116.364,
+        "endSeconds": 126.061
       }
     ],
-    "totalBars": 56,
-    "durationSeconds": 135.758,
+    "totalBars": 52,
+    "durationSeconds": 126.061,
     "recordingVerified": false
   },
   "AXZ-189": {
     "releaseRank": 37,
-    "form": "short intro",
+    "form": "hook-first",
     "signature": "Charleston WV Appalachian cinematic rap; textured percussion",
     "soundPalette": "resonant mallet, cinematic strings, synth organ",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -2719,62 +2773,98 @@
     "key": "A minor",
     "sections": [
       {
-        "kind": "intro",
-        "label": "Intro",
-        "bars": 4,
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
         "startBar": 0,
-        "endBar": 4,
+        "endBar": 8,
         "startSeconds": 0,
-        "endSeconds": 11.852
+        "endSeconds": 23.704
       },
       {
         "kind": "verse",
         "label": "Verse 1",
-        "bars": 16,
-        "startBar": 4,
-        "endBar": 20,
-        "startSeconds": 11.852,
-        "endSeconds": 59.259
-      },
-      {
-        "kind": "hook",
-        "label": "Hook 1",
-        "bars": 8,
-        "startBar": 20,
-        "endBar": 28,
-        "startSeconds": 59.259,
-        "endSeconds": 82.963
-      },
-      {
-        "kind": "verse",
-        "label": "Verse 2",
-        "bars": 16,
-        "startBar": 28,
-        "endBar": 44,
-        "startSeconds": 82.963,
-        "endSeconds": 130.37
+        "bars": 24,
+        "startBar": 8,
+        "endBar": 32,
+        "startSeconds": 23.704,
+        "endSeconds": 94.815
       },
       {
         "kind": "hook",
         "label": "Hook 2",
+        "bars": 4,
+        "startBar": 32,
+        "endBar": 36,
+        "startSeconds": 94.815,
+        "endSeconds": 106.667
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 36,
+        "endBar": 48,
+        "startSeconds": 106.667,
+        "endSeconds": 142.222
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
         "bars": 8,
-        "startBar": 44,
-        "endBar": 52,
-        "startSeconds": 130.37,
-        "endSeconds": 154.074
+        "startBar": 48,
+        "endBar": 56,
+        "startSeconds": 142.222,
+        "endSeconds": 165.926
+      },
+      {
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
+        "startBar": 56,
+        "endBar": 60,
+        "startSeconds": 165.926,
+        "endSeconds": 177.778
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 4",
+        "bars": 8,
+        "startBar": 60,
+        "endBar": 68,
+        "startSeconds": 177.778,
+        "endSeconds": 201.481
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 3",
+        "bars": 8,
+        "startBar": 68,
+        "endBar": 76,
+        "startSeconds": 201.481,
+        "endSeconds": 225.185
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 5",
+        "bars": 8,
+        "startBar": 76,
+        "endBar": 84,
+        "startSeconds": 225.185,
+        "endSeconds": 248.889
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 52,
-        "endBar": 56,
-        "startSeconds": 154.074,
-        "endSeconds": 165.926
+        "startBar": 84,
+        "endBar": 88,
+        "startSeconds": 248.889,
+        "endSeconds": 260.741
       }
     ],
-    "totalBars": 56,
-    "durationSeconds": 165.926,
+    "totalBars": 88,
+    "durationSeconds": 260.741,
     "recordingVerified": false
   },
   "AXZ-173": {
@@ -3042,47 +3132,47 @@
       {
         "kind": "hook",
         "label": "Hook 2",
-        "bars": 8,
+        "bars": 4,
         "startBar": 22,
-        "endBar": 30,
+        "endBar": 26,
         "startSeconds": 55,
-        "endSeconds": 75
+        "endSeconds": 65
       },
       {
         "kind": "verse",
         "label": "Verse 2",
         "bars": 12,
-        "startBar": 30,
-        "endBar": 42,
-        "startSeconds": 75,
-        "endSeconds": 105
+        "startBar": 26,
+        "endBar": 38,
+        "startSeconds": 65,
+        "endSeconds": 95
       },
       {
         "kind": "hook",
         "label": "Hook 3",
         "bars": 8,
-        "startBar": 42,
-        "endBar": 50,
-        "startSeconds": 105,
-        "endSeconds": 125
+        "startBar": 38,
+        "endBar": 46,
+        "startSeconds": 95,
+        "endSeconds": 115
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 50,
-        "endBar": 54,
-        "startSeconds": 125,
-        "endSeconds": 135
+        "startBar": 46,
+        "endBar": 50,
+        "startSeconds": 115,
+        "endSeconds": 125
       }
     ],
-    "totalBars": 54,
-    "durationSeconds": 135,
+    "totalBars": 50,
+    "durationSeconds": 125,
     "recordingVerified": false
   },
   "AXZ-005": {
     "releaseRank": 42,
-    "form": "short intro",
+    "form": "verse-first",
     "signature": "Anchorage sparse arctic ambient rap; sub-focused kick",
     "soundPalette": "submerged organ, icy soundscape, slow flute synth",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -3091,44 +3181,53 @@
     "key": "A major",
     "sections": [
       {
-        "kind": "intro",
-        "label": "Intro",
-        "bars": 4,
-        "startBar": 0,
-        "endBar": 4,
-        "startSeconds": 0,
-        "endSeconds": 13.714
-      },
-      {
         "kind": "verse",
         "label": "Verse 1",
         "bars": 16,
-        "startBar": 4,
-        "endBar": 20,
-        "startSeconds": 13.714,
-        "endSeconds": 68.571
+        "startBar": 0,
+        "endBar": 16,
+        "startSeconds": 0,
+        "endSeconds": 54.857
       },
       {
         "kind": "hook",
         "label": "Hook 1",
         "bars": 8,
-        "startBar": 20,
-        "endBar": 28,
-        "startSeconds": 68.571,
-        "endSeconds": 96
+        "startBar": 16,
+        "endBar": 24,
+        "startSeconds": 54.857,
+        "endSeconds": 82.286
       },
       {
         "kind": "verse",
         "label": "Verse 2",
-        "bars": 16,
-        "startBar": 28,
-        "endBar": 44,
-        "startSeconds": 96,
-        "endSeconds": 150.857
+        "bars": 12,
+        "startBar": 24,
+        "endBar": 36,
+        "startSeconds": 82.286,
+        "endSeconds": 123.429
       },
       {
         "kind": "hook",
         "label": "Hook 2",
+        "bars": 4,
+        "startBar": 36,
+        "endBar": 40,
+        "startSeconds": 123.429,
+        "endSeconds": 137.143
+      },
+      {
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
+        "startBar": 40,
+        "endBar": 44,
+        "startSeconds": 137.143,
+        "endSeconds": 150.857
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
         "bars": 8,
         "startBar": 44,
         "endBar": 52,
@@ -3151,7 +3250,7 @@
   },
   "AXZ-073": {
     "releaseRank": 43,
-    "form": "short intro",
+    "form": "hook-first",
     "signature": "Portland Maine gritty East Coast slow-roll; brushed snare",
     "soundPalette": "dusty Rhodes, guitar harmonic, airy pad",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -3160,44 +3259,62 @@
     "key": "C# minor",
     "sections": [
       {
-        "kind": "intro",
-        "label": "Intro",
-        "bars": 4,
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
         "startBar": 0,
-        "endBar": 4,
+        "endBar": 8,
         "startSeconds": 0,
-        "endSeconds": 12.308
+        "endSeconds": 24.615
       },
       {
         "kind": "verse",
         "label": "Verse 1",
-        "bars": 16,
-        "startBar": 4,
-        "endBar": 20,
-        "startSeconds": 12.308,
-        "endSeconds": 61.538
-      },
-      {
-        "kind": "hook",
-        "label": "Hook 1",
         "bars": 8,
-        "startBar": 20,
-        "endBar": 28,
-        "startSeconds": 61.538,
-        "endSeconds": 86.154
-      },
-      {
-        "kind": "verse",
-        "label": "Verse 2",
-        "bars": 16,
-        "startBar": 28,
-        "endBar": 44,
-        "startSeconds": 86.154,
-        "endSeconds": 135.385
+        "startBar": 8,
+        "endBar": 16,
+        "startSeconds": 24.615,
+        "endSeconds": 49.231
       },
       {
         "kind": "hook",
         "label": "Hook 2",
+        "bars": 4,
+        "startBar": 16,
+        "endBar": 20,
+        "startSeconds": 49.231,
+        "endSeconds": 61.538
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 20,
+        "endBar": 32,
+        "startSeconds": 61.538,
+        "endSeconds": 98.462
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 32,
+        "endBar": 40,
+        "startSeconds": 98.462,
+        "endSeconds": 123.077
+      },
+      {
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
+        "startBar": 40,
+        "endBar": 44,
+        "startSeconds": 123.077,
+        "endSeconds": 135.385
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 4",
         "bars": 8,
         "startBar": 44,
         "endBar": 52,
@@ -3205,17 +3322,35 @@
         "endSeconds": 160
       },
       {
+        "kind": "verse",
+        "label": "Verse 3",
+        "bars": 8,
+        "startBar": 52,
+        "endBar": 60,
+        "startSeconds": 160,
+        "endSeconds": 184.615
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 5",
+        "bars": 8,
+        "startBar": 60,
+        "endBar": 68,
+        "startSeconds": 184.615,
+        "endSeconds": 209.231
+      },
+      {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 52,
-        "endBar": 56,
-        "startSeconds": 160,
-        "endSeconds": 172.308
+        "startBar": 68,
+        "endBar": 72,
+        "startSeconds": 209.231,
+        "endSeconds": 221.538
       }
     ],
-    "totalBars": 56,
-    "durationSeconds": 172.308,
+    "totalBars": 72,
+    "durationSeconds": 221.538,
     "recordingVerified": false
   },
   "AXZ-101": {
@@ -3240,19 +3375,19 @@
       {
         "kind": "verse",
         "label": "Verse 1",
-        "bars": 12,
+        "bars": 16,
         "startBar": 8,
-        "endBar": 20,
+        "endBar": 24,
         "startSeconds": 22.326,
-        "endSeconds": 55.814
+        "endSeconds": 66.977
       },
       {
         "kind": "hook",
         "label": "Hook 2",
-        "bars": 8,
-        "startBar": 20,
+        "bars": 4,
+        "startBar": 24,
         "endBar": 28,
-        "startSeconds": 55.814,
+        "startSeconds": 66.977,
         "endSeconds": 78.14
       },
       {
@@ -3274,22 +3409,67 @@
         "endSeconds": 133.953
       },
       {
-        "kind": "outro",
-        "label": "Outro",
+        "kind": "bridge",
+        "label": "Bridge",
         "bars": 4,
         "startBar": 48,
         "endBar": 52,
         "startSeconds": 133.953,
         "endSeconds": 145.116
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 4",
+        "bars": 8,
+        "startBar": 52,
+        "endBar": 60,
+        "startSeconds": 145.116,
+        "endSeconds": 167.442
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 3",
+        "bars": 8,
+        "startBar": 60,
+        "endBar": 68,
+        "startSeconds": 167.442,
+        "endSeconds": 189.767
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 5",
+        "bars": 8,
+        "startBar": 68,
+        "endBar": 76,
+        "startSeconds": 189.767,
+        "endSeconds": 212.093
+      },
+      {
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
+        "startBar": 76,
+        "endBar": 80,
+        "startSeconds": 212.093,
+        "endSeconds": 223.256
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 80,
+        "endBar": 84,
+        "startSeconds": 223.256,
+        "endSeconds": 234.419
       }
     ],
-    "totalBars": 52,
-    "durationSeconds": 145.116,
+    "totalBars": 84,
+    "durationSeconds": 234.419,
     "recordingVerified": false
   },
   "AXZ-133": {
     "releaseRank": 45,
-    "form": "short intro",
+    "form": "verse-first",
     "signature": "Fargo cold minimalist trap; short transient percussion",
     "soundPalette": "bell harmonic, hollow FM keys, atmospheric strings",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -3298,71 +3478,62 @@
     "key": "A major",
     "sections": [
       {
-        "kind": "intro",
-        "label": "Intro",
-        "bars": 4,
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
         "startBar": 0,
-        "endBar": 4,
+        "endBar": 12,
         "startSeconds": 0,
-        "endSeconds": 11.707
+        "endSeconds": 35.122
       },
       {
         "kind": "hook",
         "label": "Hook 1",
         "bars": 8,
-        "startBar": 4,
-        "endBar": 12,
-        "startSeconds": 11.707,
-        "endSeconds": 35.122
-      },
-      {
-        "kind": "verse",
-        "label": "Verse 1",
-        "bars": 12,
         "startBar": 12,
-        "endBar": 24,
+        "endBar": 20,
         "startSeconds": 35.122,
-        "endSeconds": 70.244
+        "endSeconds": 58.537
       },
       {
         "kind": "hook",
         "label": "Hook 2",
-        "bars": 8,
-        "startBar": 24,
-        "endBar": 32,
-        "startSeconds": 70.244,
-        "endSeconds": 93.659
+        "bars": 4,
+        "startBar": 20,
+        "endBar": 24,
+        "startSeconds": 58.537,
+        "endSeconds": 70.244
       },
       {
         "kind": "verse",
         "label": "Verse 2",
         "bars": 12,
-        "startBar": 32,
-        "endBar": 44,
-        "startSeconds": 93.659,
-        "endSeconds": 128.78
+        "startBar": 24,
+        "endBar": 36,
+        "startSeconds": 70.244,
+        "endSeconds": 105.366
       },
       {
         "kind": "hook",
         "label": "Hook 3",
         "bars": 8,
-        "startBar": 44,
-        "endBar": 52,
-        "startSeconds": 128.78,
-        "endSeconds": 152.195
+        "startBar": 36,
+        "endBar": 44,
+        "startSeconds": 105.366,
+        "endSeconds": 128.78
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 52,
-        "endBar": 56,
-        "startSeconds": 152.195,
-        "endSeconds": 163.902
+        "startBar": 44,
+        "endBar": 48,
+        "startSeconds": 128.78,
+        "endSeconds": 140.488
       }
     ],
-    "totalBars": 56,
-    "durationSeconds": 163.902,
+    "totalBars": 48,
+    "durationSeconds": 140.488,
     "recordingVerified": false
   },
   "AXZ-161": {
@@ -3474,47 +3645,47 @@
       {
         "kind": "hook",
         "label": "Hook 2",
-        "bars": 8,
+        "bars": 4,
         "startBar": 24,
-        "endBar": 32,
+        "endBar": 28,
         "startSeconds": 68.571,
-        "endSeconds": 91.429
+        "endSeconds": 80
       },
       {
         "kind": "verse",
         "label": "Verse 2",
         "bars": 12,
-        "startBar": 32,
-        "endBar": 44,
-        "startSeconds": 91.429,
-        "endSeconds": 125.714
+        "startBar": 28,
+        "endBar": 40,
+        "startSeconds": 80,
+        "endSeconds": 114.286
       },
       {
         "kind": "hook",
         "label": "Hook 3",
         "bars": 8,
-        "startBar": 44,
-        "endBar": 52,
-        "startSeconds": 125.714,
-        "endSeconds": 148.571
+        "startBar": 40,
+        "endBar": 48,
+        "startSeconds": 114.286,
+        "endSeconds": 137.143
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 52,
-        "endBar": 56,
-        "startSeconds": 148.571,
-        "endSeconds": 160
+        "startBar": 48,
+        "endBar": 52,
+        "startSeconds": 137.143,
+        "endSeconds": 148.571
       }
     ],
-    "totalBars": 56,
-    "durationSeconds": 160,
+    "totalBars": 52,
+    "durationSeconds": 148.571,
     "recordingVerified": false
   },
   "AXZ-177": {
     "releaseRank": 48,
-    "form": "short intro",
+    "form": "verse-first",
     "signature": "Burlington melodic boom-bap; jazzy rim break",
     "soundPalette": "jazz-leaning electric piano, organ, plucked string",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -3523,44 +3694,53 @@
     "key": "E major",
     "sections": [
       {
-        "kind": "intro",
-        "label": "Intro",
-        "bars": 4,
-        "startBar": 0,
-        "endBar": 4,
-        "startSeconds": 0,
-        "endSeconds": 11.707
-      },
-      {
         "kind": "verse",
         "label": "Verse 1",
         "bars": 16,
-        "startBar": 4,
-        "endBar": 20,
-        "startSeconds": 11.707,
-        "endSeconds": 58.537
+        "startBar": 0,
+        "endBar": 16,
+        "startSeconds": 0,
+        "endSeconds": 46.829
       },
       {
         "kind": "hook",
         "label": "Hook 1",
         "bars": 8,
-        "startBar": 20,
-        "endBar": 28,
-        "startSeconds": 58.537,
-        "endSeconds": 81.951
+        "startBar": 16,
+        "endBar": 24,
+        "startSeconds": 46.829,
+        "endSeconds": 70.244
       },
       {
         "kind": "verse",
         "label": "Verse 2",
-        "bars": 16,
-        "startBar": 28,
-        "endBar": 44,
-        "startSeconds": 81.951,
-        "endSeconds": 128.78
+        "bars": 12,
+        "startBar": 24,
+        "endBar": 36,
+        "startSeconds": 70.244,
+        "endSeconds": 105.366
       },
       {
         "kind": "hook",
         "label": "Hook 2",
+        "bars": 4,
+        "startBar": 36,
+        "endBar": 40,
+        "startSeconds": 105.366,
+        "endSeconds": 117.073
+      },
+      {
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
+        "startBar": 40,
+        "endBar": 44,
+        "startSeconds": 117.073,
+        "endSeconds": 128.78
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
         "bars": 8,
         "startBar": 44,
         "endBar": 52,
@@ -3568,22 +3748,40 @@
         "endSeconds": 152.195
       },
       {
+        "kind": "verse",
+        "label": "Verse 3",
+        "bars": 8,
+        "startBar": 52,
+        "endBar": 60,
+        "startSeconds": 152.195,
+        "endSeconds": 175.61
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 4",
+        "bars": 8,
+        "startBar": 60,
+        "endBar": 68,
+        "startSeconds": 175.61,
+        "endSeconds": 199.024
+      },
+      {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 52,
-        "endBar": 56,
-        "startSeconds": 152.195,
-        "endSeconds": 163.902
+        "startBar": 68,
+        "endBar": 72,
+        "startSeconds": 199.024,
+        "endSeconds": 210.732
       }
     ],
-    "totalBars": 56,
-    "durationSeconds": 163.902,
+    "totalBars": 72,
+    "durationSeconds": 210.732,
     "recordingVerified": false
   },
   "AXZ-113": {
     "releaseRank": 49,
-    "form": "short intro",
+    "form": "hook-first",
     "signature": "Manchester granite-heavy East Coast rap; dry snare",
     "soundPalette": "dark chord organ, piano stabs, metallic synth",
     "arrangementStatus": "proposed_not_audio_verified",
@@ -3592,62 +3790,107 @@
     "key": "E major",
     "sections": [
       {
-        "kind": "intro",
-        "label": "Intro",
-        "bars": 2,
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
         "startBar": 0,
-        "endBar": 2,
+        "endBar": 8,
         "startSeconds": 0,
-        "endSeconds": 5.581
+        "endSeconds": 22.326
       },
       {
         "kind": "verse",
         "label": "Verse 1",
-        "bars": 12,
-        "startBar": 2,
-        "endBar": 14,
-        "startSeconds": 5.581,
-        "endSeconds": 39.07
+        "bars": 20,
+        "startBar": 8,
+        "endBar": 28,
+        "startSeconds": 22.326,
+        "endSeconds": 78.14
       },
       {
         "kind": "hook",
-        "label": "Hook 1",
-        "bars": 8,
-        "startBar": 14,
-        "endBar": 22,
-        "startSeconds": 39.07,
-        "endSeconds": 61.395
+        "label": "Hook 2",
+        "bars": 4,
+        "startBar": 28,
+        "endBar": 32,
+        "startSeconds": 78.14,
+        "endSeconds": 89.302
       },
       {
         "kind": "verse",
         "label": "Verse 2",
         "bars": 12,
-        "startBar": 22,
-        "endBar": 34,
-        "startSeconds": 61.395,
-        "endSeconds": 94.884
+        "startBar": 32,
+        "endBar": 44,
+        "startSeconds": 89.302,
+        "endSeconds": 122.791
       },
       {
         "kind": "hook",
-        "label": "Hook 2",
+        "label": "Hook 3",
         "bars": 8,
-        "startBar": 34,
-        "endBar": 42,
-        "startSeconds": 94.884,
-        "endSeconds": 117.209
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 122.791,
+        "endSeconds": 145.116
+      },
+      {
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 145.116,
+        "endSeconds": 156.279
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 4",
+        "bars": 8,
+        "startBar": 56,
+        "endBar": 64,
+        "startSeconds": 156.279,
+        "endSeconds": 178.605
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 3",
+        "bars": 8,
+        "startBar": 64,
+        "endBar": 72,
+        "startSeconds": 178.605,
+        "endSeconds": 200.93
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 5",
+        "bars": 8,
+        "startBar": 72,
+        "endBar": 80,
+        "startSeconds": 200.93,
+        "endSeconds": 223.256
+      },
+      {
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
+        "startBar": 80,
+        "endBar": 84,
+        "startSeconds": 223.256,
+        "endSeconds": 234.419
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 42,
-        "endBar": 46,
-        "startSeconds": 117.209,
-        "endSeconds": 128.372
+        "startBar": 84,
+        "endBar": 88,
+        "startSeconds": 234.419,
+        "endSeconds": 245.581
       }
     ],
-    "totalBars": 46,
-    "durationSeconds": 128.372,
+    "totalBars": 88,
+    "durationSeconds": 245.581,
     "recordingVerified": false
   },
   "AXZ-153": {
