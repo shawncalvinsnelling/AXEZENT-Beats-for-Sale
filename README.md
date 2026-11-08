@@ -2,7 +2,7 @@
 
 ![AXEZENT Beats and Instrumentals](assets/axezent-brand-banner.svg)
 
-# BEATS & INSTRUMENTALS FOR SALE
+# AXEZENT BEATS FOR SALE
 
 **Find Your Sound. Make Your Next Hit.**
 
@@ -10,18 +10,18 @@
 
 *Produced by AXEZENT*
 
-<!-- PLAYER_LINK_START -->
+## Independent website — GitHub Pages setup
 
-## [▶ OPEN AXEZENT BEATS FOR SALE](https://axezent-beats-private-vault.axezent.chatgpt.site)
+**Public artist showcase address (after Pages is enabled):**
 
-**The first 50 beats · $100 full-ownership offer**
+`https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/`
 
-Click the link above to open the standalone music website.
+**[Enable GitHub Pages for this repository](https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale/settings/pages)** · [Read the step-by-step instructions](docs/GITHUB_PAGES_SHOWCASE.md)
 
-Play · Pause · Stop · Seek · Repeat · Exit
+GitHub Pages currently needs a one-time activation by the repository owner. It hosts a noncommercial artist showcase; no ChatGPT sign-in is needed. The link is **not live until Pages has been enabled and its deployment has succeeded**.
 
-**Private prototype — owner-only access. ChatGPT sign-in is required.**
+The full $100 exclusive beat-selling website remains in this repository. Its private audio-preview server and purchase process must be hosted separately from GitHub Pages, under a public HTTPS address, before accepting customers.
 
-<!-- PLAYER_LINK_END -->
+**No preview file or master recording is published here until approved.**
 
 </div>
