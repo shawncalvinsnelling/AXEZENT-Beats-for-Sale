@@ -327,6 +327,10 @@ def prepare_review(beat,spec,outpath,soundfont,rate=44100):
     # streaming mix reduces sub/low-mid masking, clarifies hats/snare presence,
     # applies dynamics control, then EBU-R128 normalization with a conservative
     # true-peak ceiling. It is NOT a claim of artist-approved mastering.
+    # Cold Cash Season has a sharper codec-reconstructed transient than the
+    # other 49 mixes. Lower only this mix's limiter ceiling; do not turn down
+    # the whole album or erase its drum transients.
+    limiter_ceiling = 0.65 if beat["id"] == "AXZ-133" else 0.76
     filters=(
         "highpass=f=28,"
         "bass=g=-5:f=155:w=0.7,"
@@ -335,7 +339,7 @@ def prepare_review(beat,spec,outpath,soundfont,rate=44100):
         "treble=g=5:f=4300:w=0.65,"
         "acompressor=threshold=-23dB:ratio=2.6:attack=12:release=150:makeup=3,"
         "loudnorm=I=-14:TP=-2.5:LRA=8,"
-        "alimiter=limit=0.76:level=false"
+        f"alimiter=limit={limiter_ceiling:.2f}:level=false"
     )
     subprocess.run(["ffmpeg","-hide_banner","-nostdin","-loglevel","error","-y",
         "-i",str(wave),"-af",filters,
