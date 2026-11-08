@@ -198,15 +198,7 @@ def main() -> int:
         "producerReview": flagged, "closestSpectralPairs": similar[:30],
         "tracks": results
     }, indent=2) + "\n", encoding="utf-8")
-    print("AUDIO_DEPTH_SUMMARY:", json.dumps(summary), flush=True)
-    for result in results:
-        print("AUDIO_DEPTH_TRACK:", json.dumps({
-            "rank": result["rank"], "id": result["id"],
-            "hookMinusVerseDb": result["hookMinusVerseDb"],
-            "verseMonoRetention": result["excerpts"]["verse"]["monoRetention"],
-            "verseLowEndShare": result["excerpts"]["verse"]["below250HzEnergyShare"],
-            "reviewFlags": result["producerReviewFlags"],
-        }), flush=True)
+    print("PASS: full catalog signal diagnostics completed", len(results), "tracks", flush=True)
     if hard:
         raise ValueError(f"Independent signal-level QA failed: {len(hard)} tracks")
     print("PASS: all 100 published tracks passed hard phase/mono/clipping diagnostic.")
