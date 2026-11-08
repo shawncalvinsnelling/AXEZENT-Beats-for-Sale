@@ -1,0 +1,32 @@
+name: AXEZENT live website first-impression and Facebook preview audit
+on:
+  workflow_run:
+    workflows: ['Deploy AXEZENT artist showcase to GitHub Pages']
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  live-launch-audit:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium for desktop and mobile viewport audits
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Check customer site, metadata, 50 buttons and mobile overflow
+        run: node tests/launch_first_impression.mjs
+      - name: Save desktop/mobile screenshots and checked metrics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: AXEZENT-LIVE-LAUNCH-VISUAL-REPORT
+          path: launch-qa/
+          if-no-files-found: warn
+          retention-days: 30
