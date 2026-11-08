@@ -20,9 +20,14 @@
     return n;
   };
   const previewReady = b => {
-    if (typeof b.previewUrl !== "string" || !b.previewUrl.startsWith("https://")) return false;
-    try { const url = new URL(b.previewUrl); return url.protocol === "https:" && !url.username && !url.password; }
-    catch { return false; }
+    if (typeof b.previewUrl !== "string") return false;
+    try {
+      const url = new URL(b.previewUrl, document.baseURI);
+      const siteBase = new URL("./previews/", document.baseURI);
+      return url.protocol === "https:" && url.origin === siteBase.origin &&
+        url.pathname.startsWith(siteBase.pathname) &&
+        /^AXZ-\d{3}-sample\.mp3$/.test(url.pathname.slice(siteBase.pathname.length));
+    } catch { return false; }
   };
   const elAppend = (parent, ...nodes) => { nodes.forEach(n => parent.appendChild(n)); return parent; };
   const trackCard = (beat) => {
@@ -101,7 +106,7 @@
       await player.play();
       setPlayerStatus("Now playing");
     } catch(err) {
-      setPlayerStatus("Audio is unavailable. Check the preview server and try again.");
+      setPlayerStatus("This preview could not play. Try again or refresh the page.");
     }
   }
   function openPlayer(beat) {
