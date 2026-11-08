@@ -2,7 +2,7 @@
 
 **Live public showcase**: https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/
 
-**Deployment verified**: https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale/actions/runs/42438813265
+**Deployment verified**: https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale/actions/runs/42442178502
 
 **50-file live HTTPS check passed**: https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale/actions/runs/42439024120
 
@@ -12,11 +12,26 @@ All 50 featured songs have individually curated, deterministic, track-ID-linked 
 
 The Details popup fetches these 50 plans and displays per-track section timings. The main homepage has been updated to refer to the customer's next **song** rather than next record.
 
+## November 7 sound and browser playback repair
+
+The 50 V2 full-length review tracks were measured independently at an average **-33.7 LUFS**, with the quietest at **-37.5 LUFS**. This explains why some beats were barely audible even though the original JavaScript player worked. Many files were also heavily weighted toward bass below 250 Hz, masking the upper musical detail.
+
+Version 3 was rebuilt from the same song arrangements with 44.1-kHz sampled-instrument rendering, conservative bass/low-mid attenuation, carefully balanced presence, dynamics control, integrated loudness correction and a protective peak limit. **Objective, independent verification of all 50 newly rendered MP3s** passed: average **-15.78 LUFS**, minimum **-18.6 LUFS**, maximum **-14.0 LUFS**, maximum detected true peak **-0.9 dBFS**, all stereo at 44.1 kHz with no failed checks.
+
+- [Corrected deployment](https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale/actions/runs/42442178502)
+- [Independent 50-track loudness, peak and duration QA](https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale/actions/runs/42442358360)
+- [Four-track live Chromium browser playback and 15-second skip/volume regression](https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale/actions/runs/42442393640)
+- [Public source HTTP 200/206 audio-availability check](https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale/actions/runs/42439024120)
+
+The new player uses a single metadata-preloaded `<audio>` element, load/buffering/error status, a volume slider and delayed seek-on-release for better behavior with slow connections. It does **not** decode 50 tracks simultaneously.
+
+**Limitations:** These tests do not prove that every review beat sounds professionally mastered, that the requested earlier NODESS mixes have been recovered, or that the sample library and composition are appropriate for exclusive rights sale. A targeted listening review should start with bass-heavy mixes such as *Rain Can't Wash It*, *Overtime* and *Gateway to Gold*, where midrange clarity may still need refinement. The owner-held earlier versions and a separate V3 ZIP should remain archived.
+
 ## What the live audio is — and is not
 
 The 50 playable MP3s are **new synthetic sampled-instrument review mixes generated in this repo**, not the source recordings from the earlier private ChatGPT-hosted listening site. The audio renderer is `scripts/render_arranged_review_audio.py`, based on FluidR3 GM sampled instrument patches, ten percussion families, multiple rhythmic pockets, per-track instrument choices, melodic variations and each song's exact bar map. This design aims to improve timbral and structural variety, but cannot replace a producer's actual listening, musical revision, mix engineering and mastering.
 
-The output audio is 128-kbit/s stereo MP3 for browser audition, not the paid studio master. New files are generated in GitHub Actions' temporary runners, grouped into five ten-track artifact batches and combined only into the GitHub Pages site deployment package. This does not write MP3 files into the source Git repository. We do not upload private source masters, WAV files, MIDI or session files to the live website.
+The output audio is 160-kbit/s, 44.1-kHz stereo MP3 for browser audition, not the paid studio master. New files are generated in GitHub Actions' temporary runners, grouped into five ten-track artifact batches and combined only into the GitHub Pages site deployment package. This does not write MP3 files into the source Git repository. We do not upload private source masters, WAV files, MIDI or session files to the live website.
 
 **All 50** tracks passed source generation checks for track identity, duration matching, MP3 codec, stereo channels, length, file size and nonduplicate hashes; the published live site was separately checked for 50 HTTP 200 audio HEAD responses plus actual 206 partial-content MP3 requests.
 
@@ -38,7 +53,7 @@ These names are references only; the files were not available in the current Git
 2. Hard refresh (Ctrl+F5) if an old version is cached.
 3. Choose All regional collections, Midwest or another region. Search by city or title.
 4. Press **Play** next to a beat. The popup starts that full-length *new review recording*.
-5. Use Pause, Play, Stop, Repeat or drag the timeline to seek. Exit closes and stops the music.
+5. Use Pause, Play, Stop, Repeat, Volume, +/-15-second skips, or drag the timeline to seek. Seeking makes one request on release to reduce repeated HTTP Range requests. Exit closes and stops the music.
 6. Open **Details** on any beat for title, city, BPM, key, full structure, section bar counts and calculated start/end times.
 7. Use the $100 exclusive instrumental information as a proposed offer; no payment or rights transfer occurs through GitHub Pages.
 
