@@ -204,7 +204,6 @@ def main():
             plan=plans[beat["id"]]
             rec=one(beat,plan,blueprints.get(beat["id"]),Path(tmp))
             records.append(rec)
-            print("RAP_GRID_TRACK:",json.dumps(rec,ensure_ascii=False),flush=True)
     failures=[x for x in records if x["hardFailures"]]
     review=[x for x in records if x["reviewFlags"]]
     metrics={

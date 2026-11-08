@@ -133,7 +133,6 @@ def main():
                  "pianoRoll":str(path.relative_to(dest))}
             allrows.append(row)
             if warnings:fail.append(row)
-            print("PIANO_ROLL_TRACK:",json.dumps(row),flush=True)
     summary={
         "tracks":len(allrows),"returningHooksIdentical":sum(x["hookReturnsIdentically"] for x in allrows),
         "uniqueHookPianoRolls":len(hooksigs),"distinctDrumGridPatterns":len(drumsigs),

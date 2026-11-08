@@ -199,7 +199,6 @@ def main() -> int:
         "tracks": results
     }, indent=2) + "\n", encoding="utf-8")
     print("AUDIO_DEPTH_SUMMARY:", json.dumps(summary), flush=True)
-    print("CLOSEST_SPECTRAL_PAIRS:", json.dumps(similar[:10]), flush=True)
     for result in results:
         print("AUDIO_DEPTH_TRACK:", json.dumps({
             "rank": result["rank"], "id": result["id"],

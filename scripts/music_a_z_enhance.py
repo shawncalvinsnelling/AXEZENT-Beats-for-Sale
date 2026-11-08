@@ -27,7 +27,7 @@ SIMILAR_PAIRS=(
 )
 MONO_REVIEW_IDS=frozenset(("AXZ-172","AXZ-010","AXZ-110"))
 HOOK_ENERGY_IDS=frozenset(("AXZ-187","AXZ-110"))
-PRIORITY_IDS=WEAK_HOOK_IDS | frozenset(x for pair in SIMILAR_PAIRS for x in pair) | MONO_REVIEW_IDS
+PRIORITY_IDS=WEAK_HOOK_IDS | frozenset(x for pair in SIMILAR_PAIRS for x in pair) | MONO_REVIEW_IDS | frozenset(("AXZ-049","AXZ-037"))
 
 # Timbral palette expands the previous 10 repeating patch families; 0-based GM
 # choices retain compatibility with current FluidR3 renderer and permissions.

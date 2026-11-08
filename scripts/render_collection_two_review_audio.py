@@ -147,7 +147,6 @@ def main():
         path=a.out/(beat["id"]+"-review.mp3")
         info=render(beat,plans[beat["id"]],blueprints[rank],path,a.soundfont)
         report.append(info)
-        print("COLLECTION_TWO_TRACK:",json.dumps(info),flush=True)
     a.out.mkdir(parents=True,exist_ok=True)
     (a.out/"REVIEW_REPORT.json").write_text(json.dumps(report,indent=2)+"\n")
     if len(report)!=(a.end-a.start+1):raise RuntimeError("Incomplete render")

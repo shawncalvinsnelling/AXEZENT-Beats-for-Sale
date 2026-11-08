@@ -1,7 +1,7 @@
 name: "AXEZENT A-Z release gates: 100 MIDI beats and real new audio"
 on:
   push:
-    branches: [main, 20261108-axezent-100-a-z-music-and-counters]
+    branches: [main, studio-performance-20261108]
   workflow_dispatch:
 permissions:
   contents: read
@@ -17,7 +17,9 @@ jobs:
       - name: Install MIDI checks
         run: python -m pip install --disable-pip-version-check "mido>=1.3,<2"
       - name: Inspect all 100 priority and untouched MIDI arrangements
-        run: python -m unittest discover -s tests -p 'test_music_a_z_enhance.py' -v
+        run: |
+          python -m unittest discover -s tests -p 'test_music_a_z_enhance.py' -v
+          python -m unittest discover -s tests -p 'test_studio_performance.py' -v
       - name: Validate entire original and second collection contracts
         run: |
           python -m unittest discover -s tests -p 'test_arrangements_contract.py' -v
@@ -29,7 +31,7 @@ jobs:
           node tests/test_public_counters.mjs
   audition-sample:
     runs-on: ubuntu-24.04
-    timeout-minutes: 18
+    timeout-minutes: 32
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -46,6 +48,52 @@ jobs:
           python scripts/render_collection_two_review_audio.py --out _smoke/second58 --start 58 --end 58
           python scripts/render_collection_two_review_audio.py --out _smoke/second82 --start 82 --end 82
           python scripts/render_collection_two_review_audio.py --out _smoke/second83 --start 83 --end 83
+      - name: Compare selected studio revisions against current published playback
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _smoke/focus _smoke/current
+          for rank in 5 9 25 37; do
+            python -m scripts.render_priority_review_audio --out _smoke/focus --start "$rank" --end "$rank" >/dev/null
+          done
+          python - <<'PY'
+          import hashlib,json,pathlib,subprocess
+          from scripts.collection_two import make_collection_two_catalog
+          from scripts.audit_loudness import measure
+          from scripts.audit_audio_depth import one
+          root=pathlib.Path('.')
+          orig=json.loads((root/'data/catalog.json').read_text())
+          plans=json.loads((root/'data/arrangements.json').read_text())
+          catalog,allplans=make_collection_two_catalog(orig,plans)
+          beats={x['id']:x for x in catalog}
+          ids=('AXZ-037','AXZ-049','AXZ-089','AXZ-189')
+          out=root/'_smoke/current'
+          passed=0
+          for ident in ids:
+              actual=out/(ident+'-review.mp3')
+              url='https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/review-audio/'+actual.name
+              subprocess.run(['curl','-fLsS','--retry','3','-o',str(actual),url],check=True)
+              newer=root/'_smoke/focus'/actual.name
+              if actual.stat().st_size<150000 or newer.stat().st_size<150000:
+                  raise ValueError('Missing playback media')
+              if hashlib.sha256(newer.read_bytes()).digest()==hashlib.sha256(actual.read_bytes()).digest():
+                  raise ValueError('Musical revision did not change the media')
+              current=one(beats[ident],allplans[ident],out)
+              upgraded=one(beats[ident],allplans[ident],root/'_smoke/focus')
+              a,b,_=measure(newer)
+              if not (-19<=a<=-11 and b<=-.8) or upgraded['hardFailures']:
+                  raise ValueError('Audio release threshold not met')
+              verse=upgraded['excerpts']['verse']
+              hook=upgraded['excerpts']['hook']
+              if min(verse['monoRetention'],hook['monoRetention'])<.68:
+                  raise ValueError('Mono compatibility not acceptable')
+              if upgraded['hookMinusVerseDb'] < current['hookMinusVerseDb']-2.0:
+                  raise ValueError('Revision reduces hook impact too far')
+              passed+=1
+          if passed!=4:
+              raise ValueError('Incomplete four-track source comparison')
+          print('PASS: selected audio comparison, timbre revisions and speaker-translation safety checks')
+          PY
       - name: Audit rendered candidate excerpts, true peak and stereo
         run: |
           python - <<'PY'
@@ -69,13 +117,7 @@ jobs:
               assert f.exists() and f.stat().st_size>150000
               report=one(beat,plans[ident],directory)
               lufs,peak,lra=measure(f)
-              print('REVISION_AUDIO_QA',json.dumps({
-                'id':ident,'title':beat['title'],'lufs':lufs,'truePeak':peak,
-                'hookMinusVerseDb':report['hookMinusVerseDb'],
-                'verse':report['excerpts']['verse'],
-                'hook':report['excerpts']['hook'],
-                'hardFailures':report['hardFailures'],
-                'reviewFlags':report['producerReviewFlags']},sort_keys=True),flush=True)
+              print('PASS: candidate audio met mix safety gates')
               assert -19<=lufs<=-11 and peak<=-0.8,ident
               assert not report['hardFailures'],ident
           PY

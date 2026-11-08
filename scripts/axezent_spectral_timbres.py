@@ -45,7 +45,9 @@ def synthesize(beat:dict,plan:dict,path:Path,rate:int=44100)->dict:
                 freq=440*2**((note-69)/12 + detune)
                 start=(sec["startBar"]+bar_index)*240/beat["bpm"]+pos*60/beat["bpm"]
                 if start>seconds-.6: continue
-                dur=.30 if kind=="hook" else .48
+                duration_scale=(.43,.78,.58,1.05,.34,.68)[seed%6]
+                dur=(duration_scale if kind=="hook" else 1.15*duration_scale)
+                dur=min(dur,max(.09,(4-pos)*60/beat["bpm"]-.015))
                 events.append((max(0,round(start*rate)),round(dur*rate),freq,j))
     path.parent.mkdir(parents=True,exist_ok=True)
     with wave.open(str(path),"wb") as wf:
@@ -70,7 +72,9 @@ def synthesize(beat:dict,plan:dict,path:Path,rate:int=44100)->dict:
                     signal=np.sin(phase)+.28*np.sin(2.02*phase)+.19*np.sin(4.03*phase)
                 else:
                     signal=np.sin(phase)+.45*np.sin(1.5*phase)+.11*np.sin(5.1*phase)
-                envelope=np.minimum(1,age/.012)*np.exp(-age*(5 if mode%2 else 8))
+                decay=(2.4,5.5,3.7,1.9,8.0,3.0)[mode]
+                envelope=np.minimum(1,age/.012)*np.exp(-age*decay)
+                envelope*=np.minimum(1,np.maximum(0,(nframes/rate-age))/.08)
                 base=.11*base_tone*signal*envelope
                 width=.05 if phrase%2 else -.05
                 left[offset:stop]+=base*(1-width)
