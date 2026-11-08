@@ -60,7 +60,7 @@ DRUM_VARIANTS=(
  {"kick":36,"snare":39,"hat":42,"alt":56,"open":51},
  {"kick":35,"snare":40,"hat":44,"alt":76,"open":46},
  {"kick":36,"snare":38,"hat":54,"alt":82,"open":49},
- {"kick":35,"snare":39,"hat":42,"alt":37,"open":51)
+ {"kick":35,"snare":39,"hat":42,"alt":37,"open":51}
 )
 KICK_POCKETS=(
  (0,2.5),(0,1.5,2.75),(0,2.0,3.5),(0,1.75,2.75),
