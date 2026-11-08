@@ -7,10 +7,11 @@ on:
       - 'pages-showcase/**'
       - 'data/catalog.json'
       - 'data/arrangements.json'
-      - 'data/public-preview-manifest.json'
+      - 'scripts/render_arranged_review_audio.py'
+      - 'tests/test_arrangements_contract.py'
+      - '.github/workflows/deploy-artist-showcase.yml'
       - 'assets/styles.css'
       - 'assets/favicon.svg'
-      - '.github/workflows/deploy-artist-showcase.yml'
 permissions:
   contents: read
   pages: write
@@ -19,15 +20,94 @@ concurrency:
   group: axezent-artist-showcase-pages
   cancel-in-progress: true
 jobs:
-  deploy:
+  render-review:
+    name: New review audio batch ${{ matrix.start }}
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: true
+      matrix:
+        start: [1,11,21,31,41]
+    steps:
+      - name: Checkout AXEZENT arrangement source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install FluidR3 soundbank and MP3 renderer
+        run: |
+          python -m pip install --disable-pip-version-check "mido>=1.3,<2"
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq fluidsynth fluid-soundfont-gm ffmpeg
+          test -s /usr/share/sounds/sf2/FluidR3_GM.sf2
+          command -v fluidsynth
+          command -v ffprobe
+      - name: Verify 50 bar-by-bar composition plans
+        run: python -m unittest discover -s tests -p 'test_arrangements_contract.py' -v
+      - name: Render 10 distinct new review arrangements, NO private originals
+        env:
+          FIRST_RANK: ${{ matrix.start }}
+        run: |
+          set -euo pipefail
+          last=$((FIRST_RANK+9))
+          mkdir -p "$RUNNER_TEMP/axezent-new-review"
+          python scripts/render_arranged_review_audio.py --catalog data/catalog.json --arrangements data/arrangements.json --out "$RUNNER_TEMP/axezent-new-review" --start "$FIRST_RANK" --end "$last"
+      - name: Verify 10 real stereo full-length review audio files and exact track identities
+        env:
+          FIRST_RANK: ${{ matrix.start }}
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, subprocess, hashlib
+          root=pathlib.Path(os.environ["RUNNER_TEMP"])/"axezent-new-review"
+          report=json.loads((root/"REVIEW_REPORT.json").read_text("utf-8"))
+          assert len(report)==10, "Each build batch must have 10 files"
+          ids=set()
+          signatures=set()
+          for song in report:
+              ident=song["id"]
+              assert ident not in ids
+              ids.add(ident)
+              assert song["midiEvents"]>=200
+              assert "NOT the original private recording" in song["qualityStatus"]
+              file=root/(ident+"-review.mp3")
+              assert file.stat().st_size>=150_000
+              probe=json.loads(subprocess.check_output(["ffprobe","-v","error",
+                  "-show_entries","format=duration:stream=codec_name,channels,sample_rate",
+                  "-of","json",str(file)]))
+              assert probe["streams"][0]["codec_name"]=="mp3"
+              assert probe["streams"][0]["channels"]==2
+              assert abs(float(probe["format"]["duration"])-song["durationSeconds"])<=0.2
+              signatures.add(hashlib.sha256(file.read_bytes()).hexdigest())
+          assert len(signatures)==10,"Duplicate audio renders are not allowed"
+          print("PASS: 10 distinct new full-length stereo MP3 review mixes; no paid master was rendered.")
+          PY
+      - name: Upload ONLY new review MP3s (not private masters or WAV files)
+        uses: actions/upload-artifact@v4
+        with:
+          name: axezent-review-batch-${{ matrix.start }}
+          path: ${{ runner.temp }}/axezent-new-review/AXZ-*-review.mp3
+          retention-days: 1
+          if-no-files-found: error
+          compression-level: 0
+
+  deploy:
+    needs: render-review
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
+      - name: Checkout website source
         uses: actions/checkout@v4
-      - name: Create isolated public showcase artifact
+      - name: Download approved-format new REVIEW audio only
+        uses: actions/download-artifact@v4
+        with:
+          pattern: axezent-review-batch-*
+          path: _pages_build/review-audio
+          merge-multiple: true
+      - name: Build artist showcase, bar-accurate song maps and verified audio URLs
         shell: bash
         run: |
           set -euo pipefail
@@ -35,16 +115,44 @@ jobs:
           cp pages-showcase/index.html _pages_build/index.html
           cp pages-showcase/showcase.js _pages_build/assets/showcase.js
           cp assets/styles.css assets/favicon.svg _pages_build/assets/
-          cp data/public-preview-manifest.json data/arrangements.json _pages_build/data/
+          cp data/arrangements.json _pages_build/data/arrangements.json
           node -e '
-            const fs=require("fs");
-            const beats=JSON.parse(fs.readFileSync("data/catalog.json","utf8"));
-            const safe=beats.map(({id,title,city,state,collection,bpm,key,releaseRank})=>({id,title,city,state,collection,bpm,key,releaseRank}));
-            if(safe.length!==200||safe.filter(b=>Number.isInteger(b.releaseRank)&&b.releaseRank>=1&&b.releaseRank<=50).length!==50)throw Error("Catalog check failed");
+            const fs=require("fs"),path=require("path"),crypto=require("crypto");
+            const tracks=JSON.parse(fs.readFileSync("data/catalog.json","utf8"));
+            const plans=JSON.parse(fs.readFileSync("data/arrangements.json","utf8"));
+            const featured=tracks.filter(b=>Number.isInteger(b.releaseRank)&&b.releaseRank>=1&&b.releaseRank<=50);
+            if(tracks.length!==200||featured.length!==50||Object.keys(plans).length!==50)throw Error("AXEZENT original song inventory must have 200 total / 50 featured");
+            const safe=tracks.map(({id,title,city,state,collection,bpm,key,releaseRank})=>({id,title,city,state,collection,bpm,key,releaseRank}));
             fs.writeFileSync("_pages_build/data/catalog.json",JSON.stringify(safe));
+            const audioFolder="_pages_build/review-audio";
+            const files=fs.readdirSync(audioFolder).filter(s=>s.endsWith(".mp3"));
+            if(files.length!==50)throw Error("Expected 50 distinct new public review MP3s, got "+files.length);
+            const manifest={};
+            const hashes=new Set();
+            for(const track of featured) {
+              const file=track.id+"-review.mp3";
+              const source=path.join(audioFolder,file);
+              if(!fs.existsSync(source))throw Error("Missing review audio: "+track.id);
+              const plan=plans[track.id];
+              if(plan.bpm!==track.bpm||plan.releaseRank!==track.releaseRank)throw Error("Plan does not match "+track.id);
+              const size=fs.statSync(source).size;
+              if(size<150000||size>10000000)throw Error("Unexpected review MP3 size "+track.id);
+              const digest=crypto.createHash("sha256").update(fs.readFileSync(source)).digest("hex");
+              if(hashes.has(digest))throw Error("Duplicate audio fingerprint");
+              hashes.add(digest);
+              manifest[track.id]="./review-audio/"+file;
+            }
+            if(Object.keys(manifest).length!==50)throw Error("Review audio manifest incomplete");
+            fs.writeFileSync("_pages_build/data/public-preview-manifest.json",JSON.stringify(manifest));
+            console.log("PASS: original 50 IDs, 50 unique full-length NEW review MP3s and 50 bar-accurate detail maps");
           '
+          if find _pages_build -type f \( -name '*-tagged.mp3' -o -name '*.wav' -o -name '*.mid' \) | grep -q .; then
+            echo "ERROR: private or intermediate music media leaked to public site"
+            exit 1
+          fi
           touch _pages_build/.nojekyll
-      - name: Validate static showcase and original-site visual features
+      - name: Validate browser player, pricing description and track-specific maps
+        shell: bash
         run: |
           set -euo pipefail
           node --check _pages_build/assets/showcase.js
@@ -52,48 +160,28 @@ jobs:
             const fs=require("fs");
             const h=fs.readFileSync("_pages_build/index.html","utf8");
             const j=fs.readFileSync("_pages_build/assets/showcase.js","utf8");
-            const cat=JSON.parse(fs.readFileSync("_pages_build/data/catalog.json","utf8"));
+            const plans=JSON.parse(fs.readFileSync("_pages_build/data/arrangements.json","utf8"));
             const manifest=JSON.parse(fs.readFileSync("_pages_build/data/public-preview-manifest.json","utf8"));
-            const arrangements=JSON.parse(fs.readFileSync("_pages_build/data/arrangements.json","utf8"));
-            for(const needle of ["BEATS<br><em>FOR SALE.", "id=\"tracks\"", "id=\"query\"", "id=\"region\"", "id=\"playerDialog\"", "id=\"musicSeek\"", "id=\"musicRepeat\"", "assets/styles.css"]) {
-              if(!h.includes(needle))throw Error("Missing original website visual/player feature: "+needle);
+            for(const key of ["id=\"playerDialog\"","id=\"musicSeek\"","id=\"musicRepeat\"","id=\"musicArrangement\"","id=\"region\"","$100", "your next song"]){
+              if(!h.includes(key))throw Error("Missing AXEZENT design or player feature "+key);
             }
-            for(const marker of ["EXAMPLE: FIVE-SECTION ARRANGEMENT", "EXAMPLE: TWO-VERSE FULL ARRANGEMENT", "Intro", "Hook", "Verse 1", "Verse 2", "Outro"]) {
-              if(!h.includes(marker))throw Error("Missing preview/full arrangement explanation: "+marker);
+            for(const key of ["renderSectionTable","arrangements.json","approvedPreviewUrl","musicRepeat.addEventListener","seekTo"]){
+              if(!j.includes(key))throw Error("Missing AXEZENT player feature "+key);
             }
-            if(j.includes("Discover AXEZENT")||j.includes("Preview coming soon")||j.includes("Coming soon"))throw Error("Old clutter labels remain in published player");
-            if(!j.includes("play-button")||!j.includes("detail-button")||!j.includes("▶ Play"))throw Error("Expected compact player controls are missing");
-            for(const forbidden of [/chatgpt[.]site/i,/paypal/i,/cash app/i,/mailto:/i,/private prototype/i,/synthetic review/i,/an online shop/i]) {
-              if(forbidden.test(h))throw Error("Customer-facing page includes restricted text: "+forbidden);
-            }
-            if(!j.includes("public-preview-manifest.json")||!j.includes("musicRepeat.addEventListener")||!j.includes("seekTo"))throw Error("Public player code is incomplete");
-            if(cat.length!==200 || cat.filter(x=>x.releaseRank>=1&&x.releaseRank<=50).length!==50)throw Error("Catalog count mismatch");
-            const featured=cat.filter(x=>x.releaseRank>=1&&x.releaseRank<=50);
-            if(Object.keys(arrangements).length!==50||featured.some(b=>!arrangements[b.id]))throw Error("Missing 50 per-song song maps");
-            for(const track of featured){
-              const plan=arrangements[track.id];
-              if(plan.bpm!==track.bpm||plan.sections.length<4)throw Error("Invalid song map "+track.id);
-              let cursor=0;
-              for(const part of plan.sections){
-                if(part.startBar!==cursor||part.endBar<=part.startBar)throw Error("Noncontiguous bar map "+track.id);
-                cursor=part.endBar;
-              }
-              if(cursor!==plan.totalBars)throw Error("Bad final song bar "+track.id);
-            }
-            if(!j.includes("arrangements.json")||!j.includes("renderSectionTable"))throw Error("Missing timed per-track details renderer");
-            if(!manifest||typeof manifest!=="object"||Array.isArray(manifest))throw Error("Invalid public preview manifest");
+            if(j.includes("Discover AXEZENT")||j.includes("Preview coming soon"))throw Error("Removed clutter has returned");
+            if(Object.keys(plans).length!==50||Object.keys(manifest).length!==50)throw Error("Missing the 50-song release map");
             for(const [id,url] of Object.entries(manifest)){
-              if(!cat.some(b=>b.id===id&&b.releaseRank>=1&&b.releaseRank<=50))throw Error("Unknown preview ID "+id);
-              if(typeof url!=="string"||!url.startsWith("https://"))throw Error("Only HTTPS preview URLs are allowed");
+              if(!plans[id] || url!=="./review-audio/"+id+"-review.mp3")throw Error("Invalid review audio URL mapping");
             }
-            console.log("PASS: AXEZENT original interface, 50 entries, playback controls, safe public audio manifest");
+            if(/chatgpt[.]site|paypal|cash app|mailto:/i.test(h))throw Error("Static artist showcase must not expose gated links or payment collection");
+            console.log("PASS: correct AXEZENT display, 50 playable new review sources, $100 informational pricing and per-song bars");
           '
       - name: Set up GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Upload public showcase
+      - name: Upload public website and 50 newly generated review tracks
         uses: actions/upload-pages-artifact@v4
         with:
           path: _pages_build
-      - name: Deploy
+      - name: Deploy public GitHub HTTPS artist showcase
         id: deployment
         uses: actions/deploy-pages@v4
