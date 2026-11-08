@@ -108,6 +108,11 @@ def refine_midi(filename:pathlib.Path,beat:dict,plan:dict)->dict:
             note[4]=min(115,velocity+5)
         elif ch==1 and kind=="verse" and local%4==0:
             note[4]=max(30,velocity-4)
+    for row in notes:
+        if row[2] in (0,1,2,3):
+            row[1]=min(row[1],((row[0]//TICKS_PER_BAR)+1)*TICKS_PER_BAR-6)
+            if row[1]<=row[0]:
+                raise ValueError("Invalid pitched note length after transition")
     # Prevent same-pitch voices colliding when shifted by an octave or extended.
     notes.sort(key=lambda n:(n[0],n[2],n[3],n[1]))
     future=collections.defaultdict(list)
