@@ -31,7 +31,7 @@
     const body = el("div","track-content");
     const h3 = el("h3","",beat.title); h3.title = beat.title;
     const meta = el("div","track-meta",beat.city + ", " + beat.state + (beat.bpm ? " · "+beat.bpm+" BPM" : ""));
-    const status = el("span","status"+(previewReady(beat)?" ready":""),previewReady(beat)?"Listen to the beat":beat.status==="mix_review"?"Audio not published":"Coming soon");
+    const status = el("span","status"+(previewReady(beat)?" ready":""),previewReady(beat)?"Listen to the beat":beat.status==="mix_review"?"Preview coming soon":"Coming soon");
     const buttons = el("div","track-actions");
     const play = el("button","play-button",previewReady(beat)?"▶ Listen to "+beat.title:"▶ "+beat.title+" · Coming soon");
     play.type = "button"; play.disabled = !previewReady(beat);
@@ -42,7 +42,7 @@
     const inquiry = el("a","inquiry-action","✉ Email about $100 ownership");
     inquiry.href = "mailto:axezentai@gmail.com?subject=" + encodeURIComponent("AXEZENT $100 beat inquiry — " + beat.id + " — " + beat.title);
     inquiry.title = "Request exclusive rights to " + beat.title + " before sending payment";
-    const available = el("p","availability",beat.status==="preview_ready"?"Listen now · Ask about $100 exclusive ownership":"Under review · Ask about $100 exclusive ownership");
+    const available = el("p","availability",beat.status==="preview_ready"?"Listen now · Ask about $100 exclusive ownership":"Ask about future availability · $100 exclusive inquiry");
     elAppend(body,h3,meta,status,buttons,inquiry,available);
     return elAppend(article,art,body);
   };
@@ -138,7 +138,7 @@
       el("span","micro",beat.id+" · "+beat.city.toUpperCase()+", "+beat.state.toUpperCase()),
       el("h2","",beat.title),
       el("p","",beat.collection+" collection"+(beat.bpm?" · "+beat.bpm+" BPM":"")+" · "+(beat.key||"Original key pending composition")),
-      el("p","",previewReady(beat)?"Click Listen to hear the selected instrumental.":beat.status==="mix_review"?"A full-length review mix exists privately; its watermarked public preview has not yet been uploaded.":"This track is still a production concept."),
+      el("p","",previewReady(beat)?"Click Listen to hear the selected instrumental.":beat.status==="mix_review"?"A listening preview is not available for this beat yet. Contact AXEZENT for updates.":"This track is still a production concept."),
       el("div","details-note","Proposed price: $100 for an exclusive transfer of an eligible beat, only after ownership review and a signed written agreement. Please use the contact section to ask about availability before sending payment.")
     );
     if(typeof dialog.showModal === "function") dialog.showModal(); else dialog.setAttribute("open","");
