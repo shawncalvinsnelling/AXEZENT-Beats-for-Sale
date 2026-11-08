@@ -367,17 +367,35 @@
         "endSeconds": 104.348
       },
       {
+        "kind": "verse",
+        "label": "Verse 4",
+        "bars": 8,
+        "startBar": 60,
+        "endBar": 68,
+        "startSeconds": 104.348,
+        "endSeconds": 118.261
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 5",
+        "bars": 8,
+        "startBar": 68,
+        "endBar": 76,
+        "startSeconds": 118.261,
+        "endSeconds": 132.174
+      },
+      {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 60,
-        "endBar": 64,
-        "startSeconds": 104.348,
-        "endSeconds": 111.304
+        "startBar": 76,
+        "endBar": 80,
+        "startSeconds": 132.174,
+        "endSeconds": 139.13
       }
     ],
-    "totalBars": 64,
-    "durationSeconds": 111.304,
+    "totalBars": 80,
+    "durationSeconds": 139.13,
     "recordingVerified": false
   },
   "AXZ-166": {
@@ -2098,17 +2116,35 @@
         "endSeconds": 134.579
       },
       {
+        "kind": "verse",
+        "label": "Verse 4",
+        "bars": 8,
+        "startBar": 60,
+        "endBar": 68,
+        "startSeconds": 134.579,
+        "endSeconds": 152.523
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 5",
+        "bars": 8,
+        "startBar": 68,
+        "endBar": 76,
+        "startSeconds": 152.523,
+        "endSeconds": 170.467
+      },
+      {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 60,
-        "endBar": 64,
-        "startSeconds": 134.579,
-        "endSeconds": 143.551
+        "startBar": 76,
+        "endBar": 80,
+        "startSeconds": 170.467,
+        "endSeconds": 179.439
       }
     ],
-    "totalBars": 64,
-    "durationSeconds": 143.551,
+    "totalBars": 80,
+    "durationSeconds": 179.439,
     "recordingVerified": false
   },
   "AXZ-145": {
