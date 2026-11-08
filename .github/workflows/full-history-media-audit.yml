@@ -1,0 +1,53 @@
+name: AXEZENT full Git history media exposure audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/full-history-media-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-all-commits:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Examine reachable historical Git blobs for committed music and archives
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import subprocess,re
+          raw=subprocess.check_output(["git","rev-list","--objects","--all"],text=True).splitlines()
+          historical=[]
+          seen=set()
+          for entry in raw:
+              parts=entry.split(" ",1)
+              if len(parts)!=2: continue
+              sha,path=parts
+              if sha in seen: continue
+              seen.add(sha)
+              historical.append((sha,path))
+          media=re.compile(r'\.(?:mp3|wav|flac|aif|aiff|ogg|opus|aac|m4a|wma|mid|midi|sf2|sfz|zip|7z|rar|tar|mp4|mov|rpp|flp|als|logicx|ptx)$',re.I)
+          suspicious=[(sha,path) for sha,path in historical if media.search(path)]
+          large=[]
+          for sha,path in historical:
+              if media.search(path) or "audio" in path.lower() or "recording" in path.lower():
+                  kind,size=subprocess.check_output(["git","cat-file","-t",sha],text=True).strip(),int(subprocess.check_output(["git","cat-file","-s",sha],text=True).strip())
+                  if kind=="blob" and size>1000000: large.append((path,size))
+          print("HISTORICAL_OBJECT_PATHS",len(historical))
+          print("MEDIA_BLOBS_IN_ANY_REACHABLE_HISTORY",len(suspicious))
+          print("LARGE_MEDIA-LABELLED_BLOBS",len(large))
+          for sha,path in suspicious[:50]:
+              print("HISTORICAL_MEDIA_PATH",path)
+          for path,size in large[:25]:
+              print("LARGE_MEDIA-LABELLED",path,size)
+          if suspicious:
+              print("WARNING: .gitignore cannot remove previously committed media blobs from public history")
+          else:
+              print("PASS: no named audio/master/ZIP binaries found in reachable Git commit history")
+          PY
