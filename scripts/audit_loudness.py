@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Independent objective QA of the 50 AXEZENT public review MP3 mixes.
+"""Independent objective QA of the 100 AXEZENT public review MP3 mixes.
 
 Checks file identity, codec, exact duration, PCM true peak and integrated EBU
 R128 loudness. Does not claim subjective quality, regional authenticity,
@@ -69,16 +69,18 @@ def main() -> int:
     parser=argparse.ArgumentParser()
     parser.add_argument("--audio-dir",type=Path,required=True)
     parser.add_argument("--report",type=Path,required=True)
+    parser.add_argument("--catalog",type=Path,default=ROOT/"data/catalog.json")
+    parser.add_argument("--arrangements",type=Path,default=ROOT/"data/arrangements.json")
     args=parser.parse_args()
-    catalog=json.loads((ROOT/"data/catalog.json").read_text("utf-8"))
-    arrangements=json.loads((ROOT/"data/arrangements.json").read_text("utf-8"))
+    catalog=json.loads(args.catalog.read_text("utf-8"))
+    arrangements=json.loads(args.arrangements.read_text("utf-8"))
     featured=sorted((b for b in catalog if isinstance(b.get("releaseRank"),int)
-                     and 1<=b["releaseRank"]<=50),key=lambda b:b["releaseRank"])
-    if len(featured)!=50 or len(arrangements)!=50:
-        raise ValueError("Catalog or arrangement count is not 50")
+                     and 1<=b["releaseRank"]<=100),key=lambda b:b["releaseRank"])
+    if len(featured)!=100 or len(arrangements)!=100:
+        raise ValueError("Published catalog or arrangement count is not 100")
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
         reports=list(pool.map(lambda x:one(x,args.audio_dir,arrangements),featured))
-    if len({r["sha256"] for r in reports})!=50:
+    if len({r["sha256"] for r in reports})!=100:
         raise ValueError("Some audio files are identical")
     failures=[]
     for r in reports:
@@ -92,7 +94,7 @@ def main() -> int:
             failures.append(f'{r["id"]}: nearly no measured dynamic variation')
     values=[r["integratedLUFS"] for r in reports]
     summary={
-        "tracks":50,
+        "tracks":100,
         "meanIntegratedLUFS":round(statistics.mean(values),2),
         "minIntegratedLUFS":min(values),
         "maxIntegratedLUFS":max(values),
@@ -104,10 +106,10 @@ def main() -> int:
     args.report.write_text(json.dumps({"summary":summary,"tracks":reports},indent=2)+"\n",encoding="utf-8")
     print("AUDIO_QA_SUMMARY:",json.dumps(summary),flush=True)
     for r in reports:
-        print(f'{r["rank"]:02d}/50 {r["id"]}: {r["integratedLUFS"]:+.1f} LUFS, TP {r["truePeakDbFS"]:+.1f} dBFS, {r["durationSeconds"]:.1f}s',flush=True)
+        print(f'{r["rank"]:03d}/100 {r["id"]}: {r["integratedLUFS"]:+.1f} LUFS, TP {r["truePeakDbFS"]:+.1f} dBFS, {r["durationSeconds"]:.1f}s',flush=True)
     if failures:
         raise ValueError("Audio mastering QA failed: "+"; ".join(failures))
-    print("PASS: 50 different full-length MP3 files pass loudness, true peak, codec and duration QA")
+    print("PASS: 100 different full-length MP3 files pass loudness, true peak, codec and duration QA")
     return 0
 
 if __name__=="__main__":

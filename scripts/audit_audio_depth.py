@@ -2,7 +2,7 @@
 """AXEZENT independent musical signal diagnostic, after public deployment.
 
 Measurements are objective playback diagnostics, NOT a 10/10 producer sign-off.
-Inspects the actual decoded, customer-accessible 50 MP3s at multiple musical
+Inspects the actual decoded, customer-accessible 100 MP3s at multiple musical
 sections. Does not use restricted originals, fingerprints of commercial music,
 or make claims of hypnotic or guaranteed commercial outcomes.
 """
@@ -146,18 +146,20 @@ def main() -> int:
     arg = argparse.ArgumentParser()
     arg.add_argument("--audio-dir", type=Path, required=True)
     arg.add_argument("--report", type=Path, required=True)
+    arg.add_argument("--catalog",type=Path,default=ROOT/"data/catalog.json")
+    arg.add_argument("--arrangements",type=Path,default=ROOT/"data/arrangements.json")
     opts = arg.parse_args()
-    catalog = json.loads((ROOT / "data/catalog.json").read_text("utf-8"))
-    arrangements = json.loads((ROOT / "data/arrangements.json").read_text("utf-8"))
+    catalog = json.loads(opts.catalog.read_text("utf-8"))
+    arrangements = json.loads(opts.arrangements.read_text("utf-8"))
     songs = sorted((b for b in catalog if isinstance(b.get("releaseRank"), int)
-                    and 1 <= b["releaseRank"] <= 50), key=lambda b: b["releaseRank"])
-    if len(songs) != 50:
-        raise ValueError("Expected precisely the 50 published arrangements")
+                    and 1 <= b["releaseRank"] <= 100), key=lambda b: b["releaseRank"])
+    if len(songs) != 100:
+        raise ValueError("Expected precisely the 100 published arrangements")
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         results = list(pool.map(lambda b: one(b, arrangements[b["id"]], opts.audio_dir),
                                 songs))
     identities = [x["sha256"] for x in results]
-    if len(set(identities)) != 50:
+    if len(set(identities)) != 100:
         raise ValueError("Public audio files were duplicated")
     similar = []
     for index, left in enumerate(results):
@@ -208,7 +210,7 @@ def main() -> int:
         }), flush=True)
     if hard:
         raise ValueError(f"Independent signal-level QA failed: {len(hard)} tracks")
-    print("PASS: all 50 published tracks passed hard phase/mono/clipping diagnostic.")
+    print("PASS: all 100 published tracks passed hard phase/mono/clipping diagnostic.")
     return 0
 
 

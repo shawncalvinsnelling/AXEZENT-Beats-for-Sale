@@ -1,4 +1,4 @@
-name: Independent loudness and peak QA - 50 AXEZENT review tracks
+name: Independent loudness and peak QA - 100 AXEZENT review tracks
 on:
   workflow_run:
     workflows: ['Deploy AXEZENT artist showcase to GitHub Pages']
@@ -10,7 +10,7 @@ jobs:
   measure-all-audio:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - name: Install independent MP3 analyzer
@@ -28,8 +28,15 @@ jobs:
           import json,pathlib,subprocess,time,urllib.request
           base="https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/"
           manifest=json.loads(urllib.request.urlopen(base+"data/public-preview-manifest.json",timeout=30).read())
-          if len(manifest)!=50:
-              raise RuntimeError("Expected exactly 50 current public audio links")
+          data_dir=pathlib.Path("_review_site_data")
+          data_dir.mkdir(exist_ok=True)
+          for file in ("catalog.json","arrangements.json"):
+              data_dir.joinpath(file).write_bytes(
+                  urllib.request.urlopen(base+"data/"+file,timeout=40).read())
+          catalog=json.loads((data_dir/"catalog.json").read_text("utf-8"))
+          plans=json.loads((data_dir/"arrangements.json").read_text("utf-8"))
+          if len(manifest)!=100 or len(plans)!=100 or len(catalog)!=200:
+              raise RuntimeError("Expected exactly 100 live preview links and 100 individual arrangements")
           out=pathlib.Path("_review_audio")
           for index,(ident,path) in enumerate(manifest.items(),1):
               if path!="./review-audio/"+ident+"-review.mp3":
@@ -43,20 +50,20 @@ jobs:
                   if attempt==3:
                       raise RuntimeError("Public Pages audio inaccessible: "+ident)
                   time.sleep(5)
-          assert len(list(out.glob("*-review.mp3")))==50
-          print("PASS: obtained all 50 full-length MP3s from the customer-accessible player endpoints")
+          assert len(list(out.glob("*-review.mp3")))==100
+          print("PASS: obtained all 100 full-length MP3s from the customer-accessible player endpoints")
           PY
       - name: Check integrated LUFS, decoded true peak, dynamic range and file integrity
-        run: python scripts/audit_loudness.py --audio-dir _review_audio --report AXEZENT_50_TRACK_AUDIO_QA.json
+        run: python scripts/audit_loudness.py --audio-dir _review_audio --catalog _review_site_data/catalog.json --arrangements _review_site_data/arrangements.json --report AXEZENT_100_TRACK_AUDIO_QA.json
       - name: Inspect actual decoded stereo, spectral masking, transient pulse, section energy and mix similarity
-        run: python scripts/audit_audio_depth.py --audio-dir _review_audio --report AXEZENT_50_TRACK_DEPTH_QA.json
+        run: python scripts/audit_audio_depth.py --audio-dir _review_audio --catalog _review_site_data/catalog.json --arrangements _review_site_data/arrangements.json --report AXEZENT_100_TRACK_DEPTH_QA.json
       - name: Preserve the objective results for the owner
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: AXEZENT-50-TRACK-OBJECTIVE-AUDIO-QA
+          name: AXEZENT-100-TRACK-OBJECTIVE-AUDIO-QA
           path: |
-            AXEZENT_50_TRACK_AUDIO_QA.json
-            AXEZENT_50_TRACK_DEPTH_QA.json
+            AXEZENT_100_TRACK_AUDIO_QA.json
+            AXEZENT_100_TRACK_DEPTH_QA.json
           if-no-files-found: warn
           retention-days: 90
