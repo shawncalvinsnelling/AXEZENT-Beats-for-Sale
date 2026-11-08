@@ -90,7 +90,30 @@ try {
     const cards=[...document.querySelectorAll('article.track-card')];
     return cards.length>0 && cards.length<50 && cards.every(c=>c.textContent.includes('Midwest'));
   },null,{timeout:10000});
-  console.log('PASS: browser verifies four actual MP3s, play, pause, +/-15s, volume, drag seek, repeat, stop, catalog and Details.');
+  console.log('PASS: desktop browser verifies four actual MP3s, play, pause, +/-15s, volume, drag seek, repeat, stop, catalog and Details.');
+
+  // Independently exercise the mobile-sized touch-first interface.
+  const mobile=await browser.newPage({
+    viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true
+  });
+  try {
+    await mobile.goto(BASE,{waitUntil:'domcontentloaded',timeout:45000});
+    await mobile.waitForFunction(()=>document.querySelectorAll('article.track-card').length===50,null,{timeout:30000});
+    await mobile.locator('article.track-card button.play-button').first().click();
+    await mobile.waitForFunction(()=>{
+      const a=document.querySelector('#player');
+      return document.querySelector('#playerDialog').open && a && a.readyState>=2 && a.currentTime>0.10;
+    },null,{timeout:30000});
+    assert.ok(await mobile.locator('#musicVolume').isVisible(),'Mobile volume slider must be visible');
+    assert.ok(await mobile.locator('#musicBack15').isVisible(),'Mobile skip control must be visible');
+    await mobile.locator('#musicPause').click();
+    assert.equal(await mobile.locator('#player').evaluate(el=>el.paused),true);
+    await mobile.locator('#closePlayer').click();
+    assert.equal(await mobile.locator('#playerDialog').evaluate(el=>el.open),false);
+    console.log('PASS: 390px mobile/touchscreen browser plays and pauses review audio with accessible controls.');
+  } finally {
+    await mobile.close();
+  }
 } finally {
   await browser.close();
 }
