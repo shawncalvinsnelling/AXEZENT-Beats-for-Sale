@@ -233,13 +233,19 @@
   });
   function showDetails(beat) {
     modal.replaceChildren();
+    const inquiry=el("a","inquiry-email","✉ Email AXEZENT about this beat");
+    inquiry.href="mailto:axezentai@gmail.com?subject="+
+      encodeURIComponent("AXEZENT beat inquiry: "+beat.title+" ("+beat.id+")")+
+      "&body="+encodeURIComponent("Hello AXEZENT, I'm interested in the $100 exclusive ownership offer for "+
+        beat.title+" ("+beat.id+"). Please confirm availability and the written ownership terms.");
     elAppend(modal,
       el("span","micro",beat.id+" · "+beat.city.toUpperCase()+", "+beat.state.toUpperCase()),
       el("h2","",beat.title),
       el("p","",beat.collection+" collection"+(beat.bpm?" · "+beat.bpm+" BPM":"")+" · "+(beat.key||"Production details")),
       el("p","",previewReady(beat)?"Press Play to listen; the section list below shows this beat’s structure.":"The beat is not currently available to play."),
       renderSectionTable(beat),
-      el("div","details-note","$100 PER BEAT · EXCLUSIVE OWNERSHIP. Purchase availability and the precise rights transferred are confirmed in writing before payment.")
+      el("div","details-note","$100 PER BEAT · EXCLUSIVE OWNERSHIP. Purchase availability and the precise rights transferred are confirmed in writing before payment."),
+      inquiry
     );
     if(typeof dialog.showModal === "function") dialog.showModal(); else dialog.setAttribute("open","");
   }
