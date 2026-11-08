@@ -1,4 +1,4 @@
-name: AXEZENT A-Z release gates: 100 MIDI beats and real new audio
+name: "AXEZENT A-Z release gates: 100 MIDI beats and real new audio"
 on:
   push:
     branches: [20261108-axezent-100-a-z-music-and-counters]
