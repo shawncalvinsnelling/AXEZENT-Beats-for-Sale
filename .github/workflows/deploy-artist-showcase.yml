@@ -123,7 +123,7 @@ jobs:
             if(!j.includes("document.baseURI")||!j.includes("musicRepeat.addEventListener"))throw Error("Audio player is not configured");
             if(Object.keys(m).length!==50)throw Error("Expected 50 active playable buttons");
             for(const preview of Object.values(m)){
-              if(!/^\\.\\/previews\\/AXZ-\\d{3}-sample\\.mp3$/.test(preview))throw Error("Unsafe preview URL "+preview);
+              if(!(preview.startsWith("./previews/") && /^AXZ-[0-9]{3}-sample[.]mp3$/.test(preview.slice("./previews/".length))))throw Error("Unsafe preview URL "+preview);
               if(!fs.existsSync(path.join("_pages_build",preview)))throw Error("Broken audio link "+preview);
             }
             console.log("PASS: all 50 playable audio URL paths, player controls, no master files");
