@@ -1,9 +1,8 @@
 name: AXEZENT full Git history media exposure audit
 on:
   push:
+  pull_request:
     branches: [main]
-    paths:
-      - '.github/workflows/full-history-media-audit.yml'
   workflow_dispatch:
 permissions:
   contents: read
