@@ -25,20 +25,23 @@ ROOTS={"C":0,"C#":1,"Db":1,"D":2,"D#":3,"Eb":3,"E":4,
        "F":5,"F#":6,"Gb":6,"G":7,"G#":8,"Ab":8,"A":9,
        "A#":10,"Bb":10,"B":11}
 # GM SoundFont patches are 0-based; use deliberately different instrument families.
+# Individually curated from each release-rank arrangement's soundPalette.
+# 0-based General MIDI programs. Keep deliberately different bass techniques
+# and instrument families; the old random list reused only five bass programs.
 VOICES=(
- (4,81,38,48),(5,80,39,11),(48,98,38,89),(25,83,33,62),
- (16,80,39,10),(18,88,38,48),(48,11,33,89),(62,81,38,10),
- (52,90,39,12),(19,61,33,56),(13,80,38,90),(5,98,39,47),
- (55,81,38,11),(4,24,32,90),(17,81,39,62),(24,73,33,88),
- (80,62,39,13),(2,82,38,48),(19,10,39,88),(25,81,38,89),
- (48,82,39,30),(3,16,33,48),(4,12,38,89),(5,81,39,54),
- (89,11,38,48),(62,82,34,11),(4,81,39,48),(56,80,38,10),
- (5,25,39,89),(48,11,38,89),(61,83,38,19),(16,81,39,89),
- (4,52,38,89),(5,12,33,90),(19,25,38,48),(62,11,39,89),
- (48,13,38,62),(25,80,39,89),(5,81,38,48),(88,11,39,62),
- (4,81,38,24),(89,73,33,48),(5,25,38,89),(48,81,39,19),
- (89,98,38,48),(11,81,39,55),(4,24,33,89),(5,11,38,48),
- (19,81,39,62),(62,12,38,89)
+ (4,81,39,61),(5,10,38,7),(48,98,39,95),(4,80,36,28),
+ (89,83,39,10),(19,44,38,2),(42,13,35,4),(90,61,39,11),
+ (91,80,39,5),(0,61,33,17),(12,10,39,52),(5,45,38,50),
+ (93,62,38,48),(4,28,32,45),(18,29,36,81),(31,4,35,89),
+ (7,62,39,28),(0,10,38,61),(19,14,39,0),(24,11,35,88),
+ (30,48,39,81),(0,29,33,19),(4,24,33,90),(93,12,39,5),
+ (88,12,35,50),(62,28,38,0),(16,7,32,4),(61,83,36,7),
+ (4,31,35,89),(92,10,39,61),(61,11,38,45),(81,11,38,16),
+ (0,45,34,42),(5,12,33,19),(16,24,32,4),(61,0,38,48),
+ (12,48,35,19),(24,61,33,10),(80,11,34,4),(89,45,39,61),
+ (11,24,36,90),(19,73,35,95),(4,31,32,89),(48,4,35,19),
+ (10,98,39,48),(11,81,39,55),(89,24,34,11),(4,17,32,45),
+ (16,5,38,93),(98,5,38,61)
 )
 PROGRESSIONS=(
  (0,5,3,4),(0,6,5,3),(0,3,5,4),(0,5,6,4),(0,4,3,5),
@@ -73,6 +76,25 @@ HAT_POCKETS=((0,1,2,3),(0,.5,1.5,2,3,3.5),
              (0,.5,1,2,2.5,3.5),(0,1,1.75,2.75,3.5),
              (0,.5,1.25,2,2.75,3.5))
 SOUNDS=( "no external samples: GM patches and channel-10 kit variation", )
+# Psychological groove in music means audible pattern, contrast and motion;
+# not a claim about hypnosis or a guaranteed audience response.
+GROOVE_FAMILIES = ("drill", "trap", "club", "boom_bap", "swing", "ambient", "bounce")
+def groove_family(signature):
+    name = str(signature).lower()
+    if "drill" in name:
+        return "drill"
+    if "trap" in name or "808" in name:
+        return "trap"
+    if "club" in name or "kick-triplet" in name:
+        return "club"
+    if "boom-bap" in name or "head-nod" in name:
+        return "boom_bap"
+    if "second-line" in name or "swing" in name or "funk" in name or "soul" in name:
+        return "swing"
+    if any(k in name for k in ("cinematic","atmospheric","downtempo","slow","ambient","half-time","halftime")):
+        return "ambient"
+    return "bounce"
+
 # Verse-only counter-rhythms: melodies remain subordinate to the rapper.
 # Each focus song has its own motif, placement and percussion accent.
 VERSE_FOCUS = {
@@ -116,8 +138,15 @@ class Arrangement:
         self.rng=random.Random(self.seed)
         self.events=[]
         self.instruments=VOICES[self.rank-1]
+        self.groove=groove_family(spec.get("signature",""))
+        self.rap_space=self.rank % 4
+        self.swing_delay=(.075 if self.groove=="swing" else
+                          .035 if self.groove=="boom_bap" else 0)
         self.progression=PROGRESSIONS[(self.rank+self.seed)%len(PROGRESSIONS)]
-        self.melody=MELODIES[(self.rank+self.seed//7)%len(MELODIES)]
+        source=MELODIES[(self.rank+self.seed//7)%len(MELODIES)]
+        rot=(self.seed//211)%len(source)
+        # Melodic rotation changes the actual MIDI notes, not merely MP3 hashes.
+        self.melody=tuple(source[(i+rot)%len(source)] for i in range(len(source)))
         self.drums=DRUM_VARIANTS[(self.rank-1)%len(DRUM_VARIANTS)]
         self.drum_style=(self.rank+self.seed//29)%len(KICK_POCKETS)
         self.hat_style=(self.rank+self.seed//31)%len(HAT_POCKETS)
@@ -145,6 +174,24 @@ class Arrangement:
         # stamp the same ticking hi-hat on each beat.
         kit=self.drums
         kick_positions=list(KICK_POCKETS[self.drum_style])
+        # A region-aware performance pocket, with alternate bars and deliberate
+        # gaps for rap rather than one global four-on-the-floor recipe.
+        if self.groove=="drill":
+            kick_positions=[0,.75,2.75] if local_bar%2 else [0,1.75,2.5]
+        elif self.groove=="trap":
+            kick_positions=[0,1.5,2.75] if local_bar%2 else [0,2.25,3.25]
+        elif self.groove=="boom_bap":
+            kick_positions=[0,2.5] if local_bar%2 else [0,1.75,2.75]
+        elif self.groove=="club":
+            kick_positions=[0,.75,1.5,2.75] if local_bar%2 else [0,1.5,2.5,3.25]
+        elif self.groove=="swing":
+            kick_positions=[0,1.75,2.5] if local_bar%2 else [0,2.25,3.25]
+        elif self.groove=="ambient":
+            kick_positions=[0,2.5] if local_bar%2 else [0,1.75,3]
+        else:
+            # Keep the seeded track-specific pocket but vary last beat by phrase.
+            if local_bar%4==2:
+                kick_positions=kick_positions[:-1]+[3.25]
         if hook and local_bar%4==3: kick_positions += [3.75]
         if bridge: kick_positions=[0,2.0]
         if intro and local_bar==0: kick_positions=[0]
@@ -156,7 +203,8 @@ class Arrangement:
             jitter=self.rng.uniform(-.013,.013)
             self.percussion(bar*4+pos+max(jitter,-pos),kit["kick"],
                             vel+self.rng.randrange(-7,7),.22)
-        backbeats=(1,3) if self.drum_style%4 else (2,)
+        backbeats=(2,) if self.groove in ("drill","trap","ambient") else (1,3)
+        if self.groove=="bounce" and self.drum_style%4==0: backbeats=(2,)
         if intro and local_bar==0: backbeats=()
         for k,pos in enumerate(backbeats):
             self.percussion(bar*4+pos,kit["snare"],88 if hook else 78,.18)
@@ -165,6 +213,12 @@ class Arrangement:
         # Different texture sources: rim, shaker, ride, tambourine, closed/open
         # hats or almost no top percussion, depending on the selected kit.
         hats=HAT_POCKETS[self.hat_style]
+        if self.groove in ("trap","drill") and local_bar%4==3 and not bridge:
+            hats=(0,.5,1,1.5,2,2.25,2.5,2.75,3,3.25,3.5,3.75)
+        elif self.groove=="ambient":
+            hats=(0,1.5,3) if local_bar%2 else (0,2,3.5)
+        elif self.groove=="swing":
+            hats=(0,.75,1.5,2.25,3)
         if bridge: hats=(0,2)
         if intro: hats=(0,2) if local_bar%2==0 else (1,3)
         if outro: hats=(0,2)
@@ -216,31 +270,46 @@ class Arrangement:
             bass_positions=(0,1.75,2.75)
         for pos in bass_positions:
             bnote=bass + (12 if (local_bar%8==7 and pos>2) else 0)
-            self.add((bar*4+pos)*TPQ,2,bnote,89 if hook else 75,TPQ*.82)
+            # Remove a few low-end hits from lyric pickup bars, keeping the
+            # downbeat and kick, then answer in the second half of each bar.
+            if kind=="verse" and local_bar%8==0 and pos not in (0,2.75):
+                continue
+            self.add((bar*4+pos)*TPQ,2,bnote,86 if hook else 72,TPQ*.74)
 
     def musical_phrase(self,bar,kind,local_bar):
         if kind in ("outro","bridge","breakdown"):
             return
-        if kind=="intro" and local_bar==0:return
+        if kind=="intro" and local_bar==0:
+            return
         hook=kind=="hook"
+        verse=kind=="verse"
         pattern=self.melody
-        note_count=(4 if hook else 3 if kind=="verse" else 2)
-        if local_bar%4==3:note_count+=1
+        # Hooks supply the memorable call; verses leave the first two beats
+        # open for the rapper and answer only after the vocal pickup.
+        if hook:
+            note_count=4+(local_bar%4==3)
+            positions=(0,1.25,2.25,3.25,3.75)
+        elif verse:
+            note_count=(1,3,2,3)[local_bar%4]
+            positions=(2.0,3.0,3.5)
+        else:
+            note_count=2
+            positions=(.5,2.75)
         prog=self.progression[(bar//4)%4]
         lead_oct=5 if self.rank%4 else 4
         for i in range(note_count):
-            idx=(local_bar*2+i)%len(pattern)
-            degree=(prog+pattern[idx])%7
+            idx=(local_bar*2+i+self.rap_space)%len(pattern)
+            hook_answer=1 if hook and local_bar%8>=4 else 0
+            degree=(prog+pattern[idx]+hook_answer)%7
             n=scale_note(self.root,degree,self.scale,lead_oct)
-            pos=(.0,1.5,2.5,3.25,3.75)[i]
-            duration=(.52 if hook else .4)*TPQ
-            velocity=(68 if hook else 49 if kind=="verse" else 43)+self.rng.randint(-7,7)
+            pos=positions[i]
+            duration=(.51 if hook else .37)*TPQ
+            velocity=(71 if hook else 48 if verse else 43)+self.rng.randint(-6,6)
             self.add((bar*4+pos)*TPQ,1,n,velocity,duration)
         if hook and local_bar%2==1:
-            # Different complementary patch and phrase: no full keyboard
-            # chord pileup during verses.
-            n=scale_note(self.root,(prog+4)%7,self.scale,4)
-            self.add((bar*4+3)*TPQ,3,n,40,TPQ*.55)
+            # Counter-instrument only at the end of the hook, not over verses.
+            n=scale_note(self.root,(prog+4+self.rank%3)%7,self.scale,4)
+            self.add((bar*4+3)*TPQ,3,n,41,TPQ*.46)
 
     def verse_detail(self, bar, local_bar):
         """Vary verses independently of hooks; retain space for lead vocals.
@@ -253,6 +322,10 @@ class Arrangement:
             self.beat["id"],
             VERSE_LIBRARY[(self.rank + self.seed // 19) % len(VERSE_LIBRARY)]
         )
+        # The remaining 44 verses must not be six near-identical motifs.
+        if self.beat["id"] not in VERSE_FOCUS:
+            offset=(self.rank+self.seed//37)%7
+            motif=tuple((x+offset)%7 for x in motif)
         phrase = local_bar % 4
         cycle = (local_bar // 4) % 3
         chord_degree = self.progression[(bar // 4) % 4]
@@ -286,7 +359,7 @@ class Arrangement:
         for channel,patch in zip((0,1,2,3),self.instruments):
             setup.append(mido.Message("program_change",channel=channel,program=patch,time=0))
             setup.append(mido.Message("control_change",channel=channel,control=10,value=(44,85,64,100)[channel],time=0))
-            setup.append(mido.Message("control_change",channel=channel,control=7,value=(75,96,112,61)[channel],time=0))
+            setup.append(mido.Message("control_change",channel=channel,control=7,value=(75,96,105,61)[channel],time=0))
         mf.tracks.append(setup)
         for sec in self.spec["sections"]:
             kind=sec["kind"]

@@ -87,4 +87,45 @@ class ArrangementContractTests(unittest.TestCase):
                     self.assertGreaterEqual(verse_count,8)
         self.assertEqual(6,len(signatures))
 
+    def test_palette_instruments_and_city_grooves(self):
+        from scripts.render_arranged_review_audio import VOICES, Arrangement, GROOVE_FAMILIES
+        self.assertEqual(50,len(VOICES))
+        self.assertEqual(50,len(set(VOICES)), "No repeated four-part sonic palette")
+        self.assertGreaterEqual(len({v[2] for v in VOICES}),8,
+                                "Bass families must include acoustic, electric and synth")
+        self.assertGreaterEqual(len({v[0] for v in VOICES}),20)
+        observed=set()
+        for beat in FEATURED:
+            plan=ARRANGEMENTS[beat["id"]]
+            arranger=Arrangement(beat,plan)
+            observed.add(arranger.groove)
+            self.assertEqual(VOICES[beat["releaseRank"]-1],arranger.instruments)
+            if "drill" in plan["signature"].lower():
+                self.assertEqual("drill",arranger.groove)
+        self.assertTrue(set(GROOVE_FAMILIES).issubset(observed))
+
+    def test_rap_space_and_hook_separation(self):
+        from scripts.render_arranged_review_audio import Arrangement, TICKS_BAR
+        with __import__("tempfile").TemporaryDirectory() as folder:
+            for beat in FEATURED:
+                with self.subTest(id=beat["id"]):
+                    arranger=Arrangement(beat,ARRANGEMENTS[beat["id"]])
+                    arranger.build_midi(Path(folder)/"check.mid")
+                    kinds={k:next((s for s in ARRANGEMENTS[beat["id"]]["sections"]
+                                  if s["kind"]==k),None) for k in ("verse","hook")}
+                    self.assertTrue(kinds["verse"] and kinds["hook"])
+                    def lead_notes(kind):
+                        bar=kinds[kind]["startBar"]
+                        return [(t-bar*TICKS_BAR,m.velocity) for t,_,m in arranger.events
+                                if m.type=="note_on" and m.velocity
+                                and m.channel==1 and bar*TICKS_BAR<=t<(bar+1)*TICKS_BAR]
+                    verse=lead_notes("verse")
+                    hook=lead_notes("hook")
+                    self.assertLessEqual(len(verse),2, "Opening of verse too busy")
+                    self.assertTrue(all(t>=2*480 for t,_ in verse),
+                                    "Verse pickup must leave first half-bar clear")
+                    self.assertGreaterEqual(len(hook),4,"Hooks should have a main phrase")
+                    self.assertGreater(sum(v for _,v in hook)/len(hook),
+                                       sum(v for _,v in verse)/len(verse))
+
 if __name__=="__main__":unittest.main()
