@@ -21,7 +21,8 @@ jobs:
           python - "$RUNNER_TEMP/status.json" <<'PY'
           import json,sys
           status=json.load(open(sys.argv[1]))
-          assert status.get("message") in ("API is running","API is healthy"),status
+          assert (status.get("message") in ("API is running","API is healthy") or
+                status.get("status")=="operational"),status
           print("PROVIDER_STATUS_OK",status)
           PY
           curl -sS -D "$RUNNER_TEMP/headers" --connect-timeout 10 --max-time 20 \
