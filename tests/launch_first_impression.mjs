@@ -49,6 +49,14 @@ try {
   await mobile.waitForFunction(()=>{let a=document.querySelector('#player');return a&&document.querySelector('#playerDialog').open&&a.readyState>=2&&a.currentTime>.1},null,{timeout:30000});
   record('Touch-sized Play button decodes real audio',true);
   await mobile.locator('#closePlayer').click();
+  const narrow=await browser.newPage({viewport:{width:320,height:720},deviceScaleFactor:1,isMobile:true,hasTouch:true});
+  try {
+    await narrow.goto(BASE,{waitUntil:'domcontentloaded',timeout:50000});
+    await narrow.waitForFunction(()=>document.querySelectorAll('article.track-card').length===50,null,{timeout:40000});
+    const width=await narrow.evaluate(()=>({innerWidth:innerWidth,documentWidth:document.documentElement.scrollWidth}));
+    record('320px compact-phone no horizontal overflow',width.documentWidth<=width.innerWidth+2,width);
+    await narrow.screenshot({path:path.join(OUTPUT,'compact-phone-first-impression.png')});
+  } finally { await narrow.close(); }
   record('No JavaScript errors',out.errors.length===0,{errors:out.errors});
   out.checkedAt=new Date().toISOString();
   fs.writeFileSync(path.join(OUTPUT,'report.json'),JSON.stringify(out,null,2)+'\n');
