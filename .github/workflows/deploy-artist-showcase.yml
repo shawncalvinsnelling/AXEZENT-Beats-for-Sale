@@ -163,6 +163,7 @@ jobs:
           mkdir -p _pages_build/assets _pages_build/data
           cp pages-showcase/index.html _pages_build/index.html
           cp pages-showcase/showcase.js _pages_build/assets/showcase.js
+           cp pages-showcase/counters.js _pages_build/assets/counters.js
           cp assets/styles.css assets/favicon.svg _pages_build/assets/
           rsvg-convert -w 1200 -h 630 assets/axezent-social-share.svg -o _pages_build/assets/axezent-social-share-v1.png
           python - <<'PY'
@@ -215,16 +216,18 @@ jobs:
         run: |
           set -euo pipefail
           node --check _pages_build/assets/showcase.js
+           node --check _pages_build/assets/counters.js
+           node tests/test_public_counters.mjs
           node -e '
             const fs=require("fs");
             const h=fs.readFileSync("_pages_build/index.html","utf8");
             const j=fs.readFileSync("_pages_build/assets/showcase.js","utf8");
             const plans=JSON.parse(fs.readFileSync("_pages_build/data/arrangements.json","utf8"));
             const manifest=JSON.parse(fs.readFileSync("_pages_build/data/public-preview-manifest.json","utf8"));
-            for(const key of ["id=\"playerDialog\"","id=\"musicSeek\"","id=\"musicRepeat\"","id=\"musicArrangement\"","id=\"region\"","$100", "your next song","og:image", "axezent-social-share-v1.png"]){
+            for(const key of ["id=\"playerDialog\"","id=\"musicSeek\"","id=\"musicRepeat\"","id=\"musicArrangement\"","id=\"region\"","$100", "your next song","og:image", "axezent-social-share-v1.png", "id=\"totalVisits\"", "assets/counters.js", "id=\"musicPlayCount\""]){
               if(!h.includes(key))throw Error("Missing AXEZENT design or player feature "+key);
             }
-            for(const key of ["renderSectionTable","arrangements.json","approvedPreviewUrl","musicRepeat.addEventListener","seekTo"]){
+            for(const key of ["renderSectionTable","arrangements.json","approvedPreviewUrl","musicRepeat.addEventListener","seekTo","AXEZENT_COUNTERS"]){
               if(!j.includes(key))throw Error("Missing AXEZENT player feature "+key);
             }
             if(j.includes("Discover AXEZENT")||j.includes("Preview coming soon"))throw Error("Removed clutter has returned");
