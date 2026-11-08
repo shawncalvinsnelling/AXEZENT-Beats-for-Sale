@@ -155,7 +155,7 @@
       el("h2","",beat.title),
       el("p","",beat.collection+" collection"+(beat.bpm?" · "+beat.bpm+" BPM":"")+" · "+(beat.key||"Production details")),
       el("p","",previewReady(beat)?"Choose Play to listen to the approved instrumental preview.":"The original audio file is not connected to the public player yet."),
-      el("div","details-note","Preview arrangement: Intro → Hook → Verse → Hook → Outro. The expanded instrumental arrangement adds a second verse before the outro, ending with the final verse followed by the outro. This describes the release plan; the exact source recording must be checked before publishing.")
+      el("div","details-note","FREE LISTENING PREVIEW: Intro → Hook → Verse → Hook → Outro. $100 EXCLUSIVE FULL INSTRUMENTAL: Intro → Hook → Verse 1 → Hook → Verse 2 → Outro. The full version adds a second verse. Sale and delivery are subject to confirmed availability and a signed rights-transfer agreement. Actual audio arrangements must be verified before release.")
     );
     if(typeof dialog.showModal === "function") dialog.showModal(); else dialog.setAttribute("open","");
   }
