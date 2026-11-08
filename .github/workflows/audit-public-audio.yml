@@ -17,6 +17,8 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg
+      - name: Install independent numerical FFT analyzer
+        run: python -m pip install --disable-pip-version-check "numpy>=1.26,<3"
       - name: Audit the publicly audible tracks without downloading private Actions artifacts
         shell: bash
         run: |
@@ -46,11 +48,15 @@ jobs:
           PY
       - name: Check integrated LUFS, decoded true peak, dynamic range and file integrity
         run: python scripts/audit_loudness.py --audio-dir _review_audio --report AXEZENT_50_TRACK_AUDIO_QA.json
+      - name: Inspect actual decoded stereo, spectral masking, transient pulse, section energy and mix similarity
+        run: python scripts/audit_audio_depth.py --audio-dir _review_audio --report AXEZENT_50_TRACK_DEPTH_QA.json
       - name: Preserve the objective results for the owner
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: AXEZENT-50-TRACK-OBJECTIVE-AUDIO-QA
-          path: AXEZENT_50_TRACK_AUDIO_QA.json
+          path: |
+            AXEZENT_50_TRACK_AUDIO_QA.json
+            AXEZENT_50_TRACK_DEPTH_QA.json
           if-no-files-found: warn
           retention-days: 90
