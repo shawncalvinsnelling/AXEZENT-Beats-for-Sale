@@ -3,6 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="canonical" href="https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/">
+  <script>
+    // Referral query parameters do not belong in the public address displayed
+    // to visitors. Clean only marketing tags; preserve functional parameters.
+    (() => {
+      const url = new URL(window.location.href);
+      let changed = false;
+      for (const name of [...url.searchParams.keys()]) {
+        if (/^utm_/i.test(name)) {
+          url.searchParams.delete(name);
+          changed = true;
+        }
+      }
+      if (changed) {
+        window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
+      }
+    })();
+  </script>
   <meta name="theme-color" content="#0a0c13">
   <meta name="description" content="Explore original hip-hop and rap productions by AXEZENT. Discover featured instrumental concepts by city, state and musical style.">
   <meta property="og:title" content="Beats & Instrumentals for Sale | AXEZENT">
