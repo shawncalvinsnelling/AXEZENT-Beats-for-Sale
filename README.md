@@ -6,20 +6,22 @@
 
 **Find Your Sound. Make Your Next Hit.**
 
-**Original Hip-Hop · Rap · Club · Melodic Instrumentals**
+**Original Hip-Hop · Rap · Club · Melodic Instrumental Concepts**
 
-*Produced by AXEZENT*
+*Produced under the AXEZENT project*
 
 ## [▶ OPEN THE AXEZENT WEBSITE](https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/)
 
-**Public HTTPS site · No ChatGPT login required**
+**Public HTTPS artist showcase · No ChatGPT login required**
 
-Browse the 50 featured beat selections by title, city and region. The original AXEZENT visual design and popup-player interface are preserved in the public artist showcase.
+Browse **50 featured full-length NEW review instrumentals**, with regional filters and a working popup player (Play, Pause, Stop, Seek, Repeat and Exit). Every beat now has a different **bar-accurate proposed arrangement** in Details, calculated from that track's BPM, including optional intro, hook-first and verse-first layouts, 2–4 verses, bridges and outro.
 
-**Audio restoration:** The substitute 30-second synthesized clips have been withdrawn from GitHub Pages. The existing player and 50-title interface are preserved, but public Play buttons remain unavailable until the **original owner-approved full-length recordings** can be connected to a separately hosted HTTPS audio streamer. No original MP3s or masters are stored in this repository. We will not regenerate different music as a substitute.
+**Important audio provenance:** The 50 currently playable MP3s were newly rendered from the [arrangement plans](data/arrangements.json) using the [AXEZENT review audio renderer](scripts/render_arranged_review_audio.py) and a sampled GM instrument bank. They are **not verified copies of the previously finished private ChatGPT mixes** and are **not approved paid studio masters**. The original private source recordings have not been overwritten.
 
-For setup, public-preview publishing, and the distinction between the public artist showcase and the full independent storefront, see [GitHub Pages website instructions](docs/GITHUB_PAGES_SHOWCASE.md).
+**Proposed $100 exclusive full instrumental:** This is informational pricing only. Ownership rights, availability, delivery format and payment must be established in a signed written agreement with AXEZENT before transfer. GitHub Pages does not operate the checkout, rights transfer or protected paid download.
 
-**The $100 exclusive rights purchase process is managed separately from GitHub Pages.**
+**No false copy protection:** Audio playable in a browser can be captured or copied, even if the site does not provide a Download button. Never upload a paid master here. The website publishes only newly created lower-bitrate review MP3s and no WAV masters, stems, source session files or payment details.
+
+[Full technical and playback instructions](docs/GITHUB_PAGES_SHOWCASE.md)
 
 </div>
