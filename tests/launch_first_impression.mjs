@@ -30,6 +30,7 @@ try {
   const ib=img.ok()?await img.body():Buffer.alloc(0);
   const dims=(ib.length>24&&ib.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])))?{width:ib.readUInt32BE(16),height:ib.readUInt32BE(20)}:{width:0,height:0};
   record('Open Graph image loads 1200x630 as PNG',img.ok()&&dims.width===1200&&dims.height===630,{status:img.status(),bytes:ib.length,...dims});
+  fs.writeFileSync(path.join(OUTPUT,'facebook-social-card.png'),ib);
   await desktop.screenshot({path:path.join(OUTPUT,'desktop-first-impression.png')});
   await desktop.locator('#catalog').scrollIntoViewIfNeeded();
   await desktop.screenshot({path:path.join(OUTPUT,'desktop-beat-catalog.png')});
