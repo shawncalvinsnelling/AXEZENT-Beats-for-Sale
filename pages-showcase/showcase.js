@@ -70,11 +70,11 @@
     const body = el("div","track-content");
     const h3 = el("h3","",beat.title); h3.title = beat.title;
     const meta = el("div","track-meta",beat.city + ", " + beat.state + (beat.bpm ? " · "+beat.bpm+" BPM" : ""));
-    const status = previewReady(beat) ? el("span","status ready","Ready to listen") : null;
+    const status = previewReady(beat) ? el("span","status ready","Full-length review audio") : null;
     const buttons = el("div","track-actions");
     const play = el("button","play-button","▶ Play");
     play.type = "button"; play.disabled = !previewReady(beat);
-    play.title = play.disabled ? "Original recording not connected yet" : "Listen to "+beat.title;
+    play.title = play.disabled ? "Audio review mix not connected yet" : "Listen to full-length review mix: "+beat.title;
     play.setAttribute("aria-label",play.title);
     if(!play.disabled) play.addEventListener("click",() => openPlayer(beat));
     const detail = el("button","detail-button","Details");
@@ -138,7 +138,7 @@
       await player.play();
       setPlayerStatus("Now playing");
     } catch(err) {
-      setPlayerStatus("Audio is unavailable. Check the preview server and try again.");
+      setPlayerStatus("Audio could not be played. Check the connection and try again.");
     }
   }
   function openPlayer(beat) {
@@ -148,7 +148,11 @@
     player.src=approvedPreviewUrl(beat);
     player.load();
     musicTitle.textContent=beat.title;
-    musicMeta.textContent=beat.city+", "+beat.state+" · "+(beat.bpm||"—")+" BPM · Preview: Intro → Hook → Verse → Hook → Outro";
+    musicMeta.textContent=beat.city+", "+beat.state+" · "+(beat.bpm||"—")+" BPM";
+    const caption=$("musicArrangement");
+    if(caption)caption.textContent=beat.arrangement && Array.isArray(beat.arrangement.sections)
+      ? "Arrangement: "+beat.arrangement.sections.map(s=>s.label).join(" → ")
+      : "Full-length review mix";
     setPlayerStatus("Ready to listen");
     if(!musicDialog.open) musicDialog.showModal();
     playSelected();
@@ -184,7 +188,7 @@
       el("span","micro",beat.id+" · "+beat.city.toUpperCase()+", "+beat.state.toUpperCase()),
       el("h2","",beat.title),
       el("p","",beat.collection+" collection"+(beat.bpm?" · "+beat.bpm+" BPM":"")+" · "+(beat.key||"Production details")),
-      el("p","",previewReady(beat)?"Choose Play to listen to the available review mix.":"Audio is pending producer review and hosting; this is the planned beat structure."),
+      el("p","",previewReady(beat)?"Play the NEW full-length review arrangement. It is not a verified copy of the earlier private finished mix or a delivered paid master.":"Audio is pending producer review and hosting; this is the planned beat structure."),
       renderSectionTable(beat),
       el("div","details-note","$100 EXCLUSIVE FULL INSTRUMENTAL — intended price for an eligible, approved beat. The purchase version is the complete arrangement shown above. Rights transfer, audio delivery and availability must be confirmed by AXEZENT in writing. No payment is collected on this page.")
     );
