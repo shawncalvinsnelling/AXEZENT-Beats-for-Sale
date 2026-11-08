@@ -43,6 +43,25 @@ try {
   const after=await page.locator('#player').evaluate(el=>({currentTime:el.currentTime,duration:el.duration}));
   console.log('SEEK WORKS:',after);
 
+  // A listener should be able to adjust loudness without changing device settings.
+  await page.locator('#musicVolume').evaluate(el=>{
+    el.value='40';el.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.ok(Math.abs(await page.locator('#player').evaluate(el=>el.volume)-0.4)<0.01,
+    'Volume slider must set browser audio volume');
+  assert.equal((await page.locator('#musicVolumeValue').innerText()).trim(),'40%');
+  await page.locator('#musicVolume').evaluate(el=>{
+    el.value='100';el.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  const beforeBack=await page.locator('#player').evaluate(el=>el.currentTime);
+  await page.locator('#musicBack15').click();
+  const afterBack=await page.locator('#player').evaluate(el=>el.currentTime);
+  assert.ok(beforeBack-afterBack>13,'Rewind control must seek ~15 seconds');
+  await page.locator('#musicForward15').click();
+  const afterForward=await page.locator('#player').evaluate(el=>el.currentTime);
+  assert.ok(afterForward-afterBack>13,'Forward control must seek ~15 seconds');
+  console.log('VOLUME AND +/-15 SEC SKIP WORK');
+
   await page.locator('#musicPause').click();
   assert.equal(await page.locator('#player').evaluate(el=>el.paused),true,'Pause must work');
   await page.locator('#musicRepeat').click();
@@ -52,12 +71,26 @@ try {
   await page.locator('#closePlayer').click();
   assert.equal(await page.locator('#playerDialog').evaluate(el=>el.open),false,'Exit must close');
 
+  // Check more than the first track: late-catalog sources must decode in-browser.
+  for(const index of [8,24,49]) {
+    const card=page.locator('article.track-card').nth(index);
+    const other=await card.locator('h3').textContent();
+    await card.locator('button.play-button').click();
+    await page.waitForFunction(() => {
+      const a=document.querySelector('#player');
+      return a && a.readyState>=2 && Number.isFinite(a.duration) && a.duration>60;
+    },null,{timeout:30000});
+    await page.waitForFunction(() => document.querySelector('#player').currentTime>0.1,null,{timeout:10000});
+    console.log('ADDITIONAL BROWSER AUDIO PLAY:',index+1,other.trim());
+    await page.locator('#closePlayer').click();
+  }
+
   await page.locator('#region').selectOption({label:'Midwest'});
   await page.waitForFunction(() => {
     const cards=[...document.querySelectorAll('article.track-card')];
     return cards.length>0 && cards.length<50 && cards.every(c=>c.textContent.includes('Midwest'));
   },null,{timeout:10000});
-  console.log('PASS: real browser plays, seeks, pauses, repeats and stops the full new review audio; catalog and Details operate.');
+  console.log('PASS: browser verifies four actual MP3s, play, pause, +/-15s, volume, drag seek, repeat, stop, catalog and Details.');
 } finally {
   await browser.close();
 }
