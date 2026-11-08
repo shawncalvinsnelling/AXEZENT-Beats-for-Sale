@@ -66,11 +66,21 @@
     const article = el("article","track-card");
     const art = el("div","track-art");
     art.style.setProperty("--accent", accents[beat.collection] || "#7d8795");
-    elAppend(art,el("b","",beat.id),el("small","",beat.collection));
+    const num=Number(beat.id.replace(/\D/g,"")) || beat.bpm || 1;
+    const swatches=["#ddad69","#87c1cb","#9c91d5","#d28d79","#8fc59d","#d4be7b","#ba9ebc"];
+    art.style.setProperty("--accent-2",swatches[num%swatches.length]);
+    const bars=el("span","cover-soundwave");
+    bars.setAttribute("aria-hidden","true");
+    for(let k=0;k<11;k++){
+      const line=el("i","");
+      line.style.height=(12+Math.abs(Math.sin((num+k*17)*.37))*37)+"px";
+      bars.appendChild(line);
+    }
+    elAppend(art,bars,el("b","",beat.id),el("small","",beat.collection));
     const body = el("div","track-content");
     const h3 = el("h3","",beat.title); h3.title = beat.title;
     const meta = el("div","track-meta",beat.city + ", " + beat.state + (beat.bpm ? " · "+beat.bpm+" BPM" : ""));
-    const status = previewReady(beat) ? el("span","status ready","Ready to play") : null;
+    const status = previewReady(beat) ? el("span","status ready","Listen now · $100 exclusive") : null;
     const buttons = el("div","track-actions");
     const play = el("button","play-button","▶ Play");
     play.type = "button"; play.disabled = !previewReady(beat);
@@ -284,7 +294,7 @@
     if(state.all.length!==50 || state.all.some(b=>!b.arrangement || b.arrangement.bpm!==b.bpm))throw Error("Featured arrangement validation failed");
     const collections=[...new Set(state.all.map(x=>x.collection))].sort();
     collections.forEach(c=>{const option=el("option","",c);option.value=c;region.appendChild(option);});
-    $("heroTotal").textContent=String(data.length);
+    const totalNode=$("heroTotal"); if(totalNode)totalNode.textContent=String(data.length);
     const reviewNode=$("reviewCount");if(reviewNode)reviewNode.textContent=String(state.all.length);
     applyFilters();
   }).catch(err=>{results.textContent="Catalog could not load. Please refresh.";cards.replaceChildren();more.hidden=true;console.error(err);});
