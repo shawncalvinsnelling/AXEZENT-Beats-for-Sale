@@ -47,7 +47,8 @@ jobs:
           for path,size in large[:25]:
               print("LARGE_MEDIA-LABELLED",path,size)
           if suspicious:
-              print("WARNING: .gitignore cannot remove previously committed media blobs from public history")
+              print("FAIL: Previously published MP3/WAV/ZIP content remains reachable in Git history")
+              raise SystemExit(1)
           else:
-              print("PASS: no named audio/master/ZIP binaries found in reachable Git commit history")
+              print("PASS: no audio files or ZIP archives are reachable in any public branch or tag history")
           PY
