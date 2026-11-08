@@ -10,8 +10,10 @@ from __future__ import annotations
 import argparse
 import json
 import hashlib
+import os
 import shutil
 import subprocess
+import mido
 from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
@@ -54,6 +56,40 @@ class CollectionTwoArrangement(Arrangement):
         self.rap_space=salt%4
         self.swing_delay=.085 if self.groove=="swing" else (
             .04 if self.groove=="boom_bap" else 0)
+
+    # A/B ONLY: improve the four measured mix-review flags without touching
+    # any first-collection MIDI or all other Collection Two songs. Not a
+    # psychoacoustic patent or guarantee of human approval.
+    def add(self, beat_tick, channel, note, velocity, length_ticks):
+        if os.environ.get("AXEZENT_MIX_AB_BASELINE")!="1" and self.beat["id"] in ("AXZ-187","AXZ-110"):
+            bar=int(beat_tick)//(480*4)
+            section=next((s for s in self.spec["sections"]
+                if s["startBar"]<=bar<s["endBar"]),None)
+            if section and section["kind"]=="hook":
+                if channel in (0,1,2,3):
+                    velocity=min(127,velocity+9)
+                elif channel==9 and note in (35,36,38,39,40):
+                    velocity=min(127,velocity+5)
+        super().add(beat_tick,channel,note,velocity,length_ticks)
+
+    def build_midi(self,outpath):
+        count=super().build_midi(outpath)
+        if os.environ.get("AXEZENT_MIX_AB_BASELINE")=="1" or self.beat["id"] not in ("AXZ-172","AXZ-010"):
+            return count
+        # Only newly flagged songs: bring outer melodic voices nearer the
+        # center. Bass (channel 2) stays exactly centered at pan 64.
+        mid=mido.MidiFile(outpath)
+        pan={0:55,1:73,2:64,3:77}
+        found=set()
+        for track in mid.tracks:
+            for msg in track:
+                if msg.type=="control_change" and msg.control==10 and msg.channel in pan:
+                    msg.value=pan[msg.channel]
+                    found.add(msg.channel)
+        if found!={0,1,2,3}:
+            raise RuntimeError("Cannot locate four expected MIDI pan controllers")
+        mid.save(outpath)
+        return count
 
 def render(beat,spec,blueprint,outpath,soundfont):
     arranger=CollectionTwoArrangement(beat,spec,blueprint)
