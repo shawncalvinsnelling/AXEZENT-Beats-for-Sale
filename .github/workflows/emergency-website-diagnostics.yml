@@ -1,0 +1,43 @@
+name: Emergency AXEZENT website diagnostics
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/emergency-website-diagnostics.yml'
+      - 'tests/emergency_website_diagnostics.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check-live:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe public HTTPS, JavaScript, catalog and arrangement APIs
+        run: |
+          set +e
+          for part in '' 'assets/showcase.js' 'data/catalog.json' 'data/arrangements.json' 'data/public-preview-manifest.json' 'review-audio/AXZ-169-review.mp3'; do
+            echo "PROBE: $part"
+            curl -L -sS --max-time 22 -o /tmp/axz_probe -w 'url=%{url_effective} code=%{http_code} content_type=%{content_type} size=%{size_download} remote_ip=%{remote_ip} time=%{time_total}s\n' "https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/$part"
+            head -c 120 /tmp/axz_probe | strings | head -c 150 || true
+            echo
+          done
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Inspect browser network errors and 50-card render
+        run: node tests/emergency_website_diagnostics.mjs
+      - name: Preserve diagnosis and screenshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: AXEZENT-LIVE-WEBSITE-EMERGENCY-DIAG
+          path: |
+            emergency-website-report.json
+            emergency-website-screen.png
+          if-no-files-found: warn
+          retention-days: 10
