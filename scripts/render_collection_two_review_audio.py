@@ -67,16 +67,25 @@ def render(beat,spec,blueprint,outpath,soundfont):
         midi_events=edit["sourceMidiEvents"]
     subprocess.run(["fluidsynth","-ni","-F",str(wave),"-r","44100",
                     str(soundfont),str(midi)],check=True,stdout=subprocess.DEVNULL)
+    layer=None
+    if edit["enhanced"]:
+        from scripts.axezent_spectral_timbres import synthesize
+        layer=outpath.with_suffix(".timbre.wav")
+        info=synthesize(beat,spec,layer,rate=44100)
+        if info["synthEvents"]<4:
+            raise RuntimeError("Missing original A-Z timbre phrases "+beat["id"])
     # The original 50's tested sound chain, with conservative codec true peak.
     # Previously measured negative mid/side correlation on these songs.
     # Shrink side signal BEFORE mastering, rather than using delay or inverted
     # phase to 'widen' audio. Preserve some stereo impression and review again.
     stereo_guard=("stereotools=mlev=1:slev=0.22," if
                   beat["id"] in ("AXZ-172","AXZ-010","AXZ-110") else "")
-    # Hook energy: modest target only for a previously measured quiet refrain.
-    hook=next((s for s in spec["sections"] if s["kind"]=="hook"),None)
-    hook_gain=(f"volume=1.35:enable='between(t,{hook['startSeconds']:.3f},{hook['endSeconds']:.3f})',"
-               if beat["id"]=="AXZ-187" and hook else "")
+    # Promote the repeated hook consistently throughout the whole song.
+    # The previous single-hook 1.35x test left a -1.88 dB low-energy review flag.
+    hook_gain=("".join(
+        f"volume=1.65:enable='between(t,{section['startSeconds']:.3f},{section['endSeconds']:.3f})',"
+        for section in spec["sections"] if section["kind"]=="hook")
+        if beat["id"]=="AXZ-187" else "")
     filters=(
         stereo_guard+hook_gain+
         "highpass=f=28,"
@@ -88,12 +97,19 @@ def render(beat,spec,blueprint,outpath,soundfont):
         "loudnorm=I=-14:TP=-2.5:LRA=8,"
         "alimiter=limit=0.72:level=false"
     )
-    subprocess.run(["ffmpeg","-hide_banner","-nostdin","-loglevel","error",
-         "-y","-i",str(wave),"-af",filters,
-         "-t",str(spec["durationSeconds"]),"-c:a","libmp3lame",
-         "-ar","44100","-ac","2","-b:a","160k",str(outpath)],check=True)
+    if layer:
+        ff_filters="[0:a][1:a]amix=inputs=2:weights='1 0.30':normalize=0,"+filters+"[out]"
+        cmd=["ffmpeg","-hide_banner","-nostdin","-loglevel","error","-y",
+             "-i",str(wave),"-i",str(layer),"-filter_complex",ff_filters,
+             "-map","[out]"]
+    else:
+        cmd=["ffmpeg","-hide_banner","-nostdin","-loglevel","error","-y",
+             "-i",str(wave),"-af",filters]
+    subprocess.run(cmd+["-t",str(spec["durationSeconds"]),"-c:a","libmp3lame",
+                   "-ar","44100","-ac","2","-b:a","160k",str(outpath)],check=True)
     midi.unlink(missing_ok=True)
     wave.unlink(missing_ok=True)
+    if layer: layer.unlink(missing_ok=True)
     if outpath.stat().st_size<150_000 or midi_events<200:
         raise RuntimeError("Missing or underdeveloped instrumental preview "+beat["id"])
     meta=json.loads(subprocess.check_output(["ffprobe","-v","error",

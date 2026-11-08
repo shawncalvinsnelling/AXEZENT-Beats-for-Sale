@@ -453,6 +453,13 @@ def prepare_review(beat,spec,outpath,soundfont,rate=44100,enhanced=False):
     # the job environment; no samples or original private recordings enter repo.
     subprocess.run(["fluidsynth","-ni","-F",str(wave),"-r",str(rate),str(soundfont),str(midi)],
                    check=True,stdout=subprocess.DEVNULL)
+    layer=None
+    if enhanced:
+        from scripts.axezent_spectral_timbres import synthesize
+        layer=outpath.with_suffix(".timbre.wav")
+        info=synthesize(beat,spec,layer,rate=rate)
+        if info["synthEvents"]<4:
+            raise RuntimeError("Missing original synthesized instrument events "+beat["id"])
     duration=float(spec["durationSeconds"])
     # The first V2 review output was measured at -30 to -38 LUFS and extremely
     # bass-heavy: not suitable for reliable casual listening. This corrective
@@ -473,12 +480,22 @@ def prepare_review(beat,spec,outpath,soundfont,rate=44100,enhanced=False):
         "loudnorm=I=-14:TP=-2.5:LRA=8,"
         f"alimiter=limit={limiter_ceiling:.2f}:level=false"
     )
-    subprocess.run(["ffmpeg","-hide_banner","-nostdin","-loglevel","error","-y",
-        "-i",str(wave),"-af",filters,
-        "-t",str(duration),"-c:a","libmp3lame","-ar",str(rate),"-ac","2","-b:a","160k",str(outpath)],
-        check=True)
+    if layer:
+        # Original phrase-only FM instrument layer (no external audio samples).
+        # Mix before EQ/dynamics so mastering meters still reflect the complete
+        # listener-facing signal. Stereo is phase-coherent by construction.
+        ff_filters="[0:a][1:a]amix=inputs=2:weights='1 0.30':normalize=0,"+filters+"[out]"
+        cmd=["ffmpeg","-hide_banner","-nostdin","-loglevel","error","-y",
+            "-i",str(wave),"-i",str(layer),"-filter_complex",ff_filters,
+            "-map","[out]"]
+    else:
+        cmd=["ffmpeg","-hide_banner","-nostdin","-loglevel","error","-y",
+            "-i",str(wave),"-af",filters]
+    subprocess.run(cmd+["-t",str(duration),"-c:a","libmp3lame","-ar",str(rate),
+              "-ac","2","-b:a","160k",str(outpath)],check=True)
     midi.unlink(missing_ok=True)
     wave.unlink(missing_ok=True)
+    if layer: layer.unlink(missing_ok=True)
     if outpath.stat().st_size<150000:
         raise RuntimeError("Silent or empty rendered preview "+str(outpath))
     ff=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_entries",
