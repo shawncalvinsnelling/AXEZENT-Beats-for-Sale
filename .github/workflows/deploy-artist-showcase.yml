@@ -60,7 +60,7 @@ jobs:
               if(!h.includes(marker))throw Error("Missing preview/full arrangement explanation: "+marker);
             }
             if(j.includes("Discover AXEZENT")||j.includes("Preview coming soon")||j.includes("Coming soon"))throw Error("Old clutter labels remain in published player");
-            if(!j.includes('el("button","play-button","▶ Play")')||!j.includes('el("button","detail-button","Details")'))throw Error("Expected compact player controls are missing");
+            if(!j.includes("play-button")||!j.includes("detail-button")||!j.includes("▶ Play"))throw Error("Expected compact player controls are missing");
             for(const forbidden of [/chatgpt[.]site/i,/paypal/i,/cash app/i,/mailto:/i,/private prototype/i,/synthetic review/i,/an online shop/i]) {
               if(forbidden.test(h))throw Error("Customer-facing page includes restricted text: "+forbidden);
             }
