@@ -22,6 +22,12 @@ try {
   const status=await desktop.locator('#resultsText').innerText();
   record('Catalog fully loaded, no blank/loading trap',status.includes('50 beats')&&!/loading|could not/i.test(status),{status});
   record('No unwanted repository link',await desktop.locator('a[href*="github.com"],a[href*="chatgpt.com"]').count()===0);
+  const contactLinks=await desktop.locator('a[href^="mailto:axezentai@gmail.com"]').count();
+  record('Contact section includes two correct public email links',contactLinks===2,{contactLinks});
+  await desktop.locator('article.track-card button.detail-button').first().click();
+  const trackEmail=await desktop.locator('#dialogContent .inquiry-email').getAttribute('href');
+  record('Beat Details prefills correct artist inquiry email and track ID',Boolean(trackEmail&&trackEmail.startsWith('mailto:axezentai@gmail.com?subject=')&&trackEmail.includes('AXZ-')),{trackEmail});
+  await desktop.locator('#closeDialog').click();
   const bars=await desktop.locator('.cover-soundwave').count();
   record('50 individual beat-art visuals',bars===50,{bars});
   const og=await desktop.locator('meta[property="og:image"]').getAttribute('content');
