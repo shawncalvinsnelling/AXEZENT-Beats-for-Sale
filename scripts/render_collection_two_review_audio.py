@@ -61,10 +61,24 @@ def render(beat,spec,blueprint,outpath,soundfont):
     midi=outpath.with_suffix(".mid")
     wave=outpath.with_suffix(".wav")
     midi_events=arranger.build_midi(midi)
+    from scripts.music_a_z_enhance import enhance_midi
+    edit=enhance_midi(midi,beat,spec)
+    if edit["enhanced"]:
+        midi_events=edit["sourceMidiEvents"]
     subprocess.run(["fluidsynth","-ni","-F",str(wave),"-r","44100",
                     str(soundfont),str(midi)],check=True,stdout=subprocess.DEVNULL)
     # The original 50's tested sound chain, with conservative codec true peak.
+    # Previously measured negative mid/side correlation on these songs.
+    # Shrink side signal BEFORE mastering, rather than using delay or inverted
+    # phase to 'widen' audio. Preserve some stereo impression and review again.
+    stereo_guard=("stereotools=mlev=1:slev=0.22," if
+                  beat["id"] in ("AXZ-172","AXZ-010","AXZ-110") else "")
+    # Hook energy: modest target only for a previously measured quiet refrain.
+    hook=next((s for s in spec["sections"] if s["kind"]=="hook"),None)
+    hook_gain=(f"volume=1.35:enable='between(t,{hook['startSeconds']:.3f},{hook['endSeconds']:.3f})',"
+               if beat["id"]=="AXZ-187" and hook else "")
     filters=(
+        stereo_guard+hook_gain+
         "highpass=f=28,"
         "bass=g=-5:f=155:w=0.7,"
         "equalizer=f=900:width_type=o:width=1.1:g=2,"

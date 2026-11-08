@@ -435,7 +435,7 @@ class Arrangement:
         mf.save(outpath)
         return len(self.events)
 
-def prepare_review(beat,spec,outpath,soundfont,rate=44100):
+def prepare_review(beat,spec,outpath,soundfont,rate=44100,enhanced=False):
     if beat["bpm"]!=spec["bpm"] or beat["releaseRank"]!=spec["releaseRank"]:
         raise ValueError("Arrangement metadata does not match catalog")
     outpath.parent.mkdir(parents=True,exist_ok=True)
@@ -443,6 +443,12 @@ def prepare_review(beat,spec,outpath,soundfont,rate=44100):
     wave=outpath.with_suffix(".wav")
     arranger=Arrangement(beat,spec)
     events=arranger.build_midi(midi)
+    if enhanced:
+        from scripts.music_a_z_enhance import enhance_midi, PRIORITY_IDS
+        if beat["id"] not in PRIORITY_IDS:
+            raise ValueError("Cannot replace non-priority review recording "+beat["id"])
+        edit=enhance_midi(midi,beat,spec)
+        events=edit["sourceMidiEvents"]
     # Low-footprint offline rendering: the 6 MB GM SoundFont is provided by
     # the job environment; no samples or original private recordings enter repo.
     subprocess.run(["fluidsynth","-ni","-F",str(wave),"-r",str(rate),str(soundfont),str(midi)],
