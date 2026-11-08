@@ -6,7 +6,7 @@
   const cards = $("tracks"), query = $("query"), region = $("region"), sort = $("sort");
   const more = $("more"), results = $("resultsText"), empty = $("empty");
   const dialog = $("trackDialog"), modal = $("dialogContent"), player = $("player");
-  const state = { all: [], filtered: [], displayed: 0, playing: null, selected: null, compactActive: false };
+  const state = { all: [], filtered: [], displayed: 0, playing: null, selected: null };
   const PAGE = 100;
   // All timing here is sourced from each producer-selected 4/4 arrangement
   // blueprint, never inferred from an existing/unverified recording.
@@ -20,7 +20,7 @@
   const renderSectionTable = (track) => {
     const spec = track.arrangement;
     if (!spec || !Array.isArray(spec.sections)) {
-      return el("p","", "No verified arrangement specification available.");
+      return el("p","", "Studio arrangement details remain private while the recording is being reviewed.");
     }
     const pane = el("section","arrangement-detail");
     const subtitle = el("p","section-head","Track arrangement · "+spec.totalBars+" bars · "+showClock(spec.durationSeconds));
@@ -56,17 +56,17 @@
   // One real approved source per beat; never synthesize substitute audio in-browser.
   // Same-origin relative URLs are allowed so tagged preview files or HTTPS audio
   // endpoints can be used without changing the listening interface.
+  // Only producer-approved, identifiable excerpts may ever be played.
+  // Original/full-length audio is deliberately NOT an eligible source.
   const approvedPreviewUrl = b => {
-    if (typeof b.previewUrl !== "string" || !b.previewUrl.trim()) return null;
+    if (!/^AXZ-\d{3}$/.test(b.id)) return null;
+    const required = "./approved-previews/" + b.id + "-tagged.mp3";
+    if (b.previewUrl !== required) return null;
     try {
-      const url = new URL(b.previewUrl, document.baseURI);
-      if (url.protocol !== "https:" || url.username || url.password) return null;
+      const url = new URL(required, document.baseURI);
+      if (url.origin !== window.location.origin || url.protocol !== "https:") return null;
       return url.href;
     } catch { return null; }
-  };
-  const compactPreviewUrl = beat => {
-    if (!approvedPreviewUrl(beat) || !/^AXZ-\d{3}$/.test(beat.id)) return null;
-    return new URL("./review-audio/" + beat.id + "-listen.m4a", document.baseURI).href;
   };
   const previewReady = b => approvedPreviewUrl(b) !== null;
   const elAppend = (parent, ...nodes) => { nodes.forEach(n => parent.appendChild(n)); return parent; };
@@ -89,9 +89,9 @@
     const h3 = el("h3","",beat.title); h3.title = beat.title;
     const meta = el("div","track-meta",beat.city + ", " + beat.state + (beat.bpm ? " · "+beat.bpm+" BPM" : ""));
     const buttons = el("div","track-actions");
-    const play = el("button","play-button","▶ Play");
+    const play = el("button","play-button",previewReady(beat)?"▶ Listen to approved excerpt":"In production · Preview pending");
     play.type = "button"; play.disabled = !previewReady(beat);
-    play.title = play.disabled ? "Audio not available" : "Listen to "+beat.title;
+    play.title = play.disabled ? "Private recording under review; no public audio" : "Listen to approved excerpt of "+beat.title;
     play.setAttribute("aria-label",play.title);
     if(!play.disabled) play.addEventListener("click",() => openPlayer(beat));
     const detail = el("button","detail-button","Details");
@@ -204,7 +204,6 @@
     player.removeAttribute("src");
     player.load();
     state.selected=null;
-    state.compactActive=false;
     if(musicDialog.open) musicDialog.close();
   };
   async function playSelected() {
@@ -226,10 +225,8 @@
     if(!previewReady(beat)) return;
     stopPlayback();
     state.selected=beat;
-    const supportsCompact = !!player.canPlayType('audio/mp4; codecs="mp4a.40.2"');
-    const compact = supportsCompact ? compactPreviewUrl(beat) : null;
-    state.compactActive = !!compact;
-    player.src=compact || approvedPreviewUrl(beat);
+    // Never switch to the original master, even on an audio decode error.
+    player.src=approvedPreviewUrl(beat);
     player.load();
     musicTitle.textContent=beat.title;
     musicMeta.textContent=beat.city+", "+beat.state+" · "+(beat.bpm||"—")+" BPM";
@@ -297,19 +294,7 @@
     if(!player.loop){stopPlayback();setPlayerStatus("Finished");}
   });
   player.addEventListener("error",()=> {
-    if(!state.selected)return;
-    if(state.compactActive) {
-      // An unavailable compact stream must never disable the original MP3.
-      state.compactActive=false;
-      player.src=approvedPreviewUrl(state.selected);
-      player.load();
-      setPlayerStatus("Loading the original MP3 instead. Press Play if needed.");
-      playSelected();
-      return;
-    }
-    const code=player.error && player.error.code;
-    setPlayerStatus(code===4 ? "This audio format isn't supported by your browser." :
-      "Unable to load audio. Check your connection, then press Play to retry.");
+    if(state.selected) setPlayerStatus("Approved preview unavailable. Contact AXEZENT for an audition.");
   });
   function showDetails(beat) {
     modal.replaceChildren();
@@ -322,7 +307,7 @@
       el("span","micro",beat.id+" · "+beat.city.toUpperCase()+", "+beat.state.toUpperCase()),
       el("h2","",beat.title),
       el("p","",beat.collection+" collection"+(beat.bpm?" · "+beat.bpm+" BPM":"")+" · "+(beat.key||"Production details")),
-      el("p","",previewReady(beat)?"Press Play to listen; the section list below shows this beat’s structure.":"The beat is not currently available to play."),
+      el("p","",previewReady(beat)?"An approved excerpt is available. The complete recording is private.":"Recording under private production review. Public listening is temporarily unavailable."),
       renderSectionTable(beat),
       el("div","details-note","$100 PER BEAT · EXCLUSIVE OWNERSHIP. Purchase availability and the precise rights transferred are confirmed in writing before payment."),
       inquiry
@@ -365,17 +350,12 @@
   });
   const publicPreviewsRequest = fetch("./data/public-preview-manifest.json",{cache:"no-store"})
     .then(r=>r.ok?r.json():{}).catch(()=>({}));
-  const arrangementRequest = fetch("./data/arrangements.json",{cache:"no-store"}).then(r=>{
-    if (!r.ok) throw Error("Arrangement data unavailable");
-    return r.json();
-  });
-  Promise.all([catalogRequest,publicPreviewsRequest,arrangementRequest]).then(([data,previewManifest,arrangements])=>{
+  Promise.all([catalogRequest,publicPreviewsRequest]).then(([data,previewManifest])=>{
     if(!Array.isArray(data) || data.length!==200)throw Error("Catalog validation failed");
     const urls=previewManifest && typeof previewManifest==="object" && !Array.isArray(previewManifest) ? previewManifest : {};
-    if(!arrangements||typeof arrangements!=="object"||Array.isArray(arrangements)||Object.keys(arrangements).length!==100)throw Error("Expected 100 individual arrangements");
     state.all=data.filter(b=>Number.isInteger(b.releaseRank) && b.releaseRank>=1 && b.releaseRank<=100)
-      .map(b=>({...b,previewUrl:typeof urls[b.id]==="string" ? urls[b.id] : null,arrangement:arrangements[b.id]}));
-    if(state.all.length!==100 || state.all.some(b=>!b.arrangement || b.arrangement.bpm!==b.bpm))throw Error("Featured arrangement validation failed");
+      .map(b=>({...b,previewUrl:typeof urls[b.id]==="string" ? urls[b.id] : null,arrangement:null}));
+    if(state.all.length!==100)throw Error("Expected 100 unique public catalog entries");
     const collections=[...new Set(state.all.map(x=>x.collection))].sort();
     collections.forEach(c=>{const option=el("option","",c);option.value=c;region.appendChild(option);});
     const totalNode=$("heroTotal"); if(totalNode)totalNode.textContent=String(data.length);
