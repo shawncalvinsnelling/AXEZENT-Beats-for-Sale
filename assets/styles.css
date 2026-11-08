@@ -160,3 +160,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible {
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
 }
+
+@media(max-width:360px){
+  .hero h1{font-size:52px;letter-spacing:-.065em}
+  .hero-proof{gap:5px}
+  .hero-proof div{padding-right:5px}
+  .hero-proof small{font-size:9px}
+  .hero-copy>p{font-size:15px}
+  .brand strong{font-size:17px}
+  .nav-cta{font-size:11px;padding:11px 12px}
+}
