@@ -1,11 +1,13 @@
 name: AXEZENT fifty original MIDI piano rolls
 on:
   push:
-    branches: [repair-piano-roll-groove-20261108]
+    branches: [main, repair-piano-roll-groove-20261108]
     paths:
       - 'scripts/render_arranged_review_audio.py'
       - 'scripts/audit_piano_roll.py'
       - 'tests/test_arrangements_contract.py'
+      - 'data/catalog.json'
+      - 'data/arrangements.json'
       - '.github/workflows/piano-roll-audit.yml'
   workflow_dispatch:
 permissions:
