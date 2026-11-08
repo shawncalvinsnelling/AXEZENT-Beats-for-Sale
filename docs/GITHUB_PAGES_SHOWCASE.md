@@ -1,44 +1,53 @@
-# AXEZENT — GitHub website and original audio restoration
+# AXEZENT GitHub Pages: 50 full-length NEW review tracks — source and verification
 
-## Public GitHub HTTPS site
-https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/
+**Live public showcase**: https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/
 
-The GitHub Pages website displays the original AXEZENT catalog layout, search/filtering and popup player, but **GitHub Pages is not the private listening server or commercial storefront**. Buyers do not need ChatGPT accounts to open the public GitHub site.
+**Deployment verified**: https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale/actions/runs/42438813265
 
-The 30-second automatically synthesized excerpts deployed on November 7, 2026 did not match the full-length private recordings. **That substitute audio pipeline was removed on November 7.** The public website no longer claims those clips are the authentic original beats. Never synthesize, replace, shorten, or re-master the source recordings solely to populate the GitHub website without owner review.
+**50-file live HTTPS check passed**: https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale/actions/runs/42439024120
 
-## Source media needed for the original 50 recordings
+## The 50 arrangements
 
-The public repository contains only catalog metadata, frontend code and a self-hosted streaming server. It contains no original MP3/WAV content or GitHub music releases.
+All 50 featured songs have individually curated, deterministic, track-ID-linked arrangement plans under `data/arrangements.json`. Section entries specify label, type, number of bars, starting and ending bar indices, and calculated start/end seconds at the published BPM in 4/4. The range includes hook-first, verse-first and short-intro structures, several verse and hook counts, optional bridges and 4-verse arrangements. These are **creative plans**, not statistical findings proving that every artist in a city uses a particular bar count. The unit tests are in `tests/test_arrangements_contract.py`.
 
-Earlier ChatGPT work referenced the following possible owner-held source archives:
+The Details popup fetches these 50 plans and displays per-track section timings. The main homepage has been updated to refer to the customer's next **song** rather than next record.
 
-- `AXEZENT_50_Beats_Ready_To_Listen_Offline_Package.zip` — reported as a full-length listening archive.
-- `AXEZENT_NODESS_50_TAGGED_WEB_PREVIEWS_UPLOAD.zip` — a separate tagged preview package.
-- `AXEZENT_NODESS_V2_PRIVATE_Volume_01_01-10.zip` and associated volumes 2–5.
+## What the live audio is — and is not
 
-**Do not assume these files are identical, have approved sound quality, or contain the exact mixes from the original private site without comparing them.** Archives referred to in a previous chat are not automatically recoverable in a new chat; the files must be provided again if they are not accessible.
+The 50 playable MP3s are **new synthetic sampled-instrument review mixes generated in this repo**, not the source recordings from the earlier private ChatGPT-hosted listening site. The audio renderer is `scripts/render_arranged_review_audio.py`, based on FluidR3 GM sampled instrument patches, ten percussion families, multiple rhythmic pockets, per-track instrument choices, melodic variations and each song's exact bar map. This design aims to improve timbral and structural variety, but cannot replace a producer's actual listening, musical revision, mix engineering and mastering.
 
-To preserve exact audio, match the original files by stable track ID (`AXZ-169`, `AXZ-085`, etc.), duration, SHA-256 hash, and a listening comparison before publication. Check at least `AXZ-169 — Diamond in the Dirt`, `AXZ-085 — Motor City Money`, and the Omaha recording actually intended by the owner.
+The output audio is 128-kbit/s stereo MP3 for browser audition, not the paid studio master. New files are generated in GitHub Actions' temporary runners, grouped into five ten-track artifact batches and combined only into the GitHub Pages site deployment package. This does not write MP3 files into the source Git repository. We do not upload private source masters, WAV files, MIDI or session files to the live website.
 
-## Playback architecture — no ChatGPT dependency
+**All 50** tracks passed source generation checks for track identity, duration matching, MP3 codec, stereo channels, length, file size and nonduplicate hashes; the published live site was separately checked for 50 HTTP 200 audio HEAD responses plus actual 206 partial-content MP3 requests.
 
-1. Keep the original full-quality masters and session stems private. Store owner-approved, full-length tagged listening versions in a separate folder `AXEZENT_PRIVATE_TAGGED_PREVIEWS`.
-2. The existing original `server/axezent_site.py` uses `/api/catalog` and `/api/preview/AXZ-NNN` and supports HTTP range requests for seeking. The Windows/local and Docker/Caddy self-hosting instructions are in `docs/PRIVATE_STREAMING_SETUP.md` and `docs/NO_HOSTING_COMPANY_WINDOWS.md`.
-3. Publish the audio-streaming server at an owner-controlled public HTTPS domain; it must be genuinely accessible by visitors without ChatGPT login. The static GitHub frontend can then point to per-track HTTPS streaming URLs via `data/public-preview-manifest.json`, using exact stable IDs and only after testing the URLs.
-4. The public pages player is configured for Play, Pause, Stop, Seek, Repeat, and Exit when actual audio URLs are available. Test duration and seek on desktop and mobile. This is an interface contract, **not** a claim that all 50 private source recordings are currently hosted.
-5. GitHub Pages itself cannot run a private streaming backend, and GitHub prohibits running an e-commerce store primarily directed at commercial transactions on Pages. The $100 exclusive rights process belongs on the separately hosted full website, not the Pages showcase.
+The full-length web MP3s **are capturable and copyable**. A missing Download button is not DRM. Do not claim the $100 masters are secure simply because website users can only press Play. The paid mastered deliverable must be retained separately and delivered under a written rights-transfer contract.
 
-**Security truth:** Any sound sent to a browser can be recorded or extracted, even without a Download button. A stream is not DRM. Keep sale masters private; use appropriate tagged listening copies.
+## Recovering the earlier original recordings
 
-## Normal Pages publication (no generated substitute audio)
+Earlier ChatGPT work referenced these owner-held archives:
 
-1. Under repository **Settings → Pages**, keep **Source: GitHub Actions**.
-2. The `Deploy AXEZENT artist showcase to GitHub Pages` workflow builds the static site, publishes no MP3s, and verifies the catalog and controls.
-3. Open the website and use Ctrl+F5 to refresh if necessary.
+- `AXEZENT_50_Beats_Ready_To_Listen_Offline_Package.zip`
+- `AXEZENT_NODESS_50_TAGGED_WEB_PREVIEWS_UPLOAD.zip`
+- `AXEZENT_NODESS_V2_PRIVATE_Volume_01_01-10.zip` plus additional volumes
 
-## Link tracking
+These names are references only; the files were not available in the current GitHub repository. **Do not claim the new MIDI/SoundFont mixes reproduce them.** For archival reconciliation, recover the actual files, map by stable IDs (for example AXZ-169, AXZ-085), compare SHA-256, durations and audible content, and keep unreleased masters outside public web hosting.
 
-A link opened from ChatGPT may include `?utm_source=chatgpt.com`, which is an optional referral query parameter, not a relocation to ChatGPT hosting. The clean origin is `https://shawncalvinsnelling.github.io`. Copy/paste the canonical link directly if you do not want the tracking query on the address bar.
+## How to use the website
 
-The original private ChatGPT-hosted site is separate from this GitHub repository; changes to this repository do not rewrite that site.
+1. Open https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/
+2. Hard refresh (Ctrl+F5) if an old version is cached.
+3. Choose All regional collections, Midwest or another region. Search by city or title.
+4. Press **Play** next to a beat. The popup starts that full-length *new review recording*.
+5. Use Pause, Play, Stop, Repeat or drag the timeline to seek. Exit closes and stops the music.
+6. Open **Details** on any beat for title, city, BPM, key, full structure, section bar counts and calculated start/end times.
+7. Use the $100 exclusive instrumental information as a proposed offer; no payment or rights transfer occurs through GitHub Pages.
+
+## Commercial and licensing constraints
+
+GitHub Pages is a static showcase host, and GitHub's own rules prohibit using Pages as a primary e-commerce or online-business website. The public GitHub site therefore has no card collection, paid checkout, protected files or automatically granted intellectual-property rights. Use an independent public HTTPS server for the commercial store and rights-controlled delivery.
+
+The SoundFont used in the workflow is `FluidR3_GM.sf2` by Frank Wen, distributed under MIT terms; verify and retain its full applicable license notice when distributing derived assets or components where required. It is a sampled instrument source, so sound design is not the same as wholly independent recordings of all underlying instruments. Verify commercial licensing and originality before any exclusive rights representation. The `fluidsynth` application and `ffmpeg` are installed in the build runner, not bundled into the visitor website.
+
+## Next release-quality work
+
+The 50 render passes prove **software-generated listening playback**, not excellence of the audio. Producer signoff must separately assess: distinctive drum kits (especially closed hats versus shakers/rims), strong and controlled kick/808 dynamics, motif identity, arrangement contrast, drum fills, clipping and peak/loudness, translation on headphones and truck speakers, correct sample rights, and exact preview/master lineage. Only then is a beat a sale-ready finished asset.
