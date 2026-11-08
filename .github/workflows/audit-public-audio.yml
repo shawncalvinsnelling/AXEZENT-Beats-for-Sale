@@ -1,0 +1,39 @@
+name: Independent loudness and peak QA - 50 AXEZENT review tracks
+on:
+  workflow_run:
+    workflows: ['Deploy AXEZENT artist showcase to GitHub Pages']
+    types: [completed]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  measure-all-audio:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install independent MP3 analyzer
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg
+      - name: Fetch exactly 50 MP3s from the completed public deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_RUN: ${{ github.event.workflow_run.id }}
+        run: |
+          set -euo pipefail
+          mkdir -p _review_audio
+          gh run download "$SOURCE_RUN" --repo "${{ github.repository }}" --pattern 'axezent-review-batch-*' --dir _review_batches
+          find _review_batches -type f -name 'AXZ-*-review.mp3' -exec cp --no-clobber -t _review_audio {} +
+          test "$(find _review_audio -maxdepth 1 -name 'AXZ-*-review.mp3' | wc -l)" -eq 50
+      - name: Check integrated LUFS, decoded true peak, dynamic range and file integrity
+        run: python scripts/audit_loudness.py --audio-dir _review_audio --report AXEZENT_50_TRACK_AUDIO_QA.json
+      - name: Preserve the objective results for the owner
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: AXEZENT-50-TRACK-OBJECTIVE-AUDIO-QA
+          path: AXEZENT_50_TRACK_AUDIO_QA.json
+          if-no-files-found: warn
+          retention-days: 90
