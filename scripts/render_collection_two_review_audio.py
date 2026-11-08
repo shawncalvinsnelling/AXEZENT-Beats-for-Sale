@@ -13,8 +13,10 @@ import hashlib
 import shutil
 import subprocess
 from pathlib import Path
-from collection_two import ROOT, load_collection_two, make_collection_two_catalog
-from render_arranged_review_audio import Arrangement, KICK_POCKETS, HAT_POCKETS
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from scripts.collection_two import ROOT, load_collection_two, make_collection_two_catalog
+from scripts.render_arranged_review_audio import Arrangement, KICK_POCKETS, HAT_POCKETS
 
 def region_groove(description):
     d=description.lower()
