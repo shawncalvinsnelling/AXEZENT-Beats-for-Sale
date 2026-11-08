@@ -11,6 +11,8 @@ const out={website:BASE,checks:[],errors:[]};
 const record=(name,ok,details={})=>{out.checks.push({name,ok,...details});if(!ok)throw Error('LAUNCH QA FAIL: '+name+' '+JSON.stringify(details));};
 try {
   const desktop=await browser.newPage({viewport:{width:1440,height:900}});
+  await desktop.route("https://countapi.mileshilliard.com/api/v1/**",route=>
+    route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({value:17})}));
   desktop.on('pageerror',e=>out.errors.push(e.message));
   await desktop.goto(BASE,{waitUntil:'domcontentloaded',timeout:50000});
   await desktop.waitForFunction(()=>document.querySelectorAll('article.track-card').length===100,null,{timeout:40000});
@@ -47,6 +49,8 @@ try {
   const desktopOverflow=await desktop.evaluate(()=>({innerWidth:innerWidth,documentWidth:document.documentElement.scrollWidth}));
   record('Desktop has no horizontal overflow',desktopOverflow.documentWidth<=desktopOverflow.innerWidth+2,desktopOverflow);
   const mobile=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true,hasTouch:true});
+  await mobile.route("https://countapi.mileshilliard.com/api/v1/**",route=>
+    route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({value:17})}));
   mobile.on('pageerror',e=>out.errors.push('Mobile: '+e.message));
   await mobile.goto(BASE,{waitUntil:'domcontentloaded',timeout:50000});
   await mobile.waitForFunction(()=>document.querySelectorAll('article.track-card').length===100,null,{timeout:40000});
@@ -70,6 +74,8 @@ try {
    record('Section click seeks to Hook 2 and highlights it',current==='Hook 2',{current});
    await mobile.locator('#closePlayer').click();
   const narrow=await browser.newPage({viewport:{width:320,height:720},deviceScaleFactor:1,isMobile:true,hasTouch:true});
+  await narrow.route("https://countapi.mileshilliard.com/api/v1/**",route=>
+    route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({value:17})}));
   try {
     await narrow.goto(BASE,{waitUntil:'domcontentloaded',timeout:50000});
     await narrow.waitForFunction(()=>document.querySelectorAll('article.track-card').length===100,null,{timeout:40000});

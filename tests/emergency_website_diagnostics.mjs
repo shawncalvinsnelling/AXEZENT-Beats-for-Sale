@@ -6,6 +6,8 @@ const browser=await chromium.launch({headless:true,args:['--no-sandbox','--autop
 const report={url:BASE,at:new Date().toISOString(),errors:[],failedRequests:[],relevantResponses:[],states:[]};
 try {
  const page=await browser.newPage({viewport:{width:1280,height:800}});
+  await page.route("https://countapi.mileshilliard.com/api/v1/**",route=>
+    route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({value:17})}));
  page.on('pageerror',e=>report.errors.push({type:'pageerror',message:e.message,stack:e.stack}));
  page.on('console',e=>{if(e.type()==='error'||e.type()==='warning')report.errors.push({type:e.type(),message:e.text()})});
  page.on('requestfailed',r=>report.failedRequests.push({url:r.url(),failure:r.failure()}));
@@ -20,9 +22,9 @@ try {
       scripts:Array.from(document.querySelectorAll('script')).map(s=>({src:s.src,loaded:s.readyState})),
       network:performance.getEntriesByType('resource').filter(r=>/showcase|catalog|manifest|arrangements/.test(r.name)).map(r=>({url:r.name,duration:r.duration,responseStatus:r.responseStatus,transfer:r.transferSize}))};
    }));
-   if(report.states.at(-1).catalogCards===50)break;
+   if(report.states.at(-1).catalogCards===100)break;
  }
- report.ok=report.states.at(-1).catalogCards===50;
+ report.ok=report.states.at(-1).catalogCards===100;
  await page.screenshot({path:'emergency-website-screen.png',fullPage:false});
  console.log('SITE_EMERGENCY_BROWSER_DIAG='+JSON.stringify(report));
 } catch(e){report.exception=String(e);console.log('SITE_EMERGENCY_EXCEPTION='+String(e))}

@@ -105,6 +105,8 @@ try {
   const mobile=await browser.newPage({
     viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true
   });
+  await mobile.route("https://countapi.mileshilliard.com/api/v1/**",route=>
+    route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({value:17})}));
   try {
     await mobile.goto(BASE,{waitUntil:'domcontentloaded',timeout:45000});
     await mobile.waitForFunction(()=>document.querySelectorAll('article.track-card').length===100,null,{timeout:30000});
