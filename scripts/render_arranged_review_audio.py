@@ -289,7 +289,7 @@ def main():
     p.add_argument("--catalog",default="data/catalog.json")
     p.add_argument("--arrangements",default="data/arrangements.json")
     p.add_argument("--out",required=True)
-    p.add_argument("--soundfont",default="/usr/share/sounds/sf2/TimGM6mb.sf2")
+    p.add_argument("--soundfont",default="/usr/share/sounds/sf2/FluidR3_GM.sf2")
     p.add_argument("--start",type=int,default=1)
     p.add_argument("--end",type=int,default=50)
     a=p.parse_args()
