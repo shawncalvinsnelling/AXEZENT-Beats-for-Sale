@@ -34,7 +34,7 @@ VOICES=(
  (91,80,39,5),(0,61,33,17),(12,10,39,52),(5,45,38,50),
  (93,62,38,48),(4,28,32,45),(18,29,36,81),(31,4,35,89),
  (7,62,39,28),(0,10,38,61),(19,14,39,0),(24,11,35,88),
- (30,48,39,81),(0,29,33,19),(4,24,33,90),(93,12,39,5),
+ (30,48,39,81),(0,29,33,19),(4,24,33,90),(93,11,39,5),
  (88,12,35,50),(62,28,38,0),(16,7,32,4),(61,83,36,7),
  (4,31,35,89),(92,10,39,61),(61,11,38,45),(81,11,38,16),
  (0,45,34,42),(5,12,33,19),(16,24,32,4),(61,0,38,48),
@@ -209,7 +209,8 @@ class Arrangement:
         for j,pos in enumerate(kick_positions):
             if intro and local_bar==0 and j>0:continue
             if verse and (j==len(kick_positions)-1) and local_bar%4==0:continue
-            vel=(100 if hook else 88 if verse else 73)
+            hook_impact=hook and self.beat["id"] in ("AXZ-185","AXZ-181")
+            vel=(106 if hook_impact else 100 if hook else 88 if verse else 73)
             jitter=self.rng.uniform(-.013,.013)
             self.percussion(bar*4+pos+max(jitter,-pos),kit["kick"],
                             vel+self.rng.randrange(-7,7),.22)
@@ -217,7 +218,9 @@ class Arrangement:
         if self.groove=="bounce" and self.drum_style%4==0: backbeats=(2,)
         if intro and local_bar==0: backbeats=()
         for k,pos in enumerate(backbeats):
-            self.percussion(bar*4+pos,kit["snare"],88 if hook else 78,.18)
+            self.percussion(bar*4+pos,kit["snare"],
+                            94 if hook and self.beat["id"] in ("AXZ-185","AXZ-181")
+                            else 88 if hook else 78,.18)
             if hook and (bar+k)%3==0:
                 self.percussion(bar*4+pos+.013,39,51,.11)
         # Different texture sources: rim, shaker, ride, tambourine, closed/open
@@ -272,7 +275,8 @@ class Arrangement:
                    else .57 if kind=="verse" else .8)
         for j,n in enumerate(notes):
             self.add(bar*TICKS_BAR+j*5,0,n,
-                     52 if hook else 37 if kind=="verse" else 35,
+                     61 if hook and self.beat["id"] in ("AXZ-185","AXZ-181")
+                     else 52 if hook else 37 if kind=="verse" else 35,
                      TICKS_BAR*chord_len)
         # Formerly three simultaneous chord stabs every second hook bar.
         # That 1.5-note/bar layer was needlessly identical on all 50 tracks.
@@ -305,7 +309,9 @@ class Arrangement:
             # downbeat and kick, then answer in the second half of each bar.
             if kind=="verse" and local_bar%8==0 and pos not in (0,2.75):
                 continue
-            self.add((bar*4+pos)*TPQ,2,bnote,86 if hook else 72,TPQ*.74)
+            bass_vel=(94 if hook and self.beat["id"] in ("AXZ-185","AXZ-181")
+                      else 86 if hook else 72)
+            self.add((bar*4+pos)*TPQ,2,bnote,bass_vel,TPQ*.74)
 
     def musical_phrase(self,bar,kind,local_bar):
         if kind in ("outro","bridge","breakdown"):
@@ -343,7 +349,8 @@ class Arrangement:
             n=scale_note(self.root,degree,self.scale,lead_oct)
             pos=positions[i]
             duration=(.51 if hook else .37)*TPQ
-            velocity=(70 if hook else 44 if verse else 43)+self.rng.randint(-5,5)
+            velocity=(78 if hook and self.beat["id"] in ("AXZ-185","AXZ-181")
+                      else 70 if hook else 44 if verse else 43)+self.rng.randint(-5,5)
             self.add((bar*4+pos)*TPQ,1,n,velocity,duration)
         if hook and (local_bar%4==3 if self.groove in ("drill","ambient") else local_bar%2==1):
             # Counter-instrument only as a short hook answer, not over verses.
