@@ -227,6 +227,9 @@ class Arrangement:
         conductor.append(mido.MetaMessage("track_name",name=self.beat["title"]+" - AXEZENT new review draft",time=0))
         mf.tracks.append(conductor)
         setup=mido.MidiTrack()
+        # Lift the sampled percussion bus slightly; the earlier default patch
+        # balance put kick and snare too far beneath sustained low-end notes.
+        setup.append(mido.Message("control_change",channel=9,control=7,value=122,time=0))
         for channel,patch in zip((0,1,2,3),self.instruments):
             setup.append(mido.Message("program_change",channel=channel,program=patch,time=0))
             setup.append(mido.Message("control_change",channel=channel,control=10,value=(44,85,64,100)[channel],time=0))
@@ -251,7 +254,7 @@ class Arrangement:
         mf.save(outpath)
         return len(self.events)
 
-def prepare_review(beat,spec,outpath,soundfont,rate=32000):
+def prepare_review(beat,spec,outpath,soundfont,rate=44100):
     if beat["bpm"]!=spec["bpm"] or beat["releaseRank"]!=spec["releaseRank"]:
         raise ValueError("Arrangement metadata does not match catalog")
     outpath.parent.mkdir(parents=True,exist_ok=True)
@@ -264,10 +267,24 @@ def prepare_review(beat,spec,outpath,soundfont,rate=32000):
     subprocess.run(["fluidsynth","-ni","-F",str(wave),"-r",str(rate),str(soundfont),str(midi)],
                    check=True,stdout=subprocess.DEVNULL)
     duration=float(spec["durationSeconds"])
-    # Normalize conservatively; cut the tail to the exact planned duration.
+    # The first V2 review output was measured at -30 to -38 LUFS and extremely
+    # bass-heavy: not suitable for reliable casual listening. This corrective
+    # streaming mix reduces sub/low-mid masking, clarifies hats/snare presence,
+    # applies dynamics control, then EBU-R128 normalization with a conservative
+    # true-peak ceiling. It is NOT a claim of artist-approved mastering.
+    filters=(
+        "highpass=f=28,"
+        "bass=g=-5:f=155:w=0.7,"
+        "equalizer=f=900:width_type=o:width=1.1:g=2,"
+        "equalizer=f=2500:width_type=o:width=1:g=3,"
+        "treble=g=5:f=4300:w=0.65,"
+        "acompressor=threshold=-23dB:ratio=2.6:attack=12:release=150:makeup=3,"
+        "loudnorm=I=-14:TP=-2.5:LRA=8,"
+        "alimiter=limit=0.76:level=false"
+    )
     subprocess.run(["ffmpeg","-hide_banner","-nostdin","-loglevel","error","-y",
-        "-i",str(wave),"-af","highpass=f=27,acompressor=threshold=-17dB:ratio=2.2:attack=15:release=120,alimiter=limit=0.91",
-        "-t",str(duration),"-c:a","libmp3lame","-ar",str(rate),"-ac","2","-b:a","128k",str(outpath)],
+        "-i",str(wave),"-af",filters,
+        "-t",str(duration),"-c:a","libmp3lame","-ar",str(rate),"-ac","2","-b:a","160k",str(outpath)],
         check=True)
     midi.unlink(missing_ok=True)
     wave.unlink(missing_ok=True)
