@@ -2,7 +2,7 @@ name: AXEZENT live website first-impression and Facebook preview audit
 on:
   push:
     branches: [main]
-    paths: ['.github/workflows/audit-live-launch.yml']
+    paths: ['.github/workflows/audit-live-launch.yml', 'tests/launch_first_impression.mjs']
   workflow_run:
     workflows: ['Deploy AXEZENT artist showcase to GitHub Pages']
     types: [completed]
