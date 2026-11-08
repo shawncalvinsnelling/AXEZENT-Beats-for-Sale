@@ -18,6 +18,14 @@ try {
   await desktop.waitForFunction(()=>document.querySelectorAll('article.track-card').length===100,null,{timeout:40000});
   const ready=await desktop.locator('button.play-button:not([disabled])').count();
   record('100 individually playable buttons',ready===100,{ready});
+  await desktop.waitForFunction(()=>document.getElementById('totalVisits')?.textContent==='17',null,{timeout:15000});
+  record('Public cumulative website visit counter appears in footer',
+    await desktop.locator('#totalVisits').innerText()==='17');
+  await desktop.locator('article.track-card').first().scrollIntoViewIfNeeded();
+  await desktop.waitForFunction(()=>document.querySelector('article.track-card .track-play-count')?.textContent.includes('17'),null,{timeout:15000});
+  record('Track card shows persistent count from backend read',
+    (await desktop.locator('article.track-card .track-play-count').first().innerText()).includes('17'));
+  await desktop.evaluate(()=>window.scrollTo(0,0));
   const heading=await desktop.locator('h1').innerText();
   const pageText=await desktop.locator('body').innerText();
   record('Uncluttered $100 exclusive offer',pageText.includes('$100')&&pageText.toLowerCase().includes('exclusive')&&heading.includes('BEATS'),{heading});

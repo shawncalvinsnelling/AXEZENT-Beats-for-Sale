@@ -36,6 +36,9 @@ try {
   await page.waitForFunction(() => document.querySelector('#player').currentTime>0.25, null, { timeout: 10000 });
   const before=await page.locator('#player').evaluate(el=>({duration:el.duration,currentTime:el.currentTime,paused:el.paused}));
   assert.ok(before.duration>60 && !before.paused,'Audio must actually run, not just open a modal');
+  await page.waitForFunction(()=>document.querySelector('#musicPlayCount')?.textContent.includes('17'),null,{timeout:12000});
+  assert.match(await page.locator('#musicPlayCount').innerText(),/Plays: 17/,
+    'The open audio player must show the persistent track counter');
   console.log('LIVE AUDIO STARTED:',title,before);
   assert.equal(await page.locator('#musicArrangement .music-section-jump').count(),7,
     'Every section is visible beneath the player');
