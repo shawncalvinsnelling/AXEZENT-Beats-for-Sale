@@ -80,7 +80,6 @@
     const body = el("div","track-content");
     const h3 = el("h3","",beat.title); h3.title = beat.title;
     const meta = el("div","track-meta",beat.city + ", " + beat.state + (beat.bpm ? " · "+beat.bpm+" BPM" : ""));
-    const status = previewReady(beat) ? el("span","status ready","Listen now · $100 exclusive") : null;
     const buttons = el("div","track-actions");
     const play = el("button","play-button","▶ Play");
     play.type = "button"; play.disabled = !previewReady(beat);
@@ -91,7 +90,6 @@
     detail.type = "button"; detail.addEventListener("click",()=>showDetails(beat));
     elAppend(buttons,play,detail);
     elAppend(body,h3,meta);
-    if(status) body.appendChild(status);
     body.appendChild(buttons);
     return elAppend(article,art,body);
   };
