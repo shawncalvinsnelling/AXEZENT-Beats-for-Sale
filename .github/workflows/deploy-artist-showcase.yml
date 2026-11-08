@@ -188,7 +188,11 @@ jobs:
             for(const [id,url] of Object.entries(manifest)){
               if(!plans[id] || url!=="./review-audio/"+id+"-review.mp3")throw Error("Invalid review audio URL mapping");
             }
-            if(/chatgpt[.]site|paypal|cash app|mailto:|github[.]com\//i.test(h))throw Error("Showcase must not expose private links, repository navigation or payment collection");
+            if(/chatgpt[.]site|paypal|cash app|github[.]com\//i.test(h))throw Error("Showcase must not expose gated links, repository navigation or payment collection");
+            const addresses=[...h.matchAll(/href="mailto:([^"]+)"/g)].map(m=>m[1]);
+            if(addresses.length!==2 || addresses.some(a=>!a.startsWith("axezentai@gmail.com?subject=")))
+              throw Error("The website must show only the approved AXEZENT public inquiry email");
+            if(!j.includes("mailto:axezentai@gmail.com?subject="))throw Error("Beat details must offer an email inquiry");
             if(!fs.existsSync("_pages_build/assets/axezent-social-share-v1.png"))throw Error("Missing Facebook link image");
             console.log("PASS: correct AXEZENT display, 50 playable new review sources, $100 informational pricing and per-song bars");
           '
