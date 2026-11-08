@@ -84,7 +84,7 @@ class ArrangementContractTests(unittest.TestCase):
                                     "First bar of four-bar vocal phrase must be clear")
                             elif verse_count%4 in (1,2):
                                 self.assertEqual(1,len(counter))
-                            if beat["id"] in focus and verse_count%4==3:
+                            if beat["id"] in focus and verse_count==3:
                                 signatures.add((beat["id"],tuple(counter)))
                             verse_count+=1
                     self.assertGreaterEqual(verse_count,8)
