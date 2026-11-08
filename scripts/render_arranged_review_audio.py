@@ -449,6 +449,8 @@ def prepare_review(beat,spec,outpath,soundfont,rate=44100,enhanced=False):
             raise ValueError("Cannot replace non-priority review recording "+beat["id"])
         edit=enhance_midi(midi,beat,spec)
         events=edit["sourceMidiEvents"]
+        from scripts.studio_performance import refine_midi
+        refine_midi(midi,beat,spec)
     # Low-footprint offline rendering: the 6 MB GM SoundFont is provided by
     # the job environment; no samples or original private recordings enter repo.
     subprocess.run(["fluidsynth","-ni","-F",str(wave),"-r",str(rate),str(soundfont),str(midi)],
