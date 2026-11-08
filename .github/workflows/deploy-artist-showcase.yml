@@ -9,7 +9,6 @@ on:
       - 'data/arrangements.json'
       - 'data/collection-two-blueprints.zlib'
       - 'scripts/collection_two.py'
-      - 'scripts/preserve_100_full_length_site.py'
       - '.github/workflows/deploy-artist-showcase.yml'
       - 'assets/styles.css'
       - 'assets/favicon.svg'
@@ -23,45 +22,36 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-24.04
-    timeout-minutes: 50
+    timeout-minutes: 15
     environment:
       name: github-pages
     steps:
-      - name: Checkout website
+      - name: Checkout website source only
         uses: actions/checkout@v4
-      - name: Install audio validation tools
-        run: |
-          sudo apt-get update -qq
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg librsvg2-bin
-          command -v ffmpeg && command -v ffprobe && command -v rsvg-convert
-      - name: Prepare 100-song static website without private source metadata
+      - name: Prepare public catalog WITHOUT public beat audio
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p _pages_build/assets _pages_build/data _pages_build/review-audio
+          mkdir -p _pages_build/assets _pages_build/data
           cp pages-showcase/index.html _pages_build/index.html
           cp pages-showcase/showcase.js pages-showcase/counters.js _pages_build/assets/
-          cp assets/styles.css assets/favicon.svg _pages_build/assets/
-          rsvg-convert -w 1200 -h 630 assets/axezent-social-share.svg -o _pages_build/assets/axezent-social-share-v1.png
+          cp assets/styles.css assets/favicon.svg assets/axezent-social-share.svg _pages_build/assets/
           python scripts/collection_two.py --public-data _pages_build/data
           python - <<'PY'
           import json,pathlib
           base=pathlib.Path('_pages_build/data')
           catalog=json.loads((base/'catalog.json').read_text('utf8'))
-          plans=json.loads((base/'arrangements.json').read_text('utf8'))
-          selected=[b for b in catalog if isinstance(b.get('releaseRank'),int) and 1<=b['releaseRank']<=100]
-          assert len(catalog)==200 and len(selected)==100 and len({b['id'] for b in selected})==100
-          assert len(plans)==100
+          chosen=[b for b in catalog if isinstance(b.get('releaseRank'),int) and 1<=b['releaseRank']<=100]
+          assert len(catalog)==200 and len(chosen)==100 and len({b['id'] for b in chosen})==100
           names=('id','title','city','state','collection','bpm','key','releaseRank')
           (base/'catalog.json').write_text(json.dumps([{k:b[k] for k in names if k in b} for b in catalog],separators=(',',':'))+'\n',encoding='utf8')
-          print('PASS: 100 original city records and matching song structures')
+          # Fail closed until the owner has approved individually watermarked clips.
+          (base/'public-preview-manifest.json').write_text('{}\n',encoding='utf8')
+          # Do not publish the producer's bar-level arrangement plans.
+          (base/'arrangements.json').unlink(missing_ok=True)
+          print('PASS: 100 searchable track cards, zero public audio URLs')
           PY
-      - name: Preserve existing 100 actual MP3s and make full-length small AAC streams
-        shell: bash
-        run: |
-          set -euo pipefail
-          python scripts/preserve_100_full_length_site.py --catalog _pages_build/data/catalog.json --out _pages_build --qa-report _owner_qa_not_published.json
-      - name: Validate 100 distinct complete songs, media links and player
+      - name: Independently enforce zero public recordings or ZIP downloads
         shell: bash
         run: |
           set -euo pipefail
@@ -69,41 +59,26 @@ jobs:
           node --check _pages_build/assets/counters.js
           node tests/test_public_counters.mjs
           python - <<'PY'
-          import hashlib,json,pathlib
+          import json,pathlib
           base=pathlib.Path('_pages_build')
-          catalog=json.loads((base/'data/catalog.json').read_text('utf8'))
-          plans=json.loads((base/'data/arrangements.json').read_text('utf8'))
-          songs=sorted((b for b in catalog if isinstance(b.get('releaseRank'),int) and 1<=b['releaseRank']<=100),key=lambda b:b['releaseRank'])
-          audio=base/'review-audio'
-          assert len(songs)==100 and len(plans)==100 and len(list(audio.iterdir()))==200
-          manifest={};hashes=set()
-          for b in songs:
-           ident=b['id'];mp3=audio/(ident+'-review.mp3');m4a=audio/(ident+'-listen.m4a')
-           assert mp3.is_file() and m4a.is_file()
-           assert 150000<mp3.stat().st_size<12000000 and m4a.stat().st_size>250000
-           sha=hashlib.sha256(mp3.read_bytes()).hexdigest()
-           assert sha not in hashes
-           hashes.add(sha)
-           assert plans[ident]['bpm']==b['bpm']
-           manifest[ident]='./review-audio/'+mp3.name
-          (base/'data/public-preview-manifest.json').write_text(json.dumps(manifest)+'\n',encoding='utf8')
-          html=(base/'index.html').read_text('utf8')
-          js=(base/'assets/showcase.js').read_text('utf8')
-          for marker in ['id="playerDialog"','id="musicSeek"','id="musicRepeat"','id="musicArrangement"','id="musicPlayCount"']:
-           assert marker in html
-          for marker in ['approvedPreviewUrl','seekTo','musicRepeat.addEventListener','-listen.m4a','compactActive']:
-           assert marker in js
-          assert not list(base.rglob('*.wav')) and not list(base.rglob('*.mid'))
-          assert not list(base.rglob('OWNER*'))
+          public_catalog=json.loads((base/'data/catalog.json').read_text('utf8'))
+          assert len([t for t in public_catalog if isinstance(t.get('releaseRank'),int) and 1<=t['releaseRank']<=100])==100
+          assert json.loads((base/'data/public-preview-manifest.json').read_text('utf8'))=={}
+          assert not (base/'data/arrangements.json').exists()
+          blocked={'.mp3','.m4a','.aac','.wav','.flac','.aiff','.ogg','.opus','.mid','.midi','.sf2','.zip','.7z','.rar','.mp4','.mov','.pdf','.docx'}
+          leak=[str(p) for p in base.rglob('*') if p.is_file() and p.suffix.lower() in blocked]
+          assert not leak,('Private media mistakenly selected for public Pages:',leak)
+          assert not (base/'review-audio').exists()
+          assert 'public-preview-manifest.json' in (base/'assets/showcase.js').read_text('utf8')
+          assert 'axezentai@gmail.com' in (base/'index.html').read_text('utf8')
           (base/'.nojekyll').touch()
-          print('PASS: 100 preserved original MP3s, 100 full-length compact AAC copies, 100 working mapped source URLs')
+          print('PASS: 100-track catalog and inquiry links; NO public instrumentals, zipped masters or arrangement plans')
           PY
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Upload verified public website only
+      - name: Upload only safe storefront code and catalog
         uses: actions/upload-pages-artifact@v4
         with:
           path: _pages_build
-      - name: Deploy 100-track AXEZENT website
-        id: deployment
+      - name: Replace unsafe public Pages version with safe artist catalog
         uses: actions/deploy-pages@v4
