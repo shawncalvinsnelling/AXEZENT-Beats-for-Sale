@@ -65,6 +65,17 @@
 .arrangement-flow b{color:#d5b77d}
 .arrangement-note{max-width:none!important}
 .arrangement-detail{margin:18px 0;padding:15px;border:1px solid #374453;border-radius:12px;background:#111922}
+.contact-section{padding:0 0 85px}
+.contact-panel{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:32px 36px;border-radius:18px;border:1px solid #716044;background:linear-gradient(130deg,#20252c,#17202b 75%);box-shadow:0 18px 65px #0004}
+.contact-panel h2{font-size:clamp(28px,4vw,43px);letter-spacing:-.045em;margin:12px 0 8px}
+.contact-panel h2 em{font-style:normal;color:#deb574}
+.contact-panel p{max-width:560px;color:#c1c6ce;font-size:14px;line-height:1.65;margin:0}
+.contact-panel p strong{color:#f1d09b}
+.contact-action{display:flex;flex-direction:column;align-items:center;gap:11px}
+.contact-email{padding:14px 24px;border-radius:10px;color:#161513;background:#e4b978;font-size:14px;font-weight:900;white-space:nowrap;text-align:center}
+.contact-email:hover{filter:brightness(1.1)}
+.contact-address{font-size:13px;color:#f6d6a1;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:720px){.contact-panel{flex-direction:column;text-align:center;padding:26px 18px}.contact-section{padding-bottom:60px}}
 .arrangement-detail .section-head{font-size:14px;font-weight:800;color:#efd6a0;margin:3px 0 8px}
 .arrangement-detail .production-direction{font-size:12px;line-height:1.65;color:#c5cbd8}
 .arrangement-sections{display:grid;gap:5px;margin:15px 0}
@@ -85,7 +96,7 @@
   <div class="topline">AXEZENT ORIGINAL PRODUCTIONS <span>50 BEATS · FIND YOUR OWN SOUND</span></div>
   <header class="main-nav container">
     <a class="brand" href="./" aria-label="AXEZENT Beats for Sale home"><span class="brand-icon">A<span class="brand-dot">.</span></span><span><strong>AXEZENT</strong><small>BEATS FOR SALE</small></span></a>
-    <nav aria-label="Main navigation"><a href="#catalog">Browse Beats</a><a href="#about">About</a></nav>
+    <nav aria-label="Main navigation"><a href="#catalog">Browse Beats</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
     <a class="nav-cta" href="#catalog">Explore the Vault <span aria-hidden="true">↗</span></a>
   </header>
   <main>
@@ -116,7 +127,20 @@
       <div class="empty-state" id="empty" hidden>No tracks match those filters. Try a different title, city, or region.</div>
       <div class="load-wrap"><button class="load-button" id="more" type="button" hidden>Load More Beats ↓</button></div>
     </section>
-    <section class="about-section container" id="about"><div class="about-block"><span class="section-kicker">THE AXEZENT STANDARD</span><h2>Made for the <em>artist.</em></h2><p>Browse by city, listen to the beat, and check its individual arrangement. Interested in exclusive ownership? Message AXEZENT with the beat title. Availability and the exact rights are confirmed directly before payment.</p><a href="#catalog">Listen to the 50 beats ↗</a></div></section>
+    <section class="about-section container" id="about"><div class="about-block"><span class="section-kicker">THE AXEZENT STANDARD</span><h2>Made for the <em>artist.</em></h2><p>Browse by city, listen to the beat, and check its individual arrangement. Interested in exclusive ownership? Email AXEZENT with the beat title. Availability and the exact rights are confirmed directly before payment.</p><a href="#catalog">Listen to the 50 beats ↗</a></div></section>
+    <section class="contact-section container" id="contact" aria-labelledby="contactHeading">
+      <div class="contact-panel">
+        <div>
+          <span class="section-kicker">READY TO RECORD?</span>
+          <h2 id="contactHeading">Hear a beat you <em>love?</em></h2>
+          <p>Every beat is listed at <strong>$100 for exclusive ownership inquiries</strong>. Email AXEZENT with the beat's title to ask about availability and rights.</p>
+        </div>
+        <div class="contact-action">
+          <a class="contact-email" href="mailto:axezentai@gmail.com?subject=AXEZENT%20Beat%20Inquiry" aria-label="Email AXEZENT Beats for Sale">✉ Email AXEZENT</a>
+          <a class="contact-address" href="mailto:axezentai@gmail.com?subject=AXEZENT%20Beat%20Inquiry">axezentai@gmail.com</a>
+        </div>
+      </div>
+    </section>
   </main>
   <footer><div class="container foot-inner"><div><strong>AXEZENT</strong><span>BEATS FOR SALE</span></div><p>© <span id="year"></span> AXEZENT. All rights reserved. Listening does not grant a commercial license.</p></div></footer>
   <dialog id="trackDialog" aria-label="Beat details"><div class="dialog-inner"><button type="button" class="close-dialog" id="closeDialog" aria-label="Close details">✕</button><div id="dialogContent"></div></div></dialog>
