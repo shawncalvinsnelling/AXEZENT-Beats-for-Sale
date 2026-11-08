@@ -10,12 +10,15 @@ jobs:
     steps:
       - name: Check out project
         uses: actions/checkout@v4
-      - name: Stop public commits containing AXEZENT audio, masters, archives or studio sessions
+      - name: Reject tracked audio masters, studio files and music archives
+        shell: bash
         run: |
-          python - <<'PY'
-          import re,subprocess,sys
-          paths=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
-          extensions=r'\.(?:mp3|wav|flac|aif|aiff|aac|m4a|ogg|opus|mid|midi|zip|7z|rar|sf2|sfz|rpp|flp|als|logicx|ptx)
+          set -euo pipefail
+          if git ls-files | grep -E -i '\.(mp3|wav|flac|aif|aiff|aac|m4a|ogg|opus|mid|midi|zip|7z|rar|sf2|sfz|rpp|flp|als|logicx|ptx)$'; then
+            echo "::error::Public repository contains committed audio or studio archives"
+            exit 1
+          fi
+          echo "PASS: no tracked music masters, MP3 files or music archive ZIPs"
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
