@@ -54,4 +54,37 @@ class ArrangementContractTests(unittest.TestCase):
                 "Unintentional back-to-back repeated sections in "+beat["id"])
         self.assertGreaterEqual(len({ARRANGEMENTS[b["id"]]["form"] for b in FEATURED}),3)
 
+    def test_verse_bar_instrumentation_and_focus_identity(self):
+        """Check every generated verse bar, not only printed JSON contracts."""
+        import tempfile
+        from scripts.render_arranged_review_audio import Arrangement, TICKS_BAR
+        focus={"AXZ-049","AXZ-125","AXZ-117","AXZ-001","AXZ-021","AXZ-185"}
+        signatures=set()
+        with tempfile.TemporaryDirectory() as folder:
+            for beat in FEATURED:
+                with self.subTest(beat=beat["id"]):
+                    arranger=Arrangement(beat,ARRANGEMENTS[beat["id"]])
+                    arranger.build_midi(Path(folder)/"contract.mid")
+                    verse_count=0
+                    for part in ARRANGEMENTS[beat["id"]]["sections"]:
+                        if part["kind"]!="verse":
+                            continue
+                        for bar in range(part["startBar"],part["endBar"]):
+                            start=bar*TICKS_BAR
+                            counter=[
+                                (tick-start,msg.note)
+                                for tick,_,msg in arranger.events
+                                if msg.type=="note_on" and msg.velocity and
+                                   msg.channel==3 and start<=tick<start+TICKS_BAR
+                            ]
+                            self.assertGreaterEqual(len(counter),2,
+                                f"Unscored counter-melody in {beat['id']} bar {bar}")
+                            self.assertLessEqual(len(counter),3,
+                                f"Counter-melody overcrowds verse in {beat['id']} bar {bar}")
+                            if beat["id"] in focus and verse_count==0:
+                                signatures.add((beat["id"],tuple(counter)))
+                            verse_count+=1
+                    self.assertGreaterEqual(verse_count,8)
+        self.assertEqual(6,len(signatures))
+
 if __name__=="__main__":unittest.main()

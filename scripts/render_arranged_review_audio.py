@@ -73,6 +73,25 @@ HAT_POCKETS=((0,1,2,3),(0,.5,1.5,2,3,3.5),
              (0,.5,1,2,2.5,3.5),(0,1,1.75,2.75,3.5),
              (0,.5,1.25,2,2.75,3.5))
 SOUNDS=( "no external samples: GM patches and channel-10 kit variation", )
+# Verse-only counter-rhythms: melodies remain subordinate to the rapper.
+# Each focus song has its own motif, placement and percussion accent.
+VERSE_FOCUS = {
+    "AXZ-049": ((0, 4, 2, 5), (.75, 2.25, 3.5), 37),  # Chicago: syncopated keys/rim
+    "AXZ-125": ((5, 3, 2, 0), (.5, 2.0, 3.25), 40),   # Bronx: descending drill response
+    "AXZ-117": ((0, 2, 5, 3), (1.0, 2.5, 3.5), 39),   # Newark: offbeat organ/clap
+    "AXZ-001": ((0, 3, 4, 6), (.5, 2.0, 3.0), 45),    # Alabama: rising cinematic/tom
+    "AXZ-021": ((4, 2, 0, 5), (.75, 2.5, 3.25), 54),  # Denver: airy answer/tambourine
+    "AXZ-185": ((5, 4, 2, 0), (1.0, 2.75, 3.5), 76),  # Seattle: descending/woodblock
+}
+VERSE_LIBRARY = (
+    ((0, 2, 4, 1), (.75, 2.25), 37),
+    ((4, 2, 0, 5), (.5, 2.75), 54),
+    ((0, 3, 5, 2), (1.0, 3.25), 39),
+    ((5, 3, 1, 0), (.75, 2.5), 45),
+    ((2, 4, 0, 3), (1.25, 3.0), 76),
+    ((0, 4, 6, 2), (.5, 2.25), 40),
+)
+
 
 def scale_note(root, degree, scale, octave=4):
     return int(12*(octave+1)+root+scale[degree%7]+12*(degree//7))
@@ -189,6 +208,10 @@ class Arrangement:
             bass_positions=(0,1.5,2.5,3.25)
         elif bridge:
             bass_positions=(0,2)
+        elif kind=="verse":
+            bass_pockets=((0,1.75,2.75),(0,.75,2.25,3.25),
+                          (0,1.5,2.75),(0,1.25,2.5,3.5))
+            bass_positions=bass_pockets[(self.rank+local_bar//4)%len(bass_pockets)]
         else:
             bass_positions=(0,1.75,2.75)
         for pos in bass_positions:
@@ -201,7 +224,7 @@ class Arrangement:
         if kind=="intro" and local_bar==0:return
         hook=kind=="hook"
         pattern=self.melody
-        note_count=(4 if hook else 2)
+        note_count=(4 if hook else 3 if kind=="verse" else 2)
         if local_bar%4==3:note_count+=1
         prog=self.progression[(bar//4)%4]
         lead_oct=5 if self.rank%4 else 4
@@ -211,13 +234,43 @@ class Arrangement:
             n=scale_note(self.root,degree,self.scale,lead_oct)
             pos=(.0,1.5,2.5,3.25,3.75)[i]
             duration=(.52 if hook else .4)*TPQ
-            velocity=(68 if hook else 43)+self.rng.randint(-7,7)
+            velocity=(68 if hook else 49 if kind=="verse" else 43)+self.rng.randint(-7,7)
             self.add((bar*4+pos)*TPQ,1,n,velocity,duration)
         if hook and local_bar%2==1:
             # Different complementary patch and phrase: no full keyboard
             # chord pileup during verses.
             n=scale_note(self.root,(prog+4)%7,self.scale,4)
             self.add((bar*4+3)*TPQ,3,n,40,TPQ*.55)
+
+    def verse_detail(self, bar, local_bar):
+        """Vary verses independently of hooks; retain space for lead vocals.
+
+        One quiet instrumental response per half-bar with a four-bar contour,
+        independently selected for all 50 tracks, plus occasional ghost drums.
+        The six owner-identified verses receive distinct deterministic motifs.
+        """
+        motif, pulses, accent = VERSE_FOCUS.get(
+            self.beat["id"],
+            VERSE_LIBRARY[(self.rank + self.seed // 19) % len(VERSE_LIBRARY)]
+        )
+        phrase = local_bar % 4
+        cycle = (local_bar // 4) % 3
+        chord_degree = self.progression[(bar // 4) % 4]
+        for i, pos in enumerate(pulses):
+            # Preserve a little rhythmic negative space at the phrase opening.
+            if i == 2 and phrase in (0, 2):
+                continue
+            degree = (chord_degree + motif[(phrase + cycle + i) % len(motif)]) % 7
+            low_answer = self.beat["id"] in ("AXZ-125", "AXZ-001") and i == 0
+            octave = 3 if low_answer else (5 if i == 2 and self.rank % 3 == 0 else 4)
+            pitch = scale_note(self.root, degree, self.scale, octave)
+            velocity = 38 + (self.rank % 7) + (5 if phrase in (1, 3) else 0)
+            self.add((bar * 4 + pos) * TPQ, 3, pitch, velocity,
+                     TPQ * (.46 if i == 0 else .29))
+        if phrase in (1, 3):
+            self.percussion(bar * 4 + 3.5, accent, 39 + self.rank % 12, .09)
+        if phrase == 3:
+            self.percussion(bar * 4 + 3.75, self.drums["snare"], 44, .10)
 
     def build_midi(self,outpath):
         mf=mido.MidiFile(type=1,ticks_per_beat=TPQ)
@@ -242,6 +295,8 @@ class Arrangement:
                 self.harmony(bar,kind,local_bar)
                 self.rhythm(bar,kind,local_bar,sec["bars"])
                 self.musical_phrase(bar,kind,local_bar)
+                if kind=="verse":
+                    self.verse_detail(bar,local_bar)
         # One music track with deterministic, sorted MIDI events.
         target=mido.MidiTrack()
         last=0
