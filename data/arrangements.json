@@ -2098,26 +2098,26 @@
         "endSeconds": 152.523
       },
       {
-        "kind": "hook",
-        "label": "Hook 5",
-        "bars": 8,
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
         "startBar": 68,
-        "endBar": 76,
+        "endBar": 72,
         "startSeconds": 152.523,
-        "endSeconds": 170.467
+        "endSeconds": 161.495
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 76,
-        "endBar": 80,
-        "startSeconds": 170.467,
-        "endSeconds": 179.439
+        "startBar": 72,
+        "endBar": 76,
+        "startSeconds": 161.495,
+        "endSeconds": 170.467
       }
     ],
-    "totalBars": 80,
-    "durationSeconds": 179.439,
+    "totalBars": 76,
+    "durationSeconds": 170.467,
     "recordingVerified": false
   },
   "AXZ-145": {
@@ -2722,44 +2722,44 @@
         "endSeconds": 48.485
       },
       {
-        "kind": "hook",
-        "label": "Hook 2",
-        "bars": 8,
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
         "startBar": 20,
-        "endBar": 28,
+        "endBar": 24,
         "startSeconds": 48.485,
-        "endSeconds": 67.879
+        "endSeconds": 58.182
       },
       {
         "kind": "verse",
         "label": "Verse 2",
         "bars": 12,
-        "startBar": 28,
-        "endBar": 40,
-        "startSeconds": 67.879,
-        "endSeconds": 96.97
+        "startBar": 24,
+        "endBar": 36,
+        "startSeconds": 58.182,
+        "endSeconds": 87.273
       },
       {
         "kind": "hook",
-        "label": "Hook 3",
+        "label": "Hook 2",
         "bars": 8,
-        "startBar": 40,
-        "endBar": 48,
-        "startSeconds": 96.97,
-        "endSeconds": 116.364
+        "startBar": 36,
+        "endBar": 44,
+        "startSeconds": 87.273,
+        "endSeconds": 106.667
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 48,
-        "endBar": 52,
-        "startSeconds": 116.364,
-        "endSeconds": 126.061
+        "startBar": 44,
+        "endBar": 48,
+        "startSeconds": 106.667,
+        "endSeconds": 116.364
       }
     ],
-    "totalBars": 52,
-    "durationSeconds": 126.061,
+    "totalBars": 48,
+    "durationSeconds": 116.364,
     "recordingVerified": false
   },
   "AXZ-189": {
@@ -3496,44 +3496,44 @@
         "endSeconds": 58.537
       },
       {
-        "kind": "hook",
-        "label": "Hook 2",
-        "bars": 4,
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 8,
         "startBar": 20,
-        "endBar": 24,
+        "endBar": 28,
         "startSeconds": 58.537,
-        "endSeconds": 70.244
+        "endSeconds": 81.951
       },
       {
         "kind": "verse",
         "label": "Verse 2",
         "bars": 12,
-        "startBar": 24,
-        "endBar": 36,
-        "startSeconds": 70.244,
-        "endSeconds": 105.366
+        "startBar": 28,
+        "endBar": 40,
+        "startSeconds": 81.951,
+        "endSeconds": 117.073
       },
       {
         "kind": "hook",
-        "label": "Hook 3",
+        "label": "Hook 2",
         "bars": 8,
-        "startBar": 36,
-        "endBar": 44,
-        "startSeconds": 105.366,
-        "endSeconds": 128.78
+        "startBar": 40,
+        "endBar": 48,
+        "startSeconds": 117.073,
+        "endSeconds": 140.488
       },
       {
         "kind": "outro",
         "label": "Outro",
         "bars": 4,
-        "startBar": 44,
-        "endBar": 48,
-        "startSeconds": 128.78,
-        "endSeconds": 140.488
+        "startBar": 48,
+        "endBar": 52,
+        "startSeconds": 140.488,
+        "endSeconds": 152.195
       }
     ],
-    "totalBars": 48,
-    "durationSeconds": 140.488,
+    "totalBars": 52,
+    "durationSeconds": 152.195,
     "recordingVerified": false
   },
   "AXZ-161": {
