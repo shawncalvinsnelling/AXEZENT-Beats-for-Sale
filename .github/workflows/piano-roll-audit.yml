@@ -1,0 +1,35 @@
+name: AXEZENT fifty original MIDI piano rolls
+on:
+  push:
+    branches: [repair-piano-roll-groove-20261108]
+    paths:
+      - 'scripts/render_arranged_review_audio.py'
+      - 'scripts/audit_piano_roll.py'
+      - 'tests/test_arrangements_contract.py'
+      - '.github/workflows/piano-roll-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  midi-grid:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install MIDI tools
+        run: python -m pip install --disable-pip-version-check "mido>=1.3,<2"
+      - name: Verify repeatable hooks, sparse verses, note boundaries
+        run: python -m unittest discover -s tests -p 'test_arrangements_contract.py' -v
+      - name: Inspect actual note grids across 50 distinct arrangements
+        run: python scripts/audit_piano_roll.py --out "${{ runner.temp }}/axezent-midi-piano"
+      - name: Store 50 piano roll charts and note counts; never audio
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: AXEZENT-50-REAL-MIDI-PIANO-ROLLS
+          path: ${{ runner.temp }}/axezent-midi-piano/
+          retention-days: 30
+          if-no-files-found: warn
