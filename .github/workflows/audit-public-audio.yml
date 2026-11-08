@@ -17,16 +17,33 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg
-      - name: Fetch exactly 50 MP3s from the completed public deployment
-        env:
-          GH_TOKEN: ${{ github.token }}
-          SOURCE_RUN: ${{ github.event.workflow_run.id }}
+      - name: Audit the publicly audible tracks without downloading private Actions artifacts
+        shell: bash
         run: |
           set -euo pipefail
           mkdir -p _review_audio
-          gh run download "$SOURCE_RUN" --repo "${{ github.repository }}" --pattern 'axezent-review-batch-*' --dir _review_batches
-          find _review_batches -type f -name 'AXZ-*-review.mp3' -exec cp --no-clobber -t _review_audio {} +
-          test "$(find _review_audio -maxdepth 1 -name 'AXZ-*-review.mp3' | wc -l)" -eq 50
+          python - <<'PY'
+          import json,pathlib,subprocess,time,urllib.request
+          base="https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/"
+          manifest=json.loads(urllib.request.urlopen(base+"data/public-preview-manifest.json",timeout=30).read())
+          if len(manifest)!=50:
+              raise RuntimeError("Expected exactly 50 current public audio links")
+          out=pathlib.Path("_review_audio")
+          for index,(ident,path) in enumerate(manifest.items(),1):
+              if path!="./review-audio/"+ident+"-review.mp3":
+                  raise RuntimeError("Unexpected public MP3 path "+ident)
+              dest=out/(ident+"-review.mp3")
+              for attempt in range(4):
+                  proc=subprocess.run(["curl","-fL","-sS","--retry","2","--retry-delay","2",
+                    "--connect-timeout","20","--max-time","90","-o",str(dest),base+path[2:]])
+                  if proc.returncode==0 and dest.exists() and dest.stat().st_size>150000:
+                      break
+                  if attempt==3:
+                      raise RuntimeError("Public Pages audio inaccessible: "+ident)
+                  time.sleep(5)
+          assert len(list(out.glob("*-review.mp3")))==50
+          print("PASS: obtained all 50 full-length MP3s from the customer-accessible player endpoints")
+          PY
       - name: Check integrated LUFS, decoded true peak, dynamic range and file integrity
         run: python scripts/audit_loudness.py --audio-dir _review_audio --report AXEZENT_50_TRACK_AUDIO_QA.json
       - name: Preserve the objective results for the owner
