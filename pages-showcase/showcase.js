@@ -15,6 +15,8 @@
     const s = Math.round(secs);
     return Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
   };
+  const segmentSeconds = s => Math.max(0,s.endSeconds-s.startSeconds);
+  const segmentDuration = s => segmentSeconds(s).toFixed(1)+" seconds";
   const renderSectionTable = (track) => {
     const spec = track.arrangement;
     if (!spec || !Array.isArray(spec.sections)) {
@@ -26,12 +28,14 @@
     const items = el("div","arrangement-sections");
     spec.sections.forEach((segment,index)=>{
       const line=el("div","arrangement-segment");
-      elAppend(line,
-        el("span","segment-number",String(index+1).padStart(2,"0")),
-        el("strong","segment-title",segment.label),
-        el("span","segment-bars",segment.bars+" bars"),
-        el("span","segment-time",showClock(segment.startSeconds)+" – "+showClock(segment.endSeconds))
-      );
+      const primary=el("div","segment-primary");
+      elAppend(primary,el("strong","segment-title",segment.label),
+        el("span","segment-duration",segmentDuration(segment)));
+      const secondary=el("div","segment-secondary");
+      elAppend(secondary,el("span","segment-bars",segment.bars+" bars"),
+        el("span","segment-time",showClock(segment.startSeconds)+" – "+showClock(segment.endSeconds)));
+      elAppend(line,el("span","segment-number",String(index+1).padStart(2,"0")),
+        primary,secondary);
       items.appendChild(line);
     });
     elAppend(pane,subtitle,sound,items,
@@ -101,6 +105,8 @@
   const musicRepeat = $("musicRepeat");
   const musicVolume = $("musicVolume"), musicVolumeValue = $("musicVolumeValue");
   const musicBack15 = $("musicBack15"), musicForward15 = $("musicForward15");
+  const musicSections = $("musicArrangement"), musicSectionNow = $("musicSectionNow");
+  let sectionButtons=[];
   let scrubbing = false;
   const showTime = (seconds) => {
     if(!Number.isFinite(seconds) || seconds < 0) return "0:00";
@@ -108,6 +114,56 @@
     return Math.floor(sec / 60) + ":" + String(sec % 60).padStart(2,"0");
   };
   const setPlayerStatus = (message) => {musicStatus.textContent=message;};
+  const markCurrentSection = () => {
+    const sections=state.selected?.arrangement?.sections;
+    if(!Array.isArray(sections)||!sections.length)return;
+    const time=Number(player.currentTime)||0;
+    let active=sections.findIndex((s,i)=>time>=s.startSeconds-0.01 &&
+      (time<s.endSeconds-0.01||i===sections.length-1));
+    active=Math.max(0,active);
+    const selected=sections[active];
+    musicSectionNow.textContent="Now: "+selected.label+" · "+segmentDuration(selected);
+    sectionButtons.forEach((button,i)=>{
+      button.classList.toggle("is-active",i===active);
+      if(i===active)button.setAttribute("aria-current","true");
+      else button.removeAttribute("aria-current");
+    });
+  };
+  const buildSectionGuide = beat => {
+    musicSections.replaceChildren();
+    sectionButtons=[];
+    for(const [index,s] of (beat.arrangement?.sections||[]).entries()){
+      const block=el("div","music-section-step");
+      const button=el("button","music-section-jump");
+      button.type="button";
+      button.setAttribute("aria-label","Jump to "+s.label+" lasting "+
+        segmentDuration(s)+", beginning at "+showClock(s.startSeconds));
+      const headline=el("span","music-section-heading");
+      elAppend(headline,el("strong","music-section-label",s.label),
+        el("span","music-section-bars",s.bars+" bars"));
+      elAppend(button,headline,el("span","music-section-duration",segmentDuration(s)),
+        el("span","music-section-position",showClock(s.startSeconds)+" – "+showClock(s.endSeconds)));
+      button.addEventListener("click",()=>{
+        if(!state.selected)return;
+        try{
+          const total=Number.isFinite(player.duration)&&player.duration>0 ?
+            player.duration : beat.arrangement.durationSeconds;
+          player.currentTime=Math.min(total,Math.max(0,s.startSeconds));
+          syncProgress();
+          if(player.paused)playSelected();
+        }catch(err){setPlayerStatus("Still loading; try this section again.");}
+      });
+      block.appendChild(button);
+      if(index<beat.arrangement.sections.length-1){
+        const arrow=el("span","music-section-arrow","↓");
+        arrow.setAttribute("aria-hidden","true");
+        block.appendChild(arrow);
+      }
+      musicSections.appendChild(block);
+      sectionButtons.push(button);
+    }
+    markCurrentSection();
+  };
   const syncProgress = () => {
     const dur = player.duration;
     const playable = Number.isFinite(dur) && dur > 0;
@@ -117,6 +173,7 @@
     if (!scrubbing) musicSeek.value = playable
       ? String(Math.max(0,Math.min(100,player.currentTime/dur*100)))
       : "0";
+    markCurrentSection();
   };
   const seekTo = (percentage) => {
     if(!state.selected) return;
@@ -165,10 +222,7 @@
     player.load();
     musicTitle.textContent=beat.title;
     musicMeta.textContent=beat.city+", "+beat.state+" · "+(beat.bpm||"—")+" BPM";
-    const caption=$("musicArrangement");
-    if(caption)caption.textContent=beat.arrangement && Array.isArray(beat.arrangement.sections)
-      ? "Arrangement: "+beat.arrangement.sections.map(s=>s.label).join(" → ")
-      : "Listen to this beat";
+    buildSectionGuide(beat);
     setPlayerStatus("Ready to listen");
     if(!musicDialog.open) musicDialog.showModal();
     playSelected();

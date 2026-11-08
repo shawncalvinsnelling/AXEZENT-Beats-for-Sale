@@ -170,3 +170,25 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible {
   .brand strong{font-size:17px}
   .nav-cta{font-size:11px;padding:11px 12px}
 }
+
+/* Beat player: accessible live section-by-section song map. */
+.music-section-guide{margin-top:15px;border:1px solid #464c58;border-radius:12px;background:#141b26;padding:14px 12px;text-align:left}
+.music-section-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.music-section-top h3{font-size:15px;font-weight:850;color:#f2d3a0;margin:0}
+.music-section-now{font-size:11px;color:#e2c69c}
+.music-section-hint{color:#bac2cf;font-size:11px;line-height:1.4;margin:8px 0 12px}
+.music-section-list{display:flex;flex-direction:column;max-height:340px;overflow-y:auto;overscroll-behavior:contain;padding-right:4px;scrollbar-color:#8b7759 #121b26}
+.music-section-step{display:flex;flex-direction:column}
+.music-section-jump{width:100%;min-width:0;display:flex;flex-direction:column;gap:4px;text-align:left;border:1px solid #4d5764;background:#202938;border-radius:9px;color:#ecf1f4;padding:10px 13px}
+.music-section-jump:hover,.music-section-jump:focus-visible{border-color:#e6be83;background:#2a3442}
+.music-section-jump.is-active{background:#372b22;border-color:#e9b875;box-shadow:inset 3px 0 #e2ad66}
+.music-section-heading{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.music-section-label{font-size:14px;font-weight:850}
+.music-section-bars{font-size:10px;color:#b8bcc6}
+.music-section-duration{font-size:13px;color:#abe2e9;font-weight:800}
+.music-section-position{font-size:11px;color:#b9c4d0;font-variant-numeric:tabular-nums}
+.music-section-arrow{height:22px;display:grid;place-items:center;font-size:15px;color:#d7ab71}
+.arrangement-segment .segment-primary{display:flex;flex-direction:column;gap:4px;min-width:0}
+.arrangement-segment .segment-duration{font-size:12px;color:#abe2e9;font-weight:800}
+.arrangement-segment .segment-secondary{display:flex;flex-direction:column;gap:4px;text-align:right;align-items:end}
+@media(max-width:500px){.music-section-list{max-height:285px}.music-section-top{flex-direction:column;align-items:flex-start}.music-section-guide{padding:12px 10px}}

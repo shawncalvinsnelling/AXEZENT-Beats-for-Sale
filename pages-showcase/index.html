@@ -166,7 +166,11 @@
       <div class="music-progress"><span id="musicTime">0:00</span><label for="musicSeek" class="sr-only">Move playback position within the selected beat</label><input id="musicSeek" class="music-seek" type="range" min="0" max="100" value="0" step="0.1" disabled aria-label="Seek to a different point in the beat"><span id="musicDuration">0:00</span></div>
       <div class="music-volume"><label for="musicVolume">◖)) Volume</label><input id="musicVolume" type="range" min="0" max="100" value="100" step="1" aria-label="Playback volume"><output id="musicVolumeValue" for="musicVolume">100%</output></div>
       <p class="music-caption">Listen to the complete arrangement. Use the timeline to jump to any part of the beat.</p>
-      <p class="music-caption" id="musicArrangement">Each beat has its own arrangement; see Details for the bar-by-bar map.</p>
+      <section class="music-section-guide" aria-labelledby="musicSectionsHeading">
+          <div class="music-section-top"><h3 id="musicSectionsHeading">Song sections</h3><span id="musicSectionNow" class="music-section-now">Select a section</span></div>
+          <p class="music-section-hint">Duration is right underneath each section name. Tap a section to jump to it.</p>
+          <div id="musicArrangement" class="music-section-list" aria-label="Song section navigation"></div>
+        </section>
       <audio id="player" preload="metadata" playsinline controlslist="nodownload noplaybackrate" disablepictureinpicture></audio>
     </div>
   </dialog>
