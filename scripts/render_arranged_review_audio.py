@@ -224,7 +224,7 @@ class Arrangement:
         conductor=mido.MidiTrack()
         conductor.append(mido.MetaMessage("set_tempo",tempo=mido.bpm2tempo(self.bpm),time=0))
         conductor.append(mido.MetaMessage("time_signature",numerator=4,denominator=4,time=0))
-        conductor.append(mido.MetaMessage("track_name",name=self.beat["title"]+" — AXEZENT new review draft",time=0))
+        conductor.append(mido.MetaMessage("track_name",name=self.beat["title"]+" - AXEZENT new review draft",time=0))
         mf.tracks.append(conductor)
         setup=mido.MidiTrack()
         for channel,patch in zip((0,1,2,3),self.instruments):
