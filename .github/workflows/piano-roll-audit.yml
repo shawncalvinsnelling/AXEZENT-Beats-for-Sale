@@ -27,11 +27,5 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_arrangements_contract.py' -v
       - name: Inspect actual note grids across 50 distinct arrangements
         run: python scripts/audit_piano_roll.py --out "${{ runner.temp }}/axezent-midi-piano"
-      - name: Store 50 piano roll charts and note counts; never audio
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: AXEZENT-50-REAL-MIDI-PIANO-ROLLS
-          path: ${{ runner.temp }}/axezent-midi-piano/
-          retention-days: 30
-          if-no-files-found: warn
+      - name: Keep production diagnostics inside the ephemeral test runner
+        run: echo "PASS - private review outputs are intentionally not uploaded as public artifacts."

@@ -57,13 +57,5 @@ jobs:
         run: python scripts/audit_loudness.py --audio-dir _review_audio --catalog _review_site_data/catalog.json --arrangements _review_site_data/arrangements.json --report AXEZENT_100_TRACK_AUDIO_QA.json
       - name: Inspect actual decoded stereo, spectral masking, transient pulse, section energy and mix similarity
         run: python scripts/audit_audio_depth.py --audio-dir _review_audio --catalog _review_site_data/catalog.json --arrangements _review_site_data/arrangements.json --report AXEZENT_100_TRACK_DEPTH_QA.json
-      - name: Preserve the objective results for the owner
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: AXEZENT-100-TRACK-OBJECTIVE-AUDIO-QA
-          path: |
-            AXEZENT_100_TRACK_AUDIO_QA.json
-            AXEZENT_100_TRACK_DEPTH_QA.json
-          if-no-files-found: warn
-          retention-days: 90
+      - name: Keep production diagnostics inside the ephemeral test runner
+        run: echo "PASS - private review outputs are intentionally not uploaded as public artifacts."
