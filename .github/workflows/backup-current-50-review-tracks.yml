@@ -1,0 +1,94 @@
+name: Preserve AXEZENT 50 Current Review Tracks - Backup ZIP
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/backup-current-50-review-tracks.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  build-complete-listening-backup:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout catalog and arrangement manifests
+        uses: actions/checkout@v4
+      - name: Recover the five already verified audio batches
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p _owner_archive/recordings
+          gh run download 42438813265 --repo "${{ github.repository }}" --pattern 'axezent-review-batch-*' --dir _downloaded_audio
+          found=$(find _downloaded_audio -type f -name 'AXZ-*-review.mp3' | wc -l)
+          test "$found" -eq 50
+          find _downloaded_audio -type f -name 'AXZ-*-review.mp3' -exec cp --no-clobber -t _owner_archive/recordings {} +
+          test "$(find _owner_archive/recordings -maxdepth 1 -name '*.mp3' | wc -l)" -eq 50
+      - name: Audit 50 exact catalog identities, full MP3s and SHA256s
+        run: |
+          python - <<'PY'
+          import json,pathlib,hashlib,subprocess,shutil
+          root=pathlib.Path("_owner_archive")
+          tracks=json.loads(pathlib.Path("data/catalog.json").read_text("utf-8"))
+          plans=json.loads(pathlib.Path("data/arrangements.json").read_text("utf-8"))
+          ordered=sorted((b for b in tracks if isinstance(b.get("releaseRank"),int) and 1<=b["releaseRank"]<=50),key=lambda b:b["releaseRank"])
+          assert len(ordered)==len(plans)==50
+          report=[]
+          for beat in ordered:
+              file=root/"recordings"/(beat["id"]+"-review.mp3")
+              assert file.is_file() and file.stat().st_size>=150000
+              info=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_entries",
+                  "format=duration:stream=codec_name,channels","-of","json",str(file)]))
+              assert info["streams"][0]["codec_name"]=="mp3"
+              assert info["streams"][0]["channels"]==2
+              seconds=float(info["format"]["duration"])
+              assert abs(seconds-plans[beat["id"]]["durationSeconds"])<0.6
+              sha=hashlib.sha256(file.read_bytes()).hexdigest()
+              report.append({"rank":beat["releaseRank"],"id":beat["id"],"title":beat["title"],
+                "city":beat["city"],"region":beat["collection"],"bpm":beat["bpm"],
+                "key":beat["key"],"durationSeconds":round(seconds,3),
+                "sizeBytes":file.stat().st_size,"sha256":sha,"path":str(file.relative_to(root))})
+          assert len({b["sha256"] for b in report})==50
+          (root/"TRACK_INVENTORY_SHA256.json").write_text(json.dumps(report,indent=2)+"\n","utf-8")
+          (root/"SHA256SUMS.txt").write_text("".join(f'{b["sha256"]}  {b["path"]}\n' for b in report),"utf-8")
+          shutil.copyfile("data/arrangements.json",root/"FULL_ARRANGEMENTS.json")
+          shutil.copyfile("data/catalog.json",root/"ORIGINAL_CATALOG_200_ENTRIES.json")
+          (root/"READ_ME_FIRST.txt").write_text(
+            "AXEZENT — CURRENT 50 REVIEW MP3 BACKUP\n"
+            "These are 50 NEW synthetic sampled-instrument review mixes published by "
+            "GitHub Pages deployment run 42438813265.\n"
+            "They are NOT the exact historic private NODESS/ChatGPT mixes, NOT the "
+            "unreleased sale masters, and NOT verified exclusive commercial inventory.\n"
+            "For owner audit/long-term backup. The ZIP includes 50 stereo full-length "
+            "MP3s, song arrangements, catalog metadata, hashes and verified track identity.\n"
+            "All MP3s are already publicly audible on the GitHub artist showcase.\n"
+            "SHA256SUMS.txt can be checked with sha256sum -c SHA256SUMS.txt inside this folder.\n",
+            "utf-8")
+          print("PASS: catalog IDs, 50 distinct stereo MP3s, exact durations and checksum inventory.")
+          PY
+      - name: Pack one owner-friendly ZIP and verify archive integrity
+        run: |
+          python - <<'PY'
+          import os,pathlib,zipfile,hashlib
+          root=pathlib.Path("_owner_archive")
+          dest=pathlib.Path("AXEZENT_50_REVIEW_BEATS_FULL_BACKUP_2026-11-07.zip")
+          with zipfile.ZipFile(dest,"w",compression=zipfile.ZIP_STORED,allowZip64=True) as out:
+              for item in sorted(root.rglob("*")):
+                  if item.is_file():
+                      out.write(item,arcname="AXEZENT_50_REVIEW_BEATS/"+str(item.relative_to(root)))
+          with zipfile.ZipFile(dest) as verify:
+              assert verify.testzip() is None
+              assert len([n for n in verify.namelist() if n.endswith(".mp3")])==50
+          print(f"PASS: single ZIP {dest.name}: {dest.stat().st_size} bytes.")
+          print("ZIP SHA-256:",hashlib.sha256(dest.read_bytes()).hexdigest())
+          PY
+      - name: Store complete downloadable ZIP in GitHub Actions
+        uses: actions/upload-artifact@v4
+        with:
+          name: AXEZENT-50-REVIEW-BEATS-BACKUP
+          path: AXEZENT_50_REVIEW_BEATS_FULL_BACKUP_2026-11-07.zip
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 90
