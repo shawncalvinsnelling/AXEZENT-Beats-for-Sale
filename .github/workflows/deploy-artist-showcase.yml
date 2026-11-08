@@ -56,6 +56,11 @@ jobs:
             for(const needle of ["BEATS<br><em>FOR SALE.", "id=\"tracks\"", "id=\"query\"", "id=\"region\"", "id=\"playerDialog\"", "id=\"musicSeek\"", "id=\"musicRepeat\"", "assets/styles.css"]) {
               if(!h.includes(needle))throw Error("Missing original website visual/player feature: "+needle);
             }
+            for(const marker of ["LISTENING VERSION", "EXPANDED VERSION", "Intro", "Hook", "Verse 1", "Verse 2", "Outro"]) {
+              if(!h.includes(marker))throw Error("Missing preview/full arrangement explanation: "+marker);
+            }
+            if(j.includes("Discover AXEZENT")||j.includes("Preview coming soon")||j.includes("Coming soon"))throw Error("Old clutter labels remain in published player");
+            if(!j.includes('el("button","play-button","▶ Play")')||!j.includes('el("button","detail-button","Details")'))throw Error("Expected compact player controls are missing");
             for(const forbidden of [/chatgpt[.]site/i,/paypal/i,/cash app/i,/mailto:/i,/private prototype/i,/synthetic review/i,/an online shop/i]) {
               if(forbidden.test(h))throw Error("Customer-facing page includes restricted text: "+forbidden);
             }
