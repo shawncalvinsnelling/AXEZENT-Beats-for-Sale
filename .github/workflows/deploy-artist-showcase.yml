@@ -28,6 +28,10 @@ jobs:
     steps:
       - name: Checkout website source only
         uses: actions/checkout@v4
+      - name: Install static preview image converter only
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq librsvg2-bin
       - name: Prepare public catalog WITHOUT public beat audio
         shell: bash
         run: |
@@ -36,6 +40,7 @@ jobs:
           cp pages-showcase/index.html _pages_build/index.html
           cp pages-showcase/showcase.js pages-showcase/counters.js _pages_build/assets/
           cp assets/styles.css assets/favicon.svg assets/axezent-social-share.svg _pages_build/assets/
+          rsvg-convert -w 1200 -h 630 assets/axezent-social-share.svg -o _pages_build/assets/axezent-social-share-v1.png
           python scripts/collection_two.py --public-data _pages_build/data
           python - <<'PY'
           import json,pathlib
@@ -71,6 +76,7 @@ jobs:
           assert not (base/'review-audio').exists()
           assert 'public-preview-manifest.json' in (base/'assets/showcase.js').read_text('utf8')
           assert 'axezentai@gmail.com' in (base/'index.html').read_text('utf8')
+          assert (base/'assets/axezent-social-share-v1.png').read_bytes().startswith(b'\x89PNG\r\n\x1a\n')
           (base/'.nojekyll').touch()
           print('PASS: 100-track catalog and inquiry links; NO public instrumentals, zipped masters or arrangement plans')
           PY
