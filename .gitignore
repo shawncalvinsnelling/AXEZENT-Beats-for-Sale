@@ -18,3 +18,25 @@ stems/
 
 # Never expose private audio to GitHub or public source trees
 private_previews/
+
+# Safety: never commit listening files, paid masters, video assets or release archives.
+# GitHub Pages audio is rendered in CI and uploaded as a Pages artifact only.
+*.mp3
+*.m4a
+*.aac
+*.ogg
+*.opus
+*.mid
+*.midi
+*.zip
+*.7z
+*.rar
+*.mp4
+*.mov
+*.sf2
+*.sfz
+*.rpp
+*.flp
+*.als
+*.logicx
+*.ptx
