@@ -82,13 +82,13 @@
 .arrangement-detail .section-head{font-size:14px;font-weight:800;color:#efd6a0;margin:3px 0 8px}
 .arrangement-detail .production-direction{font-size:12px;line-height:1.65;color:#c5cbd8}
 .arrangement-sections{display:grid;gap:5px;margin:15px 0}
-.arrangement-segment{display:grid;grid-template-columns:28px 1fr auto minmax(110px,auto);gap:8px;align-items:center;padding:9px 10px;border:1px solid #283441;background:#18212c;border-radius:8px;font-size:12px}
+.arrangement-segment{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:8px;align-items:center;padding:9px 10px;border:1px solid #283441;background:#18212c;border-radius:8px;font-size:12px}
 .segment-number{color:#d6b985;font-variant-numeric:tabular-nums}
 .segment-title{color:#f4efe4;font-weight:700}
 .segment-bars{color:#aebaca}
 .segment-time{color:#e8d39f;font-variant-numeric:tabular-nums;text-align:right}
 .arrangement-disclosure{font-size:11px;color:#afbac6;line-height:1.5}
-@media(max-width:540px){.arrangement-segment{grid-template-columns:20px 1fr auto;gap:5px}.segment-time{grid-column:2/-1;text-align:left}}
+@media(max-width:540px){.arrangement-segment{grid-template-columns:20px minmax(0,1fr) auto;gap:5px}.segment-secondary .segment-time{grid-column:auto;text-align:right}}
 @media(max-width:700px){.arrangement-grid{grid-template-columns:1fr}}
 @media(max-width:590px){#tracks .track-content{grid-template-columns:1fr}#tracks .track-actions{grid-column:1;grid-row:auto}}
 @media(max-width:540px){#playerDialog .music-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}

@@ -27,6 +27,10 @@ try {
   await desktop.locator('article.track-card button.detail-button').first().click();
   const trackEmail=await desktop.locator('#dialogContent .inquiry-email').getAttribute('href');
   record('Beat Details prefills correct artist inquiry email and track ID',Boolean(trackEmail&&trackEmail.startsWith('mailto:axezentai@gmail.com?subject=')&&trackEmail.includes('AXZ-')),{trackEmail});
+  const durations=await desktop.locator('#dialogContent .segment-duration').allTextContents();
+  record('Every song section displays exact seconds underneath its title',
+    durations.length===7&&durations[0].trim()==='11.4 seconds',
+    {count:durations.length,first:durations[0]});
   await desktop.locator('#closeDialog').click();
   const bars=await desktop.locator('.cover-soundwave').count();
   record('50 individual beat-art visuals',bars===50,{bars});
@@ -54,7 +58,17 @@ try {
   await mobile.locator('#tracks .play-button').first().click();
   await mobile.waitForFunction(()=>{let a=document.querySelector('#player');return a&&document.querySelector('#playerDialog').open&&a.readyState>=2&&a.currentTime>.1},null,{timeout:30000});
   record('Touch-sized Play button decodes real audio',true);
-  await mobile.locator('#closePlayer').click();
+  const chapters=mobile.locator('#musicArrangement .music-section-jump');
+   const chapterCount=await chapters.count();
+   record('Full section list and seconds visible while beat plays',
+     chapterCount===7 && await mobile.locator('.music-section-duration').count()===chapterCount &&
+     (await chapters.first().innerText()).includes('11.4 seconds'),{chapterCount});
+   await chapters.nth(3).click();
+   await mobile.waitForFunction(()=>Math.abs(document.querySelector('#player').currentTime-68.571)<2,
+     null,{timeout:12000});
+   const current=(await mobile.locator('.music-section-jump.is-active .music-section-label').innerText()).trim();
+   record('Section click seeks to Hook 2 and highlights it',current==='Hook 2',{current});
+   await mobile.locator('#closePlayer').click();
   const narrow=await browser.newPage({viewport:{width:320,height:720},deviceScaleFactor:1,isMobile:true,hasTouch:true});
   try {
     await narrow.goto(BASE,{waitUntil:'domcontentloaded',timeout:50000});

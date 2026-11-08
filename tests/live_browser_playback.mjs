@@ -19,6 +19,8 @@ try {
   await page.locator('article.track-card button.detail-button').first().click();
   await page.waitForFunction(() => document.getElementById('trackDialog').open);
   const details=await page.locator('#dialogContent').innerText();
+  assert.equal(await page.locator('#dialogContent .segment-duration').count(),7,
+    'All detailed sections must show their duration');
   assert.match(details,/0:00/,'The actual track sections must have timecodes');
   assert.match(details,/Verse 2/,'The full arrangement must include a second verse');
   assert.match(details,/\$100/,'The intended $100 full instrumental price must show');
@@ -33,6 +35,13 @@ try {
   const before=await page.locator('#player').evaluate(el=>({duration:el.duration,currentTime:el.currentTime,paused:el.paused}));
   assert.ok(before.duration>60 && !before.paused,'Audio must actually run, not just open a modal');
   console.log('LIVE AUDIO STARTED:',title,before);
+  assert.equal(await page.locator('#musicArrangement .music-section-jump').count(),7,
+    'Every section is visible beneath the player');
+  await page.locator('#musicArrangement .music-section-jump').nth(2).click();
+  await page.waitForFunction(()=>Math.abs(document.querySelector('#player').currentTime-34.286)<2,
+    null,{timeout:12000});
+  assert.equal((await page.locator('.music-section-jump.is-active .music-section-label').innerText()).trim(),
+    'Verse 1', 'Section controls should seek to and highlight the actual verse');
 
   await page.locator('#musicSeek').evaluate(el=>{
     el.value='50';el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));
