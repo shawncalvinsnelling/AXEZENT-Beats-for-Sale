@@ -107,6 +107,11 @@ jobs:
           pattern: axezent-review-batch-*
           path: _pages_build/review-audio
           merge-multiple: true
+      - name: Install PNG conversion for Facebook preview art
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq librsvg2-bin
+          command -v rsvg-convert
       - name: Build artist showcase, bar-accurate song maps and verified audio URLs
         shell: bash
         run: |
@@ -115,6 +120,16 @@ jobs:
           cp pages-showcase/index.html _pages_build/index.html
           cp pages-showcase/showcase.js _pages_build/assets/showcase.js
           cp assets/styles.css assets/favicon.svg _pages_build/assets/
+          rsvg-convert -w 1200 -h 630 assets/axezent-social-share.svg -o _pages_build/assets/axezent-social-share-v1.png
+          python - <<'PY'
+          import pathlib,struct
+          p=pathlib.Path("_pages_build/assets/axezent-social-share-v1.png")
+          data=p.read_bytes()
+          assert data[:8]==bytes((137,80,78,71,13,10,26,10))
+          assert struct.unpack(">II",data[16:24])==(1200,630)
+          assert len(data)>15_000
+          print("PASS: premium 1200 x 630 PNG Open Graph image",len(data),"bytes")
+          PY
           cp data/arrangements.json _pages_build/data/arrangements.json
           node -e '
             const fs=require("fs"),path=require("path"),crypto=require("crypto");
@@ -162,7 +177,7 @@ jobs:
             const j=fs.readFileSync("_pages_build/assets/showcase.js","utf8");
             const plans=JSON.parse(fs.readFileSync("_pages_build/data/arrangements.json","utf8"));
             const manifest=JSON.parse(fs.readFileSync("_pages_build/data/public-preview-manifest.json","utf8"));
-            for(const key of ["id=\"playerDialog\"","id=\"musicSeek\"","id=\"musicRepeat\"","id=\"musicArrangement\"","id=\"region\"","$100", "your next song"]){
+            for(const key of ["id=\"playerDialog\"","id=\"musicSeek\"","id=\"musicRepeat\"","id=\"musicArrangement\"","id=\"region\"","$100", "your next song","og:image", "axezent-social-share-v1.png"]){
               if(!h.includes(key))throw Error("Missing AXEZENT design or player feature "+key);
             }
             for(const key of ["renderSectionTable","arrangements.json","approvedPreviewUrl","musicRepeat.addEventListener","seekTo"]){
@@ -173,7 +188,8 @@ jobs:
             for(const [id,url] of Object.entries(manifest)){
               if(!plans[id] || url!=="./review-audio/"+id+"-review.mp3")throw Error("Invalid review audio URL mapping");
             }
-            if(/chatgpt[.]site|paypal|cash app|mailto:/i.test(h))throw Error("Static artist showcase must not expose gated links or payment collection");
+            if(/chatgpt[.]site|paypal|cash app|mailto:|github[.]com\//i.test(h))throw Error("Showcase must not expose private links, repository navigation or payment collection");
+            if(!fs.existsSync("_pages_build/assets/axezent-social-share-v1.png"))throw Error("Missing Facebook link image");
             console.log("PASS: correct AXEZENT display, 50 playable new review sources, $100 informational pricing and per-song bars");
           '
       - name: Set up GitHub Pages
