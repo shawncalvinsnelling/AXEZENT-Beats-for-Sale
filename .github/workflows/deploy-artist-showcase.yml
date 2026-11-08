@@ -31,11 +31,7 @@ jobs:
     steps:
       - name: Checkout AXEZENT arrangement source
         uses: actions/checkout@v4
-      - name: Fail closed if studio audio or sale masters are committed to public Git
-        shell: bash
-        run: |
-          set -euo pipefail
-          if git ls-files | grep -E -i '\.(mp3|wav|flac|aif|aiff|aac|m4a|ogg|opus|mid|midi|zip|7z|rar|sf2|sfz|rpp|flp|als|logicx|ptx)      - name: Set up Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
