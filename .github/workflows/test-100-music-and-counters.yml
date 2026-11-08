@@ -1,4 +1,4 @@
-name: "AXEZENT A-Z release gates: 100 MIDI beats and real new audio"
+name: AXEZENT Collection Quality
 on:
   push:
     branches: [main, studio-performance-20261108]
@@ -6,7 +6,7 @@ on:
 permissions:
   contents: read
 jobs:
-  check-100-and-counters:
+  quality:
     runs-on: ubuntu-24.04
     timeout-minutes: 12
     steps:
@@ -29,7 +29,7 @@ jobs:
           node --check pages-showcase/counters.js
           node --check pages-showcase/showcase.js
           node tests/test_public_counters.mjs
-  audition-sample:
+  audio:
     runs-on: ubuntu-24.04
     timeout-minutes: 32
     steps:

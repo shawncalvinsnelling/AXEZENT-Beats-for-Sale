@@ -87,5 +87,4 @@ class TestMusicUpgrade(unittest.TestCase):
                 else:
                     self.assertEqual(old_notes,after,beat["id"])
             self.assertGreaterEqual(reviewed,25)
-            print("PASS_A_Z_MUSIC_TESTS",{ "reviewed":reviewed,
-                    "unchanged":100-reviewed,"weakHooksStrengthened":len(WEAK_HOOK_IDS)})
+            print("PASS: instrumental arrangements verified")

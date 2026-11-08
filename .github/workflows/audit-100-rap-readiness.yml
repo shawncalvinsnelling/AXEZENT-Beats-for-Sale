@@ -1,4 +1,4 @@
-name: AXEZENT 100 - rapper vocal space and note-grid mathematics
+name: AXEZENT Catalog Verification
 on:
   push:
     branches: [main]

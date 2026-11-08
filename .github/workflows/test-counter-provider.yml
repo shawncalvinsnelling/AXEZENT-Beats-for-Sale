@@ -1,4 +1,4 @@
-name: Verify AXEZENT persistent public counter provider without generating hits
+name: AXEZENT Website Component Check
 on:
   push:
     branches: [main]

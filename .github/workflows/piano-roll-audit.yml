@@ -1,4 +1,4 @@
-name: AXEZENT fifty original MIDI piano rolls
+name: AXEZENT Arrangement Verification
 on:
   push:
     branches: [main, repair-piano-roll-groove-20261108]
