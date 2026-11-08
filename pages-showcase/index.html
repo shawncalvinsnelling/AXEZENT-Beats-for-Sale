@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090b11">
+<meta name="description" content="AXEZENT Original Productions: explore the regional hip-hop and rap instrumental catalog.">
+<meta name="robots" content="index,follow">
+<title>AXEZENT Original Productions | Artist Showcase</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.showcase-note{border-left:3px solid #deb574;background:#151923;padding:18px 22px;border-radius:10px;color:#cdd1d7;font-size:14px;line-height:1.6;margin:28px 0}
+.showcase-tag{display:inline-block;border:1px solid #504733;color:#efce92;border-radius:99px;padding:6px 13px;font-size:11px;letter-spacing:.13em}
+.showcase-card{border:1px solid #333841;border-radius:13px;background:linear-gradient(165deg,#1b2029,#11151d);overflow:hidden}
+.showcase-card .track-content{min-height:120px}
+.showcase-card .track-meta{line-height:1.6}
+.showcase-card .micro{color:#efc989}
+.showcase-footer{padding:36px 0;border-top:1px solid #323742;color:#a7abb6;font-size:12px}
+@media(max-width:700px){.hero-art{display:none}.hero{grid-template-columns:1fr;min-height:auto}.track-grid{grid-template-columns:1fr}.search-area{grid-template-columns:1fr}}
+</style>
+<script defer src="assets/showcase.js"></script>
+</head>
+<body>
+<div class="topline">AXEZENT ORIGINAL PRODUCTIONS <span>HIP-HOP · RAP · REGIONAL SOUND</span></div>
+<header class="main-nav container">
+<a class="brand" href="./"><span class="brand-icon">A<span class="brand-dot">.</span></span><span><strong>AXEZENT</strong><small>ORIGINAL PRODUCTIONS</small></span></a>
+<nav aria-label="Main navigation"><a href="#catalog">Explore</a><a href="#about">The artist</a></nav>
+<a class="nav-cta" href="#catalog">Browse the collection</a>
+</header>
+<main>
+<section class="hero container">
+ <div class="hero-copy">
+ <div class="eyebrow"><span class="pulse-dot"></span> THE SOUND STARTS HERE</div>
+ <h1>AXEZENT<br><em>BEATS.</em></h1>
+ <p>An independent hip-hop and rap production catalog exploring musical influences from across the United States.</p>
+ <div class="hero-actions"><a class="primary-button" href="#catalog">Explore 50 featured selections</a></div>
+ <div class="hero-proof"><div><b id="heroTotal">50</b><small>Featured selections</small></div><div><b>50</b><small>States represented in the full catalog</small></div></div>
+ </div>
+ <div class="hero-art" aria-hidden="true"><div class="hero-art-grain"></div><div class="halo halo-one"></div><div class="halo halo-two"></div><div class="record"><div class="record-rings"></div><div class="record-label"><span>AXEZENT</span><i>A</i><small>ORIGINAL SOUND</small></div></div><div class="hero-art-label">ORIGINAL SOUND.<br>NO SHORTCUTS.</div></div>
+</section>
+<section class="strip"><div class="container strip-inner"><span>HOUSTON SOUND</span><span>NEW YORK ENERGY</span><span>WEST COAST FEEL</span><span>DETROIT BOUNCE</span><span>MIDWEST MOTION</span></div></section>
+<section id="catalog" class="catalog-section container">
+ <div class="section-heading"><div><span class="section-kicker">ARTIST CATALOG</span><h2>Discover the <em>collection.</em></h2><p>Explore 50 featured concepts from AXEZENT's independent production catalog.</p></div></div>
+ <div class="showcase-note">This is the AXEZENT artist showcase, not an online shop. Audio is presented only when an approved public preview is available. No purchases, account creation or downloads take place here.</div>
+ <div class="search-area">
+  <label class="search-wrap"><span aria-hidden="true">⌕</span><span class="sr-only">Search beats</span><input type="search" id="query" placeholder="Search titles, cities, states, styles…" autocomplete="off"></label>
+  <label class="select-wrap"><span class="sr-only">Filter by collection</span><select id="region"><option value="">All regional collections</option></select></label>
+  <label class="select-wrap"><span class="sr-only">Sort</span><select id="sort"><option value="featured">Featured order</option><option value="title">Title A–Z</option><option value="state">State A–Z</option></select></label>
+ </div>
+ <div class="results-line"><p id="resultsText" aria-live="polite">Loading selections…</p></div>
+ <div id="tracks" class="track-grid"></div>
+ <p id="error" class="showcase-note" hidden>The catalog could not load. Please refresh the page.</p>
+</section>
+<section class="about-section container" id="about"><div class="about-block"><span class="section-kicker">THE AXEZENT STANDARD</span><h2>Original production.<br><em>Distinct musical identities.</em></h2><p>AXEZENT develops instrumental concepts with an emphasis on regional inspiration, memorable arrangements, space for lyrical performance, and sonic individuality.</p><a href="https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale" rel="noopener noreferrer">Explore the project on GitHub ↗</a></div></section>
+</main>
+<footer class="showcase-footer"><div class="container">© <span id="year"></span> AXEZENT. Artist showcase. All music rights reserved.</div></footer>
+</body>
+</html>
