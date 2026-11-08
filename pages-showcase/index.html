@@ -15,6 +15,21 @@
   <link rel="stylesheet" href="assets/styles.css">
   <style>
 #playerDialog .music-controls{grid-template-columns:repeat(4,minmax(0,1fr))}
+#tracks .track-content{grid-template-columns:minmax(160px,1fr) minmax(190px,220px)}
+#tracks .track-actions{grid-column:2;grid-row:1/4}
+#tracks .track-content h3{grid-column:1;grid-row:1}
+#tracks .track-content .track-meta{grid-column:1;grid-row:2}
+#tracks .track-content .status{grid-column:1;grid-row:3}
+#tracks .track-card .track-actions{grid-template-columns:1fr 1fr}
+.arrangement-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:26px}
+.arrangement-panel{background:linear-gradient(140deg,#191e28,#11151d);border:1px solid #343c47;padding:24px;border-radius:14px}
+.arrangement-panel h3{font-size:21px;margin:12px 0}
+.arrangement-panel .arrangement-flow{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin:16px 0;max-width:none}
+.arrangement-flow span{background:#302819;border:1px solid #715737;border-radius:7px;color:#f3d7a3;padding:7px 10px;font-size:12px;font-weight:700}
+.arrangement-flow b{color:#d5b77d}
+.arrangement-note{max-width:none!important}
+@media(max-width:700px){.arrangement-grid{grid-template-columns:1fr}}
+@media(max-width:590px){#tracks .track-content{grid-template-columns:1fr}#tracks .track-actions{grid-column:1;grid-row:auto}}
 @media(max-width:540px){#playerDialog .music-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 <script defer src="assets/showcase.js"></script>
@@ -23,7 +38,7 @@
   <div class="topline">AXEZENT ORIGINAL PRODUCTIONS <span>50 BEATS · ONE SOUND FOR YOUR NEXT TRACK</span></div>
   <header class="main-nav container">
     <a class="brand" href="./" aria-label="AXEZENT Beats for Sale home"><span class="brand-icon">A<span class="brand-dot">.</span></span><span><strong>AXEZENT</strong><small>BEATS FOR SALE</small></span></a>
-    <nav aria-label="Main navigation"><a href="#catalog">Browse Beats</a><a href="#how">How It Works</a><a href="#about">The Artist</a><a href="#about">About</a></nav>
+    <nav aria-label="Main navigation"><a href="#catalog">Browse Beats</a><a href="#how">Beat Structure</a><a href="#about">About</a></nav>
     <a class="nav-cta" href="#catalog">Explore the Vault <span aria-hidden="true">↗</span></a>
   </header>
   <main>
@@ -49,12 +64,31 @@
         <label class="select-wrap"><span class="sr-only">Filter by collection</span><select id="region"><option value="">All regional collections</option></select></label>
         <label class="select-wrap"><span class="sr-only">Sort beats</span><select id="sort"><option value="featured">Catalog order</option><option value="title">Title A–Z</option><option value="state">State A–Z</option><option value="released">Finished first</option></select></label>
       </div>
-      <div class="results-line"><p id="resultsText" aria-live="polite">Loading the collection…</p><span>Explore original regional production concepts</span></div>
+      <div class="results-line"><p id="resultsText" aria-live="polite">Loading the collection…</p><span>50 original AXEZENT titles · Search by city or collection</span></div>
       <div class="track-grid" id="tracks"></div>
       <div class="empty-state" id="empty" hidden>No tracks match those filters. Try a different title, city, or region.</div>
       <div class="load-wrap"><button class="load-button" id="more" type="button" hidden>Load More Beats ↓</button></div>
     </section>
-    <section id="how" class="how-section"><div class="container"><span class="section-kicker">DISCOVER THE MUSIC</span><h2>Browse. Listen. <em>Explore.</em></h2><div class="steps"><article><span>01</span><h3>Explore by region</h3><p>Find featured AXEZENT selections by city, state, sound and title.</p></article><article><span>02</span><h3>Open beat details</h3><p>Discover the production's regional direction, tempo and catalog identity.</p></article><article><span>03</span><h3>Hear the music</h3><p>When a public preview is available, use the player to play, pause, seek, repeat or stop.</p></article></div></div></section>
+    <section id="how" class="how-section"><div class="container">
+      <span class="section-kicker">HOW AN AXEZENT INSTRUMENTAL IS ARRANGED</span>
+      <h2>The preview. The <em>complete instrumental.</em></h2>
+      <p>Each listening version is designed to demonstrate the musical identity, beat transitions and vocal space without replacing the complete instrumental.</p>
+      <div class="arrangement-grid">
+        <article class="arrangement-panel">
+          <span class="panel-tag">LISTENING VERSION · PROPOSED 5 SECTIONS</span>
+          <h3>Hear the essential arrangement</h3>
+          <p class="arrangement-flow"><span>Intro</span><b>→</b><span>Hook</span><b>→</b><span>Verse</span><b>→</b><span>Hook</span><b>→</b><span>Outro</span></p>
+          <p>One verse demonstrates the rhythm, melodic progression and room for vocals. The returning hook brings back the central musical idea before the outro.</p>
+        </article>
+        <article class="arrangement-panel">
+          <span class="panel-tag">EXPANDED VERSION · PROPOSED 7 SECTIONS</span>
+          <h3>What the complete instrumental adds</h3>
+          <p class="arrangement-flow"><span>Intro</span><b>→</b><span>Hook</span><b>→</b><span>Verse 1</span><b>→</b><span>Hook</span><b>→</b><span>Verse 2</span><b>→</b><span>Hook</span><b>→</b><span>Outro</span></p>
+          <p>The longer arrangement includes a second verse and an additional return of the hook, giving the recording a more complete performance structure.</p>
+        </article>
+      </div>
+      <p class="arrangement-note">These sequences describe the intended AXEZENT preview and expanded instrumental formats. Each actual recording must be checked against the arrangement before being published or delivered.</p>
+    </div></section>
     <section class="about-section container" id="about"><div class="about-block"><span class="section-kicker">THE AXEZENT STANDARD</span><h2>Made for the <em>artist.</em></h2><p>Each beat is planned as a complete original production, built with room for verses, memorable hooks and a compelling arrangement. Regional influences are creative directions, not claims that every city shares one signature sound.</p><a href="https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale" rel="noopener noreferrer">Follow the project on GitHub ↗</a></div></section>
   </main>
   <footer><div class="container foot-inner"><div><strong>AXEZENT</strong><span>BEATS FOR SALE</span></div><p>© <span id="year"></span> AXEZENT. Music rights reserved. Public source visibility does not grant a commercial beat license.</p></div></footer>
@@ -75,7 +109,7 @@
       </div>
       <div class="music-progress"><span id="musicTime">0:00</span><label for="musicSeek" class="sr-only">Move playback position within the selected beat</label><input id="musicSeek" class="music-seek" type="range" min="0" max="100" value="0" step="0.1" disabled aria-label="Seek to a different point in the beat"><span id="musicDuration">0:00</span></div>
       <p class="music-caption">Move the slider to skip to any part of the song. Listen only; no downloads are offered.</p>
-      <p class="music-caption">AXEZENT original productions · Listen and explore the music.</p>
+      <p class="music-caption">Preview structure: Intro → Hook → Verse → Hook → Outro</p>
       <audio id="player" preload="none" controlslist="nodownload noplaybackrate" disablepictureinpicture></audio>
     </div>
   </dialog>
