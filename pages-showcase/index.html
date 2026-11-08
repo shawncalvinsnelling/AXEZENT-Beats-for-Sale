@@ -1,58 +1,83 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#090b11">
-<meta name="description" content="AXEZENT Original Productions: explore the regional hip-hop and rap instrumental catalog.">
-<meta name="robots" content="index,follow">
-<title>AXEZENT Original Productions | Artist Showcase</title>
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="stylesheet" href="assets/styles.css">
-<style>
-.showcase-note{border-left:3px solid #deb574;background:#151923;padding:18px 22px;border-radius:10px;color:#cdd1d7;font-size:14px;line-height:1.6;margin:28px 0}
-.showcase-tag{display:inline-block;border:1px solid #504733;color:#efce92;border-radius:99px;padding:6px 13px;font-size:11px;letter-spacing:.13em}
-.showcase-card{border:1px solid #333841;border-radius:13px;background:linear-gradient(165deg,#1b2029,#11151d);overflow:hidden}
-.showcase-card .track-content{min-height:120px}
-.showcase-card .track-meta{line-height:1.6}
-.showcase-card .micro{color:#efc989}
-.showcase-footer{padding:36px 0;border-top:1px solid #323742;color:#a7abb6;font-size:12px}
-@media(max-width:700px){.hero-art{display:none}.hero{grid-template-columns:1fr;min-height:auto}.track-grid{grid-template-columns:1fr}.search-area{grid-template-columns:1fr}}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0a0c13">
+  <meta name="description" content="Explore original hip-hop and rap productions by AXEZENT. Discover featured instrumental concepts by city, state and musical style.">
+  <meta property="og:title" content="Beats & Instrumentals for Sale | AXEZENT">
+  <meta property="og:description" content="Find your sound. Make your next hit.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AXEZENT">
+  <meta name="keywords" content="rap beats for sale, hip hop instrumentals, original rap beats, Houston beats, Detroit beats, New York boom bap, West Coast hip hop">
+  <title>Beats &amp; Instrumentals for Sale | Hip-Hop, Rap &amp; Club | AXEZENT</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+#playerDialog .music-controls{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:540px){#playerDialog .music-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 <script defer src="assets/showcase.js"></script>
 </head>
 <body>
-<div class="topline">AXEZENT ORIGINAL PRODUCTIONS <span>HIP-HOP · RAP · REGIONAL SOUND</span></div>
-<header class="main-nav container">
-<a class="brand" href="./"><span class="brand-icon">A<span class="brand-dot">.</span></span><span><strong>AXEZENT</strong><small>ORIGINAL PRODUCTIONS</small></span></a>
-<nav aria-label="Main navigation"><a href="#catalog">Explore</a><a href="#about">The artist</a></nav>
-<a class="nav-cta" href="#catalog">Browse the collection</a>
-</header>
-<main>
-<section class="hero container">
- <div class="hero-copy">
- <div class="eyebrow"><span class="pulse-dot"></span> THE SOUND STARTS HERE</div>
- <h1>AXEZENT<br><em>BEATS.</em></h1>
- <p>An independent hip-hop and rap production catalog exploring musical influences from across the United States.</p>
- <div class="hero-actions"><a class="primary-button" href="#catalog">Explore 50 featured selections</a></div>
- <div class="hero-proof"><div><b id="heroTotal">50</b><small>Featured selections</small></div><div><b>50</b><small>States represented in the full catalog</small></div></div>
- </div>
- <div class="hero-art" aria-hidden="true"><div class="hero-art-grain"></div><div class="halo halo-one"></div><div class="halo halo-two"></div><div class="record"><div class="record-rings"></div><div class="record-label"><span>AXEZENT</span><i>A</i><small>ORIGINAL SOUND</small></div></div><div class="hero-art-label">ORIGINAL SOUND.<br>NO SHORTCUTS.</div></div>
-</section>
-<section class="strip"><div class="container strip-inner"><span>HOUSTON SOUND</span><span>NEW YORK ENERGY</span><span>WEST COAST FEEL</span><span>DETROIT BOUNCE</span><span>MIDWEST MOTION</span></div></section>
-<section id="catalog" class="catalog-section container">
- <div class="section-heading"><div><span class="section-kicker">ARTIST CATALOG</span><h2>Discover the <em>collection.</em></h2><p>Explore 50 featured concepts from AXEZENT's independent production catalog.</p></div></div>
- <div class="showcase-note">This is the AXEZENT artist showcase, not an online shop. Audio is presented only when an approved public preview is available. No purchases, account creation or downloads take place here.</div>
- <div class="search-area">
-  <label class="search-wrap"><span aria-hidden="true">⌕</span><span class="sr-only">Search beats</span><input type="search" id="query" placeholder="Search titles, cities, states, styles…" autocomplete="off"></label>
-  <label class="select-wrap"><span class="sr-only">Filter by collection</span><select id="region"><option value="">All regional collections</option></select></label>
-  <label class="select-wrap"><span class="sr-only">Sort</span><select id="sort"><option value="featured">Featured order</option><option value="title">Title A–Z</option><option value="state">State A–Z</option></select></label>
- </div>
- <div class="results-line"><p id="resultsText" aria-live="polite">Loading selections…</p></div>
- <div id="tracks" class="track-grid"></div>
- <p id="error" class="showcase-note" hidden>The catalog could not load. Please refresh the page.</p>
-</section>
-<section class="about-section container" id="about"><div class="about-block"><span class="section-kicker">THE AXEZENT STANDARD</span><h2>Original production.<br><em>Distinct musical identities.</em></h2><p>AXEZENT develops instrumental concepts with an emphasis on regional inspiration, memorable arrangements, space for lyrical performance, and sonic individuality.</p><a href="https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale" rel="noopener noreferrer">Explore the project on GitHub ↗</a></div></section>
-</main>
-<footer class="showcase-footer"><div class="container">© <span id="year"></span> AXEZENT. Artist showcase. All music rights reserved.</div></footer>
+  <div class="topline">AXEZENT ORIGINAL PRODUCTIONS <span>50 BEATS · ONE SOUND FOR YOUR NEXT TRACK</span></div>
+  <header class="main-nav container">
+    <a class="brand" href="./" aria-label="AXEZENT Beats for Sale home"><span class="brand-icon">A<span class="brand-dot">.</span></span><span><strong>AXEZENT</strong><small>BEATS FOR SALE</small></span></a>
+    <nav aria-label="Main navigation"><a href="#catalog">Browse Beats</a><a href="#how">How It Works</a><a href="#about">The Artist</a><a href="#about">About</a></nav>
+    <a class="nav-cta" href="#catalog">Explore the Vault <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <section class="hero container">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse-dot"></span> THE SOUND STARTS HERE</div>
+        <h1>BEATS<br><em>FOR SALE.</em></h1>
+        <p>Original hip-hop and rap instrumentals inspired by cities, scenes and sounds across America. Explore the collection and discover the right direction for your next record.</p>
+        <div class="hero-actions"><a class="primary-button" href="#catalog">Browse the Collection <span aria-hidden="true">↗</span></a><a class="text-link" href="#how">How it works ↓</a></div>
+        <div class="hero-proof"><div><b id="heroTotal">200</b><small>Catalog titles</small></div><div><b>50</b><small>States represented</small></div><div><b id="reviewCount">50</b><small>Featured beat selections</small></div></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="hero-art-grain"></div><div class="halo halo-one"></div><div class="halo halo-two"></div>
+        <div class="record"><div class="record-rings"></div><div class="record-label"><span>AXEZENT</span><i>A</i><small>THE BEAT VAULT</small></div></div>
+        <div class="hero-art-label">ORIGINAL SOUND.<br>NO SHORTCUTS.</div>
+      </div>
+    </section>
+    <section class="strip"><div class="container strip-inner"><span>HOUSTON SOUND</span><span>NEW YORK ENERGY</span><span>WEST COAST FEEL</span><span>DETROIT BOUNCE</span><span>ALL 50 STATES</span></div></section>
+    <section id="catalog" class="catalog-section container">
+      <div class="section-heading"><div><span class="section-kicker">EXPLORE THE COLLECTION</span><h2>Find your next <em>sound.</em></h2><p>Explore 50 featured AXEZENT selections across American regional sounds. Listen whenever a public preview is available.</p></div><div class="release-pill"><span class="pulse-dot"></span> DISCOVER ORIGINAL SOUND</div></div>
+      <div class="search-area">
+        <label class="search-wrap"><span aria-hidden="true">⌕</span><span class="sr-only">Search beats</span><input id="query" type="search" placeholder="Search titles, cities, states, styles…" autocomplete="off"></label>
+        <label class="select-wrap"><span class="sr-only">Filter by collection</span><select id="region"><option value="">All regional collections</option></select></label>
+        <label class="select-wrap"><span class="sr-only">Sort beats</span><select id="sort"><option value="featured">Catalog order</option><option value="title">Title A–Z</option><option value="state">State A–Z</option><option value="released">Finished first</option></select></label>
+      </div>
+      <div class="results-line"><p id="resultsText" aria-live="polite">Loading the collection…</p><span>Explore original regional production concepts</span></div>
+      <div class="track-grid" id="tracks"></div>
+      <div class="empty-state" id="empty" hidden>No tracks match those filters. Try a different title, city, or region.</div>
+      <div class="load-wrap"><button class="load-button" id="more" type="button" hidden>Load More Beats ↓</button></div>
+    </section>
+    <section id="how" class="how-section"><div class="container"><span class="section-kicker">DISCOVER THE MUSIC</span><h2>Browse. Listen. <em>Explore.</em></h2><div class="steps"><article><span>01</span><h3>Explore by region</h3><p>Find featured AXEZENT selections by city, state, sound and title.</p></article><article><span>02</span><h3>Open beat details</h3><p>Discover the production's regional direction, tempo and catalog identity.</p></article><article><span>03</span><h3>Hear the music</h3><p>When a public preview is available, use the player to play, pause, seek, repeat or stop.</p></article></div></div></section>
+    <section class="about-section container" id="about"><div class="about-block"><span class="section-kicker">THE AXEZENT STANDARD</span><h2>Made for the <em>artist.</em></h2><p>Each beat is planned as a complete original production, built with room for verses, memorable hooks and a compelling arrangement. Regional influences are creative directions, not claims that every city shares one signature sound.</p><a href="https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale" rel="noopener noreferrer">Follow the project on GitHub ↗</a></div></section>
+  </main>
+  <footer><div class="container foot-inner"><div><strong>AXEZENT</strong><span>BEATS FOR SALE</span></div><p>© <span id="year"></span> AXEZENT. Music rights reserved. Public source visibility does not grant a commercial beat license.</p></div></footer>
+  <dialog id="trackDialog" aria-label="Beat details"><div class="dialog-inner"><button type="button" class="close-dialog" id="closeDialog" aria-label="Close details">✕</button><div id="dialogContent"></div></div></dialog>
+  <dialog id="playerDialog" class="music-dialog" aria-label="AXEZENT beat player">
+    <div class="music-dialog-inner">
+      <button id="closePlayer" type="button" class="music-close" aria-label="Close player">✕</button>
+      <div class="music-kicker">AXEZENT · BEATS FOR SALE</div>
+      <div class="music-disc" aria-hidden="true"><span>AXEZENT</span></div>
+      <h2 id="musicTitle">Your selected beat</h2>
+      <p id="musicMeta" class="music-meta"></p>
+      <p id="musicStatus" class="music-status" role="status" aria-live="polite">Ready to listen</p>
+      <div class="music-controls">
+        <button type="button" id="musicPlay" aria-label="Play selected beat">▶ Play</button>
+        <button type="button" id="musicPause" aria-label="Pause selected beat">Ⅱ Pause</button>
+        <button type="button" id="musicStop" aria-label="Stop selected beat">■ Stop</button>
+        <button type="button" id="musicRepeat" aria-pressed="false" aria-label="Toggle repeat playback">↻ Repeat Off</button>
+      </div>
+      <div class="music-progress"><span id="musicTime">0:00</span><label for="musicSeek" class="sr-only">Move playback position within the selected beat</label><input id="musicSeek" class="music-seek" type="range" min="0" max="100" value="0" step="0.1" disabled aria-label="Seek to a different point in the beat"><span id="musicDuration">0:00</span></div>
+      <p class="music-caption">Move the slider to skip to any part of the song. Listen only; no downloads are offered.</p>
+      <p class="music-caption">AXEZENT original productions · Listen and explore the music.</p>
+      <audio id="player" preload="none" controlslist="nodownload noplaybackrate" disablepictureinpicture></audio>
+    </div>
+  </dialog>
 </body>
 </html>
