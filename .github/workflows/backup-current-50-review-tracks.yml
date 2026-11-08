@@ -26,6 +26,8 @@ jobs:
           test "$found" -eq 50
           find _downloaded_audio -type f -name 'AXZ-*-review.mp3' -exec cp --no-clobber -t _owner_archive/recordings {} +
           test "$(find _owner_archive/recordings -maxdepth 1 -name '*.mp3' | wc -l)" -eq 50
+      - name: Install MP3 inspection utility
+        run: sudo DEBIAN_FRONTEND=noninteractive apt-get update -qq && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg
       - name: Audit 50 exact catalog identities, full MP3s and SHA256s
         run: |
           python - <<'PY'
