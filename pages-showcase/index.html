@@ -28,6 +28,17 @@
 .arrangement-flow span{background:#302819;border:1px solid #715737;border-radius:7px;color:#f3d7a3;padding:7px 10px;font-size:12px;font-weight:700}
 .arrangement-flow b{color:#d5b77d}
 .arrangement-note{max-width:none!important}
+.arrangement-detail{margin:18px 0;padding:15px;border:1px solid #374453;border-radius:12px;background:#111922}
+.arrangement-detail .section-head{font-size:14px;font-weight:800;color:#efd6a0;margin:3px 0 8px}
+.arrangement-detail .production-direction{font-size:12px;line-height:1.65;color:#c5cbd8}
+.arrangement-sections{display:grid;gap:5px;margin:15px 0}
+.arrangement-segment{display:grid;grid-template-columns:28px 1fr auto minmax(110px,auto);gap:8px;align-items:center;padding:9px 10px;border:1px solid #283441;background:#18212c;border-radius:8px;font-size:12px}
+.segment-number{color:#d6b985;font-variant-numeric:tabular-nums}
+.segment-title{color:#f4efe4;font-weight:700}
+.segment-bars{color:#aebaca}
+.segment-time{color:#e8d39f;font-variant-numeric:tabular-nums;text-align:right}
+.arrangement-disclosure{font-size:11px;color:#afbac6;line-height:1.5}
+@media(max-width:540px){.arrangement-segment{grid-template-columns:20px 1fr auto;gap:5px}.segment-time{grid-column:2/-1;text-align:left}}
 @media(max-width:700px){.arrangement-grid{grid-template-columns:1fr}}
 @media(max-width:590px){#tracks .track-content{grid-template-columns:1fr}#tracks .track-actions{grid-column:1;grid-row:auto}}
 @media(max-width:540px){#playerDialog .music-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -46,7 +57,7 @@
       <div class="hero-copy">
         <div class="eyebrow"><span class="pulse-dot"></span> THE SOUND STARTS HERE</div>
         <h1>BEATS<br><em>FOR SALE.</em></h1>
-        <p>Original hip-hop and rap instrumentals inspired by cities, scenes and sounds across America. Explore the collection and discover the right direction for your next record.</p>
+        <p>Original hip-hop and rap instrumentals inspired by cities, scenes and sounds across America. Explore the collection and discover the right direction for your next song.</p>
         <div class="hero-actions"><a class="primary-button" href="#catalog">Browse the Collection <span aria-hidden="true">↗</span></a><a class="text-link" href="#how">How it works ↓</a></div>
         <div class="hero-proof"><div><b id="heroTotal">200</b><small>Catalog titles</small></div><div><b>50</b><small>States represented</small></div><div><b id="reviewCount">50</b><small>Featured beat selections</small></div></div>
       </div>
@@ -72,22 +83,22 @@
     <section id="how" class="how-section"><div class="container">
       <span class="section-kicker">HOW AN AXEZENT INSTRUMENTAL IS ARRANGED</span>
       <h2>The preview. The <em>complete instrumental.</em></h2>
-      <p>Each listening version is designed to demonstrate the musical identity, beat transitions and vocal space without replacing the complete instrumental.</p>
+      <p>Every beat has its own recommended structure. Some start with the hook, others enter directly into a verse or use a brief intro. Click <strong>Details</strong> on any beat to see its planned sections, bars and timecodes.</p>
       <div class="arrangement-grid">
         <article class="arrangement-panel">
-          <span class="panel-tag">FREE LISTENING PREVIEW · 5 SECTIONS</span>
+          <span class="panel-tag">EXAMPLE: FIVE-SECTION ARRANGEMENT</span>
           <h3>What you hear before buying</h3>
           <p class="arrangement-flow"><span>Intro</span><b>→</b><span>Hook</span><b>→</b><span>Verse</span><b>→</b><span>Hook</span><b>→</b><span>Outro</span></p>
-          <p>The listening preview demonstrates the beat with an intro, hook, one verse, a returning hook, and an outro. You can hear how the instrumental flows before deciding on a purchase.</p>
+          <p>One possible listening format. Other tracks begin directly with a hook or verse, and some have no intro at all. Each track has a different proposed structure.</p>
         </article>
         <article class="arrangement-panel">
-          <span class="panel-tag">$100 EXCLUSIVE BEAT · FULL 6-SECTION VERSION</span>
+          <span class="panel-tag">EXAMPLE: TWO-VERSE FULL ARRANGEMENT</span>
           <h3>What you receive when you buy the beat</h3>
           <p class="arrangement-flow"><span>Intro</span><b>→</b><span>Hook</span><b>→</b><span>Verse 1</span><b>→</b><span>Hook</span><b>→</b><span>Verse 2</span><b>→</b><span>Outro</span></p>
-          <p>For an eligible AXEZENT beat, the proposed <strong>$100 exclusive purchase</strong> includes the expanded instrumental: intro, hook, verse one, hook, verse two, and outro. That extra verse gives the artist more room to record a complete song.</p>
+          <p>One possible full-song format. The proposed $100 exclusive instrumental for each eligible beat follows its own arrangement map, which may include different verse and hook counts.</p>
         </article>
       </div>
-      <p class="arrangement-note"><strong>Price: $100 per eligible beat for exclusive ownership.</strong> The longer instrumental and the specific rights transferred must be confirmed by AXEZENT in a signed written agreement before payment or delivery. These are the planned arrangements; each actual recording must match its stated structure before publication.</p>
+      <p class="arrangement-note"><strong>Price: $100 per eligible beat for exclusive ownership.</strong> The longer instrumental and the specific rights transferred must be confirmed by AXEZENT in a signed written agreement before payment or delivery. Each Details popup shows that beat’s proposed full arrangement with bars and calculated timecodes; source audio must be checked against the plan before release.</p>
     </div></section>
     <section class="about-section container" id="about"><div class="about-block"><span class="section-kicker">THE AXEZENT STANDARD</span><h2>Made for the <em>artist.</em></h2><p>Each beat is planned as a complete original production, built with room for verses, memorable hooks and a compelling arrangement. Regional influences are creative directions, not claims that every city shares one signature sound.</p><a href="https://github.com/shawncalvinsnelling/AXEZENT-Beats-for-Sale" rel="noopener noreferrer">Follow the project on GitHub ↗</a></div></section>
   </main>
