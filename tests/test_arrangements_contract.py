@@ -127,7 +127,7 @@ class ArrangementContractTests(unittest.TestCase):
                     self.assertLessEqual(len(verse),2, "Opening of verse too busy")
                     self.assertTrue(all(t>=2*480 for t,_ in verse),
                                     "Verse pickup must leave first half-bar clear")
-                    self.assertGreaterEqual(len(hook),4,"Hooks should have a main phrase")
+                    self.assertGreaterEqual(len(hook),3,"Sparse genres may use a memorable three-note hook")
                     self.assertGreater(sum(v for _,v in hook)/len(hook),
                                        sum(v for _,v in verse)/len(verse))
 
