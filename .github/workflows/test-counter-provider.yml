@@ -25,6 +25,18 @@ jobs:
                 status.get("status")=="operational"),status
           print("PROVIDER_STATUS_OK",status)
           PY
+          # A separate CI-only test key proves writes really persist. Never
+          # touch real audience or track counters during diagnostics.
+          curl -fLsS --connect-timeout 10 --max-time 20 "$base/hit/axezent_ci_provider_health_20261108" -o "$RUNNER_TEMP/test-hit.json"
+          curl -fLsS --connect-timeout 10 --max-time 20 "$base/get/axezent_ci_provider_health_20261108" -o "$RUNNER_TEMP/test-read.json"
+          python - "$RUNNER_TEMP/test-hit.json" "$RUNNER_TEMP/test-read.json" <<'PY'
+          import json,sys
+          increment=json.load(open(sys.argv[1]))
+          fetched=json.load(open(sys.argv[2]))
+          assert isinstance(increment.get("value"),int) and increment["value"]>=1
+          assert fetched.get("value")>=increment["value"]
+          print("PROVIDER_REAL_HIT_PERSISTENCE_PASS",increment["value"],fetched["value"])
+          PY
           curl -sS -D "$RUNNER_TEMP/headers" --connect-timeout 10 --max-time 20 \
             "$base/get/axezent_beats_for_sale_20261108_nonexistent_read_only_test" -o "$RUNNER_TEMP/read.json"
           python - "$RUNNER_TEMP/headers" <<'PY'
