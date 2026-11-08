@@ -6,7 +6,7 @@
   const cards = $("tracks"), query = $("query"), region = $("region"), sort = $("sort");
   const more = $("more"), results = $("resultsText"), empty = $("empty");
   const dialog = $("trackDialog"), modal = $("dialogContent"), player = $("player");
-  const state = { all: [], filtered: [], displayed: 0, playing: null, selected: null };
+  const state = { all: [], filtered: [], displayed: 0, playing: null, selected: null, compactActive: false };
   const PAGE = 100;
   // All timing here is sourced from each producer-selected 4/4 arrangement
   // blueprint, never inferred from an existing/unverified recording.
@@ -63,6 +63,10 @@
       if (url.protocol !== "https:" || url.username || url.password) return null;
       return url.href;
     } catch { return null; }
+  };
+  const compactPreviewUrl = beat => {
+    if (!approvedPreviewUrl(beat) || !/^AXZ-\d{3}$/.test(beat.id)) return null;
+    return new URL("./review-audio/" + beat.id + "-listen.m4a", document.baseURI).href;
   };
   const previewReady = b => approvedPreviewUrl(b) !== null;
   const elAppend = (parent, ...nodes) => { nodes.forEach(n => parent.appendChild(n)); return parent; };
@@ -200,6 +204,7 @@
     player.removeAttribute("src");
     player.load();
     state.selected=null;
+    state.compactActive=false;
     if(musicDialog.open) musicDialog.close();
   };
   async function playSelected() {
@@ -221,7 +226,10 @@
     if(!previewReady(beat)) return;
     stopPlayback();
     state.selected=beat;
-    player.src=approvedPreviewUrl(beat);
+    const supportsCompact = !!player.canPlayType('audio/mp4; codecs="mp4a.40.2"');
+    const compact = supportsCompact ? compactPreviewUrl(beat) : null;
+    state.compactActive = !!compact;
+    player.src=compact || approvedPreviewUrl(beat);
     player.load();
     musicTitle.textContent=beat.title;
     musicMeta.textContent=beat.city+", "+beat.state+" · "+(beat.bpm||"—")+" BPM";
@@ -289,11 +297,19 @@
     if(!player.loop){stopPlayback();setPlayerStatus("Finished");}
   });
   player.addEventListener("error",()=> {
-    if(state.selected) {
-      const code=player.error && player.error.code;
-      setPlayerStatus(code===4 ? "This audio format isn't supported by your browser." :
-        "Unable to load audio. Check your connection, then press Play to retry.");
+    if(!state.selected)return;
+    if(state.compactActive) {
+      // An unavailable compact stream must never disable the original MP3.
+      state.compactActive=false;
+      player.src=approvedPreviewUrl(state.selected);
+      player.load();
+      setPlayerStatus("Loading the original MP3 instead. Press Play if needed.");
+      playSelected();
+      return;
     }
+    const code=player.error && player.error.code;
+    setPlayerStatus(code===4 ? "This audio format isn't supported by your browser." :
+      "Unable to load audio. Check your connection, then press Play to retry.");
   });
   function showDetails(beat) {
     modal.replaceChildren();
