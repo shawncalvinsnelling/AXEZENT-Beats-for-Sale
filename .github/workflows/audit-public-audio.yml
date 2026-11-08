@@ -1,6 +1,9 @@
 name: AXEZENT independent security check - no unfinished audio exposed
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/audit-public-audio.yml']
   workflow_run:
     workflows: ['Deploy AXEZENT artist showcase to GitHub Pages']
     types: [completed]
