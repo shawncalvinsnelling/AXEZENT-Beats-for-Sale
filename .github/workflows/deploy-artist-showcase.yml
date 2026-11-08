@@ -6,6 +6,7 @@ on:
     paths:
       - 'pages-showcase/**'
       - 'data/catalog.json'
+      - 'data/arrangements.json'
       - 'data/public-preview-manifest.json'
       - 'assets/styles.css'
       - 'assets/favicon.svg'
@@ -34,7 +35,7 @@ jobs:
           cp pages-showcase/index.html _pages_build/index.html
           cp pages-showcase/showcase.js _pages_build/assets/showcase.js
           cp assets/styles.css assets/favicon.svg _pages_build/assets/
-          cp data/public-preview-manifest.json _pages_build/data/public-preview-manifest.json
+          cp data/public-preview-manifest.json data/arrangements.json _pages_build/data/
           node -e '
             const fs=require("fs");
             const beats=JSON.parse(fs.readFileSync("data/catalog.json","utf8"));
@@ -53,10 +54,11 @@ jobs:
             const j=fs.readFileSync("_pages_build/assets/showcase.js","utf8");
             const cat=JSON.parse(fs.readFileSync("_pages_build/data/catalog.json","utf8"));
             const manifest=JSON.parse(fs.readFileSync("_pages_build/data/public-preview-manifest.json","utf8"));
+            const arrangements=JSON.parse(fs.readFileSync("_pages_build/data/arrangements.json","utf8"));
             for(const needle of ["BEATS<br><em>FOR SALE.", "id=\"tracks\"", "id=\"query\"", "id=\"region\"", "id=\"playerDialog\"", "id=\"musicSeek\"", "id=\"musicRepeat\"", "assets/styles.css"]) {
               if(!h.includes(needle))throw Error("Missing original website visual/player feature: "+needle);
             }
-            for(const marker of ["FREE LISTENING PREVIEW", "$100 EXCLUSIVE BEAT", "Intro", "Hook", "Verse 1", "Verse 2", "Outro"]) {
+            for(const marker of ["EXAMPLE: FIVE-SECTION ARRANGEMENT", "EXAMPLE: TWO-VERSE FULL ARRANGEMENT", "Intro", "Hook", "Verse 1", "Verse 2", "Outro"]) {
               if(!h.includes(marker))throw Error("Missing preview/full arrangement explanation: "+marker);
             }
             if(j.includes("Discover AXEZENT")||j.includes("Preview coming soon")||j.includes("Coming soon"))throw Error("Old clutter labels remain in published player");
@@ -66,6 +68,19 @@ jobs:
             }
             if(!j.includes("public-preview-manifest.json")||!j.includes("musicRepeat.addEventListener")||!j.includes("seekTo"))throw Error("Public player code is incomplete");
             if(cat.length!==200 || cat.filter(x=>x.releaseRank>=1&&x.releaseRank<=50).length!==50)throw Error("Catalog count mismatch");
+            const featured=cat.filter(x=>x.releaseRank>=1&&x.releaseRank<=50);
+            if(Object.keys(arrangements).length!==50||featured.some(b=>!arrangements[b.id]))throw Error("Missing 50 per-song song maps");
+            for(const track of featured){
+              const plan=arrangements[track.id];
+              if(plan.bpm!==track.bpm||plan.sections.length<4)throw Error("Invalid song map "+track.id);
+              let cursor=0;
+              for(const part of plan.sections){
+                if(part.startBar!==cursor||part.endBar<=part.startBar)throw Error("Noncontiguous bar map "+track.id);
+                cursor=part.endBar;
+              }
+              if(cursor!==plan.totalBars)throw Error("Bad final song bar "+track.id);
+            }
+            if(!j.includes("arrangements.json")||!j.includes("renderSectionTable"))throw Error("Missing timed per-track details renderer");
             if(!manifest||typeof manifest!=="object"||Array.isArray(manifest))throw Error("Invalid public preview manifest");
             for(const [id,url] of Object.entries(manifest)){
               if(!cat.some(b=>b.id===id&&b.releaseRank>=1&&b.releaseRank<=50))throw Error("Unknown preview ID "+id);
