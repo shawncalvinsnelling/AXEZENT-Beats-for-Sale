@@ -155,7 +155,7 @@
       el("h2","",beat.title),
       el("p","",beat.collection+" collection"+(beat.bpm?" · "+beat.bpm+" BPM":"")+" · "+(beat.key||"Production details")),
       el("p","",previewReady(beat)?"Choose Play to listen to the approved instrumental preview.":"The original audio file is not connected to the public player yet."),
-      el("div","details-note","Preview arrangement: Intro → Hook → Verse → Hook → Outro. The expanded instrumental arrangement adds a second verse and another hook before the final outro. This describes the release plan; the exact source recording must be checked before publishing.")
+      el("div","details-note","Preview arrangement: Intro → Hook → Verse → Hook → Outro. The expanded instrumental arrangement adds a second verse before the outro, ending with the final verse followed by the outro. This describes the release plan; the exact source recording must be checked before publishing.")
     );
     if(typeof dialog.showModal === "function") dialog.showModal(); else dialog.setAttribute("open","");
   }
