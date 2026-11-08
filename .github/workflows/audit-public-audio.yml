@@ -1,61 +1,52 @@
-name: Independent loudness and peak QA - 100 AXEZENT review tracks
+name: AXEZENT independent security check - no unfinished audio exposed
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ['Deploy AXEZENT artist showcase to GitHub Pages']
     types: [completed]
 permissions:
   contents: read
-  actions: read
 jobs:
-  measure-all-audio:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+  exposure-guard:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - name: Install independent MP3 analyzer
-        run: |
-          sudo apt-get update -qq
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg
-      - name: Install independent numerical FFT analyzer
-        run: python -m pip install --disable-pip-version-check "numpy>=1.26,<3"
-      - name: Audit the publicly audible tracks without downloading private Actions artifacts
+      - name: Verify current public site has 100 titles but zero original audio files
         shell: bash
         run: |
-          set -euo pipefail
-          mkdir -p _review_audio
           python - <<'PY'
-          import json,pathlib,subprocess,time,urllib.request
-          base="https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/"
-          manifest=json.loads(urllib.request.urlopen(base+"data/public-preview-manifest.json",timeout=30).read())
-          data_dir=pathlib.Path("_review_site_data")
-          data_dir.mkdir(exist_ok=True)
-          for file in ("catalog.json","arrangements.json"):
-              data_dir.joinpath(file).write_bytes(
-                  urllib.request.urlopen(base+"data/"+file,timeout=40).read())
-          catalog=json.loads((data_dir/"catalog.json").read_text("utf-8"))
-          plans=json.loads((data_dir/"arrangements.json").read_text("utf-8"))
-          if len(manifest)!=100 or len(plans)!=100 or len(catalog)!=200:
-              raise RuntimeError("Expected exactly 100 live preview links and 100 individual arrangements")
-          out=pathlib.Path("_review_audio")
-          for index,(ident,path) in enumerate(manifest.items(),1):
-              if path!="./review-audio/"+ident+"-review.mp3":
-                  raise RuntimeError("Unexpected public MP3 path "+ident)
-              dest=out/(ident+"-review.mp3")
-              for attempt in range(4):
-                  proc=subprocess.run(["curl","-fL","-sS","--retry","2","--retry-delay","2",
-                    "--connect-timeout","20","--max-time","90","-o",str(dest),base+path[2:]])
-                  if proc.returncode==0 and dest.exists() and dest.stat().st_size>150000:
-                      break
-                  if attempt==3:
-                      raise RuntimeError("Public Pages audio inaccessible: "+ident)
-                  time.sleep(5)
-          assert len(list(out.glob("*-review.mp3")))==100
-          print("PASS: obtained all 100 full-length MP3s from the customer-accessible player endpoints")
+          import concurrent.futures,json,time,urllib.request,urllib.error
+          BASE="https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/"
+          headers={"User-Agent":"AXEZENT-No-Public-Masters-Guard/1.0","Cache-Control":"no-cache"}
+          def read(path):
+              req=urllib.request.Request(BASE+path,headers=headers)
+              with urllib.request.urlopen(req,timeout=30) as r:
+                  assert r.status==200,(path,r.status)
+                  return r.read()
+          def status(path):
+              req=urllib.request.Request(BASE+path,headers=headers,method="HEAD")
+              try:
+                  with urllib.request.urlopen(req,timeout=18) as r:return r.status
+              except urllib.error.HTTPError as e:return e.code
+          def scan(paths):
+              with concurrent.futures.ThreadPoolExecutor(max_workers=12) as pool:
+                  return [(p,n) for p,n in zip(paths,pool.map(status,paths)) if n not in (404,410)]
+          manifest=json.loads(read("data/public-preview-manifest.json"))
+          assert manifest=={},("Audio manifest is not disabled",len(manifest))
+          catalog=json.loads(read("data/catalog.json"))
+          songs=[b for b in catalog if isinstance(b.get("releaseRank"),int) and 1<=b["releaseRank"]<=100]
+          assert len(catalog)==200 and len(songs)==100 and len({b["id"] for b in songs})==100
+          js=read("assets/showcase.js").decode("utf8")
+          assert "./approved-previews/" in js and "-tagged.mp3" in js
+          assert "compactActive" not in js and "review-audio/" not in js
+          old_files=[f"review-audio/{b['id']}{suffix}" for b in songs for suffix in ("-review.mp3","-listen.m4a")]
+          old_files+=["data/arrangements.json"]
+          leaks=[]
+          for attempt in range(6):
+              leaks=scan(old_files)
+              if not leaks:break
+              print("Old files still reachable, possibly CDN-cached",len(leaks),leaks[:6],"attempt",attempt+1,flush=True)
+              time.sleep(10)
+          assert not leaks,("Unfinished song URLs publicly reachable",leaks[:20])
+          print("PASS: 100 titles, zero approved public audio, 200 old master/listen file links return 404/410; no arrangement map")
           PY
-      - name: Check integrated LUFS, decoded true peak, dynamic range and file integrity
-        run: python scripts/audit_loudness.py --audio-dir _review_audio --catalog _review_site_data/catalog.json --arrangements _review_site_data/arrangements.json --report AXEZENT_100_TRACK_AUDIO_QA.json
-      - name: Inspect actual decoded stereo, spectral masking, transient pulse, section energy and mix similarity
-        run: python scripts/audit_audio_depth.py --audio-dir _review_audio --catalog _review_site_data/catalog.json --arrangements _review_site_data/arrangements.json --report AXEZENT_100_TRACK_DEPTH_QA.json
-      - name: Keep production diagnostics inside the ephemeral test runner
-        run: echo "PASS - private review outputs are intentionally not uploaded as public artifacts."
