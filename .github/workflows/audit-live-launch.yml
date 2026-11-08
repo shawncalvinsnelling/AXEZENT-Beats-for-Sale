@@ -1,5 +1,8 @@
 name: AXEZENT live website first-impression and Facebook preview audit
 on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/audit-live-launch.yml']
   workflow_run:
     workflows: ['Deploy AXEZENT artist showcase to GitHub Pages']
     types: [completed]
@@ -8,7 +11,7 @@ permissions:
   contents: read
 jobs:
   live-launch-audit:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
