@@ -9,6 +9,8 @@ const browser = await chromium.launch({
 
 try {
   const page = await browser.newPage({ viewport: {width: 1300, height: 900} });
+  await page.route("https://countapi.mileshilliard.com/api/v1/**",route=>
+    route.fulfill({status:200,contentType:"application/json",body:'{"value":17}'}));
   page.on('pageerror', e => console.error('BROWSER ERROR:',e.message));
   await page.goto(BASE, { waitUntil: 'domcontentloaded', timeout: 45000 });
   await page.waitForFunction(() => document.querySelectorAll('article.track-card').length===100, null, { timeout: 30000 });
