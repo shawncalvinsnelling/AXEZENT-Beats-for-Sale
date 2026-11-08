@@ -1,0 +1,3686 @@
+{
+  "AXZ-169": {
+    "releaseRank": 1,
+    "form": "short intro",
+    "signature": "laid-back Houston swing; half-time kick spaces",
+    "soundPalette": "dark electric piano, brass punctuations, syrupy analog lead",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 84,
+    "key": "D minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 11.429
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 4,
+        "endBar": 12,
+        "startSeconds": 11.429,
+        "endSeconds": 34.286
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 12,
+        "endBar": 24,
+        "startSeconds": 34.286,
+        "endSeconds": 68.571
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 24,
+        "endBar": 32,
+        "startSeconds": 68.571,
+        "endSeconds": 91.429
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 32,
+        "endBar": 48,
+        "startSeconds": 91.429,
+        "endSeconds": 137.143
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 48,
+        "endBar": 56,
+        "startSeconds": 137.143,
+        "endSeconds": 160
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 56,
+        "endBar": 60,
+        "startSeconds": 160,
+        "endSeconds": 171.429
+      }
+    ],
+    "totalBars": 60,
+    "durationSeconds": 171.429,
+    "recordingVerified": false
+  },
+  "AXZ-085": {
+    "releaseRank": 2,
+    "form": "verse-first",
+    "signature": "Detroit off-grid bounce; short snare anticipations",
+    "soundPalette": "rubbery FM bass, crisp chord stabs, detuned bells",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 101,
+    "key": "G minor",
+    "sections": [
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 0,
+        "endBar": 12,
+        "startSeconds": 0,
+        "endSeconds": 28.515
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 12,
+        "endBar": 20,
+        "startSeconds": 28.515,
+        "endSeconds": 47.525
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 20,
+        "endBar": 32,
+        "startSeconds": 47.525,
+        "endSeconds": 76.04
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 32,
+        "endBar": 40,
+        "startSeconds": 76.04,
+        "endSeconds": 95.05
+      },
+      {
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
+        "startBar": 40,
+        "endBar": 44,
+        "startSeconds": 95.05,
+        "endSeconds": 104.554
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 104.554,
+        "endSeconds": 123.564
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 123.564,
+        "endSeconds": 133.069
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 133.069,
+    "recordingVerified": false
+  },
+  "AXZ-125": {
+    "releaseRank": 3,
+    "form": "hook-first",
+    "signature": "Bronx drill displacement; sparse low-end glide",
+    "soundPalette": "distant string stabs, eerie pluck, granular air",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 142,
+    "key": "A minor",
+    "sections": [
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 0,
+        "endBar": 8,
+        "startSeconds": 0,
+        "endSeconds": 13.521
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 8,
+        "endBar": 24,
+        "startSeconds": 13.521,
+        "endSeconds": 40.563
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 24,
+        "endBar": 32,
+        "startSeconds": 40.563,
+        "endSeconds": 54.085
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 32,
+        "endBar": 48,
+        "startSeconds": 54.085,
+        "endSeconds": 81.127
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 48,
+        "endBar": 56,
+        "startSeconds": 81.127,
+        "endSeconds": 94.648
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 56,
+        "endBar": 60,
+        "startSeconds": 94.648,
+        "endSeconds": 101.408
+      }
+    ],
+    "totalBars": 60,
+    "durationSeconds": 101.408,
+    "recordingVerified": false
+  },
+  "AXZ-017": {
+    "releaseRank": 4,
+    "form": "short intro",
+    "signature": "Los Angeles funk pocket; elastic backbeat",
+    "soundPalette": "synth-funk lead, muted guitar, expressive electric piano",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 96,
+    "key": "C minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 10
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 4,
+        "endBar": 20,
+        "startSeconds": 10,
+        "endSeconds": 50
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 50,
+        "endSeconds": 70
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 28,
+        "endBar": 44,
+        "startSeconds": 70,
+        "endSeconds": 110
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 110,
+        "endSeconds": 130
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 130,
+        "endSeconds": 140
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 140,
+    "recordingVerified": false
+  },
+  "AXZ-037": {
+    "releaseRank": 5,
+    "form": "hook-first",
+    "signature": "Atlanta trap; syncopated 808 kick rolls",
+    "soundPalette": "bright detuned lead, minor bell, sharp digital plucks",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 138,
+    "key": "E minor",
+    "sections": [
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 0,
+        "endBar": 8,
+        "startSeconds": 0,
+        "endSeconds": 13.913
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 8,
+        "startBar": 8,
+        "endBar": 16,
+        "startSeconds": 13.913,
+        "endSeconds": 27.826
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 16,
+        "endBar": 24,
+        "startSeconds": 27.826,
+        "endSeconds": 41.739
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 24,
+        "endBar": 36,
+        "startSeconds": 41.739,
+        "endSeconds": 62.609
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 36,
+        "endBar": 44,
+        "startSeconds": 62.609,
+        "endSeconds": 76.522
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 3",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 76.522,
+        "endSeconds": 90.435
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 4",
+        "bars": 8,
+        "startBar": 52,
+        "endBar": 60,
+        "startSeconds": 90.435,
+        "endSeconds": 104.348
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 60,
+        "endBar": 64,
+        "startSeconds": 104.348,
+        "endSeconds": 111.304
+      }
+    ],
+    "totalBars": 64,
+    "durationSeconds": 111.304,
+    "recordingVerified": false
+  },
+  "AXZ-166": {
+    "releaseRank": 6,
+    "form": "short intro",
+    "signature": "Memphis minor-key bounce; sharp snare breaks",
+    "soundPalette": "haunted organ, string tremolo, low piano",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 101,
+    "key": "E major",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 2,
+        "startBar": 0,
+        "endBar": 2,
+        "startSeconds": 0,
+        "endSeconds": 4.752
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 2,
+        "endBar": 14,
+        "startSeconds": 4.752,
+        "endSeconds": 33.267
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 14,
+        "endBar": 22,
+        "startSeconds": 33.267,
+        "endSeconds": 52.277
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 22,
+        "endBar": 34,
+        "startSeconds": 52.277,
+        "endSeconds": 80.792
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 34,
+        "endBar": 42,
+        "startSeconds": 80.792,
+        "endSeconds": 99.802
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 42,
+        "endBar": 46,
+        "startSeconds": 99.802,
+        "endSeconds": 109.307
+      }
+    ],
+    "totalBars": 46,
+    "durationSeconds": 109.307,
+    "recordingVerified": false
+  },
+  "AXZ-021": {
+    "releaseRank": 7,
+    "form": "short intro",
+    "signature": "cinematic Denver half-time; large downbeat",
+    "soundPalette": "cinematic cello swell, metallic arpeggio, warm Rhodes",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 90,
+    "key": "G minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 10.667
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 4,
+        "endBar": 12,
+        "startSeconds": 10.667,
+        "endSeconds": 32
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 12,
+        "endBar": 28,
+        "startSeconds": 32,
+        "endSeconds": 74.667
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 28,
+        "endBar": 36,
+        "startSeconds": 74.667,
+        "endSeconds": 96
+      },
+      {
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
+        "startBar": 36,
+        "endBar": 40,
+        "startSeconds": 96,
+        "endSeconds": 106.667
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 40,
+        "endBar": 56,
+        "startSeconds": 106.667,
+        "endSeconds": 149.333
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 56,
+        "endBar": 64,
+        "startSeconds": 149.333,
+        "endSeconds": 170.667
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 64,
+        "endBar": 68,
+        "startSeconds": 170.667,
+        "endSeconds": 181.333
+      }
+    ],
+    "totalBars": 68,
+    "durationSeconds": 181.333,
+    "recordingVerified": false
+  },
+  "AXZ-033": {
+    "releaseRank": 8,
+    "form": "hook-first",
+    "signature": "Miami club bounce; syncopated tom responses",
+    "soundPalette": "watery analog polysynth, short brass hits, glass chimes",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 108,
+    "key": "Bb minor",
+    "sections": [
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 0,
+        "endBar": 8,
+        "startSeconds": 0,
+        "endSeconds": 17.778
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 8,
+        "endBar": 20,
+        "startSeconds": 17.778,
+        "endSeconds": 44.444
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 44.444,
+        "endSeconds": 62.222
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 28,
+        "endBar": 40,
+        "startSeconds": 62.222,
+        "endSeconds": 88.889
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 40,
+        "endBar": 48,
+        "startSeconds": 88.889,
+        "endSeconds": 106.667
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 48,
+        "endBar": 52,
+        "startSeconds": 106.667,
+        "endSeconds": 115.556
+      }
+    ],
+    "totalBars": 52,
+    "durationSeconds": 115.556,
+    "recordingVerified": false
+  },
+  "AXZ-049": {
+    "releaseRank": 9,
+    "form": "short intro",
+    "signature": "Chicago driving drill; sliding sub bass",
+    "soundPalette": "icy choir pad, percussive synth keys, filtered lead",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 144,
+    "key": "E major",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 6.667
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 4,
+        "endBar": 20,
+        "startSeconds": 6.667,
+        "endSeconds": 33.333
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 33.333,
+        "endSeconds": 46.667
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 28,
+        "endBar": 40,
+        "startSeconds": 46.667,
+        "endSeconds": 66.667
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 40,
+        "endBar": 48,
+        "startSeconds": 66.667,
+        "endSeconds": 80
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 3",
+        "bars": 8,
+        "startBar": 48,
+        "endBar": 56,
+        "startSeconds": 80,
+        "endSeconds": 93.333
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 56,
+        "endBar": 64,
+        "startSeconds": 93.333,
+        "endSeconds": 106.667
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 64,
+        "endBar": 68,
+        "startSeconds": 106.667,
+        "endSeconds": 113.333
+      }
+    ],
+    "totalBars": 68,
+    "durationSeconds": 113.333,
+    "recordingVerified": false
+  },
+  "AXZ-069": {
+    "releaseRank": 10,
+    "form": "short intro",
+    "signature": "New Orleans second-line accents; swung snare ghost notes",
+    "soundPalette": "live-style piano voicings, organ response, bright horn stabs",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 103,
+    "key": "A major",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 2,
+        "startBar": 0,
+        "endBar": 2,
+        "startSeconds": 0,
+        "endSeconds": 4.66
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 2,
+        "endBar": 10,
+        "startSeconds": 4.66,
+        "endSeconds": 23.301
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 10,
+        "endBar": 22,
+        "startSeconds": 23.301,
+        "endSeconds": 51.262
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 22,
+        "endBar": 30,
+        "startSeconds": 51.262,
+        "endSeconds": 69.903
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 30,
+        "endBar": 46,
+        "startSeconds": 69.903,
+        "endSeconds": 107.184
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 46,
+        "endBar": 54,
+        "startSeconds": 107.184,
+        "endSeconds": 125.825
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 54,
+        "endBar": 58,
+        "startSeconds": 125.825,
+        "endSeconds": 135.146
+      }
+    ],
+    "totalBars": 58,
+    "durationSeconds": 135.146,
+    "recordingVerified": false
+  },
+  "AXZ-129": {
+    "releaseRank": 11,
+    "form": "hook-first",
+    "signature": "Charlotte urgent trap; doubled hook energy",
+    "soundPalette": "dark marimba motif, pitched bells, airy choir",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 100,
+    "key": "F minor",
+    "sections": [
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 0,
+        "endBar": 8,
+        "startSeconds": 0,
+        "endSeconds": 19.2
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 8,
+        "endBar": 20,
+        "startSeconds": 19.2,
+        "endSeconds": 48
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 48,
+        "endSeconds": 67.2
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 28,
+        "endBar": 44,
+        "startSeconds": 67.2,
+        "endSeconds": 105.6
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 105.6,
+        "endSeconds": 124.8
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 2,
+        "startBar": 52,
+        "endBar": 54,
+        "startSeconds": 124.8,
+        "endSeconds": 129.6
+      }
+    ],
+    "totalBars": 54,
+    "durationSeconds": 129.6,
+    "recordingVerified": false
+  },
+  "AXZ-117": {
+    "releaseRank": 12,
+    "form": "short intro",
+    "signature": "Newark cold drill; stop-start 808s",
+    "soundPalette": "hollow keys, pitched string notes, detuned synth bass",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 132,
+    "key": "G# minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 7.273
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 4,
+        "endBar": 20,
+        "startSeconds": 7.273,
+        "endSeconds": 36.364
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 36.364,
+        "endSeconds": 50.909
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 28,
+        "endBar": 44,
+        "startSeconds": 50.909,
+        "endSeconds": 80
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 80,
+        "endSeconds": 94.545
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 94.545,
+        "endSeconds": 101.818
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 101.818,
+    "recordingVerified": false
+  },
+  "AXZ-137": {
+    "releaseRank": 13,
+    "form": "short intro",
+    "signature": "Cleveland metallic Midwest pocket; marching toms",
+    "soundPalette": "metallic glass tone, filtered synth brass, sparse strings",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 97,
+    "key": "C# minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 9.897
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 4,
+        "endBar": 12,
+        "startSeconds": 9.897,
+        "endSeconds": 29.691
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 12,
+        "endBar": 24,
+        "startSeconds": 29.691,
+        "endSeconds": 59.381
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 24,
+        "endBar": 32,
+        "startSeconds": 59.381,
+        "endSeconds": 79.175
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 32,
+        "endBar": 44,
+        "startSeconds": 79.175,
+        "endSeconds": 108.866
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 108.866,
+        "endSeconds": 128.66
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 128.66,
+        "endSeconds": 138.557
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 138.557,
+    "recordingVerified": false
+  },
+  "AXZ-149": {
+    "releaseRank": 14,
+    "form": "verse-first",
+    "signature": "Philadelphia boom-bap; dusty snare pocket",
+    "soundPalette": "dusty electric piano, chopped-note motif, short upright bass",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 96,
+    "key": "G minor",
+    "sections": [
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 0,
+        "endBar": 16,
+        "startSeconds": 0,
+        "endSeconds": 40
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 16,
+        "endBar": 24,
+        "startSeconds": 40,
+        "endSeconds": 60
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 24,
+        "endBar": 40,
+        "startSeconds": 60,
+        "endSeconds": 100
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 40,
+        "endBar": 48,
+        "startSeconds": 100,
+        "endSeconds": 120
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 48,
+        "endBar": 52,
+        "startSeconds": 120,
+        "endSeconds": 130
+      }
+    ],
+    "totalBars": 52,
+    "durationSeconds": 130,
+    "recordingVerified": false
+  },
+  "AXZ-097": {
+    "releaseRank": 15,
+    "form": "short intro",
+    "signature": "St. Louis swung club pocket; clap responses",
+    "soundPalette": "bluesy organ, resonant electric guitar, wavering synth",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 92,
+    "key": "Bb minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 2,
+        "startBar": 0,
+        "endBar": 2,
+        "startSeconds": 0,
+        "endSeconds": 5.217
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 2,
+        "endBar": 10,
+        "startSeconds": 5.217,
+        "endSeconds": 26.087
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 10,
+        "endBar": 26,
+        "startSeconds": 26.087,
+        "endSeconds": 67.826
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 26,
+        "endBar": 34,
+        "startSeconds": 67.826,
+        "endSeconds": 88.696
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 34,
+        "endBar": 50,
+        "startSeconds": 88.696,
+        "endSeconds": 130.435
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 50,
+        "endBar": 58,
+        "startSeconds": 130.435,
+        "endSeconds": 151.304
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 58,
+        "endBar": 62,
+        "startSeconds": 151.304,
+        "endSeconds": 161.739
+      }
+    ],
+    "totalBars": 62,
+    "durationSeconds": 161.739,
+    "recordingVerified": false
+  },
+  "AXZ-185": {
+    "releaseRank": 16,
+    "form": "short intro",
+    "signature": "Seattle rainy downtempo; breathy hats",
+    "soundPalette": "filtered guitar harmonic, misty analog pad, soft piano",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 89,
+    "key": "B minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 10.787
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 4,
+        "endBar": 16,
+        "startSeconds": 10.787,
+        "endSeconds": 43.146
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 16,
+        "endBar": 24,
+        "startSeconds": 43.146,
+        "endSeconds": 64.719
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 24,
+        "endBar": 36,
+        "startSeconds": 64.719,
+        "endSeconds": 97.079
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 36,
+        "endBar": 44,
+        "startSeconds": 97.079,
+        "endSeconds": 118.652
+      },
+      {
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
+        "startBar": 44,
+        "endBar": 48,
+        "startSeconds": 118.652,
+        "endSeconds": 129.438
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 48,
+        "endBar": 56,
+        "startSeconds": 129.438,
+        "endSeconds": 151.011
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 56,
+        "endBar": 60,
+        "startSeconds": 151.011,
+        "endSeconds": 161.798
+      }
+    ],
+    "totalBars": 60,
+    "durationSeconds": 161.798,
+    "recordingVerified": false
+  },
+  "AXZ-077": {
+    "releaseRank": 17,
+    "form": "hook-first",
+    "signature": "Baltimore club syncopation; kick-triplet response",
+    "soundPalette": "detuned call-response synth, clavinet, chopped brass",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 128,
+    "key": "F# minor",
+    "sections": [
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 7.5
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 4,
+        "endBar": 16,
+        "startSeconds": 7.5,
+        "endSeconds": 30
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 16,
+        "endBar": 24,
+        "startSeconds": 30,
+        "endSeconds": 45
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 24,
+        "endBar": 36,
+        "startSeconds": 45,
+        "endSeconds": 67.5
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 36,
+        "endBar": 44,
+        "startSeconds": 67.5,
+        "endSeconds": 82.5
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 44,
+        "endBar": 48,
+        "startSeconds": 82.5,
+        "endSeconds": 90
+      }
+    ],
+    "totalBars": 48,
+    "durationSeconds": 90,
+    "recordingVerified": false
+  },
+  "AXZ-181": {
+    "releaseRank": 18,
+    "form": "short intro",
+    "signature": "Richmond southern bounce; half-time rim",
+    "soundPalette": "southern piano chords, distant brass swell, bell motif",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 100,
+    "key": "G# minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 9.6
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 4,
+        "endBar": 12,
+        "startSeconds": 9.6,
+        "endSeconds": 28.8
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 12,
+        "endBar": 28,
+        "startSeconds": 28.8,
+        "endSeconds": 67.2
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 28,
+        "endBar": 36,
+        "startSeconds": 67.2,
+        "endSeconds": 86.4
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 8,
+        "startBar": 36,
+        "endBar": 44,
+        "startSeconds": 86.4,
+        "endSeconds": 105.6
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 105.6,
+        "endSeconds": 124.8
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 124.8,
+        "endSeconds": 134.4
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 134.4,
+    "recordingVerified": false
+  },
+  "AXZ-142": {
+    "releaseRank": 19,
+    "form": "short intro",
+    "signature": "Tulsa church-soul trap; deep 808 accents",
+    "soundPalette": "church organ, struck bells, spacious piano",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 98,
+    "key": "C major",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 9.796
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 4,
+        "endBar": 16,
+        "startSeconds": 9.796,
+        "endSeconds": 39.184
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 16,
+        "endBar": 24,
+        "startSeconds": 39.184,
+        "endSeconds": 58.776
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 24,
+        "endBar": 36,
+        "startSeconds": 58.776,
+        "endSeconds": 88.163
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 36,
+        "endBar": 44,
+        "startSeconds": 88.163,
+        "endSeconds": 107.755
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 3",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 107.755,
+        "endSeconds": 127.347
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 127.347,
+        "endSeconds": 137.143
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 137.143,
+    "recordingVerified": false
+  },
+  "AXZ-009": {
+    "releaseRank": 20,
+    "form": "hook-first",
+    "signature": "Phoenix desert bounce; low tom motifs",
+    "soundPalette": "plucked nylon synth, wide pad, arpeggiated metallic bell",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 92,
+    "key": "C# minor",
+    "sections": [
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 0,
+        "endBar": 8,
+        "startSeconds": 0,
+        "endSeconds": 20.87
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 8,
+        "endBar": 24,
+        "startSeconds": 20.87,
+        "endSeconds": 62.609
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 24,
+        "endBar": 32,
+        "startSeconds": 62.609,
+        "endSeconds": 83.478
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 8,
+        "startBar": 32,
+        "endBar": 40,
+        "startSeconds": 83.478,
+        "endSeconds": 104.348
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 40,
+        "endBar": 48,
+        "startSeconds": 104.348,
+        "endSeconds": 125.217
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 48,
+        "endBar": 52,
+        "startSeconds": 125.217,
+        "endSeconds": 135.652
+      }
+    ],
+    "totalBars": 52,
+    "durationSeconds": 135.652,
+    "recordingVerified": false
+  },
+  "AXZ-001": {
+    "releaseRank": 21,
+    "form": "short intro",
+    "signature": "Birmingham heavy halftime; wide low-frequency pockets",
+    "soundPalette": "distorted low synth, distant strings, gritty guitar",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 78,
+    "key": "F minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 12.308
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 4,
+        "endBar": 20,
+        "startSeconds": 12.308,
+        "endSeconds": 61.538
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 61.538,
+        "endSeconds": 86.154
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 28,
+        "endBar": 44,
+        "startSeconds": 86.154,
+        "endSeconds": 135.385
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 135.385,
+        "endSeconds": 160
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 160,
+        "endSeconds": 172.308
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 172.308,
+    "recordingVerified": false
+  },
+  "AXZ-093": {
+    "releaseRank": 22,
+    "form": "short intro",
+    "signature": "Jackson soulful southern swing; rim backbeat",
+    "soundPalette": "gospel piano, organ, blues guitar phrases",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 74,
+    "key": "D major",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 12.973
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 4,
+        "endBar": 12,
+        "startSeconds": 12.973,
+        "endSeconds": 38.919
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 12,
+        "endBar": 24,
+        "startSeconds": 38.919,
+        "endSeconds": 77.838
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 24,
+        "endBar": 32,
+        "startSeconds": 77.838,
+        "endSeconds": 103.784
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 32,
+        "endBar": 44,
+        "startSeconds": 103.784,
+        "endSeconds": 142.703
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 142.703,
+        "endSeconds": 168.649
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 168.649,
+        "endSeconds": 181.622
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 181.622,
+    "recordingVerified": false
+  },
+  "AXZ-157": {
+    "releaseRank": 23,
+    "form": "short intro",
+    "signature": "Charleston bright melodic bounce; shaker subdivisions",
+    "soundPalette": "bright electric piano, warm guitar, short plucked synth",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 99,
+    "key": "D major",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 2,
+        "startBar": 0,
+        "endBar": 2,
+        "startSeconds": 0,
+        "endSeconds": 4.848
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 2,
+        "endBar": 14,
+        "startSeconds": 4.848,
+        "endSeconds": 33.939
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 14,
+        "endBar": 22,
+        "startSeconds": 33.939,
+        "endSeconds": 53.333
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 22,
+        "endBar": 34,
+        "startSeconds": 53.333,
+        "endSeconds": 82.424
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 34,
+        "endBar": 42,
+        "startSeconds": 82.424,
+        "endSeconds": 101.818
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 42,
+        "endBar": 46,
+        "startSeconds": 101.818,
+        "endSeconds": 111.515
+      }
+    ],
+    "totalBars": 46,
+    "durationSeconds": 111.515,
+    "recordingVerified": false
+  },
+  "AXZ-193": {
+    "releaseRank": 24,
+    "form": "verse-first",
+    "signature": "Milwaukee rapid 808 syncopation; dry snare",
+    "soundPalette": "cold digital bell, metallic chord, syncopated keys",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 105,
+    "key": "F minor",
+    "sections": [
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 0,
+        "endBar": 12,
+        "startSeconds": 0,
+        "endSeconds": 27.429
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 12,
+        "endBar": 20,
+        "startSeconds": 27.429,
+        "endSeconds": 45.714
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 20,
+        "endBar": 32,
+        "startSeconds": 45.714,
+        "endSeconds": 73.143
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 32,
+        "endBar": 40,
+        "startSeconds": 73.143,
+        "endSeconds": 91.429
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 3",
+        "bars": 8,
+        "startBar": 40,
+        "endBar": 48,
+        "startSeconds": 91.429,
+        "endSeconds": 109.714
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 48,
+        "endBar": 56,
+        "startSeconds": 109.714,
+        "endSeconds": 128
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 2,
+        "startBar": 56,
+        "endBar": 58,
+        "startSeconds": 128,
+        "endSeconds": 132.571
+      }
+    ],
+    "totalBars": 58,
+    "durationSeconds": 132.571,
+    "recordingVerified": false
+  },
+  "AXZ-089": {
+    "releaseRank": 25,
+    "form": "short intro",
+    "signature": "Minneapolis icy atmospheric half-time; minimal hat punctuation",
+    "soundPalette": "airy glass pad, restrained marimba, soft synth string",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 89,
+    "key": "C major",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 10.787
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 4,
+        "endBar": 20,
+        "startSeconds": 10.787,
+        "endSeconds": 53.933
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 53.933,
+        "endSeconds": 75.506
+      },
+      {
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
+        "startBar": 28,
+        "endBar": 32,
+        "startSeconds": 75.506,
+        "endSeconds": 86.292
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 32,
+        "endBar": 48,
+        "startSeconds": 86.292,
+        "endSeconds": 129.438
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 48,
+        "endBar": 56,
+        "startSeconds": 129.438,
+        "endSeconds": 151.011
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 56,
+        "endBar": 60,
+        "startSeconds": 151.011,
+        "endSeconds": 161.798
+      }
+    ],
+    "totalBars": 60,
+    "durationSeconds": 161.798,
+    "recordingVerified": false
+  },
+  "AXZ-054": {
+    "releaseRank": 26,
+    "form": "short intro",
+    "signature": "Gary gritty Midwest stomp; tight snare rolls",
+    "soundPalette": "analog brass stab, muted electric guitar, heavy piano",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 108,
+    "key": "F minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 2,
+        "startBar": 0,
+        "endBar": 2,
+        "startSeconds": 0,
+        "endSeconds": 4.444
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 2,
+        "endBar": 10,
+        "startSeconds": 4.444,
+        "endSeconds": 22.222
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 10,
+        "endBar": 22,
+        "startSeconds": 22.222,
+        "endSeconds": 48.889
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 22,
+        "endBar": 30,
+        "startSeconds": 48.889,
+        "endSeconds": 66.667
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 30,
+        "endBar": 42,
+        "startSeconds": 66.667,
+        "endSeconds": 93.333
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 42,
+        "endBar": 50,
+        "startSeconds": 93.333,
+        "endSeconds": 111.111
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 50,
+        "endBar": 54,
+        "startSeconds": 111.111,
+        "endSeconds": 120
+      }
+    ],
+    "totalBars": 54,
+    "durationSeconds": 120,
+    "recordingVerified": false
+  },
+  "AXZ-081": {
+    "releaseRank": 27,
+    "form": "short intro",
+    "signature": "Boston assertive boom-bap; closed-hat breaks",
+    "soundPalette": "upright-bass-like synth, dusty organ, plucked keys",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 90,
+    "key": "C minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 10.667
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 4,
+        "endBar": 20,
+        "startSeconds": 10.667,
+        "endSeconds": 53.333
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 53.333,
+        "endSeconds": 74.667
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 28,
+        "endBar": 44,
+        "startSeconds": 74.667,
+        "endSeconds": 117.333
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 117.333,
+        "endSeconds": 138.667
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 138.667,
+        "endSeconds": 149.333
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 149.333,
+    "recordingVerified": false
+  },
+  "AXZ-109": {
+    "releaseRank": 28,
+    "form": "hook-first",
+    "signature": "Las Vegas glossy high-energy bounce; side-stick motif",
+    "soundPalette": "bright synthetic brass, slap-style bass, sync plucks",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 107,
+    "key": "F major",
+    "sections": [
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 0,
+        "endBar": 8,
+        "startSeconds": 0,
+        "endSeconds": 17.944
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 8,
+        "startBar": 8,
+        "endBar": 16,
+        "startSeconds": 17.944,
+        "endSeconds": 35.888
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 16,
+        "endBar": 24,
+        "startSeconds": 35.888,
+        "endSeconds": 53.832
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 24,
+        "endBar": 36,
+        "startSeconds": 53.832,
+        "endSeconds": 80.748
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 36,
+        "endBar": 44,
+        "startSeconds": 80.748,
+        "endSeconds": 98.692
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 3",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 98.692,
+        "endSeconds": 116.636
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 4",
+        "bars": 8,
+        "startBar": 52,
+        "endBar": 60,
+        "startSeconds": 116.636,
+        "endSeconds": 134.579
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 60,
+        "endBar": 64,
+        "startSeconds": 134.579,
+        "endSeconds": 143.551
+      }
+    ],
+    "totalBars": 64,
+    "durationSeconds": 143.551,
+    "recordingVerified": false
+  },
+  "AXZ-145": {
+    "releaseRank": 29,
+    "form": "short intro",
+    "signature": "Portland moody alternative rap; roomy snare",
+    "soundPalette": "textured electric piano, low guitar riff, lo-fi synth",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 83,
+    "key": "C minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 11.566
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 4,
+        "endBar": 16,
+        "startSeconds": 11.566,
+        "endSeconds": 46.265
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 16,
+        "endBar": 24,
+        "startSeconds": 46.265,
+        "endSeconds": 69.398
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 24,
+        "endBar": 36,
+        "startSeconds": 69.398,
+        "endSeconds": 104.096
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 36,
+        "endBar": 44,
+        "startSeconds": 104.096,
+        "endSeconds": 127.229
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 44,
+        "endBar": 48,
+        "startSeconds": 127.229,
+        "endSeconds": 138.795
+      }
+    ],
+    "totalBars": 48,
+    "durationSeconds": 138.795,
+    "recordingVerified": false
+  },
+  "AXZ-013": {
+    "releaseRank": 30,
+    "form": "verse-first",
+    "signature": "Little Rock bass-heavy half-time; negative-space kicks",
+    "soundPalette": "dark bowed pad, sparse bell, warm brass punctuations",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 76,
+    "key": "F# minor",
+    "sections": [
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 0,
+        "endBar": 16,
+        "startSeconds": 0,
+        "endSeconds": 50.526
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 16,
+        "endBar": 24,
+        "startSeconds": 50.526,
+        "endSeconds": 75.789
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 24,
+        "endBar": 40,
+        "startSeconds": 75.789,
+        "endSeconds": 126.316
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 40,
+        "endBar": 48,
+        "startSeconds": 126.316,
+        "endSeconds": 151.579
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 48,
+        "endBar": 52,
+        "startSeconds": 151.579,
+        "endSeconds": 164.211
+      }
+    ],
+    "totalBars": 52,
+    "durationSeconds": 164.211,
+    "recordingVerified": false
+  },
+  "AXZ-065": {
+    "releaseRank": 31,
+    "form": "short intro",
+    "signature": "Louisville bell-led bounce; laid-back syncopation",
+    "soundPalette": "anthemic brass synth, bright keyboard, plucked strings",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 79,
+    "key": "F minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 12.152
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 4,
+        "endBar": 12,
+        "startSeconds": 12.152,
+        "endSeconds": 36.456
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 12,
+        "endBar": 24,
+        "startSeconds": 36.456,
+        "endSeconds": 72.911
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 24,
+        "endBar": 32,
+        "startSeconds": 72.911,
+        "endSeconds": 97.215
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 32,
+        "endBar": 44,
+        "startSeconds": 97.215,
+        "endSeconds": 133.671
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 133.671,
+        "endSeconds": 157.975
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 157.975,
+        "endSeconds": 170.127
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 170.127,
+    "recordingVerified": false
+  },
+  "AXZ-061": {
+    "releaseRank": 32,
+    "form": "hook-first",
+    "signature": "Wichita driving clap/kick; clipped transitions",
+    "soundPalette": "sawtooth arpeggio, punchy organ, vibraphone",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 102,
+    "key": "A minor",
+    "sections": [
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 0,
+        "endBar": 8,
+        "startSeconds": 0,
+        "endSeconds": 18.824
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 8,
+        "endBar": 20,
+        "startSeconds": 18.824,
+        "endSeconds": 47.059
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 47.059,
+        "endSeconds": 65.882
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 28,
+        "endBar": 40,
+        "startSeconds": 65.882,
+        "endSeconds": 94.118
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 40,
+        "endBar": 48,
+        "startSeconds": 94.118,
+        "endSeconds": 112.941
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 48,
+        "endBar": 52,
+        "startSeconds": 112.941,
+        "endSeconds": 122.353
+      }
+    ],
+    "totalBars": 52,
+    "durationSeconds": 122.353,
+    "recordingVerified": false
+  },
+  "AXZ-105": {
+    "releaseRank": 33,
+    "form": "short intro",
+    "signature": "Omaha melodic Midwest hip-hop; open vocal pockets",
+    "soundPalette": "hollow piano, low cello pad, percussive string pluck",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 94,
+    "key": "D minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 10.213
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 4,
+        "endBar": 20,
+        "startSeconds": 10.213,
+        "endSeconds": 51.064
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 51.064,
+        "endSeconds": 71.489
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 28,
+        "endBar": 44,
+        "startSeconds": 71.489,
+        "endSeconds": 112.34
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 112.34,
+        "endSeconds": 132.766
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 132.766,
+        "endSeconds": 142.979
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 142.979,
+    "recordingVerified": false
+  },
+  "AXZ-057": {
+    "releaseRank": 34,
+    "form": "short intro",
+    "signature": "Des Moines understated head-nod; snare ghost notes",
+    "soundPalette": "subtle electric piano, glass marimba, organ swells",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 85,
+    "key": "B minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 2,
+        "startBar": 0,
+        "endBar": 2,
+        "startSeconds": 0,
+        "endSeconds": 5.647
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 2,
+        "endBar": 10,
+        "startSeconds": 5.647,
+        "endSeconds": 28.235
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 10,
+        "endBar": 26,
+        "startSeconds": 28.235,
+        "endSeconds": 73.412
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 26,
+        "endBar": 34,
+        "startSeconds": 73.412,
+        "endSeconds": 96
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 34,
+        "endBar": 50,
+        "startSeconds": 96,
+        "endSeconds": 141.176
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 50,
+        "endBar": 58,
+        "startSeconds": 141.176,
+        "endSeconds": 163.765
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 58,
+        "endBar": 62,
+        "startSeconds": 163.765,
+        "endSeconds": 175.059
+      }
+    ],
+    "totalBars": 62,
+    "durationSeconds": 175.059,
+    "recordingVerified": false
+  },
+  "AXZ-025": {
+    "releaseRank": 35,
+    "form": "verse-first",
+    "signature": "Hartford intricate boom-bap; woodblock accents",
+    "soundPalette": "chopped electric organ, minor guitar, dry piano",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 91,
+    "key": "C major",
+    "sections": [
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 0,
+        "endBar": 16,
+        "startSeconds": 0,
+        "endSeconds": 42.198
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 16,
+        "endBar": 24,
+        "startSeconds": 42.198,
+        "endSeconds": 63.297
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 24,
+        "endBar": 36,
+        "startSeconds": 63.297,
+        "endSeconds": 94.945
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 36,
+        "endBar": 44,
+        "startSeconds": 94.945,
+        "endSeconds": 116.044
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 44,
+        "endBar": 48,
+        "startSeconds": 116.044,
+        "endSeconds": 126.593
+      }
+    ],
+    "totalBars": 48,
+    "durationSeconds": 126.593,
+    "recordingVerified": false
+  },
+  "AXZ-029": {
+    "releaseRank": 36,
+    "form": "short intro",
+    "signature": "Wilmington punchy East Coast pocket; snare pivots",
+    "soundPalette": "bright brass synth, rhythmic piano, string pad",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 99,
+    "key": "D major",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 9.697
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 4,
+        "endBar": 12,
+        "startSeconds": 9.697,
+        "endSeconds": 29.091
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 12,
+        "endBar": 24,
+        "startSeconds": 29.091,
+        "endSeconds": 58.182
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 24,
+        "endBar": 32,
+        "startSeconds": 58.182,
+        "endSeconds": 77.576
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 32,
+        "endBar": 44,
+        "startSeconds": 77.576,
+        "endSeconds": 106.667
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 106.667,
+        "endSeconds": 126.061
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 126.061,
+        "endSeconds": 135.758
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 135.758,
+    "recordingVerified": false
+  },
+  "AXZ-189": {
+    "releaseRank": 37,
+    "form": "short intro",
+    "signature": "Charleston WV Appalachian cinematic rap; textured percussion",
+    "soundPalette": "resonant mallet, cinematic strings, synth organ",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 81,
+    "key": "A minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 11.852
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 4,
+        "endBar": 20,
+        "startSeconds": 11.852,
+        "endSeconds": 59.259
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 59.259,
+        "endSeconds": 82.963
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 28,
+        "endBar": 44,
+        "startSeconds": 82.963,
+        "endSeconds": 130.37
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 130.37,
+        "endSeconds": 154.074
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 154.074,
+        "endSeconds": 165.926
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 165.926,
+    "recordingVerified": false
+  },
+  "AXZ-173": {
+    "releaseRank": 38,
+    "form": "short intro",
+    "signature": "Salt Lake City reflective trap; low snare echoes",
+    "soundPalette": "minor acoustic-like pluck, slow brass chord, soft bell",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 88,
+    "key": "F major",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 2,
+        "startBar": 0,
+        "endBar": 2,
+        "startSeconds": 0,
+        "endSeconds": 5.455
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 2,
+        "endBar": 14,
+        "startSeconds": 5.455,
+        "endSeconds": 38.182
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 14,
+        "endBar": 22,
+        "startSeconds": 38.182,
+        "endSeconds": 60
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 22,
+        "endBar": 34,
+        "startSeconds": 60,
+        "endSeconds": 92.727
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 34,
+        "endBar": 42,
+        "startSeconds": 92.727,
+        "endSeconds": 114.545
+      },
+      {
+        "kind": "bridge",
+        "label": "Bridge",
+        "bars": 4,
+        "startBar": 42,
+        "endBar": 46,
+        "startSeconds": 114.545,
+        "endSeconds": 125.455
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 46,
+        "endBar": 54,
+        "startSeconds": 125.455,
+        "endSeconds": 147.273
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 54,
+        "endBar": 58,
+        "startSeconds": 147.273,
+        "endSeconds": 158.182
+      }
+    ],
+    "totalBars": 58,
+    "durationSeconds": 158.182,
+    "recordingVerified": false
+  },
+  "AXZ-045": {
+    "releaseRank": 39,
+    "form": "hook-first",
+    "signature": "Boise warm melodic hip-hop; mid-tempo bounce",
+    "soundPalette": "warm analog sine lead, glass piano, chime",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 87,
+    "key": "F major",
+    "sections": [
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 0,
+        "endBar": 8,
+        "startSeconds": 0,
+        "endSeconds": 22.069
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 8,
+        "endBar": 20,
+        "startSeconds": 22.069,
+        "endSeconds": 55.172
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 55.172,
+        "endSeconds": 77.241
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 28,
+        "endBar": 44,
+        "startSeconds": 77.241,
+        "endSeconds": 121.379
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 121.379,
+        "endSeconds": 143.448
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 143.448,
+        "endSeconds": 154.483
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 154.483,
+    "recordingVerified": false
+  },
+  "AXZ-121": {
+    "releaseRank": 40,
+    "form": "short intro",
+    "signature": "Albuquerque atmospheric desert drill; syncopated sub",
+    "soundPalette": "desert-style synthetic pad, sampled-note-like plucks, deep brass",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 90,
+    "key": "B minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 10.667
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 4,
+        "endBar": 20,
+        "startSeconds": 10.667,
+        "endSeconds": 53.333
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 53.333,
+        "endSeconds": 74.667
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 28,
+        "endBar": 40,
+        "startSeconds": 74.667,
+        "endSeconds": 106.667
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 40,
+        "endBar": 48,
+        "startSeconds": 106.667,
+        "endSeconds": 128
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 48,
+        "endBar": 52,
+        "startSeconds": 128,
+        "endSeconds": 138.667
+      }
+    ],
+    "totalBars": 52,
+    "durationSeconds": 138.667,
+    "recordingVerified": false
+  },
+  "AXZ-041": {
+    "releaseRank": 41,
+    "form": "short intro",
+    "signature": "Honolulu tropical-inspired synth bounce; no borrowed traditional samples",
+    "soundPalette": "glassy pluck, warm polysynth, rhythmic guitar synth",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 96,
+    "key": "D minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 2,
+        "startBar": 0,
+        "endBar": 2,
+        "startSeconds": 0,
+        "endSeconds": 5
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 2,
+        "endBar": 10,
+        "startSeconds": 5,
+        "endSeconds": 25
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 10,
+        "endBar": 22,
+        "startSeconds": 25,
+        "endSeconds": 55
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 22,
+        "endBar": 30,
+        "startSeconds": 55,
+        "endSeconds": 75
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 30,
+        "endBar": 42,
+        "startSeconds": 75,
+        "endSeconds": 105
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 42,
+        "endBar": 50,
+        "startSeconds": 105,
+        "endSeconds": 125
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 50,
+        "endBar": 54,
+        "startSeconds": 125,
+        "endSeconds": 135
+      }
+    ],
+    "totalBars": 54,
+    "durationSeconds": 135,
+    "recordingVerified": false
+  },
+  "AXZ-005": {
+    "releaseRank": 42,
+    "form": "short intro",
+    "signature": "Anchorage sparse arctic ambient rap; sub-focused kick",
+    "soundPalette": "submerged organ, icy soundscape, slow flute synth",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 70,
+    "key": "A major",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 13.714
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 4,
+        "endBar": 20,
+        "startSeconds": 13.714,
+        "endSeconds": 68.571
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 68.571,
+        "endSeconds": 96
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 28,
+        "endBar": 44,
+        "startSeconds": 96,
+        "endSeconds": 150.857
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 150.857,
+        "endSeconds": 178.286
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 178.286,
+        "endSeconds": 192
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 192,
+    "recordingVerified": false
+  },
+  "AXZ-073": {
+    "releaseRank": 43,
+    "form": "short intro",
+    "signature": "Portland Maine gritty East Coast slow-roll; brushed snare",
+    "soundPalette": "dusty Rhodes, guitar harmonic, airy pad",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 78,
+    "key": "C# minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 12.308
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 4,
+        "endBar": 20,
+        "startSeconds": 12.308,
+        "endSeconds": 61.538
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 61.538,
+        "endSeconds": 86.154
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 28,
+        "endBar": 44,
+        "startSeconds": 86.154,
+        "endSeconds": 135.385
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 135.385,
+        "endSeconds": 160
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 160,
+        "endSeconds": 172.308
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 172.308,
+    "recordingVerified": false
+  },
+  "AXZ-101": {
+    "releaseRank": 44,
+    "form": "hook-first",
+    "signature": "Billings open-sky cinematic hip-hop; wide kick pocket",
+    "soundPalette": "large string chords, electric piano, high organ",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 86,
+    "key": "E minor",
+    "sections": [
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 0,
+        "endBar": 8,
+        "startSeconds": 0,
+        "endSeconds": 22.326
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 8,
+        "endBar": 20,
+        "startSeconds": 22.326,
+        "endSeconds": 55.814
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 55.814,
+        "endSeconds": 78.14
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 28,
+        "endBar": 40,
+        "startSeconds": 78.14,
+        "endSeconds": 111.628
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 40,
+        "endBar": 48,
+        "startSeconds": 111.628,
+        "endSeconds": 133.953
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 48,
+        "endBar": 52,
+        "startSeconds": 133.953,
+        "endSeconds": 145.116
+      }
+    ],
+    "totalBars": 52,
+    "durationSeconds": 145.116,
+    "recordingVerified": false
+  },
+  "AXZ-133": {
+    "releaseRank": 45,
+    "form": "short intro",
+    "signature": "Fargo cold minimalist trap; short transient percussion",
+    "soundPalette": "bell harmonic, hollow FM keys, atmospheric strings",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 82,
+    "key": "A major",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 11.707
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 4,
+        "endBar": 12,
+        "startSeconds": 11.707,
+        "endSeconds": 35.122
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 12,
+        "endBar": 24,
+        "startSeconds": 35.122,
+        "endSeconds": 70.244
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 24,
+        "endBar": 32,
+        "startSeconds": 70.244,
+        "endSeconds": 93.659
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 32,
+        "endBar": 44,
+        "startSeconds": 93.659,
+        "endSeconds": 128.78
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 128.78,
+        "endSeconds": 152.195
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 152.195,
+        "endSeconds": 163.902
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 163.902,
+    "recordingVerified": false
+  },
+  "AXZ-161": {
+    "releaseRank": 46,
+    "form": "short intro",
+    "signature": "Sioux Falls clean bright Midwest bounce; energetic snare",
+    "soundPalette": "bright mallet, brass accent, low electric piano",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 83,
+    "key": "Bb minor",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 2,
+        "startBar": 0,
+        "endBar": 2,
+        "startSeconds": 0,
+        "endSeconds": 5.783
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 2,
+        "endBar": 18,
+        "startSeconds": 5.783,
+        "endSeconds": 52.048
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 18,
+        "endBar": 26,
+        "startSeconds": 52.048,
+        "endSeconds": 75.181
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 26,
+        "endBar": 38,
+        "startSeconds": 75.181,
+        "endSeconds": 109.88
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 38,
+        "endBar": 46,
+        "startSeconds": 109.88,
+        "endSeconds": 133.012
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 46,
+        "endBar": 50,
+        "startSeconds": 133.012,
+        "endSeconds": 144.578
+      }
+    ],
+    "totalBars": 50,
+    "durationSeconds": 144.578,
+    "recordingVerified": false
+  },
+  "AXZ-197": {
+    "releaseRank": 47,
+    "form": "short intro",
+    "signature": "Cheyenne expansive high-plains rap; anchored kick",
+    "soundPalette": "wide vintage synth, muted guitar, resonant bells",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 84,
+    "key": "A major",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 11.429
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 4,
+        "endBar": 12,
+        "startSeconds": 11.429,
+        "endSeconds": 34.286
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 12,
+        "endBar": 24,
+        "startSeconds": 34.286,
+        "endSeconds": 68.571
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 24,
+        "endBar": 32,
+        "startSeconds": 68.571,
+        "endSeconds": 91.429
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 32,
+        "endBar": 44,
+        "startSeconds": 91.429,
+        "endSeconds": 125.714
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 125.714,
+        "endSeconds": 148.571
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 148.571,
+        "endSeconds": 160
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 160,
+    "recordingVerified": false
+  },
+  "AXZ-177": {
+    "releaseRank": 48,
+    "form": "short intro",
+    "signature": "Burlington melodic boom-bap; jazzy rim break",
+    "soundPalette": "jazz-leaning electric piano, organ, plucked string",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 82,
+    "key": "E major",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 4,
+        "startBar": 0,
+        "endBar": 4,
+        "startSeconds": 0,
+        "endSeconds": 11.707
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 4,
+        "endBar": 20,
+        "startSeconds": 11.707,
+        "endSeconds": 58.537
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 20,
+        "endBar": 28,
+        "startSeconds": 58.537,
+        "endSeconds": 81.951
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 16,
+        "startBar": 28,
+        "endBar": 44,
+        "startSeconds": 81.951,
+        "endSeconds": 128.78
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 128.78,
+        "endSeconds": 152.195
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 152.195,
+        "endSeconds": 163.902
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 163.902,
+    "recordingVerified": false
+  },
+  "AXZ-113": {
+    "releaseRank": 49,
+    "form": "short intro",
+    "signature": "Manchester granite-heavy East Coast rap; dry snare",
+    "soundPalette": "dark chord organ, piano stabs, metallic synth",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 86,
+    "key": "E major",
+    "sections": [
+      {
+        "kind": "intro",
+        "label": "Intro",
+        "bars": 2,
+        "startBar": 0,
+        "endBar": 2,
+        "startSeconds": 0,
+        "endSeconds": 5.581
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 12,
+        "startBar": 2,
+        "endBar": 14,
+        "startSeconds": 5.581,
+        "endSeconds": 39.07
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 14,
+        "endBar": 22,
+        "startSeconds": 39.07,
+        "endSeconds": 61.395
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 22,
+        "endBar": 34,
+        "startSeconds": 61.395,
+        "endSeconds": 94.884
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 34,
+        "endBar": 42,
+        "startSeconds": 94.884,
+        "endSeconds": 117.209
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 42,
+        "endBar": 46,
+        "startSeconds": 117.209,
+        "endSeconds": 128.372
+      }
+    ],
+    "totalBars": 46,
+    "durationSeconds": 128.372,
+    "recordingVerified": false
+  },
+  "AXZ-153": {
+    "releaseRank": 50,
+    "form": "hook-first",
+    "signature": "Providence urgent East Coast hip-hop; hard swing",
+    "soundPalette": "crystalline lead, choppy keys, brass punctuations",
+    "arrangementStatus": "proposed_not_audio_verified",
+    "artisticDirection": "Production concept informed by tempo, title and region; not a claim of universal regional bar counts",
+    "bpm": 91,
+    "key": "C major",
+    "sections": [
+      {
+        "kind": "hook",
+        "label": "Hook 1",
+        "bars": 8,
+        "startBar": 0,
+        "endBar": 8,
+        "startSeconds": 0,
+        "endSeconds": 21.099
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 1",
+        "bars": 16,
+        "startBar": 8,
+        "endBar": 24,
+        "startSeconds": 21.099,
+        "endSeconds": 63.297
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 2",
+        "bars": 8,
+        "startBar": 24,
+        "endBar": 32,
+        "startSeconds": 63.297,
+        "endSeconds": 84.396
+      },
+      {
+        "kind": "verse",
+        "label": "Verse 2",
+        "bars": 12,
+        "startBar": 32,
+        "endBar": 44,
+        "startSeconds": 84.396,
+        "endSeconds": 116.044
+      },
+      {
+        "kind": "hook",
+        "label": "Hook 3",
+        "bars": 8,
+        "startBar": 44,
+        "endBar": 52,
+        "startSeconds": 116.044,
+        "endSeconds": 137.143
+      },
+      {
+        "kind": "outro",
+        "label": "Outro",
+        "bars": 4,
+        "startBar": 52,
+        "endBar": 56,
+        "startSeconds": 137.143,
+        "endSeconds": 147.692
+      }
+    ],
+    "totalBars": 56,
+    "durationSeconds": 147.692,
+    "recordingVerified": false
+  }
+}
