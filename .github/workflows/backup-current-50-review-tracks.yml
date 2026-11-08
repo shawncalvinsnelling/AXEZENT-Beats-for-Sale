@@ -21,7 +21,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p _owner_archive/recordings
-          gh run download 42438813265 --repo "${{ github.repository }}" --pattern 'axezent-review-batch-*' --dir _downloaded_audio
+          gh run download 42440220672 --repo "${{ github.repository }}" --pattern 'axezent-review-batch-*' --dir _downloaded_audio
           found=$(find _downloaded_audio -type f -name 'AXZ-*-review.mp3' | wc -l)
           test "$found" -eq 50
           find _downloaded_audio -type f -name 'AXZ-*-review.mp3' -exec cp --no-clobber -t _owner_archive/recordings {} +
@@ -58,9 +58,9 @@ jobs:
           shutil.copyfile("data/arrangements.json",root/"FULL_ARRANGEMENTS.json")
           shutil.copyfile("data/catalog.json",root/"ORIGINAL_CATALOG_200_ENTRIES.json")
           (root/"READ_ME_FIRST.txt").write_text(
-            "AXEZENT — CURRENT 50 REVIEW MP3 BACKUP\n"
+            "AXEZENT — V2 50 UNIQUE ARRANGEMENTS MP3 BACKUP\n"
             "These are 50 NEW synthetic sampled-instrument review mixes published by "
-            "GitHub Pages deployment run 42438813265.\n"
+            "GitHub Pages deployment run 42440220672.\n"
             "They are NOT the exact historic private NODESS/ChatGPT mixes, NOT the "
             "unreleased sale masters, and NOT verified exclusive commercial inventory.\n"
             "For owner audit/long-term backup. The ZIP includes 50 stereo full-length "
@@ -75,7 +75,7 @@ jobs:
           python - <<'PY'
           import os,pathlib,zipfile,hashlib
           root=pathlib.Path("_owner_archive")
-          dest=pathlib.Path("AXEZENT_50_REVIEW_BEATS_FULL_BACKUP_2026-11-07.zip")
+          dest=pathlib.Path("AXEZENT_50_REVIEW_BEATS_V2_2026-11-07.zip")
           with zipfile.ZipFile(dest,"w",compression=zipfile.ZIP_STORED,allowZip64=True) as out:
               for item in sorted(root.rglob("*")):
                   if item.is_file():
@@ -86,11 +86,52 @@ jobs:
           print(f"PASS: single ZIP {dest.name}: {dest.stat().st_size} bytes.")
           print("ZIP SHA-256:",hashlib.sha256(dest.read_bytes()).hexdigest())
           PY
+      - name: Create two smaller independent owner backup volumes for connected Drive storage
+        run: |
+          python - <<'PY'
+          import json,zipfile,pathlib
+          root=pathlib.Path("_owner_archive")
+          inventory=json.loads((root/"TRACK_INVENTORY_SHA256.json").read_text("utf-8"))
+          assert len(inventory)==50
+          names=[]
+          for number,subset in [(1,inventory[:25]),(2,inventory[25:])]:
+              output=pathlib.Path(f"AXEZENT_V2_BACKUP_VOLUME_{number:02d}_OF_02.zip")
+              with zipfile.ZipFile(output,"w",compression=zipfile.ZIP_STORED,allowZip64=True) as z:
+                  for row in subset:
+                      recording=root/row["path"]
+                      assert recording.is_file()
+                      z.write(recording,arcname=row["path"])
+                  for filename in ["TRACK_INVENTORY_SHA256.json","SHA256SUMS.txt",
+                                   "FULL_ARRANGEMENTS.json","ORIGINAL_CATALOG_200_ENTRIES.json","READ_ME_FIRST.txt"]:
+                      z.write(root/filename,arcname=filename)
+              with zipfile.ZipFile(output) as z:
+                  assert z.testzip() is None
+                  assert len([n for n in z.namelist() if n.endswith(".mp3")])==25
+              assert output.stat().st_size<100_000_000,"Drive file must stay below connector size limit"
+              names.append(str(output))
+          print("PASS: 2 independent 25-song ZIP volumes fit under Drive upload limit",names)
+          PY
+      - name: Store backup volume 1
+        uses: actions/upload-artifact@v4
+        with:
+          name: AXEZENT-50-V2-VOLUME-01-OF-02
+          path: AXEZENT_V2_BACKUP_VOLUME_01_OF_02.zip
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 90
+      - name: Store backup volume 2
+        uses: actions/upload-artifact@v4
+        with:
+          name: AXEZENT-50-V2-VOLUME-02-OF-02
+          path: AXEZENT_V2_BACKUP_VOLUME_02_OF_02.zip
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 90
       - name: Store complete downloadable ZIP in GitHub Actions
         uses: actions/upload-artifact@v4
         with:
-          name: AXEZENT-50-REVIEW-BEATS-BACKUP
-          path: AXEZENT_50_REVIEW_BEATS_FULL_BACKUP_2026-11-07.zip
+          name: AXEZENT-50-REVIEW-BEATS-V2-BACKUP
+          path: AXEZENT_50_REVIEW_BEATS_V2_2026-11-07.zip
           if-no-files-found: error
           compression-level: 0
           retention-days: 90
