@@ -17,7 +17,7 @@ try {
   await desktop.goto(BASE,{waitUntil:'domcontentloaded',timeout:50000});
   await desktop.waitForFunction(()=>document.querySelectorAll('article.track-card').length===100,null,{timeout:40000});
   const ready=await desktop.locator('button.play-button:not([disabled])').count();
-  record('100 individually playable buttons',ready===100,{ready});
+  record('All 100 unapproved songs remain unplayable',ready===0,{ready});
   await desktop.waitForFunction(()=>document.getElementById('totalVisits')?.textContent==='17',null,{timeout:15000});
   record('Public cumulative website visit counter appears in footer',
     await desktop.locator('#totalVisits').innerText()==='17');
@@ -38,9 +38,9 @@ try {
   const trackEmail=await desktop.locator('#dialogContent .inquiry-email').getAttribute('href');
   record('Beat Details prefills correct artist inquiry email and track ID',Boolean(trackEmail&&trackEmail.startsWith('mailto:axezentai@gmail.com?subject=')&&trackEmail.includes('AXZ-')),{trackEmail});
   const durations=await desktop.locator('#dialogContent .segment-duration').allTextContents();
-  record('Every song section displays exact seconds underneath its title',
-    durations.length===7&&durations[0].trim()==='11.4 seconds',
-    {count:durations.length,first:durations[0]});
+  record('Private song arrangement details are not exposed',
+    durations.length===0,
+    {count:durations.length});
   await desktop.locator('#closeDialog').click();
   const bars=await desktop.locator('.cover-soundwave').count();
   record('100 individual beat-art visuals',bars===100,{bars});
@@ -67,20 +67,9 @@ try {
   await mobile.screenshot({path:path.join(OUTPUT,'mobile-first-impression.png')});
   await mobile.locator('#catalog').scrollIntoViewIfNeeded();
   await mobile.screenshot({path:path.join(OUTPUT,'mobile-beat-catalog.png')});
-  await mobile.locator('#tracks .play-button').first().click();
-  await mobile.waitForFunction(()=>{let a=document.querySelector('#player');return a&&document.querySelector('#playerDialog').open&&a.readyState>=2&&a.currentTime>.1},null,{timeout:30000});
-  record('Touch-sized Play button decodes real audio',true);
-  const chapters=mobile.locator('#musicArrangement .music-section-jump');
-   const chapterCount=await chapters.count();
-   record('Full section list and seconds visible while beat plays',
-     chapterCount===7 && await mobile.locator('.music-section-duration').count()===chapterCount &&
-     (await chapters.first().innerText()).includes('11.4 seconds'),{chapterCount});
-   await chapters.nth(3).click();
-   await mobile.waitForFunction(()=>Math.abs(document.querySelector('#player').currentTime-68.571)<2,
-     null,{timeout:12000});
-   const current=(await mobile.locator('.music-section-jump.is-active .music-section-label').innerText()).trim();
-   record('Section click seeks to Hook 2 and highlights it',current==='Hook 2',{current});
-   await mobile.locator('#closePlayer').click();
+  const disabledOnMobile=await mobile.locator('#tracks .play-button[disabled]').count();
+  record('100 play buttons safely disabled while studio review is pending',disabledOnMobile===100,{disabledOnMobile});
+  record('No public player opened accidentally',!await mobile.locator('#playerDialog').evaluate(el=>el.open));
   const narrow=await browser.newPage({viewport:{width:320,height:720},deviceScaleFactor:1,isMobile:true,hasTouch:true});
   await narrow.route("https://countapi.mileshilliard.com/api/v1/**",route=>
     route.fulfill({status:200,contentType:"application/json",body:JSON.stringify({value:17})}));
