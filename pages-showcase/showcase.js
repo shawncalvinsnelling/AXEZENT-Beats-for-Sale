@@ -91,6 +91,8 @@
   const musicPlay = $("musicPlay"), musicPause = $("musicPause"), musicStop = $("musicStop");
   const musicTime = $("musicTime"), musicDuration = $("musicDuration"), musicSeek = $("musicSeek");
   const musicRepeat = $("musicRepeat");
+  const musicVolume = $("musicVolume"), musicVolumeValue = $("musicVolumeValue");
+  const musicBack15 = $("musicBack15"), musicForward15 = $("musicForward15");
   let scrubbing = false;
   const showTime = (seconds) => {
     if(!Number.isFinite(seconds) || seconds < 0) return "0:00";
@@ -138,7 +140,13 @@
       await player.play();
       setPlayerStatus("Now playing");
     } catch(err) {
-      setPlayerStatus("Audio could not be played. Check the connection and try again.");
+      if(err && err.name === "NotAllowedError"){
+        setPlayerStatus("Your browser needs a direct tap or click. Press Play again.");
+      } else if(err && err.name === "AbortError") {
+        // An earlier request was interrupted by Stop, Exit or a new track.
+      } else {
+        setPlayerStatus("Playback could not start. Press Play to retry or check your connection.");
+      }
     }
   }
   function openPlayer(beat) {
@@ -161,9 +169,31 @@
   musicPause.addEventListener("click",() => {player.pause();setPlayerStatus("Paused");});
   musicStop.addEventListener("click",stopPlayback);
   musicSeek.addEventListener("pointerdown",() => {scrubbing=true;});
-  musicSeek.addEventListener("input",() => {scrubbing=true;seekTo(musicSeek.value);});
+  // During dragging only preview the chosen time; seek once on release.
+  // This prevents excessive overlapping HTTP Range requests on slower networks.
+  musicSeek.addEventListener("input",() => {
+    scrubbing=true;
+    if(Number.isFinite(player.duration) && player.duration>0) {
+      musicTime.textContent=showTime((Number(musicSeek.value)||0)*player.duration/100);
+    }
+  });
   musicSeek.addEventListener("change",() => {seekTo(musicSeek.value);scrubbing=false;});
   musicSeek.addEventListener("blur",() => {scrubbing=false;syncProgress();});
+  const skip = seconds => {
+    if(!state.selected || !Number.isFinite(player.duration))return;
+    try{
+      player.currentTime=Math.max(0,Math.min(player.duration,player.currentTime+seconds));
+      syncProgress();
+    }catch(error){setPlayerStatus("Skip isn't available while loading.");}
+  };
+  musicBack15.addEventListener("click",() => skip(-15));
+  musicForward15.addEventListener("click",() => skip(15));
+  musicVolume.addEventListener("input",() => {
+    player.volume=Math.max(0,Math.min(1,Number(musicVolume.value)/100));
+    player.muted=false;
+    musicVolumeValue.textContent=Math.round(player.volume*100)+"%";
+  });
+  player.volume=1;
   musicRepeat.addEventListener("click",() => {
     player.loop = !player.loop;
     musicRepeat.setAttribute("aria-pressed",String(player.loop));
@@ -175,12 +205,23 @@
   musicDialog.addEventListener("click",(event) => {
     if(event.target===musicDialog)closePlayer();
   });
+  player.addEventListener("loadstart",()=>{if(state.selected)setPlayerStatus("Loading audio…");});
+  player.addEventListener("waiting",()=>{if(state.selected && !player.paused)setPlayerStatus("Buffering…");});
+  player.addEventListener("stalled",()=>{if(state.selected)setPlayerStatus("Connection slowed. Press Play to retry if needed.");});
+  player.addEventListener("canplay",()=>{if(state.selected && player.paused)setPlayerStatus("Ready. Press Play.");});
+  player.addEventListener("playing",()=>{if(state.selected)setPlayerStatus("Now playing");});
   player.addEventListener("timeupdate",syncProgress);
   player.addEventListener("loadedmetadata",syncProgress);
   player.addEventListener("seeked",syncProgress);
-  player.addEventListener("ended",()=>{stopPlayback();setPlayerStatus("Finished");});
+  player.addEventListener("ended",()=>{
+    if(!player.loop){stopPlayback();setPlayerStatus("Finished");}
+  });
   player.addEventListener("error",()=> {
-    if(state.selected) setPlayerStatus("Audio unavailable. The preview file could not be opened.");
+    if(state.selected) {
+      const code=player.error && player.error.code;
+      setPlayerStatus(code===4 ? "This audio format isn't supported by your browser." :
+        "Unable to load audio. Check your connection, then press Play to retry.");
+    }
   });
   function showDetails(beat) {
     modal.replaceChildren();
