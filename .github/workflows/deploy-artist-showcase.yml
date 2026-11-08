@@ -6,6 +6,7 @@ on:
     paths:
       - 'pages-showcase/**'
       - 'data/catalog.json'
+      - 'data/public-preview-manifest.json'
       - 'assets/styles.css'
       - 'assets/favicon.svg'
       - '.github/workflows/deploy-artist-showcase.yml'
@@ -33,14 +34,40 @@ jobs:
           cp pages-showcase/index.html _pages_build/index.html
           cp pages-showcase/showcase.js _pages_build/assets/showcase.js
           cp assets/styles.css assets/favicon.svg _pages_build/assets/
+          cp data/public-preview-manifest.json _pages_build/data/public-preview-manifest.json
           node -e '
             const fs=require("fs");
             const beats=JSON.parse(fs.readFileSync("data/catalog.json","utf8"));
-            const safe=beats.map(({id,title,city,state,collection,bpm,releaseRank})=>({id,title,city,state,collection,bpm,releaseRank}));
+            const safe=beats.map(({id,title,city,state,collection,bpm,key,releaseRank})=>({id,title,city,state,collection,bpm,key,releaseRank}));
             if(safe.length!==200||safe.filter(b=>Number.isInteger(b.releaseRank)&&b.releaseRank>=1&&b.releaseRank<=50).length!==50)throw Error("Catalog check failed");
             fs.writeFileSync("_pages_build/data/catalog.json",JSON.stringify(safe));
           '
           touch _pages_build/.nojekyll
+      - name: Validate static showcase and original-site visual features
+        run: |
+          set -euo pipefail
+          node --check _pages_build/assets/showcase.js
+          node -e '
+            const fs=require("fs");
+            const h=fs.readFileSync("_pages_build/index.html","utf8");
+            const j=fs.readFileSync("_pages_build/assets/showcase.js","utf8");
+            const cat=JSON.parse(fs.readFileSync("_pages_build/data/catalog.json","utf8"));
+            const manifest=JSON.parse(fs.readFileSync("_pages_build/data/public-preview-manifest.json","utf8"));
+            for(const needle of ["BEATS<br><em>FOR SALE.", "id=\"tracks\"", "id=\"query\"", "id=\"region\"", "id=\"playerDialog\"", "id=\"musicSeek\"", "id=\"musicRepeat\"", "assets/styles.css"]) {
+              if(!h.includes(needle))throw Error("Missing original website visual/player feature: "+needle);
+            }
+            for(const forbidden of [/chatgpt[.]site/i,/paypal/i,/cash app/i,/mailto:/i,/private prototype/i,/synthetic review/i,/an online shop/i]) {
+              if(forbidden.test(h))throw Error("Customer-facing page includes restricted text: "+forbidden);
+            }
+            if(!j.includes("public-preview-manifest.json")||!j.includes("musicRepeat.addEventListener")||!j.includes("seekTo"))throw Error("Public player code is incomplete");
+            if(cat.length!==200 || cat.filter(x=>x.releaseRank>=1&&x.releaseRank<=50).length!==50)throw Error("Catalog count mismatch");
+            if(!manifest||typeof manifest!=="object"||Array.isArray(manifest))throw Error("Invalid public preview manifest");
+            for(const [id,url] of Object.entries(manifest)){
+              if(!cat.some(b=>b.id===id&&b.releaseRank>=1&&b.releaseRank<=50))throw Error("Unknown preview ID "+id);
+              if(typeof url!=="string"||!url.startsWith("https://"))throw Error("Only HTTPS preview URLs are allowed");
+            }
+            console.log("PASS: AXEZENT original interface, 50 entries, playback controls, safe public audio manifest");
+          '
       - name: Set up GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload public showcase
