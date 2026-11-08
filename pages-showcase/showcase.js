@@ -8,6 +8,36 @@
   const dialog = $("trackDialog"), modal = $("dialogContent"), player = $("player");
   const state = { all: [], filtered: [], displayed: 0, playing: null, selected: null };
   const PAGE = 50;
+  // All timing here is sourced from each producer-selected 4/4 arrangement
+  // blueprint, never inferred from an existing/unverified recording.
+  const showClock = secs => {
+    if (!Number.isFinite(secs)) return "—";
+    const s = Math.round(secs);
+    return Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
+  };
+  const renderSectionTable = (track) => {
+    const spec = track.arrangement;
+    if (!spec || !Array.isArray(spec.sections)) {
+      return el("p","", "No verified arrangement specification available.");
+    }
+    const pane = el("section","arrangement-detail");
+    const subtitle = el("p","section-head","Proposed full instrumental structure · "+spec.totalBars+" bars · "+showClock(spec.durationSeconds));
+    const sound = el("p","production-direction","Rhythm: "+spec.signature+" · Palette: "+spec.soundPalette);
+    const items = el("div","arrangement-sections");
+    spec.sections.forEach((segment,index)=>{
+      const line=el("div","arrangement-segment");
+      elAppend(line,
+        el("span","segment-number",String(index+1).padStart(2,"0")),
+        el("strong","segment-title",segment.label),
+        el("span","segment-bars",segment.bars+" bars"),
+        el("span","segment-time",showClock(segment.startSeconds)+" – "+showClock(segment.endSeconds))
+      );
+      items.appendChild(line);
+    });
+    elAppend(pane,subtitle,sound,items,
+      el("p","arrangement-disclosure","Production blueprint — calculated from "+track.bpm+" BPM in 4/4. Not yet verified against a finished MP3. Sections and durations may change during mastering."));
+    return pane;
+  };
   const accents = {
     "Southern":"#8c643b", "East Coast":"#487e9d", "West Coast":"#7c589c",
     "Midwest":"#607b87", "Mountain & Southwest":"#9b7546",
@@ -154,8 +184,9 @@
       el("span","micro",beat.id+" · "+beat.city.toUpperCase()+", "+beat.state.toUpperCase()),
       el("h2","",beat.title),
       el("p","",beat.collection+" collection"+(beat.bpm?" · "+beat.bpm+" BPM":"")+" · "+(beat.key||"Production details")),
-      el("p","",previewReady(beat)?"Choose Play to listen to the approved instrumental preview.":"The original audio file is not connected to the public player yet."),
-      el("div","details-note","FREE LISTENING PREVIEW: Intro → Hook → Verse → Hook → Outro. $100 EXCLUSIVE FULL INSTRUMENTAL: Intro → Hook → Verse 1 → Hook → Verse 2 → Outro. The full version adds a second verse. Sale and delivery are subject to confirmed availability and a signed rights-transfer agreement. Actual audio arrangements must be verified before release.")
+      el("p","",previewReady(beat)?"Choose Play to listen to the available review mix.":"Audio is pending producer review and hosting; this is the planned beat structure."),
+      renderSectionTable(beat),
+      el("div","details-note","$100 EXCLUSIVE FULL INSTRUMENTAL — intended price for an eligible, approved beat. The purchase version is the complete arrangement shown above. Rights transfer, audio delivery and availability must be confirmed by AXEZENT in writing. No payment is collected on this page.")
     );
     if(typeof dialog.showModal === "function") dialog.showModal(); else dialog.setAttribute("open","");
   }
@@ -195,12 +226,17 @@
   });
   const publicPreviewsRequest = fetch("./data/public-preview-manifest.json",{cache:"no-store"})
     .then(r=>r.ok?r.json():{}).catch(()=>({}));
-  Promise.all([catalogRequest,publicPreviewsRequest]).then(([data,previewManifest])=>{
+  const arrangementRequest = fetch("./data/arrangements.json",{cache:"no-store"}).then(r=>{
+    if (!r.ok) throw Error("Arrangement data unavailable");
+    return r.json();
+  });
+  Promise.all([catalogRequest,publicPreviewsRequest,arrangementRequest]).then(([data,previewManifest,arrangements])=>{
     if(!Array.isArray(data) || data.length!==200)throw Error("Catalog validation failed");
     const urls=previewManifest && typeof previewManifest==="object" && !Array.isArray(previewManifest) ? previewManifest : {};
+    if(!arrangements||typeof arrangements!=="object"||Array.isArray(arrangements)||Object.keys(arrangements).length!==50)throw Error("Expected 50 proposed arrangements");
     state.all=data.filter(b=>Number.isInteger(b.releaseRank) && b.releaseRank>=1 && b.releaseRank<=50)
-      .map(b=>({...b,previewUrl:typeof urls[b.id]==="string" ? urls[b.id] : null}));
-    if(state.all.length!==50)throw Error("Featured catalog validation failed");
+      .map(b=>({...b,previewUrl:typeof urls[b.id]==="string" ? urls[b.id] : null,arrangement:arrangements[b.id]}));
+    if(state.all.length!==50 || state.all.some(b=>!b.arrangement || b.arrangement.bpm!==b.bpm))throw Error("Featured arrangement validation failed");
     const collections=[...new Set(state.all.map(x=>x.collection))].sort();
     collections.forEach(c=>{const option=el("option","",c);option.value=c;region.appendChild(option);});
     $("heroTotal").textContent=String(data.length);
