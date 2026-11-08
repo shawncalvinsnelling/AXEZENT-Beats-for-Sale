@@ -7,6 +7,10 @@ on:
       - 'pages-showcase/**'
       - 'data/catalog.json'
       - 'data/arrangements.json'
+      - 'data/collection-two-blueprints.zlib'
+      - 'scripts/collection_two.py'
+      - 'scripts/render_collection_two_review_audio.py'
+      - 'tests/test_collection_two.py'
       - 'scripts/render_arranged_review_audio.py'
       - 'tests/test_arrangements_contract.py'
       - '.github/workflows/deploy-artist-showcase.yml'
@@ -27,7 +31,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        start: [1,11,21,31,41]
+        start: [51,61,71,81,91]
     steps:
       - name: Checkout AXEZENT arrangement source
         uses: actions/checkout@v4
@@ -43,8 +47,10 @@ jobs:
           test -s /usr/share/sounds/sf2/FluidR3_GM.sf2
           command -v fluidsynth
           command -v ffprobe
-      - name: Verify 50 bar-by-bar composition plans
-        run: python -m unittest discover -s tests -p 'test_arrangements_contract.py' -v
+      - name: Verify all 100 regional song plans while preserving the original 50
+        run: |
+          python -m unittest discover -s tests -p 'test_arrangements_contract.py' -v
+          python -m unittest discover -s tests -p 'test_collection_two.py' -v
       - name: Render 10 distinct new review arrangements, NO private originals
         env:
           FIRST_RANK: ${{ matrix.start }}
@@ -52,7 +58,7 @@ jobs:
           set -euo pipefail
           last=$((FIRST_RANK+9))
           mkdir -p "$RUNNER_TEMP/axezent-new-review"
-          python scripts/render_arranged_review_audio.py --catalog data/catalog.json --arrangements data/arrangements.json --out "$RUNNER_TEMP/axezent-new-review" --start "$FIRST_RANK" --end "$last"
+          python scripts/render_collection_two_review_audio.py --out "$RUNNER_TEMP/axezent-new-review" --start "$FIRST_RANK" --end "$last"
       - name: Verify 10 real stereo full-length review audio files and exact track identities
         env:
           FIRST_RANK: ${{ matrix.start }}
@@ -69,7 +75,9 @@ jobs:
               assert ident not in ids
               ids.add(ident)
               assert song["midiEvents"]>=200
-              assert "NOT the original private recording" in song["qualityStatus"]
+              assert song["reviewOnly"] is True
+              assert 51<=song["releaseRank"]<=100
+              assert "not the previously uploaded full MIDI sketch" in song["source"]
               file=root/(ident+"-review.mp3")
               assert file.stat().st_size>=150_000
               probe=json.loads(subprocess.check_output(["ffprobe","-v","error",
@@ -80,9 +88,9 @@ jobs:
               assert abs(float(probe["format"]["duration"])-song["durationSeconds"])<=0.2
               signatures.add(hashlib.sha256(file.read_bytes()).hexdigest())
           assert len(signatures)==10,"Duplicate audio renders are not allowed"
-          print("PASS: 10 distinct new full-length stereo MP3 review mixes; no paid master was rendered.")
+          print("PASS: 10 distinct Collection Two stereo MP3 reviews; no paid master was used.")
           PY
-      - name: Upload ONLY new review MP3s (not private masters or WAV files)
+      - name: Upload ONLY Collection Two review MP3s (not private masters or WAV files)
         uses: actions/upload-artifact@v4
         with:
           name: axezent-review-batch-${{ matrix.start }}
@@ -107,6 +115,39 @@ jobs:
           pattern: axezent-review-batch-*
           path: _pages_build/review-audio
           merge-multiple: true
+      - name: Preserve the first 50 published tracks byte-for-byte
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, pathlib, subprocess, time
+          catalog=json.loads(pathlib.Path("data/catalog.json").read_text("utf8"))
+          old=sorted((b for b in catalog if isinstance(b.get("releaseRank"),int)
+                      and 1<=b["releaseRank"]<=50),key=lambda b:b["releaseRank"])
+          assert len(old)==50
+          out=pathlib.Path("_pages_build/review-audio")
+          out.mkdir(parents=True,exist_ok=True)
+          base="https://shawncalvinsnelling.github.io/AXEZENT-Beats-for-Sale/review-audio/"
+          for b in old:
+              dest=out/(b["id"]+"-review.mp3")
+              assert not dest.exists(), "New collection overlaps an old audio ID"
+              for attempt in range(4):
+                  result=subprocess.run(["curl","-fLsS","--retry","2",
+                      "--retry-delay","3","--connect-timeout","20","--max-time","80",
+                      "-o",str(dest),base+dest.name])
+                  if result.returncode==0 and dest.is_file() and dest.stat().st_size>150000:
+                      break
+                  if attempt==3:
+                      raise RuntimeError("Could not preserve original public review "+b["id"])
+                  time.sleep(4)
+              probe=json.loads(subprocess.check_output(["ffprobe","-v","error",
+                  "-show_entries","stream=codec_name,channels:format=duration",
+                  "-of","json",str(dest)]))
+              if probe["streams"][0]["codec_name"]!="mp3" or probe["streams"][0]["channels"]!=2:
+                  raise RuntimeError("Existing playback audio corrupted for "+b["id"])
+          assert len(list(out.glob("AXZ-*-review.mp3")))==100
+          print("PASS: original 50 published MP3 files preserved exactly, new 50 added without collision")
+          PY
       - name: Install PNG conversion for Facebook preview art
         run: |
           sudo apt-get update -qq
@@ -130,18 +171,18 @@ jobs:
           assert len(data)>15_000
           print("PASS: premium 1200 x 630 PNG Open Graph image",len(data),"bytes")
           PY
-          cp data/arrangements.json _pages_build/data/arrangements.json
+          python scripts/collection_two.py --public-data _pages_build/data
           node -e '
             const fs=require("fs"),path=require("path"),crypto=require("crypto");
-            const tracks=JSON.parse(fs.readFileSync("data/catalog.json","utf8"));
-            const plans=JSON.parse(fs.readFileSync("data/arrangements.json","utf8"));
-            const featured=tracks.filter(b=>Number.isInteger(b.releaseRank)&&b.releaseRank>=1&&b.releaseRank<=50);
-            if(tracks.length!==200||featured.length!==50||Object.keys(plans).length!==50)throw Error("AXEZENT original song inventory must have 200 total / 50 featured");
+            const tracks=JSON.parse(fs.readFileSync("_pages_build/data/catalog.json","utf8"));
+            const plans=JSON.parse(fs.readFileSync("_pages_build/data/arrangements.json","utf8"));
+            const featured=tracks.filter(b=>Number.isInteger(b.releaseRank)&&b.releaseRank>=1&&b.releaseRank<=100);
+            if(tracks.length!==200||featured.length!==100||Object.keys(plans).length!==100)throw Error("AXEZENT must have 200 catalog concepts, 100 available city previews");
             const safe=tracks.map(({id,title,city,state,collection,bpm,key,releaseRank})=>({id,title,city,state,collection,bpm,key,releaseRank}));
             fs.writeFileSync("_pages_build/data/catalog.json",JSON.stringify(safe));
             const audioFolder="_pages_build/review-audio";
             const files=fs.readdirSync(audioFolder).filter(s=>s.endsWith(".mp3"));
-            if(files.length!==50)throw Error("Expected 50 distinct new public review MP3s, got "+files.length);
+            if(files.length!==100)throw Error("Expected 100 distinct public review MP3s, got "+files.length);
             const manifest={};
             const hashes=new Set();
             for(const track of featured) {
@@ -157,9 +198,9 @@ jobs:
               hashes.add(digest);
               manifest[track.id]="./review-audio/"+file;
             }
-            if(Object.keys(manifest).length!==50)throw Error("Review audio manifest incomplete");
+            if(Object.keys(manifest).length!==100)throw Error("100-beat public audio manifest incomplete");
             fs.writeFileSync("_pages_build/data/public-preview-manifest.json",JSON.stringify(manifest));
-            console.log("PASS: original 50 IDs, 50 unique full-length NEW review MP3s and 50 bar-accurate detail maps");
+            console.log("PASS: 100 city IDs, 50 unchanged originals, 50 new full-length review MP3s and 100 bar-accurate maps");
           '
           if find _pages_build -type f \( -name '*-tagged.mp3' -o -name '*.wav' -o -name '*.mid' \) | grep -q .; then
             echo "ERROR: private or intermediate music media leaked to public site"
@@ -184,7 +225,7 @@ jobs:
               if(!j.includes(key))throw Error("Missing AXEZENT player feature "+key);
             }
             if(j.includes("Discover AXEZENT")||j.includes("Preview coming soon"))throw Error("Removed clutter has returned");
-            if(Object.keys(plans).length!==50||Object.keys(manifest).length!==50)throw Error("Missing the 50-song release map");
+            if(Object.keys(plans).length!==100||Object.keys(manifest).length!==100)throw Error("Missing the 100-song release map");
             for(const [id,url] of Object.entries(manifest)){
               if(!plans[id] || url!=="./review-audio/"+id+"-review.mp3")throw Error("Invalid review audio URL mapping");
             }
@@ -194,7 +235,7 @@ jobs:
               throw Error("The website must show only the approved AXEZENT public inquiry email");
             if(!j.includes("mailto:axezentai@gmail.com?subject="))throw Error("Beat details must offer an email inquiry");
             if(!fs.existsSync("_pages_build/assets/axezent-social-share-v1.png"))throw Error("Missing Facebook link image");
-            console.log("PASS: correct AXEZENT display, 50 playable new review sources, $100 informational pricing and per-song bars");
+            console.log("PASS: correct AXEZENT display, 100 playable review sources, $100 informational pricing and 100 per-song bar maps");
           '
       - name: Set up GitHub Pages
         uses: actions/configure-pages@v5
