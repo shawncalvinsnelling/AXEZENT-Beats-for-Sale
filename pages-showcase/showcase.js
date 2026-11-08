@@ -93,7 +93,10 @@
     const detail = el("button","detail-button","Details");
     detail.type = "button"; detail.addEventListener("click",()=>showDetails(beat));
     elAppend(buttons,play,detail);
-    elAppend(body,h3,meta);
+    const count = el("span","track-play-count","Plays: —");
+    count.setAttribute("aria-label","Track listening count");
+    window.AXEZENT_COUNTERS?.registerCard(beat.id,count);
+    elAppend(body,h3,meta,count);
     body.appendChild(buttons);
     return elAppend(article,art,body);
   };
@@ -222,6 +225,8 @@
     player.load();
     musicTitle.textContent=beat.title;
     musicMeta.textContent=beat.city+", "+beat.state+" · "+(beat.bpm||"—")+" BPM";
+    const trackCount=$("musicPlayCount");
+    if(trackCount) window.AXEZENT_COUNTERS?.onSelected(beat.id,trackCount);
     buildSectionGuide(beat);
     setPlayerStatus("Ready to listen");
     if(!musicDialog.open) musicDialog.showModal();
@@ -271,7 +276,12 @@
   player.addEventListener("waiting",()=>{if(state.selected && !player.paused)setPlayerStatus("Buffering…");});
   player.addEventListener("stalled",()=>{if(state.selected)setPlayerStatus("Connection slowed. Press Play to retry if needed.");});
   player.addEventListener("canplay",()=>{if(state.selected && player.paused)setPlayerStatus("Ready. Press Play.");});
-  player.addEventListener("playing",()=>{if(state.selected)setPlayerStatus("Now playing");});
+  player.addEventListener("playing",()=>{
+    if(state.selected) {
+      setPlayerStatus("Now playing");
+      window.AXEZENT_COUNTERS?.recordFirstPlay(state.selected.id);
+    }
+  });
   player.addEventListener("timeupdate",syncProgress);
   player.addEventListener("loadedmetadata",syncProgress);
   player.addEventListener("seeked",syncProgress);

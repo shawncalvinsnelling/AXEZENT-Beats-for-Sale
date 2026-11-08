@@ -93,7 +93,8 @@
 @media(max-width:590px){#tracks .track-content{grid-template-columns:1fr}#tracks .track-actions{grid-column:1;grid-row:auto}}
 @media(max-width:540px){#playerDialog .music-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
-<script defer src="assets/showcase.js"></script>
+<script defer src="assets/counters.js"></script>
+  <script defer src="assets/showcase.js"></script>
 </head>
 <body>
   <div class="topline">AXEZENT ORIGINAL PRODUCTIONS <span>100 BEATS · FIND YOUR OWN SOUND</span></div>
@@ -145,7 +146,7 @@
       </div>
     </section>
   </main>
-  <footer><div class="container foot-inner"><div><strong>AXEZENT</strong><span>BEATS FOR SALE</span></div><p>© <span id="year"></span> AXEZENT. All rights reserved. Listening does not grant a commercial license.</p></div></footer>
+  <footer><div class="container foot-inner"><div><strong>AXEZENT</strong><span>BEATS FOR SALE</span></div><p>© <span id="year"></span> AXEZENT. All rights reserved. Listening does not grant a commercial license. <span class="site-visit-counter" aria-live="polite">Website visits: <strong id="totalVisits">Loading…</strong></span></p></div></footer>
   <dialog id="trackDialog" aria-label="Beat details"><div class="dialog-inner"><button type="button" class="close-dialog" id="closeDialog" aria-label="Close details">✕</button><div id="dialogContent"></div></div></dialog>
   <dialog id="playerDialog" class="music-dialog" aria-label="AXEZENT beat player">
     <div class="music-dialog-inner">
@@ -153,6 +154,7 @@
       <div class="music-kicker">AXEZENT · BEATS FOR SALE</div>
       <div class="music-disc" aria-hidden="true"><span>AXEZENT</span></div>
       <h2 id="musicTitle">Your selected beat</h2>
+      <p id="musicPlayCount" class="music-play-count" aria-live="polite">Plays: —</p>
       <p id="musicMeta" class="music-meta"></p>
       <p id="musicStatus" class="music-status" role="status" aria-live="polite">Ready to listen</p>
       <div class="music-controls">
