@@ -19,7 +19,7 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
-      - name: Remove public Actions archives containing audio, preserve all code and live Pages site
+      - name: Remove public audio and technical engineering archives
         shell: bash
         run: |
           set -euo pipefail
@@ -29,7 +29,7 @@ jobs:
           bytes=0
           while IFS=$'\t' read -r id name size; do
             case "$name" in
-              github-pages|axezent-review-batch-*|AXEZENT-50-REVIEW-BEATS*|AXEZENT-50-V*-VOLUME-*|AXEZENT-OWNER-HISTORY-TEMP)
+              github-pages|axezent-review-batch-*|AXEZENT-50-REVIEW-BEATS*|AXEZENT-50-V*-VOLUME-*|AXEZENT-OWNER-HISTORY-TEMP|AXEZENT-100-RAP-READINESS-ORIGINAL-MIDI-AUDIT|AXEZENT-100-TRACK-OBJECTIVE-AUDIO-QA|AXEZENT-50-REAL-MIDI-PIANO-ROLLS|AXEZENT-FOUR-TRACK-MIX-AB-REPORT-ONLY)
                 case "$id" in *[!0-9]*|'') echo "Bad artifact ID"; exit 1;; esac
                 gh api --method DELETE "/repos/$repo/actions/artifacts/$id" --silent
                 count=$((count+1))
@@ -43,10 +43,10 @@ jobs:
           gh api --paginate "/repos/$repo/actions/artifacts?per_page=100" --jq '.artifacts[] | [.id,.name] | @tsv' > "$RUNNER_TEMP/axz_after.tsv"
           while IFS=$'\t' read -r id name; do
             case "$name" in
-              github-pages|axezent-review-batch-*|AXEZENT-50-REVIEW-BEATS*|AXEZENT-50-V*-VOLUME-*|AXEZENT-OWNER-HISTORY-TEMP)
+              github-pages|axezent-review-batch-*|AXEZENT-50-REVIEW-BEATS*|AXEZENT-50-V*-VOLUME-*|AXEZENT-OWNER-HISTORY-TEMP|AXEZENT-100-RAP-READINESS-ORIGINAL-MIDI-AUDIT|AXEZENT-100-TRACK-OBJECTIVE-AUDIO-QA|AXEZENT-50-REAL-MIDI-PIANO-ROLLS|AXEZENT-FOUR-TRACK-MIX-AB-REPORT-ONLY)
                 echo "::error::Audio-bearing artifact still downloadable: $name"
                 exit 1
                 ;;
             esac
           done < "$RUNNER_TEMP/axz_after.tsv"
-          echo "PASS: no GitHub Actions artifacts containing downloadable AXEZENT music archives remain"
+          echo "PASS: no public music or detailed engineering artifacts remain"
