@@ -151,10 +151,20 @@ class Arrangement:
         self.drum_style=(self.rank+self.seed//29)%len(KICK_POCKETS)
         self.hat_style=(self.rank+self.seed//31)%len(HAT_POCKETS)
 
+    def chord_degree(self, kind, local_bar):
+        """Section-locked chord loop: a repeated hook must return on the
+        same harmony, not drift when the song has different verse lengths."""
+        step=(local_bar//4) % len(self.progression)
+        return self.progression[step]
+
     def add(self,beat_tick,channel,note,velocity,length_ticks):
         tick=max(0,int(round(beat_tick)))
         if tick>=self.spec["totalBars"]*TICKS_BAR: return
         length=max(1,int(length_ticks))
+        # Pitched GM notes must not hang across the next chord/bar; otherwise
+        # the lead, bass and counter-note overlap unrelated harmonic changes.
+        if channel in (0,1,2,3):
+            length=min(length,max(1,TICKS_BAR-(tick%TICKS_BAR)-6))
         note=max(0,min(127,int(note)))
         velocity=max(1,min(127,int(velocity)))
         self.events.append((tick,1,mido.Message("note_on",channel=channel,note=note,velocity=velocity)))
@@ -213,8 +223,10 @@ class Arrangement:
         # Different texture sources: rim, shaker, ride, tambourine, closed/open
         # hats or almost no top percussion, depending on the selected kit.
         hats=HAT_POCKETS[self.hat_style]
-        if self.groove in ("trap","drill") and local_bar%4==3 and not bridge:
-            hats=(0,.5,1,1.5,2,2.25,2.5,2.75,3,3.25,3.5,3.75)
+        if self.groove in ("trap","drill") and hook and local_bar%4==3:
+            # Twelve sharp hats plus four other drums was a distracting fill
+            # in every fourth verse bar. Save one modest roll for the hook.
+            hats=(0,.5,1,1.5,2,2.5,3,3.25,3.5,3.75)
         elif self.groove=="ambient":
             hats=(0,1.5,3) if local_bar%2 else (0,2,3.5)
         elif self.groove=="swing":
@@ -236,7 +248,7 @@ class Arrangement:
                 self.percussion(bar*4+p,kit["snare"] if i%2 else 45,48+i*7,.12)
 
     def harmony(self,bar,kind,local_bar):
-        prog=self.progression[(bar//4)%4]
+        prog=self.chord_degree(kind,local_bar)
         hook=kind=="hook"
         bridge=kind in ("bridge","breakdown")
         # Root, third, fifth. All chords are diatonic to the assigned mode.
@@ -245,10 +257,20 @@ class Arrangement:
         if kind=="outro" and local_bar%2: return
         if bridge: notes=notes[:2]
         if kind=="intro": notes=notes[-2:]
+        if kind=="verse":
+            # Vocal space beats stacked synths. Use simple shells for
+            # half-time/club; leave the turnaround open rather than sustaining
+            # three-note chords through every rapper pickup.
+            if self.groove in ("drill","trap","club","ambient"):
+                notes=notes[:2] if local_bar%4!=3 else []
+            elif local_bar%4==3:
+                notes=notes[:2]
+        chord_len=(.76 if hook else .85 if self.groove=="ambient"
+                   else .57 if kind=="verse" else .8)
         for j,n in enumerate(notes):
             self.add(bar*TICKS_BAR+j*5,0,n,
-                     52 if hook else 40 if kind=="verse" else 35,
-                     TICKS_BAR*(.76 if hook else .9))
+                     52 if hook else 37 if kind=="verse" else 35,
+                     TICKS_BAR*chord_len)
         # Sparse rhythm stabs in hooks, deliberately reduced beneath verses.
         if hook and local_bar%2==0:
             for j,n in enumerate(notes):
@@ -290,13 +312,16 @@ class Arrangement:
             note_count=4+(local_bar%4==3)
             positions=(0,1.25,2.25,3.25,3.75)
         elif verse:
-            note_count=(1,3,2,3)[local_bar%4]
+            note_count=(1,2,1,2)[local_bar%4]
             positions=(2.0,3.0,3.5)
         else:
             note_count=2
             positions=(.5,2.75)
-        prog=self.progression[(bar//4)%4]
-        lead_oct=5 if self.rank%4 else 4
+        prog=self.chord_degree(kind,local_bar)
+        # Keep dense rap styles near the middle piano register. The old
+        # 75% high-octave synth leads could compete with the vocal.
+        lead_oct=(4 if self.groove in ("drill","trap","boom_bap","swing")
+                  else 5 if self.rank%3==0 else 4)
         for i in range(note_count):
             idx=(local_bar*2+i+self.rap_space)%len(pattern)
             hook_answer=1 if hook and local_bar%8>=4 else 0
@@ -304,7 +329,7 @@ class Arrangement:
             n=scale_note(self.root,degree,self.scale,lead_oct)
             pos=positions[i]
             duration=(.51 if hook else .37)*TPQ
-            velocity=(71 if hook else 48 if verse else 43)+self.rng.randint(-6,6)
+            velocity=(70 if hook else 44 if verse else 43)+self.rng.randint(-5,5)
             self.add((bar*4+pos)*TPQ,1,n,velocity,duration)
         if hook and local_bar%2==1:
             # Counter-instrument only at the end of the hook, not over verses.
@@ -314,8 +339,8 @@ class Arrangement:
     def verse_detail(self, bar, local_bar):
         """Vary verses independently of hooks; retain space for lead vocals.
 
-        One quiet instrumental response per half-bar with a four-bar contour,
-        independently selected for all 50 tracks, plus occasional ghost drums.
+        Sparse answers after the vocal pickup, with a four-bar contour,
+        independently selected for all 50 tracks, plus restrained ghost drums.
         The six owner-identified verses receive distinct deterministic motifs.
         """
         motif, pulses, accent = VERSE_FOCUS.get(
@@ -328,22 +353,29 @@ class Arrangement:
             motif=tuple((x+offset)%7 for x in motif)
         phrase = local_bar % 4
         cycle = (local_bar // 4) % 3
-        chord_degree = self.progression[(bar // 4) % 4]
-        for i, pos in enumerate(pulses):
-            # Preserve a little rhythmic negative space at the phrase opening.
-            if i == 2 and phrase in (0, 2):
-                continue
-            degree = (chord_degree + motif[(phrase + cycle + i) % len(motif)]) % 7
-            low_answer = self.beat["id"] in ("AXZ-125", "AXZ-001") and i == 0
-            octave = 3 if low_answer else (5 if i == 2 and self.rank % 3 == 0 else 4)
-            pitch = scale_note(self.root, degree, self.scale, octave)
-            velocity = 38 + (self.rank % 7) + (5 if phrase in (1, 3) else 0)
-            self.add((bar * 4 + pos) * TPQ, 3, pitch, velocity,
-                     TPQ * (.46 if i == 0 else .29))
-        if phrase in (1, 3):
-            self.percussion(bar * 4 + 3.5, accent, 39 + self.rank % 12, .09)
-        if phrase == 3:
-            self.percussion(bar * 4 + 3.75, self.drums["snare"], 44, .10)
+        chord_degree = self.chord_degree("verse",local_bar)
+        # Previously the counter-part always played 2-3 notes per bar, while
+        # the lead, bass and chords were already active. In a piano roll this
+        # was more notes than an instrumental supporting a full rap verse needs.
+        # Four-bar response: rest / one note / one note / two-note answer.
+        candidates=[(i,pos) for i,pos in enumerate(pulses) if pos>=2.0]
+        candidates=sorted(candidates,key=lambda p:p[1])
+        if phrase==0:
+            chosen=[]
+        elif phrase==3:
+            chosen=candidates[-2:]
+        else:
+            chosen=candidates[-1:]
+        for i,pos in chosen:
+            degree=(chord_degree+motif[(phrase+cycle+i)%len(motif)])%7
+            low_answer=self.beat["id"] in ("AXZ-125","AXZ-001") and i==0
+            octave=3 if low_answer else 4
+            pitch=scale_note(self.root,degree,self.scale,octave)
+            velocity=35+(self.rank%7)+(5 if phrase==3 else 0)
+            self.add((bar*4+pos)*TPQ,3,pitch,velocity,TPQ*.27)
+        if phrase==3:
+            self.percussion(bar*4+3.5,accent,35+self.rank%9,.09)
+            self.percussion(bar*4+3.75,self.drums["snare"],38,.10)
 
     def build_midi(self,outpath):
         mf=mido.MidiFile(type=1,ticks_per_beat=TPQ)

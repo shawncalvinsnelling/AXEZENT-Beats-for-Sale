@@ -77,11 +77,14 @@ class ArrangementContractTests(unittest.TestCase):
                                 if msg.type=="note_on" and msg.velocity and
                                    msg.channel==3 and start<=tick<start+TICKS_BAR
                             ]
-                            self.assertGreaterEqual(len(counter),2,
-                                f"Unscored counter-melody in {beat['id']} bar {bar}")
-                            self.assertLessEqual(len(counter),3,
-                                f"Counter-melody overcrowds verse in {beat['id']} bar {bar}")
-                            if beat["id"] in focus and verse_count==0:
+                            self.assertLessEqual(len(counter),2,
+                                f"Counter melody overcrowds {beat['id']} verse bar {bar}")
+                            if verse_count%4==0:
+                                self.assertEqual(0,len(counter),
+                                    "First bar of four-bar vocal phrase must be clear")
+                            elif verse_count%4 in (1,2):
+                                self.assertEqual(1,len(counter))
+                            if beat["id"] in focus and verse_count%4==3:
                                 signatures.add((beat["id"],tuple(counter)))
                             verse_count+=1
                     self.assertGreaterEqual(verse_count,8)
@@ -127,5 +130,77 @@ class ArrangementContractTests(unittest.TestCase):
                     self.assertGreaterEqual(len(hook),4,"Hooks should have a main phrase")
                     self.assertGreater(sum(v for _,v in hook)/len(hook),
                                        sum(v for _,v in verse)/len(verse))
+
+    def test_repeated_hooks_return_to_same_harmonic_melodic_grid(self):
+        """For every song, first two bars of each hook must be identical on
+        chord, lead, bass and hook response piano-roll lanes."""
+        from scripts.render_arranged_review_audio import Arrangement,TICKS_BAR
+        from tempfile import TemporaryDirectory
+        with TemporaryDirectory() as tmp:
+            for beat in FEATURED:
+                with self.subTest(id=beat["id"]):
+                    plan=ARRANGEMENTS[beat["id"]]
+                    arranger=Arrangement(beat,plan)
+                    arranger.build_midi(Path(tmp)/"hook.mid")
+                    sig=[]
+                    for sec in plan["sections"]:
+                        if sec["kind"]!="hook":
+                            continue
+                        first=sec["startBar"]*TICKS_BAR
+                        sig.append(tuple(sorted(
+                            (tick-first,msg.channel,msg.note)
+                            for tick,_,msg in arranger.events
+                            if msg.type=="note_on" and msg.velocity>0 and
+                            msg.channel in (0,1,2,3) and first<=tick<first+2*TICKS_BAR
+                        )))
+                    self.assertGreaterEqual(len(sig),2)
+                    self.assertTrue(all(x==sig[0] for x in sig[1:]),
+                                    "Returning hook must recover its first harmony and lead")
+
+    def test_rap_verse_is_sparser_than_hook(self):
+        from scripts.render_arranged_review_audio import Arrangement,TICKS_BAR
+        from tempfile import TemporaryDirectory
+        with TemporaryDirectory() as tmp:
+            for beat in FEATURED:
+                with self.subTest(id=beat["id"]):
+                    plan=ARRANGEMENTS[beat["id"]]
+                    a=Arrangement(beat,plan)
+                    a.build_midi(Path(tmp)/"density.mid")
+                    by_section={}
+                    for sec in plan["sections"]:
+                        if sec["kind"] not in ("hook","verse"):
+                            continue
+                        counts=[]
+                        for bar in range(sec["startBar"],sec["endBar"]):
+                            counts.append(sum(1 for t,_,m in a.events
+                                if m.type=="note_on" and m.velocity and m.channel in (0,1,2,3)
+                                and bar*TICKS_BAR<=t<(bar+1)*TICKS_BAR))
+                        by_section.setdefault(sec["kind"],[]).extend(counts)
+                    verse=sum(by_section["verse"])/len(by_section["verse"])
+                    hook=sum(by_section["hook"])/len(by_section["hook"])
+                    self.assertLess(verse,hook,f"{beat['id']} vocal verse is too busy")
+                    self.assertLessEqual(verse,8.5,
+                        f"{beat['id']} verse contains more than 8.5 pitched attacks/bar")
+
+    def test_pitched_notes_terminate_within_their_bar(self):
+        from scripts.render_arranged_review_audio import Arrangement,TICKS_BAR
+        from tempfile import TemporaryDirectory
+        with TemporaryDirectory() as tmp:
+            for beat in FEATURED:
+                with self.subTest(id=beat["id"]):
+                    a=Arrangement(beat,ARRANGEMENTS[beat["id"]])
+                    a.build_midi(Path(tmp)/"chord_change.mid")
+                    start={}
+                    for tick,_,m in sorted(a.events,key=lambda e:(e[0],e[1])):
+                        if m.channel not in (0,1,2,3):
+                            continue
+                        k=(m.channel,m.note)
+                        if m.type=="note_on" and m.velocity:
+                            start.setdefault(k,[]).append(tick)
+                        elif m.type=="note_off":
+                            if start.get(k):
+                                s=start[k].pop(0)
+                                self.assertEqual(s//TICKS_BAR,tick//TICKS_BAR,
+                                    "Unintentional pitch held into next chord")
 
 if __name__=="__main__":unittest.main()
