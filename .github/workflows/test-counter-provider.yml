@@ -1,0 +1,34 @@
+name: Verify AXEZENT persistent public counter provider without generating hits
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/test-counter-provider.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  read-only-provider-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Verify counter service status, CORS and safe read-only endpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://countapi.mileshilliard.com/api/v1"
+          curl -fLsS --retry 2 --connect-timeout 10 --max-time 20 "$base/status" -o "$RUNNER_TEMP/status.json"
+          python - "$RUNNER_TEMP/status.json" <<'PY'
+          import json,sys
+          status=json.load(open(sys.argv[1]))
+          assert status.get("message") in ("API is running","API is healthy"),status
+          print("PROVIDER_STATUS_OK",status)
+          PY
+          curl -sS -D "$RUNNER_TEMP/headers" --connect-timeout 10 --max-time 20 \
+            "$base/get/axezent_beats_for_sale_20261108_nonexistent_read_only_test" -o "$RUNNER_TEMP/read.json"
+          python - "$RUNNER_TEMP/headers" <<'PY'
+          import sys
+          content=open(sys.argv[1]).read().lower()
+          print("PROVIDER_CORS",content[:1200])
+          assert "access-control-allow-origin:" in content,"Cross-origin Javascript fetch not authorized"
+          PY
