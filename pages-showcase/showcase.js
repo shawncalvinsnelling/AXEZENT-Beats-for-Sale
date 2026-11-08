@@ -19,11 +19,18 @@
     if(txt !== undefined) n.textContent = txt;
     return n;
   };
-  const previewReady = b => {
-    if (typeof b.previewUrl !== "string" || !b.previewUrl.startsWith("https://")) return false;
-    try { const url = new URL(b.previewUrl); return url.protocol === "https:" && !url.username && !url.password; }
-    catch { return false; }
+  // One real approved source per beat; never synthesize substitute audio in-browser.
+  // Same-origin relative URLs are allowed so tagged preview files or HTTPS audio
+  // endpoints can be used without changing the listening interface.
+  const approvedPreviewUrl = b => {
+    if (typeof b.previewUrl !== "string" || !b.previewUrl.trim()) return null;
+    try {
+      const url = new URL(b.previewUrl, document.baseURI);
+      if (url.protocol !== "https:" || url.username || url.password) return null;
+      return url.href;
+    } catch { return null; }
   };
+  const previewReady = b => approvedPreviewUrl(b) !== null;
   const elAppend = (parent, ...nodes) => { nodes.forEach(n => parent.appendChild(n)); return parent; };
   const trackCard = (beat) => {
     const article = el("article","track-card");
@@ -33,19 +40,19 @@
     const body = el("div","track-content");
     const h3 = el("h3","",beat.title); h3.title = beat.title;
     const meta = el("div","track-meta",beat.city + ", " + beat.state + (beat.bpm ? " · "+beat.bpm+" BPM" : ""));
-    const status = el("span","status"+(previewReady(beat)?" ready":""),previewReady(beat)?"Listen to the beat":"Preview coming soon");
+    const status = previewReady(beat) ? el("span","status ready","Ready to listen") : null;
     const buttons = el("div","track-actions");
-    const play = el("button","play-button",previewReady(beat)?"▶ Listen to "+beat.title:"▶ "+beat.title+" · Coming soon");
+    const play = el("button","play-button","▶ Play");
     play.type = "button"; play.disabled = !previewReady(beat);
+    play.title = play.disabled ? "Original recording not connected yet" : "Listen to "+beat.title;
+    play.setAttribute("aria-label",play.title);
     if(!play.disabled) play.addEventListener("click",() => openPlayer(beat));
-    const detail = el("button","detail-button","View Details");
+    const detail = el("button","detail-button","Details");
     detail.type = "button"; detail.addEventListener("click",()=>showDetails(beat));
     elAppend(buttons,play,detail);
-    const inquiry = el("a","inquiry-action","Discover AXEZENT");
-    inquiry.href = "#about";
-    inquiry.title = "Learn about the AXEZENT original production collection";
-    const available = el("p","availability",previewReady(beat)?"Public listening preview available":"AXEZENT featured instrumental collection");
-    elAppend(body,h3,meta,status,buttons,inquiry,available);
+    elAppend(body,h3,meta);
+    if(status) body.appendChild(status);
+    body.appendChild(buttons);
     return elAppend(article,art,body);
   };
   const musicDialog = $("playerDialog");
@@ -108,10 +115,10 @@
     if(!previewReady(beat)) return;
     stopPlayback();
     state.selected=beat;
-    player.src=beat.previewUrl;
+    player.src=approvedPreviewUrl(beat);
     player.load();
     musicTitle.textContent=beat.title;
-    musicMeta.textContent=beat.city+", "+beat.state+" · "+(beat.bpm||"—")+" BPM";
+    musicMeta.textContent=beat.city+", "+beat.state+" · "+(beat.bpm||"—")+" BPM · Preview: Intro → Hook → Verse → Hook → Outro";
     setPlayerStatus("Ready to listen");
     if(!musicDialog.open) musicDialog.showModal();
     playSelected();
@@ -147,8 +154,8 @@
       el("span","micro",beat.id+" · "+beat.city.toUpperCase()+", "+beat.state.toUpperCase()),
       el("h2","",beat.title),
       el("p","",beat.collection+" collection"+(beat.bpm?" · "+beat.bpm+" BPM":"")+" · "+(beat.key||"Production details")),
-      el("p","",previewReady(beat)?"Click Listen to hear the selected instrumental.":"A public listening preview is not available for this selection yet."),
-      el("div","details-note","Explore the original AXEZENT instrumental catalog. Public listening previews appear here when released.")
+      el("p","",previewReady(beat)?"Choose Play to listen to the approved instrumental preview.":"The original audio file is not connected to the public player yet."),
+      el("div","details-note","Preview arrangement: Intro → Hook → Verse → Hook → Outro. The expanded instrumental arrangement adds a second verse and another hook before the final outro. This describes the release plan; the exact source recording must be checked before publishing.")
     );
     if(typeof dialog.showModal === "function") dialog.showModal(); else dialog.setAttribute("open","");
   }
