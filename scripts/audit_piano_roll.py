@@ -114,8 +114,13 @@ def main():
             if vd[0]>8.5:warnings.append("Excessive verse notes")
             if outofkey:warnings.append("Pitches outside declared diatonic key")
             hookbase=hooks[0]["startBar"]*TICKS_BAR
-            drumsigs.add(tuple(sorted((t-hookbase,p) for t,d,ch,p,v in n if ch==9 and
-                       hookbase<=t<hookbase+4*TICKS_BAR)))
+            # Quantize onset to 16th notes and compare role (kick, snare, hat,
+        # other); random humanization jitter must not count as a new groove.
+        drumsigs.add(tuple(sorted((round((t-hookbase)/120),
+            "K" if p in (35,36) else "S" if p in (38,39,40) else
+            "H" if p in (42,44,46,51,54,82) else "X")
+            for t,d,ch,p,v in n if ch==9 and
+            hookbase<=t<hookbase+4*TICKS_BAR)))
             hooksigs.add(hook(n,hooks[0]))
             path=svgs/f'{b["releaseRank"]:02d}-{b["id"]}.svg'
             render(b,n,plan,path)

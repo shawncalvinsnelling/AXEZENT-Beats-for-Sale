@@ -203,4 +203,29 @@ class ArrangementContractTests(unittest.TestCase):
                                 self.assertEqual(s//TICKS_BAR,tick//TICKS_BAR,
                                     "Unintentional pitch held into next chord")
 
+    def test_hooks_do_not_share_one_uniform_note_density(self):
+        """Historic 50 tracks all had exactly 13.25 pitched notes per hook bar.
+        Different groove families should have purposeful density budgets."""
+        from scripts.render_arranged_review_audio import Arrangement,TICKS_BAR
+        from tempfile import TemporaryDirectory
+        densities={}
+        with TemporaryDirectory() as tmp:
+            for beat in FEATURED:
+                plan=ARRANGEMENTS[beat["id"]]
+                a=Arrangement(beat,plan)
+                a.build_midi(Path(tmp)/"density-budgets.mid")
+                hook=next(s for s in plan["sections"] if s["kind"]=="hook")
+                start=hook["startBar"]*TICKS_BAR
+                end=hook["endBar"]*TICKS_BAR
+                n=sum(1 for t,_,m in a.events if m.type=="note_on" and m.velocity
+                      and m.channel!=9 and start<=t<end)
+                d=n/hook["bars"]
+                densities.setdefault(a.groove,[]).append(d)
+                self.assertLessEqual(d,12.5,f"{beat['id']} hook overbuilt")
+            means={k:sum(v)/len(v) for k,v in densities.items()}
+            self.assertGreaterEqual(len(set(round(x,1) for x in means.values())),4,
+                "All hooks are still stamped from the same pitched-note template")
+            self.assertLess(means["drill"],means["club"])
+            self.assertLess(means["ambient"],means["bounce"])
+
 if __name__=="__main__":unittest.main()

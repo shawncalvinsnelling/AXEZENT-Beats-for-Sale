@@ -257,6 +257,9 @@ class Arrangement:
         if kind=="outro" and local_bar%2: return
         if bridge: notes=notes[:2]
         if kind=="intro": notes=notes[-2:]
+        if hook and self.groove in ("drill","trap","ambient"):
+            # No endless three-note synth blankets in sparse genres.
+            notes=notes[:2]
         if kind=="verse":
             # Vocal space beats stacked synths. Use simple shells for
             # half-time/club; leave the turnaround open rather than sustaining
@@ -271,17 +274,23 @@ class Arrangement:
             self.add(bar*TICKS_BAR+j*5,0,n,
                      52 if hook else 37 if kind=="verse" else 35,
                      TICKS_BAR*chord_len)
-        # Sparse rhythm stabs in hooks, deliberately reduced beneath verses.
-        if hook and local_bar%2==0:
-            for j,n in enumerate(notes):
-                self.add((bar*4+2.5)*TPQ+j*4,0,n,42,TPQ*.45)
+        # Formerly three simultaneous chord stabs every second hook bar.
+        # That 1.5-note/bar layer was needlessly identical on all 50 tracks.
+        if hook and self.groove in ("club","swing","bounce") and local_bar%2==0:
+            if notes:
+                self.add((bar*4+2.5)*TPQ,0,notes[1],36,TPQ*.29)
         # Low end follows the kick/bass motion instead of one constant keyboard
         # sound. Bass instrument patch and octave vary across the 50 tracks.
         bass=scale_note(self.root,prog,scale,2)
         if kind=="intro":
             bass_positions=(0,2)
         elif hook:
-            bass_positions=(0,1.5,2.5,3.25)
+            if self.groove=="ambient":
+                bass_positions=(0,2.5)
+            elif self.groove in ("boom_bap","swing","drill"):
+                bass_positions=(0,2,3.25)
+            else:
+                bass_positions=(0,1.5,2.5,3.25)
         elif bridge:
             bass_positions=(0,2)
         elif kind=="verse":
@@ -309,8 +318,12 @@ class Arrangement:
         # Hooks supply the memorable call; verses leave the first two beats
         # open for the rapper and answer only after the vocal pickup.
         if hook:
-            note_count=4+(local_bar%4==3)
-            positions=(0,1.25,2.25,3.25,3.75)
+            # Restrained, recurring A/B phrase; less arcade-like high-note
+            # motion in drill, trap, boom-bap and atmospheric hooks.
+            minimal=self.groove in ("ambient","drill","trap","boom_bap")
+            minimal=minimal or self.beat["city"]=="Detroit"
+            note_count=(3 if minimal else 4)+(local_bar%8==7)
+            positions=(0,1.25,2.75,3.5,3.75)
         elif verse:
             note_count=(1,2,1,2)[local_bar%4]
             positions=(2.0,3.0,3.5)
@@ -323,7 +336,8 @@ class Arrangement:
         lead_oct=(4 if self.groove in ("drill","trap","boom_bap","swing")
                   else 5 if self.rank%3==0 else 4)
         for i in range(note_count):
-            idx=(local_bar*2+i+self.rap_space)%len(pattern)
+            phrase_bar=local_bar%2 if hook else local_bar
+            idx=(phrase_bar*2+i+self.rap_space)%len(pattern)
             hook_answer=1 if hook and local_bar%8>=4 else 0
             degree=(prog+pattern[idx]+hook_answer)%7
             n=scale_note(self.root,degree,self.scale,lead_oct)
@@ -331,8 +345,8 @@ class Arrangement:
             duration=(.51 if hook else .37)*TPQ
             velocity=(70 if hook else 44 if verse else 43)+self.rng.randint(-5,5)
             self.add((bar*4+pos)*TPQ,1,n,velocity,duration)
-        if hook and local_bar%2==1:
-            # Counter-instrument only at the end of the hook, not over verses.
+        if hook and (local_bar%4==3 if self.groove in ("drill","ambient") else local_bar%2==1):
+            # Counter-instrument only as a short hook answer, not over verses.
             n=scale_note(self.root,(prog+4+self.rank%3)%7,self.scale,4)
             self.add((bar*4+3)*TPQ,3,n,41,TPQ*.46)
 
